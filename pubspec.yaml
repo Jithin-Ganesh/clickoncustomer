@@ -73,17 +73,17 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-   fonts:
-     - family: Kanit
-       fonts:
-         - asset: assets/fonts/kanit/kanit-bold.otf
-             weight: 700
-         - asset: assets/fonts/kanit/Satoshi-Medium.otf
-             weight: 500
-         - asset: assets/fonts/kanit/kanit-regular.otf
-             weight: 400
-         - asset: assets/fonts/kanit/kanit-extrabold.otf
-             weight: 900
+  fonts:
+    - family: Kanit
+      fonts:
+        - asset: assets/fonts/kanit/kanit-bold.otf
+          weight: 700
+        - asset: assets/fonts/kanit/Satoshi-Medium.otf
+          weight: 500
+        - asset: assets/fonts/kanit/kanit-regular.otf
+          weight: 400
+        - asset: assets/fonts/kanit/kanit-extrabold.otf
+          weight: 900
 
   #
   # For details regarding fonts from package dependencies,
