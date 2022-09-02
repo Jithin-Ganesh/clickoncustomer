@@ -12,9 +12,7 @@ ThemeData appTheme = ThemeData(
   brightness: Brightness.light,
   primaryColor: primaryColor,
   backgroundColor: bgColor,
-  canvasColor: canvasColor,
   dividerColor: dividerColor,
-  scaffoldBackgroundColor: bgColor,
   hintColor: hintColor,
   disabledColor: disableColor,
   fontFamily: "Kanit",
@@ -45,22 +43,24 @@ ThemeData appTheme = ThemeData(
       //900
       //24
       headline4: extraBold.copyWith(fontSize: 12),
-      headline1: bold,
+      headline1: extraBold.copyWith(fontSize: 28),
       //700
       //18
       button: bold.copyWith(fontSize: 16),
-      headline2: bold.copyWith(fontSize: 14),
+      headline2: bold.copyWith(fontSize: 28),
       headline5: bold.copyWith(fontSize: 12),
       subtitle1: medium,
       //500
       //14
-      subtitle2: medium.copyWith(fontSize: 12),
+      subtitle2: medium.copyWith(fontSize: 18),
+
       headline6: medium.copyWith(fontSize: 10),
       bodyText1: regular,
       //400
       //11
       bodyText2: regular.copyWith(fontSize: 12),
       caption: regular.copyWith(color: hintColor, fontSize: 12)),
+
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ButtonStyle(
       shadowColor: MaterialStateProperty.resolveWith(shadowColor),
@@ -73,6 +73,7 @@ ThemeData appTheme = ThemeData(
       textStyle: MaterialStateProperty.resolveWith(textStyle),
     ),
   ),
+
 
 );
 
@@ -116,7 +117,7 @@ Color? backgroundColor(Set<MaterialState> state) {
 TextStyle? textStyle(Set<MaterialState> state) {
   print("Text: $state");
   return bold.copyWith(
-      color: canvasColor,
+      color: mainTitleColor,
       fontFamily: 'Kanit',fontSize: 14
   );
 }
@@ -135,21 +136,21 @@ TextStyle? outlinedButtonTextStyle(Set<MaterialState> state) {
 }
 
 Color? shadowColor(Set<MaterialState> state) {
-  return primaryColor;
+  return canvasColor;
 }
 
 Color? textColor(Set<MaterialState> state) {
   if (state.contains(MaterialState.disabled)) {
     return disableColor;
   } else {
-    return canvasColor;
+    return mainTitleColor;
   }
 }
 
 BorderSide? borderColor(Set<MaterialState> state) {
   if (state.contains(MaterialState.disabled)) {
-    return const BorderSide(color: disableColor);
+    return const BorderSide(color: primaryColor);
   } else {
-    return const BorderSide(color: bgColor);
+    return const BorderSide(color: primaryColor);
   }
 }
