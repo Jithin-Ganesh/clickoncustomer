@@ -1,0 +1,1 @@
+String imageProduct="assets/images/img.png";

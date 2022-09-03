@@ -47,14 +47,14 @@ ThemeData appTheme = ThemeData(
       //700
       //18
       button: bold.copyWith(fontSize: 16),
-      headline2: bold.copyWith(fontSize: 28),
+      headline2: bold.copyWith(fontSize: 24),
       headline5: bold.copyWith(fontSize: 12),
-      subtitle1: medium,
+      subtitle1: medium.copyWith(fontSize: 16),
       //500
       //14
       subtitle2: medium.copyWith(fontSize: 18),
 
-      headline6: medium.copyWith(fontSize: 10),
+      headline6: bold.copyWith(fontSize: 24),
       bodyText1: regular,
       //400
       //11

@@ -1,3 +1,4 @@
+import 'package:clickoncustomer/components/top_picks.dart';
 import 'package:clickoncustomer/screens/test-screen.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.blue,
       ),
-      home: const TestScreen()
+      home: const TopPicks()
     );
   }
 }
