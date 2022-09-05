@@ -6,6 +6,7 @@ import 'fontstyles.dart';
 
 ThemeData appTheme = ThemeData(
 
+
   primaryColorDark: bgColor,
   primaryColorLight: bgColor,
   bottomAppBarColor: bottomAppColor,
@@ -19,6 +20,15 @@ ThemeData appTheme = ThemeData(
   pageTransitionsTheme: const PageTransitionsTheme(builders: {
     TargetPlatform.android: CupertinoPageTransitionsBuilder(),
   }),
+    checkboxTheme: CheckboxThemeData(
+
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(5),
+      ),
+      side: const BorderSide(
+          color: primaryColor,
+          width: 20
+      ),),
   buttonTheme: const ButtonThemeData(),
   outlinedButtonTheme: OutlinedButtonThemeData(
     style: ButtonStyle(

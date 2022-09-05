@@ -1,5 +1,9 @@
+import 'package:clickoncustomer/components/buyTogetherItem.dart';
+import 'package:clickoncustomer/components/reviewItems.dart';
 import 'package:clickoncustomer/components/top_picks.dart';
 import 'package:clickoncustomer/screens/test-screen.dart';
+import 'package:clickoncustomer/utils/constants/images.dart';
+import 'package:clickoncustomer/utils/constants/strings.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,7 +21,7 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.blue,
       ),
-      home: const TopPicks()
+      home:Reviews(image: reviewItemImage,)
     );
   }
 }

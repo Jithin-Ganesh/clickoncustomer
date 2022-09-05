@@ -58,3 +58,4 @@ const Color addGiftButtonColor=Color(0xff9669E0);
 const Color circledNumberButtonColor=Color(0xffE8ECEF);
 const Color priceDetailsSubText2Color=Color(0xff3D434A);
 const Color applyButtonBorderColor=Color(0xffADADAD);
+const Color ratingColor=Color(0xffFFA41C);
