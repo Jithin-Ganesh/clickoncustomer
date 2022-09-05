@@ -26,7 +26,7 @@ class Reviews extends StatelessWidget {
                 height: 256,
                 width: 190,
               ),
-              Positioned(
+              Positioned(//h
                 bottom: 1,
                 child: Row(crossAxisAlignment: CrossAxisAlignment.start,
                   children: [const SizedBox(width: 13,),
