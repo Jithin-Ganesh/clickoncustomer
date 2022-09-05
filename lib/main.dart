@@ -1,6 +1,8 @@
 import 'package:clickoncustomer/screens/test-screen.dart';
+import 'package:clickoncustomer/utils/providers.dart';
 import 'package:clickoncustomer/web/screens/home/home-screen-web.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,13 +13,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo', debugShowCheckedModeBanner: false,
-      theme: ThemeData(
+    return MultiProvider(
+       providers: ProviderTree().get(context),
+      child: MaterialApp(
+        title: 'Flutter Demo', debugShowCheckedModeBanner: false,
+        theme: ThemeData(
 
-        primarySwatch: Colors.blue,
+          primarySwatch: Colors.blue,
+        ),
+        home: const HomeScreenWeb()
       ),
-      home: const HomeScreenWeb()
     );
   }
 }

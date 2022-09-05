@@ -11,6 +11,9 @@ const TextStyle(fontWeight: FontWeight.w900, color: Colors.black, fontSize: 28.0
 TextStyle bold =
 const TextStyle(fontWeight: FontWeight.w700, color: mainTitleColor, fontSize: 24.0,fontFamily:'Kanit' );
 
+TextStyle semiBold =
+const TextStyle(fontWeight: FontWeight.w600, color: productAvailabilityColor, fontSize: 12.0,fontFamily:'Kanit' );
+
 TextStyle medium =
 const TextStyle(fontWeight: FontWeight.w500, color: mainTitleColor, fontSize: 14.0,fontFamily: 'Kanit');
 

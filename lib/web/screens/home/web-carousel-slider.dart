@@ -99,8 +99,8 @@ final List<Widget> imageSliders = imgList
     .values
     .toList();
 
-class HomeCarouselSlider extends StatelessWidget {
-  const HomeCarouselSlider({Key? key}) : super(key: key);
+class HomeBannerCarousel extends StatelessWidget {
+  const HomeBannerCarousel({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
