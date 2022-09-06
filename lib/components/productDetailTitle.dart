@@ -29,23 +29,7 @@ class ProductDetailTitle extends StatelessWidget {
             children: [
           IconButton(
               onPressed: () {},
-              icon: Stack(children: [
-                Image.asset(
-                  circledArrow,
-                  width: 32,
-                  height: 32,
-                ),
-
-                Positioned(
-                  top: 8,
-                  left: 9,
-                  child: Image.asset(
-                    backArrow,
-                    width: 5,
-                    height: 10,
-                  ),
-                )
-              ])),
+              icon: Stack(children: )),
           Text(
             itemDescription,
             style: medium.copyWith(fontSize: 24, color: defaultTextColor),
