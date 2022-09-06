@@ -36,7 +36,6 @@ class ProductDetailTitle extends StatelessWidget {
                   height: 32,
                 ),
 
-
                 Positioned(
                   top: 8,
                   left: 9,
