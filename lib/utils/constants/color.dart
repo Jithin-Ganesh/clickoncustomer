@@ -66,3 +66,7 @@ const Color buyersBorderColor =Color(0xffD3D3D3);
 const Color circleBorderColor =Color(0xffE7E7E7);
 const Color onSaleColor =Color(0xffFF7528);
 const Color ogPriceColor =Color(0xffB4BABE);
+const Color dividerColor2 =Color(0xffF1F1F1);
+const Color dropDownColor2 =Color(0xffECECEC);
+const Color globeBorderColor =Color(0xffE3E3E3);
+const Color verticalDividerColor2 =Color(0xffC6C6C6);

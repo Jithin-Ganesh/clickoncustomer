@@ -16,7 +16,7 @@ class BestSelling extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Image.asset("assets/images/dummy/image-1.png",width: 610,height: 325,),
+          Image.asset("assets/images/dummy/image-4.png",height: 325,),
             ...rowList
         ],
       ),

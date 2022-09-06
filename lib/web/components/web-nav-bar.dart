@@ -1,4 +1,5 @@
 import 'package:clickoncustomer/utils/constants/color.dart';
+import 'package:clickoncustomer/utils/img-provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -84,10 +85,22 @@ class WebNavBar extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      Image.asset(
-                        'assets/images/icon-location.png',
-                        height: 40,
-                        width: 40,
+                      Container(
+                        height: 40, width: 40,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50),
+                            color: primaryColor,
+                            image: const DecorationImage(
+                              image:
+                                  AssetImage('assets/images/icon-location.png'),
+                              fit: BoxFit.contain
+                            )),
+                        // child: Padding(
+                        //   padding: const EdgeInsets.all(8.0),
+                        //   child: ImgProvider(url: 'assets/images/icon-location.png',
+                        //       height: 17,
+                        //       width: 15,),
+                        // ),
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -122,12 +135,26 @@ class WebNavBar extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      Image.asset(
-                        'assets/images/icon-profile.png',
-                        height: 35,
-                        width: 35,
+                      Container(
+                        height: 40,
+                        width: 40,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50),
+                            color: primaryColor,
+                            image: const DecorationImage(
+                                image:
+                                AssetImage('assets/images/icon-profile.png'),
+                                fit: BoxFit.contain
+                            )),
+                        // child: ImgProvider(
+                        //   url: 'assets/images/icon-profile.png',
+                        //   height: 17,
+                        //   width: 15,
+                        // ),
                       ),
-                      SizedBox(width: 8,),
+                      SizedBox(
+                        width: 8,
+                      ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -160,6 +187,7 @@ class WebNavBar extends StatelessWidget {
                     color: verticalDividerColor,
                   ),
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Image.asset(
                         'assets/images/icon-heart-oulined.png',
@@ -171,8 +199,8 @@ class WebNavBar extends StatelessWidget {
                       ),
                       Image.asset(
                         'assets/images/icon-cart.png',
-                        height: 20,
-                        width: 32,
+                        height: 35,
+                        width: 38,
                       ),
                       SizedBox(
                         width: 25,
@@ -233,12 +261,14 @@ class WebNavBar extends StatelessWidget {
                     height: 38,
                     width: 197,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(8)),
-                      color: priceDetailsSubTextColor, boxShadow: [BoxShadow(
-                      color: Colors.grey,
-                      blurRadius: 5.0,
-                    ),]
-                    ),
+                        borderRadius: BorderRadius.all(Radius.circular(8)),
+                        color: priceDetailsSubTextColor,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey,
+                            blurRadius: 5.0,
+                          ),
+                        ]),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -247,7 +277,9 @@ class WebNavBar extends StatelessWidget {
                           height: 19,
                           width: 19,
                         ),
-                        SizedBox(width: 5,),
+                        SizedBox(
+                          width: 5,
+                        ),
                         Text(
                           'Post an add',
                           style:

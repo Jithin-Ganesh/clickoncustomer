@@ -118,7 +118,7 @@ class HomeBannerCarousel extends StatelessWidget {
             stops: [0.0, 1.0],
             tileMode: TileMode.clamp),
       ),
-      width: MediaQuery.of(context).size.width * 0.75,
+      width: MediaQuery.of(context).size.width * 0.85,
       child: CarouselSlider(
         options: CarouselOptions(
           autoPlay: true,

@@ -41,7 +41,7 @@ class ProductCard extends StatelessWidget {
                   width: 76,
                   child: Text(
                     'On Sale',
-                    style: medium.copyWith(fontSize: 12, color: bottomAppColor),
+                    style: medium.copyWith(fontSize: 12, color: bottomAppColor,),textAlign: TextAlign.center,
                   ),
                   decoration: BoxDecoration(
                       color: onSaleColor,
@@ -75,9 +75,10 @@ class ProductCard extends StatelessWidget {
                 '14,999',
                 style: regular.copyWith(fontSize: 17, color: primaryColor),
               ),
+              SizedBox(width: 8,),
               Text(
                 '16,999',
-                style: thin.copyWith(fontSize: 17, color: ogPriceColor,decoration: TextDecoration.lineThrough),
+                style: thin.copyWith(fontSize: 17, color: dividerColor2,decoration: TextDecoration.lineThrough),
               ),
             ],
           )
