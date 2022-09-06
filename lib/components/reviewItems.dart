@@ -26,53 +26,65 @@ class Reviews extends StatelessWidget {
                 height: 256,
                 width: 190,
               ),
-              Positioned(//h
+              Positioned(
+                //h
                 bottom: 1,
-                child: Row(crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [const SizedBox(width: 13,),
-                    Stack(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(
+                      width: 13,
+                    ),
+                    Stack(children: [
+                      Image.asset(
+                        profilePicBgCircleImage,
+                        height: 30,
+                        width: 30,
+                      ),
+                      Positioned(
+                        left: 8,
+                        top: 5,
+                        child: Image.asset(
+                          profilePicImage,
+                          height: 15,
+                          width: 15,
+                        ),
+                      ),
+                    ]),
+                    const SizedBox(
+                      width: 14,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Image.asset(
-                          profilePicBgCircleImage,
-                          height: 30,
-                          width: 30,
+                        Text(
+                          textCustomerNAme,
+                          style: regular.copyWith(
+                              fontSize: 12, color: loveButtonColor),
                         ),
-                        Positioned(left: 8,top: 5,
-                          child: Image.asset(
-                            profilePicImage,
-                            height: 15,
-                            width: 15,
+                        RatingBar.builder(
+                          direction: Axis.horizontal,
+                          allowHalfRating: true,
+                          itemSize: 12,
+                          itemCount: 5,
+                          itemPadding:
+                              const EdgeInsets.symmetric(horizontal: 1),
+                          itemBuilder: (context, _) => const Icon(
+                            Icons.star,
+                            color: ratingColor,
                           ),
-                        ),]),
-const SizedBox(width: 14,),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              textCustomerNAme,
-                              style: regular.copyWith(
-                                  fontSize: 12, color: loveButtonColor),
-                            ),
-                            RatingBar.builder(
-                              direction: Axis.horizontal,
-                              allowHalfRating: true,itemSize: 12,
-                              itemCount: 5,
-                              itemPadding: const EdgeInsets.symmetric(horizontal: 1),
-                              itemBuilder: (context, _) => const Icon(
-                                Icons.star,
-                                color: ratingColor,
-                              ),
-                              onRatingUpdate: (rating) {
-                                print(rating);
-                              },
-                            ),SizedBox(height: 16,)
-                          ],
+                          onRatingUpdate: (rating) {
+                            print(rating);
+                          },
                         ),
+                        SizedBox(
+                          height: 16,
+                        )
                       ],
                     ),
-
+                  ],
                 ),
-
+              ),
             ]),
           ],
         ),
