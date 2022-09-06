@@ -35,7 +35,7 @@ class ProductDetailTitle extends StatelessWidget {
                   width: 32,
                   height: 32,
                 ),
-                Positioned(
+                Positioned(//
                   top: 8,
                   left: 9,
                   child: Image.asset(
