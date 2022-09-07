@@ -1,23 +1,22 @@
 import 'package:clickoncustomer/providers/category-provider.dart';
+import 'package:clickoncustomer/screens/web/home/products-for-you.dart';
+import 'package:clickoncustomer/screens/web/home/recently-viewed.dart';
+import 'package:clickoncustomer/screens/web/home/tab-bar.dart';
+import 'package:clickoncustomer/screens/web/home/web-carousel-slider.dart';
 import 'package:clickoncustomer/utils/constants/color.dart';
 import 'package:clickoncustomer/utils/constants/fontstyles.dart';
 import 'package:clickoncustomer/utils/img-provider.dart';
-import 'package:clickoncustomer/web/screens/home/best-selling.dart';
-import 'package:clickoncustomer/web/screens/home/category-list.dart';
-import 'package:clickoncustomer/web/screens/home/fashion-store.dart';
-import 'package:clickoncustomer/web/screens/home/just-launched.dart';
-import 'package:clickoncustomer/web/screens/home/products-for-you.dart';
-import 'package:clickoncustomer/web/screens/home/recently-viewed.dart';
-import 'package:clickoncustomer/web/screens/home/tab-bar.dart';
-import 'package:clickoncustomer/web/screens/home/web-carousel-slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../components/bottom-web-bar.dart';
-import '../../components/custom-titlebar-with-viewall.dart';
-import '../../components/web-nav-bar.dart';
+import '../../../components/web/bottom-web-bar.dart';
+import '../../../components/web/custom-titlebar-with-viewall.dart';
+import '../../../components/web/web-nav-bar.dart';
+import 'best-selling.dart';
+import 'fashion-store.dart';
 import 'group-orders.dart';
+import 'just-launched.dart';
 
 class HomeScreenWeb extends StatefulWidget {
   const HomeScreenWeb({Key? key}) : super(key: key);

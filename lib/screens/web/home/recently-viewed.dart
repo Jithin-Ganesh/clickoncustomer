@@ -1,5 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:clickoncustomer/web/components/recently-viewed-product-card.dart';
+import 'package:clickoncustomer/components/web/recently-viewed-product-card.dart';
 import 'package:flutter/cupertino.dart';
 
 class RecentlyViewedProducts extends StatelessWidget {
