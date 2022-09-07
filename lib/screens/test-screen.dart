@@ -89,7 +89,7 @@ class TestScreen extends StatelessWidget {
             height: 10,
           ),
           OutlinedButton(onPressed: () {}, child: const Text("uwu"), style: OutlinedButton.styleFrom(
-            side: BorderSide(width: 1.0, color: primaryColor),
+            side: const BorderSide(width: 1.0, color: primaryColor),
           ),)
         ],
       ),

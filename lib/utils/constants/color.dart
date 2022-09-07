@@ -70,3 +70,4 @@ const Color dividerColor2 =Color(0xffF1F1F1);
 const Color dropDownColor2 =Color(0xffECECEC);
 const Color globeBorderColor =Color(0xffE3E3E3);
 const Color verticalDividerColor2 =Color(0xffC6C6C6);
+const Color ratingColor=Color(0xffFFA41C);
