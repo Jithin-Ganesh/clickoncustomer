@@ -2,12 +2,17 @@ import 'package:clickoncustomer/utils/constants/color.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../web/components/web-nav-bar.dart';
+
 class TestScreen extends StatelessWidget {
   const TestScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(135),
+          child: WebNavBar()),
       body: Column(
         children: [
           const SizedBox(height: 50),
@@ -84,7 +89,7 @@ class TestScreen extends StatelessWidget {
             height: 10,
           ),
           OutlinedButton(onPressed: () {}, child: const Text("uwu"), style: OutlinedButton.styleFrom(
-            side: BorderSide(width: 1.0, color: primaryColor),
+            side: const BorderSide(width: 1.0, color: primaryColor),
           ),)
         ],
       ),

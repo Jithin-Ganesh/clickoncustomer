@@ -31,9 +31,20 @@ dependencies:
     sdk: flutter
 
 
+
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  flutter_svg: ^1.0.0
+  material_floating_search_bar: ^0.3.7
+  carousel_slider: ^4.1.1
+  carousel_indicator: ^1.0.6
+  provider: ^6.0.3
+  contained_tab_bar_view: ^0.8.0
+  cached_network_image: ^3.2.0
+  flutter_rating_bar: ^4.0.1
+  dropdown_button2: ^1.7.2
+
 
 dev_dependencies:
   flutter_test:
@@ -46,6 +57,7 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
 
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -57,8 +69,9 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
-    - assets/
-  #   - images/a_dot_ham.jpeg
+    - assets/images/
+    - assets/images/dummy/
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -74,8 +87,14 @@ flutter:
   fonts:
     - family: Kanit
       fonts:
+        - asset: assets/fonts/kanit/kanit-semibold.otf
+          weight: 600
         - asset: assets/fonts/kanit/kanit-bold.otf
           weight: 700
+        - asset: assets/fonts/kanit/kanit-medium.otf
+          weight: 500
+        - asset: assets/fonts/kanit/kanit-thin.otf
+          weight: 300
         - asset: assets/fonts/kanit/kanit-regular.otf
           weight: 400
         - asset: assets/fonts/kanit/kanit-extrabold.otf
