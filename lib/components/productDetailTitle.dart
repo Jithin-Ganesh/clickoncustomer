@@ -27,9 +27,9 @@ class ProductDetailTitle extends StatelessWidget {
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         Row(mainAxisAlignment: MainAxisAlignment.start,
             children: [
-          IconButton(
-              onPressed: () {},
-              icon: Stack(children: )),
+          // IconButton(
+          //     onPressed: () {},
+          //     icon: Stack(children: )),
           Text(
             itemDescription,
             style: medium.copyWith(fontSize: 24, color: defaultTextColor),
