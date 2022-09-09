@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 
 class ProductDetailTitle extends StatelessWidget {
-  ProductDetailTitle({Key? key}) : super(key: key);
+  ProductDetailTitle({Key? key, this.selectedValue}) : super(key: key);
 
   final List<String> items = [
     'Item1',
@@ -15,7 +15,7 @@ class ProductDetailTitle extends StatelessWidget {
     'Item3',
     'Item4',
   ];
-  String? selectedValue;
+  late final String? selectedValue;
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +25,21 @@ class ProductDetailTitle extends StatelessWidget {
       width: MediaQuery.of(context).size.width * 1,
       height: 151.9,
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-        Row(mainAxisAlignment: MainAxisAlignment.start,
-            children: [
+        Row(mainAxisAlignment: MainAxisAlignment.start, children: [
           IconButton(
               onPressed: () {},
-              icon: Stack(children: )),
+              icon: Stack(children: [
+                Image.asset(
+                  circledArrow,
+                  width: 32,
+                  height: 32,
+                ),
+                Image.asset(
+                  backArrow,
+                  width: 5,
+                  height: 10,
+                )
+              ])),
           Text(
             itemDescription,
             style: medium.copyWith(fontSize: 24, color: defaultTextColor),
@@ -125,14 +135,17 @@ class ProductDetailTitle extends StatelessWidget {
                   ],
                 )
               ],
-            ),SizedBox(width: 16,),
+            ),
+            SizedBox(
+              width: 16,
+            ),
             Container(
               height: 40,
               width: 92,
               child: OutlinedButton(
                 style: OutlinedButton.styleFrom(
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
+                      borderRadius: BorderRadius.circular(5)),
                   side: const BorderSide(width: 1.0, color: defaultTextColor),
                 ),
                 onPressed: () {},

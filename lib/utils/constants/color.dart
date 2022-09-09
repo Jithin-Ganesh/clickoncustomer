@@ -59,3 +59,5 @@ const Color circledNumberButtonColor=Color(0xffE8ECEF);
 const Color priceDetailsSubText2Color=Color(0xff3D434A);
 const Color applyButtonBorderColor=Color(0xffADADAD);
 const Color ratingColor=Color(0xffFFA41C);
+const Color discountBoxColor=Color(0xff049CFF);
+const Color yourCartSubTextColor=Color(0xff4A433D);

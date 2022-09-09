@@ -3,6 +3,8 @@ import 'package:clickoncustomer/components/productDetailTitle.dart';
 import 'package:clickoncustomer/components/reviewItems.dart';
 import 'package:clickoncustomer/components/similarProductItems.dart';
 import 'package:clickoncustomer/components/top_picks.dart';
+import 'package:clickoncustomer/components/yourcart.dart';
+import 'package:clickoncustomer/components/youritems_item.dart';
 import 'package:clickoncustomer/screens/test-screen.dart';
 import 'package:clickoncustomer/utils/constants/images.dart';
 import 'package:clickoncustomer/utils/constants/strings.dart';
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.blue,
       ),
-      home:ProductDetailTitle()
+      home:const YourItems()
     );
   }
 }
