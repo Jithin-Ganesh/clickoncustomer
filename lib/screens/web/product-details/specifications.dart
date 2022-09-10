@@ -21,7 +21,7 @@ class Specifications extends StatelessWidget {
           Text(
             'Specifications',
             style:
-                regular.copyWith(color: productAvailabilityColor, fontSize: 20),
+                medium.copyWith(color: mainTitleColor, fontSize: 20),
           ),
           SizedBox(
             height: 38,
@@ -34,7 +34,7 @@ class Specifications extends StatelessWidget {
             ),
             child: Center(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40.0),
+                padding: const EdgeInsets.symmetric(horizontal: 40.0,vertical: 15),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -56,6 +56,7 @@ class Specifications extends StatelessWidget {
               ),
             ),
           ),
+          SizedBox(height: 36,),
           Row(
             children: [
               Flexible(
@@ -69,8 +70,8 @@ class Specifications extends StatelessWidget {
                     boxShadow: [
                       BoxShadow(
                         color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 5,
-                        blurRadius: 7,
+                        spreadRadius: 3,
+                        blurRadius: 5,
                         offset: Offset(0, 3), // changes position of shadow
                       ),
                     ],

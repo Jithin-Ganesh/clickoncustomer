@@ -13,12 +13,13 @@ class WebNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 134,
       color: canvasColor,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 160.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            SizedBox(height: 14,),
             Expanded(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -40,47 +41,52 @@ class WebNavBar extends StatelessWidget {
                   SizedBox(
                     height: 50,
                     width: MediaQuery.of(context).size.width * 0.4,
-                    child: TextField(
-                      decoration: InputDecoration(
-                          prefixIcon: Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Image.asset(
-                              'assets/images/searchIcon.png',
-                              width: 13,
-                              height: 13,
+                    child: Material(
+                      elevation: 5.0,
+                      shadowColor: Colors.grey,borderRadius: BorderRadius.circular(10),
+                      child: TextField(
+                        decoration: InputDecoration(
+                            prefixIcon: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Image.asset(
+                                'assets/images/searchIcon.png',
+                                width: 13,
+                                height: 13,
+                              ),
                             ),
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                            borderSide: BorderSide(
-                                width: 1,
-                                style: BorderStyle.solid,
-                                color: Colors.white),
-                          ),
-                          filled: true,
-                          hintStyle: thin,
-                          suffixIcon: Padding(
-                            padding: const EdgeInsets.only(right: 20.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Text(
-                                  'All',
-                                  style: medium,
-                                ),
-                                SizedBox(
-                                  width: 20,
-                                ),
-                                Image.asset(
-                                  'assets/images/icon-arrow-down.png',
-                                  width: 8,
-                                  height: 5,
-                                ),
-                              ],
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(
+                                width: 0,
+                                style: BorderStyle.none,
+                              ),
                             ),
-                          ),
-                          hintText: "Search What are you looking for...",
-                          fillColor: Colors.white),
+                           // border: InputBorder.none,
+                            hintText: 'Search What are you looking for...',
+                            filled: true,
+                            hintStyle: thin,
+                            suffixIcon: Padding(
+                              padding: const EdgeInsets.only(right: 20.0),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Text(
+                                    'All',
+                                    style: medium,
+                                  ),
+                                  SizedBox(
+                                    width: 20,
+                                  ),
+                                  Image.asset(
+                                    'assets/images/icon-arrow-down.png',
+                                    width: 8,
+                                    height: 5,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            fillColor: Colors.white),
+                      ),
                     ),
                   ),
                   Row(
@@ -90,27 +96,23 @@ class WebNavBar extends StatelessWidget {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(50),
                             color: primaryColor,
-                            image: const DecorationImage(
-                              image:
-                                  AssetImage('assets/images/icon-location.png'),
-                              fit: BoxFit.contain
-                            )),
-                        // child: Padding(
-                        //   padding: const EdgeInsets.all(8.0),
-                        //   child: ImgProvider(url: 'assets/images/icon-location.png',
-                        //       height: 17,
-                        //       width: 15,),
-                        // ),
+                            ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Icon(Icons.add_location_alt_outlined,size: 22,color: canvasColor,),
+                        ),
                       ),
+                      SizedBox(width: 10,),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Row(
                             children: [
                               Text(
                                 'Deliver to',
                                 style: thin.copyWith(
-                                    color: productAvailabilityColor),
+                                    color: productAvailabilityColor,fontSize: 14),
                               ),
                               Image.asset(
                                 'assets/images/icon-arrow-down-outlined.png',
@@ -141,22 +143,15 @@ class WebNavBar extends StatelessWidget {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(50),
                             color: primaryColor,
-                            image: const DecorationImage(
-                                image:
-                                AssetImage('assets/images/icon-profile.png'),
-                                fit: BoxFit.contain
-                            )),
-                        // child: ImgProvider(
-                        //   url: 'assets/images/icon-profile.png',
-                        //   height: 17,
-                        //   width: 15,
-                        // ),
+                         ),
+                        child: Icon(Icons.person_outline,size: 22,color: canvasColor,),
                       ),
                       SizedBox(
                         width: 8,
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
                             'Welcome!',
@@ -218,8 +213,7 @@ class WebNavBar extends StatelessWidget {
               height: 15,
             ),
             Divider(
-              color: horizontalDividerColor,
-              height: 1,
+              color: horizontalDividerColor,thickness: 1,
             ),
             SizedBox(
               height: 15,
@@ -290,7 +284,8 @@ class WebNavBar extends StatelessWidget {
                   ),
                 )
               ],
-            )
+            ),
+            SizedBox(height: 14,)
           ],
         ),
       ),

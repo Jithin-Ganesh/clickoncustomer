@@ -178,6 +178,7 @@ class About extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         height: 371,
+        color: bgColor.withOpacity(0.3),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 160.0),
           child: Column(

@@ -42,23 +42,26 @@ class ImageDetailsWeb extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 620,
-      child: ContainedTabBarView(
-        tabs: [
-          Text('Images (5)'),
-          Text('Videos (1)'),
-        ],tabBarProperties: TabBarProperties(
-        height: 32.0,
-        indicatorColor: Colors.transparent,
-        indicatorWeight: 6.0,
-        labelColor: Colors.black,labelStyle: regular.copyWith(fontSize: 16),
-        unselectedLabelColor: mainTitleColor,
-      ),
-        views: [
-          ImageDetailsWebItem(),
-          ImageDetailsWebItem(),
-        ],
+    return Padding(
+      padding: const EdgeInsets.only(left: 160.0),
+      child: Container(
+        height: 620,
+        child: ContainedTabBarView(
+          tabs: [
+            Text('Images (5)'),
+            Text('Videos (1)'),
+          ],tabBarProperties: TabBarProperties(
+          height: 32.0,
+          indicatorColor: Colors.transparent,
+          indicatorWeight: 6.0,
+          labelColor: Colors.black,labelStyle: regular.copyWith(fontSize: 16),
+          unselectedLabelColor: mainTitleColor,
+        ),
+          views: [
+            ImageDetailsWebItem(),
+            ImageDetailsWebItem(),
+          ],
+        ),
       ),
     );
   }

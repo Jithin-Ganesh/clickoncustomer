@@ -19,28 +19,71 @@ class BuyTogether extends StatelessWidget {
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.5),
-              spreadRadius: 5,
-              blurRadius: 7,
+              spreadRadius: 3,
+              blurRadius: 4,
               offset: Offset(0, 3), // changes position of shadow
             ),
           ],
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Buy Together',
-              style:
-              medium.copyWith(color:mainTitleColor,fontSize: 24),
-            ),
-            Row(
-              children: [
-                BuyTogetherItem(image: "assets/images/dummy/image-baby-detail.png", description: 'Pampers Pure Protection Baby Diapers, Medium Size... ', price: 809.00),
-                Icon(Icons.add,size: 40,),
-                BuyTogetherItem(image: "assets/images/dummy/image-baby-detail.png", description: 'Pampers Pure Protection Baby Diapers, Medium Size... ', price: 809.00),
-              ],
-            )
-          ],
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 34.0,vertical: 28),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Buy Together',
+                style:
+                medium.copyWith(color:mainTitleColor,fontSize: 24),
+              ),
+              SizedBox(height: 20,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      BuyTogetherItem(image: "assets/images/dummy/image-baby-detail.png", description: 'Pampers Pure Protection Baby Diapers, Medium Size... ', price: 809.00),
+                      Icon(Icons.add,size: 40,),
+                      BuyTogetherItem(image: "assets/images/dummy/image-baby-detail.png", description: 'Pampers Pure Protection Baby Diapers, Medium Size... ', price: 809.00),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      VerticalDivider(thickness: 1,color: verticalDividerColor,endIndent: 5,indent: 5,),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                'Total Price ',
+                                style: regular.copyWith(
+                                    fontSize: 20, color: productAvailabilityColor),
+                              ),
+                              SizedBox(width: 18,),
+                              Text(
+                                '2008.00',
+                                style: regular.copyWith(
+                                    fontSize: 22, color: mainTitleColor),
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 10,),
+                          OutlinedButton(onPressed: (){}, child: Text(
+                            'Add to Cart',
+                            style: medium.copyWith(
+                                fontSize: 24, color: primaryColor),
+                          ), style: OutlinedButton.styleFrom(
+                            side: BorderSide(width: 1.0, color: primaryColor),shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))
+                          ),)
+                        ],
+                      ),
+                      SizedBox(width: 185,)
+                    ],
+                  )
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
