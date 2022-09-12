@@ -61,3 +61,6 @@ const Color applyButtonBorderColor=Color(0xffADADAD);
 const Color ratingColor=Color(0xffFFA41C);
 const Color discountBoxColor=Color(0xff049CFF);
 const Color yourCartSubTextColor=Color(0xff4A433D);
+const Color yourItemsDeleteOutlineColor=Color(0xff7C7D80);
+const Color yourItemsLoveButtonColor=Color(0xff8C8D8F);
+const Color qtyButtonColor=Color(0xffD5D5D5);

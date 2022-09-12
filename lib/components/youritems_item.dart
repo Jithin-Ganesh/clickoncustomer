@@ -12,131 +12,144 @@ class YourItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Container(
-          color: defaultTextColor,
-          width: 227,
-          height: 428,
-          child: Column(
-              crossAxisAlignment:CrossAxisAlignment.start,children: [SizedBox(height: 24,),
-            Row(mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(
-                  buyTogetherItemImage,
-                  height: 149,
-                  width: 149,
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 11.7,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 15),
-              child: Column(crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    itemDescription,textAlign: TextAlign.start,
-                    style: regular.copyWith(fontSize: 14, color: productSubTextColor),
-                  ),
-                  SizedBox(
-                    height: 14,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+      body: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            color: defaultTextColor,
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start,mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text(
-                        textYourItemsPrice,
-                        style:
-                            regular.copyWith(fontSize: 17, color: contactTitleColor),
-                      ),
-                      Text(
-                        textYourItemsOfferPrice,
-                        style: thin.copyWith(
-                            fontSize: 17,
-                            color: discountPriceColor,
-                            decoration: TextDecoration.lineThrough),
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 1.52,
-                  ),
-                  Text(
-                    textInStock,
-                    style: medium.copyWith(color: inStockTitleColor, fontSize: 12),
-                  ),
-                  Text(
-                    textYourItemsSizeAndCount,
-                    style: regular.copyWith(fontSize: 12, color: mainTitleColor),
-                  ),
-                  SizedBox(
-                    height: 3,
-                  ),
-                  SizedBox(
-                    width: 197,
-                    height: 40,
-                    child: OutlinedButton(
-                      onPressed: () {},
-                      style: OutlinedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                          side: const BorderSide(width: 1.0, color: primaryColor),
-                        ),
-                      ),
-                      child: Text(
-                        moveToCart,
-                        style: medium.copyWith(color: primaryColor, fontSize: 16),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 15,
+              SizedBox(
+                height: 24,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    buyTogetherItemImage,
+                    height: 149,
+                    width: 149,
                   ),
                 ],
               ),
-            ),
-            Column(
-              children: [
-                Row(
+              const SizedBox(
+                height: 11.7,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 15),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Icon(
-                      Icons.delete_outlined,
-                      size: 12,
+                    Text(
+                      itemDescription,
+                      textAlign: TextAlign.start,
+                      style: regular.copyWith(
+                          fontSize: 14, color: productSubTextColor),
                     ),
                     SizedBox(
-                      width: 11,
+                      height: 14,
                     ),
-                    Text(
-                      textYourItemsDelete,
-                      style:
-                          regular.copyWith(color: mainTitleColor, fontSize: 12),
-                    )
-                  ],
-                ),
-                Row(
-                  children: [
-                    const Icon(
-                      Icons.favorite_border,
-                      size: 12,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(
+                          textYourItemsPrice,
+                          style: regular.copyWith(
+                              fontSize: 17, color: contactTitleColor),
+                        ),
+                        Text(
+                          textYourItemsOfferPrice,
+                          style: thin.copyWith(
+                              fontSize: 17,
+                              color: discountPriceColor,
+                              decoration: TextDecoration.lineThrough),
+                        )
+                      ],
                     ),
                     SizedBox(
-                      width: 9,
+                      height: 1.52,
                     ),
                     Text(
-                      textYourItemsAddToWishlist,
+                      textInStock,
+                      style: medium.copyWith(
+                          color: inStockTitleColor, fontSize: 12),
+                    ),
+                    Text(
+                      textYourItemsSizeAndCount,
                       style:
                           regular.copyWith(fontSize: 12, color: mainTitleColor),
-                    )
+                    ),
+                    SizedBox(
+                      height: 3,
+                    ),
+                    SizedBox(
+                      width: 197,
+                      height: 40,
+                      child: OutlinedButton(
+                        onPressed: () {},
+                        style: OutlinedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                            side: const BorderSide(
+                                width: 1.0, color: primaryColor),
+                          ),
+                        ),
+                        child: Text(
+                          moveToCart,
+                          style: medium.copyWith(
+                              color: primaryColor, fontSize: 16),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
                   ],
-                )
-              ],
-            )
-          ]),
-        ),
-      ],
-    ));
+                ),
+              ),
+              Row(
+                children: [
+                  IconButton(
+                    onPressed: () {},
+                    icon: Image.asset(
+                      yourCartItemDeleteImage,
+                      width: 12,
+                      height: 13,
+                      color: yourItemsDeleteOutlineColor,
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      textYourItemsDelete,
+                      style: regular.copyWith(
+                          color: mainTitleColor, fontSize: 12),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                        color: yourItemsLoveButtonColor,
+                        Icons.favorite_border,
+                        size: 15),
+                  ),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(textYourItemsAddToWishlist,
+                        style: regular.copyWith(
+                            fontSize: 12, color: mainTitleColor)),
+                  ),
+                ],
+              )
+            ]),
+          ),
+        ],
+      ),
+    );
   }
 }
