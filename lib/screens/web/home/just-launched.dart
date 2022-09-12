@@ -1,3 +1,4 @@
+import 'package:clickoncustomer/components/web/home-product-box.dart';
 import 'package:clickoncustomer/utils/img-provider.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -10,14 +11,10 @@ class JustLaunchedList extends StatelessWidget {
       height: 306,
       child: ListView.builder(itemBuilder: (context, index) => Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
-        child: Container(
-          height: 306,
-          width: 297,
-          child: ImgProvider(  url: "assets/images/dummy/image-iphone.png",boxFit: BoxFit.contain, height: 306,
-            width: 297,),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20)
-          ),
+        child: HomeProductBox(
+            height: 306,
+            width: 297,
+          image: "assets/images/dummy/image-iphone.png",
         ),
       ),scrollDirection: Axis.horizontal,padding: EdgeInsets.symmetric(horizontal: 15),itemCount: 5,),
     );

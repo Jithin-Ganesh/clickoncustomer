@@ -1,6 +1,7 @@
+import 'package:clickoncustomer/routes.dart';
 import 'package:clickoncustomer/screens/test-screen.dart';
+import 'package:clickoncustomer/screens/web/home/home-screen-web.dart';
 import 'package:clickoncustomer/utils/providers.dart';
-import 'package:clickoncustomer/web/screens/home/home-screen-web.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -21,7 +22,8 @@ class MyApp extends StatelessWidget {
 
           primarySwatch: Colors.blue,
         ),
-        home: const HomeScreenWeb()
+        home: const HomeScreenWeb(),
+        routes: AppRoutes().get(context),
       ),
     );
   }

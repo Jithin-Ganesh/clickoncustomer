@@ -1,4 +1,4 @@
-import 'package:clickoncustomer/web/components/product-card.dart';
+import 'package:clickoncustomer/components/web/product-card.dart';
 import 'package:flutter/cupertino.dart';
 
 class ProductsForYouList extends StatelessWidget {

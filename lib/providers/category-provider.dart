@@ -8,7 +8,7 @@ class CategoryProvider extends ChangeNotifier {
   Future<List<Categories>?> fetchCategory() async {
     categoriesList = await CategoryInterface.fetchCategory();
     notifyListeners();
-    return categoriesList;
+    return categoriesList ?? [];
   }
 
 }

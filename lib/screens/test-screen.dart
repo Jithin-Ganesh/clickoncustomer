@@ -2,7 +2,8 @@ import 'package:clickoncustomer/utils/constants/color.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../web/components/web-nav-bar.dart';
+import '../components/web/web-nav-bar.dart';
+
 
 class TestScreen extends StatelessWidget {
   const TestScreen({Key? key}) : super(key: key);

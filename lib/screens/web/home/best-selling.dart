@@ -1,4 +1,5 @@
-import 'package:clickoncustomer/web/components/product-card.dart';
+import 'package:clickoncustomer/components/web/home-product-box.dart';
+import 'package:clickoncustomer/components/web/product-card.dart';
 import 'package:flutter/cupertino.dart';
 
 class BestSelling extends StatelessWidget {
@@ -16,7 +17,7 @@ class BestSelling extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Image.asset("assets/images/dummy/image-4.png",height: 325,),
+          HomeProductBox(width: 610, height: 325, image: "assets/images/dummy/image-5.png"),
             ...rowList
         ],
       ),

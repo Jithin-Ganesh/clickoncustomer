@@ -6,12 +6,12 @@ import 'package:flutter/material.dart';
 
 import '../utils/constants/images.dart';
 
-class BuyTogether extends StatelessWidget {
+class BuyTogetherItem extends StatelessWidget {
   final String image;
   final String description;
   final double price;
 
-  const BuyTogether(
+  const BuyTogetherItem(
       {Key? key,
       required this.image,
       required this.description,
@@ -20,10 +20,8 @@ class BuyTogether extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: SizedBox(
-      height: 1599,
-      width: 340,
+    return SizedBox(
+      width: 250,
       child: Column(children: [
         Image.asset(
           image,
@@ -33,8 +31,7 @@ class BuyTogether extends StatelessWidget {
         const SizedBox(
           height: 20,
         ),
-        Row(mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+        Row(mainAxisAlignment: MainAxisAlignment.center, children: [
           SizedBox(
               height: 20,
               width: 20,
@@ -45,26 +42,27 @@ class BuyTogether extends StatelessWidget {
           const SizedBox(
             width: 19.15,
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                description,
-                style:
-                    regular.copyWith(fontSize: 14, color: defaultTextColor),
-              ),
-              const SizedBox(
-                height: 4.16,
-              ),
-              Text(
-                textRupees + price.toString(),
-                style: regular.copyWith(
-                    fontSize: 16, color: groupOrdersAmountTextColor),
-              )
-            ],
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  description,
+                  style: regular.copyWith(fontSize: 14, color: hintColor,),maxLines: 2,
+                ),
+                const SizedBox(
+                  height: 4.16,
+                ),
+                Text(
+                  textRupees + price.toString(),
+                  style: regular.copyWith(
+                      fontSize: 16, color: groupOrdersAmountTextColor),
+                )
+              ],
+            ),
           ),
         ])
       ]),
-    ));
+    );
   }
 }

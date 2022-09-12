@@ -10,42 +10,42 @@ class GroupOrders extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Widget> rowList = [
       const GroupOrderItem(
-          image: "assets/images/dummy/image-xbox.png",
+          image: "assets/images/dummy/image-xbox-1.png",
           sellingPrice: '125',
           sold: '50',
           buyers: '10',
           price: '200',
           wallet: '12'),
       const GroupOrderItem(
-          image: "assets/images/dummy/image-xbox.png",
+          image: "assets/images/dummy/image-xbox-1.png",
           sellingPrice: '125',
           sold: '50',
           buyers: '10',
           price: '200',
           wallet: '12'),
       const GroupOrderItem(
-          image: "assets/images/dummy/image-xbox.png",
+          image: "assets/images/dummy/image-xbox-1.png",
           sellingPrice: '125',
           sold: '50',
           buyers: '10',
           price: '200',
           wallet: '12'),
       const GroupOrderItem(
-          image: "assets/images/dummy/image-xbox.png",
+          image: "assets/images/dummy/image-xbox-1.png",
           sellingPrice: '125',
           sold: '50',
           buyers: '10',
           price: '200',
           wallet: '12'),
       const GroupOrderItem(
-          image: "assets/images/dummy/image-xbox.png",
+          image: "assets/images/dummy/image-xbox-1.png",
           sellingPrice: '125',
           sold: '50',
           buyers: '10',
           price: '200',
           wallet: '12'),
       const GroupOrderItem(
-          image: "assets/images/dummy/image-xbox.png",
+          image: "assets/images/dummy/image-xbox-1.png",
           sellingPrice: '125',
           sold: '50',
           buyers: '10',

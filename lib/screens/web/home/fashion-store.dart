@@ -1,5 +1,7 @@
-import 'package:clickoncustomer/web/components/product-card.dart';
+import 'package:clickoncustomer/components/web/product-card.dart';
 import 'package:flutter/cupertino.dart';
+
+import '../../../components/web/home-product-box.dart';
 
 class FashionStore extends StatelessWidget {
   FashionStore({Key? key}) : super(key: key);
@@ -17,7 +19,7 @@ class FashionStore extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           ...rowList,
-          Image.asset("assets/images/dummy/image-4.png",height: 325,),
+          HomeProductBox(width: 610, height: 325, image: "assets/images/dummy/image-offer.PNG"),
         ],
       ),
     );
