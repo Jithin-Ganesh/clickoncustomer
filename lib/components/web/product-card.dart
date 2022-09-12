@@ -83,7 +83,7 @@ class ProductCard extends StatelessWidget {
                 SizedBox(width: 8,),
                 Text(
                   '16,999',
-                  style: thin.copyWith(fontSize: 17, color: dividerColor2,decoration: TextDecoration.lineThrough),
+                  style: thin.copyWith(fontSize: 17, color: ogPriceColor,decoration: TextDecoration.lineThrough),
                 ),
               ],
             )

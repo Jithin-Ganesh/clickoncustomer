@@ -5,10 +5,21 @@ import 'package:flutter/cupertino.dart';
 class BestSelling extends StatelessWidget {
  BestSelling({Key? key}) : super(key: key);
   final List<Widget> rowList = [
-  ProductCard(),
-  ProductCard(),
-  ProductCard(),
-  ProductCard(),
+  Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 30.0),
+    child: ProductCard(),
+  ),
+  Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 30.0),
+    child: ProductCard(),
+  ),
+    Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 30.0),
+      child: ProductCard(),
+    ), Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 30.0),
+      child: ProductCard(),
+    ),
   ];
   @override
   Widget build(BuildContext context) {
@@ -18,7 +29,15 @@ class BestSelling extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           HomeProductBox(width: 610, height: 325, image: "assets/images/dummy/image-5.png"),
-            ...rowList
+            Expanded(
+              child: SizedBox(
+                height: 300,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: rowList,
+                ),
+              ),
+            )
         ],
       ),
     );

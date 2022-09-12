@@ -19,8 +19,15 @@ final List<Widget> imageSliders = imgList
     .asMap()
     .map((i, item) => MapEntry(
         i,
-        ImgProvider(
-          url: item,height: 460,boxFit: BoxFit.fill,width: 1600 ,
+        Container(
+          height: 460,
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(20)),
+            image: DecorationImage(image: AssetImage( 'assets/images/dummy/image-carousel-dummy.png',),fit: BoxFit.fill)
+          ),
+          // child: ImgProvider(
+          //   url: item,height: 460,boxFit: BoxFit.fill,width: 1600 ,
+          // ),
         )))
     .values
     .toList();
@@ -61,12 +68,21 @@ class _HomeBannerCarouselState extends State<HomeBannerCarousel> {
           bottom: 20,
           left: 500,
           child: Row(
-            children: imgList.map(
-                  (e) {
-                return ImageIndicators(currentPage: currentPage, index: currentPage);
-              },
-            ).toList(),
+            children: imgList
+                .asMap()
+                .map((i, item) => MapEntry(
+                i,
+                ImageIndicators(currentPage: currentPage, index: i)))
+                .values
+                .toList(),
           ),
+          // child: Row(
+          //   children: imgList.map(
+          //         (e) {
+          //       return ImageIndicators(currentPage: currentPage, index: currentPage);
+          //     },
+          //   ).toList(),
+          // ),
         )
       ],
     );

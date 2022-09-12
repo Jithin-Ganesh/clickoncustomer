@@ -12,6 +12,7 @@ import 'package:clickoncustomer/utils/constants/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../components/web/WebNavBar2.dart';
 import '../../../components/web/bottom-web-bar.dart';
 import '../../../components/web/custom-titlebar-with-viewall.dart';
 import '../../../components/web/web-nav-bar.dart';
@@ -60,7 +61,7 @@ class _ProductDetailScreenWebState extends State<ProductDetailScreenWeb> {
       ),
       desktop: Scaffold(
         appBar: PreferredSize(
-            preferredSize: const Size.fromHeight(175), child: WebNavBar()),
+            preferredSize: const Size.fromHeight(175), child: WebNavBar2()),
         backgroundColor: canvasColor,
         body: SingleChildScrollView(
           child: Column(

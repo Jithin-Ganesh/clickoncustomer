@@ -26,11 +26,11 @@ class _TopPickItemState extends State<TopPickItem> {
     return Stack(
       children: [
         CarouselSlider(carouselController: controller,
-          options: CarouselOptions(height: 290, initialPage: 1,viewportFraction: 0.2,aspectRatio: 1),
+          options: CarouselOptions(height: 250, initialPage: 1,viewportFraction: 0.2,aspectRatio: 1),
           items: [1, 2, 3, 4, 5].map((i) {
             return Builder(
               builder: (BuildContext context) {
-                return const Products();
+                return const Products(height: 242,);
               },
             );
           }).toList(),

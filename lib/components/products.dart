@@ -7,14 +7,22 @@ import 'package:flutter/material.dart';
 
 import '../utils/constants/color.dart';
 
-class Products extends StatelessWidget {
-  const Products({Key? key}) : super(key: key);
+class Products extends StatefulWidget {
+  final double? height;
+  const Products({Key? key, this.height}) : super(key: key);
+
+  @override
+  State<Products> createState() => _ProductsState();
+}
+
+class _ProductsState extends State<Products> {
+
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 8.0),
-      height: 500,
+      height: widget.height ?? 500,
       child: Column(
         children: [
           ImgProvider(

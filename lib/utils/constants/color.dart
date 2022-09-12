@@ -9,6 +9,7 @@ const Color bottomAppColor = Color(0xffF6F7FC);
 const Color borderColor = Color(0xffffffff);
 const Color dividerColor = Color(0xffEEEEEE);
 const Color accentColor = Color(0xff245161);
+const Color shadowColor = Color(0xffDEE3EB);
 const Color hintColor = Color(0xff9A9A9A);
 const Color disableColor = Color(0xffF8F8F8);
 const Color canvasColor = Color(0xffffffff);

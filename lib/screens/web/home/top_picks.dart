@@ -11,8 +11,8 @@ class TopPicks extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
+        SizedBox(height: 12,),
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -26,7 +26,9 @@ class TopPicks extends StatelessWidget {
             ),
           ],
         ),
-        TopPickItem()
+        SizedBox(height: 29,),
+        TopPickItem(),
+        SizedBox(height: 40,)
       ],
     );
   }

@@ -6,6 +6,7 @@ import 'package:clickoncustomer/screens/web/home/recently-viewed.dart';
 import 'package:clickoncustomer/screens/web/home/tab-bar.dart';
 import 'package:clickoncustomer/screens/web/home/web-carousel-slider.dart';
 import 'package:clickoncustomer/utils/constants/color.dart';
+import 'package:clickoncustomer/utils/constants/decoration.dart';
 import 'package:clickoncustomer/utils/constants/fontstyles.dart';
 import 'package:clickoncustomer/utils/constants/responsive.dart';
 import 'package:clickoncustomer/utils/img-provider.dart';
@@ -13,6 +14,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../components/web/WebNavBar2.dart';
 import '../../../components/web/bottom-web-bar.dart';
 import '../../../components/web/custom-titlebar-with-viewall.dart';
 import '../../../components/web/web-nav-bar.dart';
@@ -64,7 +66,7 @@ class _HomeScreenWebState extends State<HomeScreenWeb> {
       desktop: Scaffold(
         backgroundColor: bgColor.withOpacity(0.3),
         appBar: const PreferredSize(
-            preferredSize: Size.fromHeight(175), child: const WebNavBar()),
+            preferredSize: Size.fromHeight(175), child:  WebNavBar2()),
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -76,24 +78,22 @@ class _HomeScreenWebState extends State<HomeScreenWeb> {
                   children: [
                     const HomeBannerCarousel(),
                     const SizedBox(
-                      height: 55,
+                      height: 44,
                     ),
-                    Consumer<CategoryProvider>(
-                        builder: (context, value, child) => HomeCategoryList(
-                              categories: value.categoriesList,
-                            )),
+                    // Consumer<CategoryProvider>(
+                    //     builder: (context, value, child) => HomeCategoryList(
+                    //           categories: value.categoriesList,
+                    //         )),
                     const SizedBox(
-                      height: 55,
+                      height: 50,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
-                          height: 360,
+                          height: 367,
                           width: MediaQuery.of(context).size.width * 0.55,
-                          decoration: BoxDecoration(
-                              color: canvasColor,
-                              borderRadius: BorderRadius.circular(10)),
+                          decoration: containerDecoration,
                           child: const TopPicks(),
                         ),
                         Column(
@@ -156,7 +156,12 @@ class _HomeScreenWebState extends State<HomeScreenWeb> {
                     const SizedBox(
                       height: 55,
                     ),
-                    const CustomTitleBarViewAll(title: 'Best Selling Products'),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('Best Selling Products',style: medium.copyWith(color: Colors.black,fontSize: 28),),
+                      ],
+                    ),
                     const SizedBox(
                       height: 12,
                     ),
@@ -166,7 +171,7 @@ class _HomeScreenWebState extends State<HomeScreenWeb> {
                     ),
                     const CustomTitleBarViewAll(title: 'Products For You'),
                     const SizedBox(
-                      height: 12,
+                      height: 31,
                     ),
                     const ProductsForYouList(),
                     const SizedBox(
