@@ -32,7 +32,7 @@ class HomeScreenWeb extends StatefulWidget {
 class _HomeScreenWebState extends State<HomeScreenWeb> {
   @override
   void initState() {
-    Future.delayed(Duration(seconds: 2),(){
+    Future.delayed(const Duration(seconds: 2), () {
       Provider.of<CategoryProvider>(context, listen: false).fetchCategory();
     });
 
@@ -43,19 +43,19 @@ class _HomeScreenWebState extends State<HomeScreenWeb> {
   @override
   Widget build(BuildContext context) {
     return Responsive(
-      tablet:  Container(
-        child: Center(
+      tablet: Container(
+        child: const Center(
           child: ImgProvider(
-            url:  "assets/images/clickOn-logo.png",
+            url: "assets/images/clickOn-logo.png",
             height: 100,
             width: 200,
           ),
         ),
       ),
       mobile: Container(
-        child: Center(
-          child: ImgProvider(
-            url:  "assets/images/clickOn-logo.png",
+        child: const Center(
+          child: const ImgProvider(
+            url: "assets/images/clickOn-logo.png",
             height: 100,
             width: 200,
           ),
@@ -63,8 +63,8 @@ class _HomeScreenWebState extends State<HomeScreenWeb> {
       ),
       desktop: Scaffold(
         backgroundColor: bgColor.withOpacity(0.3),
-        appBar: PreferredSize(
-            preferredSize: const Size.fromHeight(175), child: WebNavBar()),
+        appBar: const PreferredSize(
+            preferredSize: Size.fromHeight(175), child: const WebNavBar()),
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -74,12 +74,15 @@ class _HomeScreenWebState extends State<HomeScreenWeb> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    HomeBannerCarousel(),
-                    SizedBox(
+                    const HomeBannerCarousel(),
+                    const SizedBox(
                       height: 55,
                     ),
-                    Consumer<CategoryProvider>(builder: (context, value, child) => HomeCategoryList(categories: value.categoriesList,)),
-                    SizedBox(
+                    Consumer<CategoryProvider>(
+                        builder: (context, value, child) => HomeCategoryList(
+                              categories: value.categoriesList,
+                            )),
+                    const SizedBox(
                       height: 55,
                     ),
                     Row(
@@ -91,9 +94,8 @@ class _HomeScreenWebState extends State<HomeScreenWeb> {
                           decoration: BoxDecoration(
                               color: canvasColor,
                               borderRadius: BorderRadius.circular(10)),
-                          child: TopPicks(),
+                          child: const TopPicks(),
                         ),
-
                         Column(
                           children: [
                             Container(
@@ -101,10 +103,11 @@ class _HomeScreenWebState extends State<HomeScreenWeb> {
                               width: 461,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
-                              image: DecorationImage(
-                                image: AssetImage("assets/images/dummy/image-exclusive.png")
-                               // image:  ImgProvider( url: "assets/images/dummy/image-exclusive.png",height: 230,width: 461,),
-                              )),
+                                  image: const DecorationImage(
+                                      image: AssetImage(
+                                          "assets/images/dummy/image-exclusive.png")
+                                      // image:  ImgProvider( url: "assets/images/dummy/image-exclusive.png",height: 230,width: 461,),
+                                      )),
                             ),
                             Container(
                               height: 149,
@@ -114,19 +117,28 @@ class _HomeScreenWebState extends State<HomeScreenWeb> {
                                   borderRadius: BorderRadius.circular(10)),
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  ImgProvider( url: "assets/images/dummy/image-qr.png",height: 74,width: 74,),
+                                  const ImgProvider(
+                                    url: "assets/images/dummy/image-qr.png",
+                                    height: 74,
+                                    width: 74,
+                                  ),
                                   Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
                                         'Enjoy Fast, Simple hassle free Shopping',
-                                        style: regular.copyWith(color: exclusiveOfferSubtextColor, fontSize: 16),
+                                        style: regular.copyWith(
+                                            color: exclusiveOfferSubtextColor,
+                                            fontSize: 16),
                                       ),
                                       Text(
                                         'Enjoy Fast, Simple hassle free Shopping',
-                                        style: thin.copyWith(color: exclusiveOfferSubtextColor, fontSize: 14),
+                                        style: thin.copyWith(
+                                            color: exclusiveOfferSubtextColor,
+                                            fontSize: 14),
                                       ),
                                     ],
                                   )
@@ -137,82 +149,91 @@ class _HomeScreenWebState extends State<HomeScreenWeb> {
                         )
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 55,
                     ),
-                    GroupOrders(),
-                    SizedBox(
+                    const GroupOrders(),
+                    const SizedBox(
                       height: 55,
                     ),
-                    CustomTitleBarViewAll(title:   'Best Selling Products'),
-                    SizedBox(
+                    const CustomTitleBarViewAll(title: 'Best Selling Products'),
+                    const SizedBox(
                       height: 12,
                     ),
-                    CustomTabBarView(),
-                    SizedBox(
+                    const CustomTabBarView(),
+                    const SizedBox(
                       height: 55,
                     ),
-                    CustomTitleBarViewAll(title:   'Products For You'),
-                    SizedBox(
+                    const CustomTitleBarViewAll(title: 'Products For You'),
+                    const SizedBox(
                       height: 12,
                     ),
-                    ProductsForYouList(),
-                    SizedBox(
+                    const ProductsForYouList(),
+                    const SizedBox(
                       height: 25,
                     ),
-                    Divider(
+                    const Divider(
                       color: horizontalDividerColor,
                       height: 1,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 25,
                     ),
-                    CustomTitleBarViewAll(title: 'Just Launched'),
-                    SizedBox(
+                    const CustomTitleBarViewAll(title: 'Just Launched'),
+                    const SizedBox(
                       height: 12,
                     ),
-                    JustLaunchedList(),
-                    SizedBox(
+                    const JustLaunchedList(),
+                    const SizedBox(
                       height: 55,
                     ),
-                    CustomTitleBarViewAll(title: 'Best Selling'),
-                    SizedBox(
+                    const CustomTitleBarViewAll(title: 'Best Selling'),
+                    const SizedBox(
                       height: 12,
                     ),
                     BestSelling(),
-                    SizedBox(
+                    const SizedBox(
                       height: 25,
                     ),
-                    Divider(
+                    const Divider(
                       color: horizontalDividerColor,
                       height: 1,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 25,
                     ),
-                    CustomTitleBarViewAll(title: 'Fashion Store'),
-                    SizedBox(
+                    const CustomTitleBarViewAll(title: 'Fashion Store'),
+                    const SizedBox(
                       height: 12,
                     ),
                     FashionStore(),
-                    SizedBox(
+                    const SizedBox(
                       height: 55,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('Recently Viewed Products',style: medium.copyWith(color: Colors.black,fontSize: 28),textAlign: TextAlign.left,),
-                        Text('View/Edit Browsing History',style: medium.copyWith(color: groupOrdersTitleTextColor),)
+                        Text(
+                          'Recently Viewed Products',
+                          style: medium.copyWith(
+                              color: Colors.black, fontSize: 28),
+                          textAlign: TextAlign.left,
+                        ),
+                        Text(
+                          'View/Edit Browsing History',
+                          style:
+                              medium.copyWith(color: groupOrdersTitleTextColor),
+                        )
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 12,
                     ),
                     RecentlyViewedProducts(),
                   ],
                 ),
               ),
-              BottomWebBar()
+              const BottomWebBar()
             ],
           ),
         ),
