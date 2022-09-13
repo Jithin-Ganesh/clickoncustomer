@@ -29,7 +29,7 @@ class ProductCard extends StatelessWidget {
                   width: 198,
                   child: Center(
                     child: ImgProvider(
-                      url: "assets/images/dummy/image-phone.png",
+                      url: image ?? '',
                       height: 147,
                       width: 114,
                     ),
@@ -83,7 +83,7 @@ class ProductCard extends StatelessWidget {
                 SizedBox(width: 8,),
                 Text(
                   '16,999',
-                  style: thin.copyWith(fontSize: 17, color: dividerColor2,decoration: TextDecoration.lineThrough),
+                  style: thin.copyWith(fontSize: 17, color: ogPriceColor,decoration: TextDecoration.lineThrough),
                 ),
               ],
             )

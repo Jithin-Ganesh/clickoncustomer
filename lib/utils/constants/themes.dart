@@ -74,11 +74,14 @@ ThemeData appTheme = ThemeData(
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ButtonStyle(
       shadowColor: MaterialStateProperty.resolveWith(shadowColor),
-      shape: MaterialStateProperty.resolveWith(outlinedBorder),
+        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(18.0),
+            ),),
       padding: MaterialStateProperty.resolveWith((states) => const EdgeInsets.symmetric(horizontal: 5)),
       elevation: MaterialStateProperty.resolveWith(elevation),
 
-      // foregroundColor: MaterialStateProperty.resolveWith(backgroundColor),
+       foregroundColor: MaterialStateProperty.resolveWith(backgroundColor),
       backgroundColor: MaterialStateProperty.resolveWith(backgroundColor),
       textStyle: MaterialStateProperty.resolveWith(textStyle),
     ),

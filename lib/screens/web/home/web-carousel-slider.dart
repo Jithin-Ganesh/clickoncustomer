@@ -19,8 +19,18 @@ final List<Widget> imageSliders = imgList
     .asMap()
     .map((i, item) => MapEntry(
         i,
-        ImgProvider(
-          url: item,height: 460,boxFit: BoxFit.fill,width: 1600 ,
+        Container(
+          height: 460,
+          decoration:  BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(20)),
+              image: DecorationImage(
+                  image: AssetImage(
+                    item,
+                  ),
+                  fit: BoxFit.fill)),
+          // child: ImgProvider(
+          //   url: item,height: 460,boxFit: BoxFit.fill,width: 1600 ,
+          // ),
         )))
     .values
     .toList();
@@ -46,14 +56,15 @@ class _HomeBannerCarouselState extends State<HomeBannerCarousel> {
           width: MediaQuery.of(context).size.width * 0.85,
           child: CarouselSlider(
             options: CarouselOptions(
-              autoPlay: true,
-              aspectRatio: 4,
-              enlargeCenterPage: true,viewportFraction: 1,onPageChanged:(index, reason) {
-              setState(() {
-                currentPage = index;
-              });
-            }
-            ),
+                autoPlay: true,
+                aspectRatio: 4,
+                enlargeCenterPage: true,
+                viewportFraction: 1,
+                onPageChanged: (index, reason) {
+                  setState(() {
+                    currentPage = index;
+                  });
+                }),
             items: imageSliders,
           ),
         ),
@@ -61,12 +72,20 @@ class _HomeBannerCarouselState extends State<HomeBannerCarousel> {
           bottom: 20,
           left: 500,
           child: Row(
-            children: imgList.map(
-                  (e) {
-                return ImageIndicators(currentPage: currentPage, index: currentPage);
-              },
-            ).toList(),
+            children: imgList
+                .asMap()
+                .map((i, item) => MapEntry(
+                    i, ImageIndicators(currentPage: currentPage, index: i)))
+                .values
+                .toList(),
           ),
+          // child: Row(
+          //   children: imgList.map(
+          //         (e) {
+          //       return ImageIndicators(currentPage: currentPage, index: currentPage);
+          //     },
+          //   ).toList(),
+          // ),
         )
       ],
     );

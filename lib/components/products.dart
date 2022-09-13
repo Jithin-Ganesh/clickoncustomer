@@ -7,18 +7,28 @@ import 'package:flutter/material.dart';
 
 import '../utils/constants/color.dart';
 
-class Products extends StatelessWidget {
-  const Products({Key? key}) : super(key: key);
+class Products extends StatefulWidget {
+  final double? height;
+  final String image;
+  final String title;
+  const Products({Key? key, this.height, required this.image, required this.title}) : super(key: key);
+
+  @override
+  State<Products> createState() => _ProductsState();
+}
+
+class _ProductsState extends State<Products> {
+
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 8.0),
-      height: 500,
+      height: widget.height ?? 500,
       child: Column(
         children: [
           ImgProvider(
-            url: "assets/images/dummy/image-watch.png",
+            url: widget.image,
             height: 210,
             width: 186,
           ),
@@ -26,7 +36,7 @@ class Products extends StatelessWidget {
             height: 9.7,
           ),
           Text(
-            textProductName,
+            widget.title,
             style: medium.copyWith(fontSize: 16,color: categoriesTextColor),
           )
         ],

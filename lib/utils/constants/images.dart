@@ -12,3 +12,5 @@ String backArrow="assets/images/img_12.png";
 String ratingBoxImage="assets/images/img_13.png";
 String ratingStarImage="assets/images/img_14.png";
 String discountBoxImage="assets/images/img_15.png";
+String yourCartItemImage="assets/images/img_16.png";
+String yourCartItemDeleteImage="assets/images/img_17.png";

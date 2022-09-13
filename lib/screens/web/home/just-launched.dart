@@ -1,9 +1,11 @@
 import 'package:clickoncustomer/components/web/home-product-box.dart';
+import 'package:clickoncustomer/models/category.dart';
 import 'package:clickoncustomer/utils/img-provider.dart';
 import 'package:flutter/cupertino.dart';
 
 class JustLaunchedList extends StatelessWidget {
-  const JustLaunchedList({Key? key}) : super(key: key);
+  final List<Categories> justLaunched;
+  const JustLaunchedList({Key? key, required this.justLaunched}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +16,9 @@ class JustLaunchedList extends StatelessWidget {
         child: HomeProductBox(
             height: 306,
             width: 297,
-          image: "assets/images/dummy/image-iphone.png",
+          image: justLaunched[index].image,
         ),
-      ),scrollDirection: Axis.horizontal,padding: EdgeInsets.symmetric(horizontal: 15),itemCount: 5,),
+      ),scrollDirection: Axis.horizontal,padding: EdgeInsets.symmetric(horizontal: 15),itemCount: justLaunched.length,),
     );
   }
 }

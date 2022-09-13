@@ -12,6 +12,7 @@ import 'package:clickoncustomer/utils/constants/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../components/web/WebNavBar2.dart';
 import '../../../components/web/bottom-web-bar.dart';
 import '../../../components/web/custom-titlebar-with-viewall.dart';
 import '../../../components/web/web-nav-bar.dart';
@@ -60,70 +61,72 @@ class _ProductDetailScreenWebState extends State<ProductDetailScreenWeb> {
       ),
       desktop: Scaffold(
         appBar: PreferredSize(
-            preferredSize: const Size.fromHeight(175), child: WebNavBar()),
+            preferredSize: const Size.fromHeight(175), child: WebNavBar2()),
         backgroundColor: canvasColor,
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              ProductDetailTitle(),
-              SizedBox(height: 80,),
-              Row(
-                children: [
-                  Flexible(flex: 1, child: ImageDetailsWeb()),
-                  SizedBox(width: 80,),
-                  Flexible(flex: 2, child: ProductDetails())
-                ],
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              BuyTogether(),
-              Specifications(specs: specs),
-              SizedBox(height: 54,),
-              RatingsAndReviews(),
-              SizedBox(height: 54,),
-              QuestionsAndAnswers(),
-              SizedBox(height: 54,),
-              Container(
-                color: bgColor.withOpacity(0.3),
-                child: Column(
+        body: Consumer<CategoryProvider>(builder: (context, value, child) => SingleChildScrollView(
+            child: Column(
+              children: [
+                ProductDetailTitle(),
+                SizedBox(height: 80,),
+                Row(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 160.0),
-                      child: CustomTitleBarViewAll(title:   'Similar Products'),
-                    ),
-                    SizedBox(
-                      height: 12,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 160.0),
-                      child: ProductsForYouList(),
-                    ),
-                    SizedBox(
-                      height: 55,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 160.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text('Recently Viewed Products',style: medium.copyWith(color: Colors.black,fontSize: 28),textAlign: TextAlign.left,),
-                          Text('View/Edit Browsing History',style: medium.copyWith(color: groupOrdersTitleTextColor),)
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 12,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 160.0),
-                      child: RecentlyViewedProducts(),
-                    ),
+                    Flexible(flex: 1, child: ImageDetailsWeb()),
+                    SizedBox(width: 80,),
+                    Flexible(flex: 2, child: ProductDetails())
                   ],
                 ),
-              ),
-              BottomWebBar()
-            ],
+                SizedBox(
+                  height: 30,
+                ),
+                BuyTogether(),
+                Specifications(specs: specs),
+                SizedBox(height: 54,),
+                RatingsAndReviews(),
+                SizedBox(height: 54,),
+                QuestionsAndAnswers(),
+                SizedBox(height: 54,),
+                Container(
+                  color: bgColor.withOpacity(0.3),
+                  child: Column(
+                    children: [
+                      SizedBox(height: 60,),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 160.0),
+                        child: CustomTitleBarViewAll(title:   'Similar Products'),
+                      ),
+                      SizedBox(
+                        height: 12,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 160.0),
+                        child: ProductsForYouList(),
+                      ),
+                      SizedBox(
+                        height: 136,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 160.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text('Recently Viewed Products',style: medium.copyWith(color: Colors.black,fontSize: 28),textAlign: TextAlign.left,),
+                            Text('View/Edit Browsing History',style: medium.copyWith(color: groupOrdersTitleTextColor),)
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 12,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 160.0),
+                        child: RecentlyViewedProducts(recently: value.recentlyAdded ?? []),
+                      ),
+                    ],
+                  ),
+                ),
+                BottomWebBar()
+              ],
+            ),
           ),
         ),
       ),

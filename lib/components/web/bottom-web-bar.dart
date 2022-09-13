@@ -138,27 +138,49 @@ class Privacy extends StatelessWidget {
               width: 145,
               height: 40,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: globeBorderColor)
-              ),
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: globeBorderColor)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                      ImgProvider(url: "assets/images/icon-globe.png",height: 18,width: 18,),
-                      Text('English',style: thin.copyWith(fontSize: 14,color: Colors.black),),
-                  ImgProvider(url: "assets/images/icon-up-down.png",height: 12,width: 7,),
+                  ImgProvider(
+                    url: "assets/images/icon-globe.png",
+                    height: 18,
+                    width: 18,
+                  ),
+                  Text(
+                    'English',
+                    style: thin.copyWith(fontSize: 14, color: Colors.black),
+                  ),
+                  ImgProvider(
+                    url: "assets/images/icon-up-down.png",
+                    height: 12,
+                    width: 7,
+                  ),
                 ],
               ),
             ),
-            Text('©️2010-2022 Click on Offers. All rights reserved. ',style: thin.copyWith(fontSize: 14,color: Colors.black),),
+            Text(
+              '©️2010-2022 Click on Offers. All rights reserved. ',
+              style: thin.copyWith(fontSize: 14, color: Colors.black),
+            ),
             Container(
               width: 230,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Privacy Policy',style: thin.copyWith(fontSize: 14,color: Colors.black),),
-                  Text('Legal Policy',style: thin.copyWith(fontSize: 14,color: Colors.black),),
-                  Text('Sitemap',style: thin.copyWith(fontSize: 14,color: Colors.black),),
+                  Text(
+                    'Privacy Policy',
+                    style: thin.copyWith(fontSize: 14, color: Colors.black),
+                  ),
+                  Text(
+                    'Legal Policy',
+                    style: thin.copyWith(fontSize: 14, color: Colors.black),
+                  ),
+                  Text(
+                    'Sitemap',
+                    style: thin.copyWith(fontSize: 14, color: Colors.black),
+                  ),
                 ],
               ),
             )
@@ -168,8 +190,6 @@ class Privacy extends StatelessWidget {
     );
   }
 }
-
-
 
 class About extends StatelessWidget {
   const About({Key? key}) : super(key: key);
@@ -184,7 +204,9 @@ class About extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -219,24 +241,24 @@ class About extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Shop',
+                      'My Account',
                       style: regular.copyWith(
                           fontSize: 18, color: additionalInfoTitleColor),
                     ),
                     Text(
-                      'Cancellation & Return Policy',
+                      'Orders',
                       style: thin.copyWith(fontSize: 14, color: Colors.black),
                     ),
                     Text(
-                      'Track Order Status',
+                      'Wishlist',
                       style: thin.copyWith(fontSize: 14, color: Colors.black),
                     ),
                     Text(
-                      'FAQs',
+                      'Vouchers',
                       style: thin.copyWith(fontSize: 14, color: Colors.black),
                     ),
                     Text(
-                      'Terms of Use',
+                      'Returns',
                       style: thin.copyWith(fontSize: 14, color: Colors.black),
                     ),
                   ],
@@ -249,24 +271,24 @@ class About extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Shop',
+                      'Support',
                       style: regular.copyWith(
                           fontSize: 18, color: additionalInfoTitleColor),
                     ),
                     Text(
-                      'Cancellation & Return Policy',
+                      'WhatsApp Us',
                       style: thin.copyWith(fontSize: 14, color: Colors.black),
                     ),
                     Text(
-                      'Track Order Status',
+                      'Email Us',
                       style: thin.copyWith(fontSize: 14, color: Colors.black),
                     ),
                     Text(
-                      'FAQs',
+                      'Call Us',
                       style: thin.copyWith(fontSize: 14, color: Colors.black),
                     ),
                     Text(
-                      'Terms of Use',
+                      'Give Feedback',
                       style: thin.copyWith(fontSize: 14, color: Colors.black),
                     ),
                   ],
@@ -279,24 +301,24 @@ class About extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Shop',
+                      'About Us ',
                       style: regular.copyWith(
                           fontSize: 18, color: additionalInfoTitleColor),
                     ),
                     Text(
-                      'Cancellation & Return Policy',
+                      'Company Info',
                       style: thin.copyWith(fontSize: 14, color: Colors.black),
                     ),
                     Text(
-                      'Track Order Status',
+                      'Brand Identity',
                       style: thin.copyWith(fontSize: 14, color: Colors.black),
                     ),
                     Text(
-                      'FAQs',
+                      'Careers',
                       style: thin.copyWith(fontSize: 14, color: Colors.black),
                     ),
                     Text(
-                      'Terms of Use',
+                      'Newsroom',
                       style: thin.copyWith(fontSize: 14, color: Colors.black),
                     ),
                   ],
@@ -309,24 +331,20 @@ class About extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Shop',
+                      'Connect with Us',
                       style: regular.copyWith(
                           fontSize: 18, color: additionalInfoTitleColor),
                     ),
                     Text(
-                      'Cancellation & Return Policy',
+                      'Facebook',
                       style: thin.copyWith(fontSize: 14, color: Colors.black),
                     ),
                     Text(
-                      'Track Order Status',
+                      'Twitter',
                       style: thin.copyWith(fontSize: 14, color: Colors.black),
                     ),
                     Text(
-                      'FAQs',
-                      style: thin.copyWith(fontSize: 14, color: Colors.black),
-                    ),
-                    Text(
-                      'Terms of Use',
+                      'Instagram',
                       style: thin.copyWith(fontSize: 14, color: Colors.black),
                     ),
                   ],
@@ -339,24 +357,16 @@ class About extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Shop',
+                      'Enjoy Hustle Free Shop',
                       style: regular.copyWith(
                           fontSize: 18, color: additionalInfoTitleColor),
                     ),
                     Text(
-                      'Cancellation & Return Policy',
+                      'Download the app Enjoy Fast, Simple',
                       style: thin.copyWith(fontSize: 14, color: Colors.black),
                     ),
                     Text(
-                      'Track Order Status',
-                      style: thin.copyWith(fontSize: 14, color: Colors.black),
-                    ),
-                    Text(
-                      'FAQs',
-                      style: thin.copyWith(fontSize: 14, color: Colors.black),
-                    ),
-                    Text(
-                      'Terms of Use',
+                      'hassle free Shopping',
                       style: thin.copyWith(fontSize: 14, color: Colors.black),
                     ),
                   ],
@@ -369,7 +379,7 @@ class About extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    'Shopfor: Mens Footwear  |  Lehenga  |  Dresses  |  Womens Watches  |  Kurtis  |  Womens Footwear  |  Sarees  |  Casual Shoes  |  Mens Watches  |  Womens Casual Shoes  |  Frocks  |  Women Suits  |  Tops & Tunics  |  Gowns  |  Watches  |  ',
+                    'Shopfor: Mens Footwear  | Womens Footwear  |  Sarees  |  Casual Shoes  |  Mens Watches  |  Womens Casual Shoes  |  Frocks  |  Women Suits  |  Tops & Tunics  |  Gowns  |  Watches  |  ',
                     style: thin.copyWith(fontSize: 14, color: Colors.black),
                   ),
                   Container(
@@ -394,6 +404,7 @@ class BottomWebBarItem extends StatelessWidget {
   final String description;
   final double height;
   final double width;
+
   const BottomWebBarItem(
       {Key? key,
       required this.image,
