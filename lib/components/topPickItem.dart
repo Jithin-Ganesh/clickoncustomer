@@ -1,9 +1,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:clickoncustomer/providers/category-provider.dart';
 import 'package:clickoncustomer/utils/img-provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'products.dart';
+
+
 
 class TopPickItem extends StatefulWidget {
   const TopPickItem({super.key});
@@ -25,15 +29,16 @@ class _TopPickItemState extends State<TopPickItem> {
 
     return Stack(
       children: [
-        CarouselSlider(carouselController: controller,
-          options: CarouselOptions(height: 250, initialPage: 1,viewportFraction: 0.2,aspectRatio: 1),
-          items: [1, 2, 3, 4, 5].map((i) {
-            return Builder(
-              builder: (BuildContext context) {
-                return const Products(height: 242,);
-              },
-            );
-          }).toList(),
+        Consumer<CategoryProvider>(builder: (context, value, child) =>  CarouselSlider(carouselController: controller,
+            options: CarouselOptions(height: 250, initialPage: 1,viewportFraction: 0.2,aspectRatio: 1),
+            items: value.topPicks?.map((i) {
+              return Builder(
+                builder: (BuildContext context) {
+                  return  Products(height: 242, image: i.image, title: i.name ?? '',);
+                },
+              );
+            }).toList(),
+          ),
         ),
         Positioned(
             top: 88,

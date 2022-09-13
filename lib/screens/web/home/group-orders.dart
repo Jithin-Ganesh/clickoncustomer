@@ -1,58 +1,17 @@
+import 'package:clickoncustomer/providers/category-provider.dart';
 import 'package:clickoncustomer/utils/constants/color.dart';
 import 'package:clickoncustomer/utils/constants/decoration.dart';
 import 'package:clickoncustomer/utils/constants/fontstyles.dart';
+import 'package:clickoncustomer/utils/img-provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class GroupOrders extends StatelessWidget {
   const GroupOrders({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> rowList = [
-      const GroupOrderItem(
-          image: "assets/images/dummy/image-xbox-1.png",
-          sellingPrice: '125',
-          sold: '50',
-          buyers: '10',
-          price: '200',
-          wallet: '12'),
-      const GroupOrderItem(
-          image: "assets/images/dummy/image-xbox-1.png",
-          sellingPrice: '125',
-          sold: '50',
-          buyers: '10',
-          price: '200',
-          wallet: '12'),
-      const GroupOrderItem(
-          image: "assets/images/dummy/image-xbox-1.png",
-          sellingPrice: '125',
-          sold: '50',
-          buyers: '10',
-          price: '200',
-          wallet: '12'),
-      const GroupOrderItem(
-          image: "assets/images/dummy/image-xbox-1.png",
-          sellingPrice: '125',
-          sold: '50',
-          buyers: '10',
-          price: '200',
-          wallet: '12'),
-      const GroupOrderItem(
-          image: "assets/images/dummy/image-xbox-1.png",
-          sellingPrice: '125',
-          sold: '50',
-          buyers: '10',
-          price: '200',
-          wallet: '12'),
-      const GroupOrderItem(
-          image: "assets/images/dummy/image-xbox-1.png",
-          sellingPrice: '125',
-          sold: '50',
-          buyers: '10',
-          price: '200',
-          wallet: '12'),
-    ];
     return Container(
       height: 570,
       decoration: containerDecoration,
@@ -154,10 +113,17 @@ class GroupOrders extends StatelessWidget {
             const SizedBox(
               height: 26,
             ),
-            SizedBox(
-              height: 420,
-              child: ListView(
-                children: rowList,scrollDirection: Axis.horizontal,
+            Consumer<CategoryProvider>(builder: (context, value, child) => SizedBox(
+                height: 420,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: value.groupOrders?.length,
+                  itemBuilder: (context, index) => GroupOrderItem(image: value.groupOrders?[index].image ?? '',   sellingPrice: '125',
+                      sold: '50',
+                      buyers: '10',
+                      price: '200',
+                      wallet: '12'),
+                ),
               ),
             )
           ],
@@ -202,8 +168,8 @@ class GroupOrderItem extends StatelessWidget {
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Image.asset(
-                      image,
+                    child: ImgProvider(
+                      url: image,
                       height: 254,
                       width: 225,
                     ),

@@ -9,7 +9,9 @@ import '../utils/constants/color.dart';
 
 class Products extends StatefulWidget {
   final double? height;
-  const Products({Key? key, this.height}) : super(key: key);
+  final String image;
+  final String title;
+  const Products({Key? key, this.height, required this.image, required this.title}) : super(key: key);
 
   @override
   State<Products> createState() => _ProductsState();
@@ -26,7 +28,7 @@ class _ProductsState extends State<Products> {
       child: Column(
         children: [
           ImgProvider(
-            url: "assets/images/dummy/image-watch.png",
+            url: widget.image,
             height: 210,
             width: 186,
           ),
@@ -34,7 +36,7 @@ class _ProductsState extends State<Products> {
             height: 9.7,
           ),
           Text(
-            textProductName,
+            widget.title,
             style: medium.copyWith(fontSize: 16,color: categoriesTextColor),
           )
         ],

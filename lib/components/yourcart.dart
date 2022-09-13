@@ -1,4 +1,5 @@
 import 'package:clickoncustomer/utils/constants/color.dart';
+import 'package:clickoncustomer/utils/constants/decoration.dart';
 import 'package:clickoncustomer/utils/constants/fontstyles.dart';
 import 'package:clickoncustomer/utils/constants/images.dart';
 import 'package:clickoncustomer/utils/constants/strings.dart';
@@ -18,15 +19,14 @@ class YourCart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Container(
-      color: defaultTextColor,
+    return Container(
+      decoration: elevatedDecoration,
       width: 1196,
       height: 166,
       child: Padding(
         padding: const EdgeInsets.only(right: 38, left: 24),
         child:
-            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+        Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           Row(
             children: [
               Row(
@@ -136,15 +136,15 @@ class YourCart extends StatelessWidget {
                                       ),
                                       items: items
                                           .map((item) =>
-                                              DropdownMenuItem<String>(
-                                                value: item,
-                                                child: Text(
-                                                  item,
-                                                  style: const TextStyle(
-                                                    fontSize: 14,
-                                                  ),
-                                                ),
-                                              ))
+                                          DropdownMenuItem<String>(
+                                            value: item,
+                                            child: Text(
+                                              item,
+                                              style: const TextStyle(
+                                                fontSize: 14,
+                                              ),
+                                            ),
+                                          ))
                                           .toList(),
                                       value: selectedValue,
                                       onChanged: (value) {
@@ -206,7 +206,7 @@ class YourCart extends StatelessWidget {
                       Text(
                         textYourCartFree,
                         style:
-                            medium.copyWith(color: primaryColor, fontSize: 12),
+                        medium.copyWith(color: primaryColor, fontSize: 12),
                       )
                     ],
                   ),
@@ -227,7 +227,7 @@ class YourCart extends StatelessWidget {
                         decoration: BoxDecoration(
                           border: Border.all(color: qtyButtonColor, width: 2),
                           borderRadius:
-                              const BorderRadius.all(Radius.circular(5)),
+                          const BorderRadius.all(Radius.circular(5)),
                         ),
                         height: 33,
                         width: 87,
@@ -246,14 +246,14 @@ class YourCart extends StatelessWidget {
                               ),
                               items: items
                                   .map((item) => DropdownMenuItem<String>(
-                                        value: item,
-                                        child: Text(
-                                          item,
-                                          style: const TextStyle(
-                                            fontSize: 14,
-                                          ),
-                                        ),
-                                      ))
+                                value: item,
+                                child: Text(
+                                  item,
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              ))
                                   .toList(),
                               value: selectedValue,
                               onChanged: (value) {
@@ -269,6 +269,6 @@ class YourCart extends StatelessWidget {
           )
         ]),
       ),
-    ));
+    );
   }
 }

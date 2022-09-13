@@ -5,7 +5,8 @@ import '../../utils/constants/color.dart';
 import '../../utils/img-provider.dart';
 
 class RecentProductCard extends StatelessWidget {
-  const RecentProductCard({Key? key}) : super(key: key);
+  final String image;
+  const RecentProductCard({Key? key, required this.image}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class RecentProductCard extends StatelessWidget {
                 width: 172,
                 child: Center(
                   child: ImgProvider(
-                    url: "assets/images/dummy/image-earing.png",
+                    url: image,
                     height: 225,
                     width: 172,
                   ),

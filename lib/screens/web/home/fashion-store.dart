@@ -6,20 +6,20 @@ import '../../../components/web/home-product-box.dart';
 class FashionStore extends StatelessWidget {
   FashionStore({Key? key}) : super(key: key);
   final List<Widget> rowList = [
-    Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30.0),
-      child: ProductCard(),
+    const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 30.0),
+      child: ProductCard(image: "assets/images/dummy/product-1.png" ),
     ),
-    Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30.0),
-      child: ProductCard(),
+    const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 30.0),
+      child: ProductCard(image: "assets/images/dummy/product-2.png" ),
     ),
-    Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30.0),
-      child: ProductCard(),
-    ), Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30.0),
-      child: ProductCard(),
+    const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 30.0),
+      child: const ProductCard(image: "assets/images/dummy/product-3.png" ),
+    ), const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 30.0),
+      child: const ProductCard(image: "assets/images/dummy/product-4.png" ),
     ),
   ];
   @override

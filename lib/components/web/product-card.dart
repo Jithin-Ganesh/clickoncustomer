@@ -29,7 +29,7 @@ class ProductCard extends StatelessWidget {
                   width: 198,
                   child: Center(
                     child: ImgProvider(
-                      url: "assets/images/dummy/image-phone.png",
+                      url: image ?? '',
                       height: 147,
                       width: 114,
                     ),

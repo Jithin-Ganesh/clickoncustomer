@@ -1,3 +1,5 @@
+import 'package:clickoncustomer/screens/web/cart/cart-screen.dart';
+import 'package:clickoncustomer/screens/web/home/home-screen-web.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -14,18 +16,23 @@ class WebNavBar2 extends StatelessWidget {
       backgroundColor: canvasColor,
       elevation: 2,
       leadingWidth: 400,
-      leading: Column(
-        children: [
-          Image.asset(
-            'assets/images/clickOn-logo.png',
-            height: 37,
-            width: 60,
-          ),
-          Text(
-            'Click On Offers',
-            style: medium.copyWith(fontSize: 12, color: webNavTitleColor),
-          )
-        ],
+      leading: InkWell(
+        onTap: (){
+          Navigator.pushNamed(context, HomeScreenWeb.routeName);
+        },
+        child: Column(
+          children: [
+            Image.asset(
+              'assets/images/clickOn-logo.png',
+              height: 37,
+              width: 60,
+            ),
+            Text(
+              'Click On Offers',
+              style: medium.copyWith(fontSize: 12, color: webNavTitleColor),
+            )
+          ],
+        ),
       ),
       centerTitle: false,
       title: Padding(
@@ -38,11 +45,16 @@ class WebNavBar2 extends StatelessWidget {
             shadowColor: shadowColor,
             borderRadius: BorderRadius.circular(10),
             child: TextFormField(
-              decoration: InputDecoration(prefixIconConstraints: BoxConstraints.tight(Size.fromWidth(13)),
-                  prefixIcon: Image.asset(
-                    'assets/images/searchIcon.png',
-                    width: 13,
-                    height: 13,
+              decoration: InputDecoration(
+                  // prefixIconConstraints:
+                  //     BoxConstraints.tight(Size.fromWidth(13)),
+                  prefixIcon: Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Image.asset(
+                      'assets/images/searchIcon.png',
+                      width: 13,
+                      height: 13,
+                    ),
                   ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
@@ -212,11 +224,15 @@ class WebNavBar2 extends StatelessWidget {
                   SizedBox(
                     width: 25,
                   ),
-                  Image.asset(
-                    'assets/images/icon-cart.png',
-                    height: 35,
-                    width: 38,
-                  ),
+                  IconButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, CartScreenWeb.routeName);
+                      },
+                      icon: Image.asset(
+                        'assets/images/icon-cart.png',
+                        height: 35,
+                        width: 38,
+                      )),
                   SizedBox(
                     width: 25,
                   ),

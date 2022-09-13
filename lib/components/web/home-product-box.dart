@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class HomeProductBox extends StatelessWidget {
   final double width;
@@ -13,8 +14,9 @@ class HomeProductBox extends StatelessWidget {
       height: height,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
+          color: Colors.red,
           image: DecorationImage(
-              image: AssetImage(image),fit: BoxFit.contain
+              image: AssetImage(image),fit: BoxFit.fill
           )
       ),
     );
