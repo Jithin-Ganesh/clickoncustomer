@@ -138,27 +138,49 @@ class Privacy extends StatelessWidget {
               width: 145,
               height: 40,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: globeBorderColor)
-              ),
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: globeBorderColor)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                      ImgProvider(url: "assets/images/icon-globe.png",height: 18,width: 18,),
-                      Text('English',style: thin.copyWith(fontSize: 14,color: Colors.black),),
-                  ImgProvider(url: "assets/images/icon-up-down.png",height: 12,width: 7,),
+                  ImgProvider(
+                    url: "assets/images/icon-globe.png",
+                    height: 18,
+                    width: 18,
+                  ),
+                  Text(
+                    'English',
+                    style: thin.copyWith(fontSize: 14, color: Colors.black),
+                  ),
+                  ImgProvider(
+                    url: "assets/images/icon-up-down.png",
+                    height: 12,
+                    width: 7,
+                  ),
                 ],
               ),
             ),
-            Text('©️2010-2022 Click on Offers. All rights reserved. ',style: thin.copyWith(fontSize: 14,color: Colors.black),),
+            Text(
+              '©️2010-2022 Click on Offers. All rights reserved. ',
+              style: thin.copyWith(fontSize: 14, color: Colors.black),
+            ),
             Container(
               width: 230,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Privacy Policy',style: thin.copyWith(fontSize: 14,color: Colors.black),),
-                  Text('Legal Policy',style: thin.copyWith(fontSize: 14,color: Colors.black),),
-                  Text('Sitemap',style: thin.copyWith(fontSize: 14,color: Colors.black),),
+                  Text(
+                    'Privacy Policy',
+                    style: thin.copyWith(fontSize: 14, color: Colors.black),
+                  ),
+                  Text(
+                    'Legal Policy',
+                    style: thin.copyWith(fontSize: 14, color: Colors.black),
+                  ),
+                  Text(
+                    'Sitemap',
+                    style: thin.copyWith(fontSize: 14, color: Colors.black),
+                  ),
                 ],
               ),
             )
@@ -168,8 +190,6 @@ class Privacy extends StatelessWidget {
     );
   }
 }
-
-
 
 class About extends StatelessWidget {
   const About({Key? key}) : super(key: key);
@@ -184,7 +204,9 @@ class About extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -357,7 +379,7 @@ class About extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    'Shopfor: Mens Footwear  |  Lehenga  |  Dresses  |  Womens Watches  |  Kurtis  |  Womens Footwear  |  Sarees  |  Casual Shoes  |  Mens Watches  |  Womens Casual Shoes  |  Frocks  |  Women Suits  |  Tops & Tunics  |  Gowns  |  Watches  |  ',
+                    'Shopfor: Mens Footwear  | Womens Footwear  |  Sarees  |  Casual Shoes  |  Mens Watches  |  Womens Casual Shoes  |  Frocks  |  Women Suits  |  Tops & Tunics  |  Gowns  |  Watches  |  ',
                     style: thin.copyWith(fontSize: 14, color: Colors.black),
                   ),
                   Container(
@@ -382,6 +404,7 @@ class BottomWebBarItem extends StatelessWidget {
   final String description;
   final double height;
   final double width;
+
   const BottomWebBarItem(
       {Key? key,
       required this.image,

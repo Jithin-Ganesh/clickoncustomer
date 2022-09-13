@@ -7,39 +7,38 @@ class FashionStore extends StatelessWidget {
   FashionStore({Key? key}) : super(key: key);
   final List<Widget> rowList = [
     const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 30.0),
-      child: ProductCard(image: "assets/images/dummy/product-1.png" ),
+      padding: EdgeInsets.only(right: 30),
+      child: ProductCard(image: "assets/images/dummy/product-1.png"),
     ),
     const Padding(
       padding: EdgeInsets.symmetric(horizontal: 30.0),
-      child: ProductCard(image: "assets/images/dummy/product-2.png" ),
+      child: ProductCard(image: "assets/images/dummy/product-2.png"),
     ),
     const Padding(
       padding: EdgeInsets.symmetric(horizontal: 30.0),
-      child: const ProductCard(image: "assets/images/dummy/product-3.png" ),
-    ), const Padding(
+      child: const ProductCard(image: "assets/images/dummy/product-3.png"),
+    ),
+    const Padding(
       padding: EdgeInsets.symmetric(horizontal: 30.0),
-      child: const ProductCard(image: "assets/images/dummy/product-4.png" ),
+      child: const ProductCard(image: "assets/images/dummy/product-4.png"),
+    ),
+    const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 30.0),
+      child: HomeProductBox(
+          width: 610,
+          height: 325,
+          image: "assets/images/dummy/image-offer.PNG"),
     ),
   ];
+
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 327,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Expanded(
-            child: SizedBox(
-              height: 300,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: rowList,
-              ),
-            ),
-          ),
-          HomeProductBox(width: 610, height: 325, image: "assets/images/dummy/image-offer.PNG"),
-        ],
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        shrinkWrap: true,
+        children: rowList,
       ),
     );
   }
