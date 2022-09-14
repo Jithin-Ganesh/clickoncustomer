@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         home: ReviewOrderItem(
           title: titleDueDate,
           itemName: textYourCartItemName,
-          soldBy: true,
+
           price: yourCartAmount,
           offerPrice: offerAmount,
           isGift: true,

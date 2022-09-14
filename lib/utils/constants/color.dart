@@ -67,3 +67,4 @@ const Color yourItemsLoveButtonColor=Color(0xff8C8D8F);
 const Color qtyButtonColor=Color(0xffD5D5D5);
 const Color shadowColor=Color(0xffDEE3EB);
 const Color offerPriceColor=Color(0xff89898A);
+const Color addGiftBorderColor=Color(0xffEDEDED);
