@@ -15,15 +15,42 @@ class HomeCategoryList extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 100.0),
       child: Container(
-        height: 100,
+        height: 120,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            ...categories!.map((e) => HomeCategoryListItem(category: e)),
-            CircleAvatar(
-              radius: 35,
-              child: Center(child: Image.asset( "assets/images/icon-arrow-right.png",width: 16,height: 15,)),
-              backgroundColor: textOnClickColor,
+            Expanded(
+              child: SizedBox(
+                  height: 100,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) => Padding(
+                      padding: const EdgeInsets.only(right: 59.0),
+                      child: HomeCategoryListItem(category: categories?[index]),
+                    ),
+                    itemCount: categories?.length,
+                  )),
+            ),
+            Column(
+              children: [
+                CircleAvatar(
+                  radius: 35,
+                  child: Center(
+                      child: Image.asset(
+                    "assets/images/icon-arrow-right.png",
+                    width: 16,
+                    height: 15,
+                  )),
+                  backgroundColor: textOnClickColor,
+                ),
+                SizedBox(
+                  height: 4,
+                ),
+                Text(
+                  'More',
+                  style: thin.copyWith(fontSize: 14, color: Colors.black),
+                )
+              ],
             ),
           ],
         ),
@@ -45,13 +72,19 @@ class HomeCategoryListItem extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: 30.0,
-            child:
-            Image.asset(category?.image ?? '',height: 60,width: 74,),
+            child: Image.asset(
+              category?.image ?? '',
+              height: 60,
+              width: 74,
+            ),
             backgroundColor: canvasColor,
+          ),
+          SizedBox(
+            height: 5,
           ),
           Text(
             category?.name ?? '',
-            style: thin.copyWith(fontSize: 14,color: Colors.black),
+            style: thin.copyWith(fontSize: 14, color: Colors.black),
           )
         ],
       ),

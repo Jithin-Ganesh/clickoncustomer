@@ -128,6 +128,7 @@ class WebHomeScreen extends StatelessWidget {
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       Container(
                         decoration: containerDecoration,
@@ -138,65 +139,7 @@ class WebHomeScreen extends StatelessWidget {
                         ),
                         child: const TopPicks(),
                       ),
-                      ConstrainedBox(
-                        constraints: BoxConstraints(
-                          minWidth: MediaQuery.of(context).size.width * 0.30,
-                          maxWidth: MediaQuery.of(context).size.width * 0.30,
-
-                        ),
-
-                        child: Column(
-                          children: [
-                            Container(
-                              height: 230,
-                              width: 461,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  image: const DecorationImage(
-                                      image: AssetImage(
-                                          "assets/images/dummy/image-exclusive.png")
-                                      // image:  ImgProvider( url: "assets/images/dummy/image-exclusive.png",height: 230,width: 461,),
-                                      )),
-                            ),
-                            Container(
-                              height: 149,
-                              width: 458,
-                              decoration: BoxDecoration(
-                                  color: canvasColor,
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  const ImgProvider(
-                                    url: "assets/images/dummy/image-qr.png",
-                                    height: 74,
-                                    width: 74,
-                                  ),
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        'Enjoy Fast, Simple hassle free Shopping',
-                                        style: regular.copyWith(
-                                            color: exclusiveOfferSubtextColor,
-                                            fontSize: 16),
-                                      ),
-                                      Text(
-                                        'Enjoy Fast, Simple hassle free Shopping',
-                                        style: thin.copyWith(
-                                            color: exclusiveOfferSubtextColor,
-                                            fontSize: 14),
-                                      ),
-                                    ],
-                                  )
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      )
+                      ExlusiveOffer()
                     ],
                   ),
                   const SizedBox(
@@ -246,7 +189,7 @@ class WebHomeScreen extends StatelessWidget {
                   const SizedBox(
                     height: 12,
                   ),
-                  BestSelling(),
+                  BestSelling(products: value.products ?? [],),
                   const SizedBox(
                     height: 25,
                   ),
@@ -261,7 +204,7 @@ class WebHomeScreen extends StatelessWidget {
                   const SizedBox(
                     height: 12,
                   ),
-                  FashionStore(),
+                  FashionStore(products: value.products ?? [],),
                   const SizedBox(
                     height: 55,
                   ),
@@ -291,6 +234,76 @@ class WebHomeScreen extends StatelessWidget {
             const BottomWebBar()
           ],
         ),
+      ),
+    );
+  }
+}
+
+class ExlusiveOffer extends StatelessWidget {
+  const ExlusiveOffer({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ConstrainedBox(
+      constraints: BoxConstraints(
+        minWidth: MediaQuery.of(context).size.width * 0.30,
+        maxWidth: MediaQuery.of(context).size.width * 0.30,
+
+      ),
+
+      child: Column(
+        children: [
+          Container(
+            height: 230,
+            width: MediaQuery.of(context).size.width * 0.28,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                // image: const DecorationImage(
+                //     image: AssetImage(
+                //         "assets/images/dummy/image-exclusive.png"))
+            ),
+                     child:  ImgProvider( url: "assets/images/dummy/image-exclusive.png",height: 230,width: MediaQuery.of(context).size.width * 0.28,boxFit: BoxFit.fill,),
+                    ),
+          Container(
+            height: 135,
+            width: MediaQuery.of(context).size.width * 0.28,
+            decoration: BoxDecoration(
+                color: canvasColor,
+                borderRadius: BorderRadius.circular(10)),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment:
+                  MainAxisAlignment.spaceEvenly,
+              children: [
+                const ImgProvider(
+                  url: "assets/images/dummy/image-qr.png",
+                  height: 74,
+                  width: 74,
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Enjoy Fast, Simple hassle free Shopping',
+                      style: regular.copyWith(
+                          color: exclusiveOfferSubtextColor,
+                          fontSize: 16),
+                    ),
+                    Text(
+                      'Enjoy Fast, Simple hassle free Shopping',
+                      style: thin.copyWith(
+                          color: exclusiveOfferSubtextColor,
+                          fontSize: 14),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          )
+        ],
       ),
     );
   }

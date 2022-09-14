@@ -106,7 +106,7 @@ class ImageIndicators extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 100,
+      width: MediaQuery.of(context).size.width * 0.052,
       height: 3,
       margin: const EdgeInsets.symmetric(horizontal: 4.0),
       decoration: BoxDecoration(

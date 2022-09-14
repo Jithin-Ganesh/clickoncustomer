@@ -1,44 +1,41 @@
 import 'package:clickoncustomer/components/web/product-card.dart';
+import 'package:clickoncustomer/models/category.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../../../components/web/home-product-box.dart';
 
 class FashionStore extends StatelessWidget {
-  FashionStore({Key? key}) : super(key: key);
-  final List<Widget> rowList = [
-    const Padding(
-      padding: EdgeInsets.only(right: 30),
-      child: ProductCard(image: "assets/images/dummy/product-1.png"),
-    ),
-    const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 30.0),
-      child: ProductCard(image: "assets/images/dummy/product-2.png"),
-    ),
-    const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 30.0),
-      child: const ProductCard(image: "assets/images/dummy/product-3.png"),
-    ),
-    const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 30.0),
-      child: const ProductCard(image: "assets/images/dummy/product-4.png"),
-    ),
-    const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 30.0),
-      child: HomeProductBox(
-          width: 610,
-          height: 325,
-          image: "assets/images/dummy/image-offer.PNG"),
-    ),
-  ];
+  final List<Categories> products;
+  FashionStore({Key? key, required this.products}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 327,
-      child: ListView(
-        scrollDirection: Axis.horizontal,
-        shrinkWrap: true,
-        children: rowList,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Expanded(
+            child: SizedBox(
+              height: 300,
+              child: ListView.builder(
+                itemBuilder: (context, index) => Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: ProductCard(image: products[index].image ?? ''),
+                ),
+                itemCount: products.length,
+                scrollDirection: Axis.horizontal,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 50.0),
+            child: HomeProductBox(
+                width: 610,
+                height: 325,
+                image: "assets/images/dummy/image-offer.PNG"),
+          )
+        ],
       ),
     );
   }

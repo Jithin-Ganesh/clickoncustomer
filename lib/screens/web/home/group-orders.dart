@@ -16,7 +16,8 @@ class GroupOrders extends StatelessWidget {
       height: 570,
       decoration: containerDecoration,
       child: Padding(
-        padding: const EdgeInsets.only(left: 30.0,right: 29,top: 25,bottom: 42),
+        padding:
+            const EdgeInsets.only(left: 30.0, right: 29, top: 25, bottom: 42),
         child: Column(
           children: [
             Row(
@@ -31,18 +32,24 @@ class GroupOrders extends StatelessWidget {
                       width: 36,
                     ),
                     Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Text(
-                          'Group',
-                          style: semiBold.copyWith(
-                              fontSize: 16, color: outlinedButtonColor),
+                        Container(
+
+                          child: Text(
+                            'Group',
+                            style: semiBold.copyWith(
+                                fontSize: 16, color: outlinedButtonColor,height: 1),
+                          ),
                         ),
-                        Text(
-                          'Orders',
-                          style: semiBold.copyWith(
-                              fontSize: 22, color: groupOrdersTitleTextColor),
+                        Container(
+
+                          child: Text(
+                            'Orders',
+                            style: semiBold.copyWith(
+                                fontSize: 22, color: groupOrdersTitleTextColor,height: 1),
+                          ),
                         ),
                       ],
                     )
@@ -113,12 +120,15 @@ class GroupOrders extends StatelessWidget {
             const SizedBox(
               height: 26,
             ),
-            Consumer<CategoryProvider>(builder: (context, value, child) => SizedBox(
+            Consumer<CategoryProvider>(
+              builder: (context, value, child) => SizedBox(
                 height: 420,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: value.groupOrders?.length,
-                  itemBuilder: (context, index) => GroupOrderItem(image: value.groupOrders?[index].image ?? '',   sellingPrice: '125',
+                  itemBuilder: (context, index) => GroupOrderItem(
+                      image: value.groupOrders?[index].image ?? '',
+                      sellingPrice: '125',
                       sold: '50',
                       buyers: '10',
                       price: '200',
@@ -212,7 +222,8 @@ class GroupOrderItem extends StatelessWidget {
                     child: Center(
                         child: Text(
                       '03 : 11 : 42',
-                      style: semiBold.copyWith(color: canvasColor, fontSize: 14),
+                      style:
+                          semiBold.copyWith(color: canvasColor, fontSize: 14),
                     )),
                   ),
                 ),
