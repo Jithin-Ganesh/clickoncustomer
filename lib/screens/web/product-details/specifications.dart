@@ -20,8 +20,7 @@ class Specifications extends StatelessWidget {
           ),
           Text(
             'Specifications',
-            style:
-                medium.copyWith(color: mainTitleColor, fontSize: 20),
+            style: medium.copyWith(color: mainTitleColor, fontSize: 20),
           ),
           SizedBox(
             height: 38,
@@ -34,7 +33,8 @@ class Specifications extends StatelessWidget {
             ),
             child: Center(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40.0,vertical: 15),
+                padding: const EdgeInsets.only(
+                    left: 40.0, top: 29, right: 40, bottom: 19),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -56,7 +56,9 @@ class Specifications extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 36,),
+          SizedBox(
+            height: 36,
+          ),
           Row(
             children: [
               Flexible(
@@ -77,7 +79,8 @@ class Specifications extends StatelessWidget {
                     ],
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 39.0,vertical: 33),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 39.0, vertical: 33),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -88,37 +91,47 @@ class Specifications extends StatelessWidget {
                               fontSize: 20, color: productAvailabilityColor),
                         ),
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
-                              'Total no of Pieces',
-                              style: thin.copyWith(
-                                  fontSize: 14, color: priceDetailsSubTextColor),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Total no of Pieces',
+                                  style: thin.copyWith(
+                                      fontSize: 14,
+                                      color: priceDetailsSubTextColor),
+                                ),
+                                SizedBox(
+                                  height: 16,
+                                ),
+                                Text(
+                                  'No of Diapers Per Pack',
+                                  style: thin.copyWith(
+                                      fontSize: 14,
+                                      color: priceDetailsSubTextColor),
+                                ),
+                              ],
                             ),
-                            Text(
-                              '26',
-                              style: regular.copyWith(
-                                  fontSize: 14, color: mainTitleColor),
+                            SizedBox(
+                              width: 60,
                             ),
-                            SizedBox(width: 1,),
-                            SizedBox(width: 1,),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'No of Diapers Per Pack',
-                              style: thin.copyWith(
-                                  fontSize: 14, color: priceDetailsSubTextColor),
-                            ),
-                            Text(
-                              '26',
-                              style: regular.copyWith(
-                                  fontSize: 14, color: mainTitleColor),
-                            ),
-                            SizedBox(width: 1,),
-                            SizedBox(width: 1,),
+                            Column(crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  '26',
+                                  style: regular.copyWith(
+                                      fontSize: 14, color: mainTitleColor),
+                                ),
+                                SizedBox(
+                                  height: 16,
+                                ),
+                                Text(
+                                  '26',
+                                  style: regular.copyWith(
+                                      fontSize: 14, color: mainTitleColor),
+                                ),
+                              ],
+                            )
                           ],
                         ),
                         Divider(
@@ -134,30 +147,40 @@ class Specifications extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'Maximum Shelf Life' ,
+                              'Maximum Shelf Life',
                               style: thin.copyWith(
-                                  fontSize: 14, color: priceDetailsSubTextColor),
+                                  fontSize: 14,
+                                  color: priceDetailsSubTextColor),
                             ),
                             Text(
                               '36 Months',
                               style: regular.copyWith(
                                   fontSize: 14, color: mainTitleColor),
                             ),
-                            SizedBox(width: 1,),
-                            SizedBox(width: 1,),
+                            SizedBox(
+                              width: 1,
+                            ),
+                            SizedBox(
+                              width: 1,
+                            ),
                           ],
                         ),
                         Text(
-                          'Manufacturing, Packaging and Import Info' ,
+                          'Manufacturing, Packaging and Import Info',
                           style: regular.copyWith(
-                              fontSize: 14, color: primaryColor, decoration: TextDecoration.underline,),
+                            fontSize: 14,
+                            color: primaryColor,
+                            decoration: TextDecoration.underline,
+                          ),
                         ),
                       ],
                     ),
                   ),
                 ),
               ),
-              SizedBox(width: 40,),
+              SizedBox(
+                width: 40,
+              ),
               Flexible(
                 flex: 1,
                 child: Container(
@@ -176,118 +199,98 @@ class Specifications extends StatelessWidget {
                     ],
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 39.0,vertical: 33),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 39.0, vertical: 33),
+                    child: Row(
                       children: [
-                        Text(
-                          'General',
-                          style: regular.copyWith(
-                              fontSize: 20, color: productAvailabilityColor),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
+                            Text(
+                              'General',
+                              style: regular.copyWith(
+                                  fontSize: 20,
+                                  color: productAvailabilityColor),
+                            ),
                             Text(
                               'Model Number',
                               style: thin.copyWith(
-                                  fontSize: 14, color: priceDetailsSubTextColor),
+                                  fontSize: 14,
+                                  color: priceDetailsSubTextColor),
                             ),
+                            Text(
+                              'Target gender',
+                              style: thin.copyWith(
+                                  fontSize: 14,
+                                  color: priceDetailsSubTextColor),
+                            ),
+                            Text(
+                              'Minimum Weight Recommendation',
+                              style: thin.copyWith(
+                                  fontSize: 14,
+                                  color: priceDetailsSubTextColor),
+                            ),
+                            Text(
+                              'Material',
+                              style: thin.copyWith(
+                                  fontSize: 14,
+                                  color: priceDetailsSubTextColor),
+                            ),
+                            Text(
+                              'Style	',
+                              style: thin.copyWith(
+                                  fontSize: 14,
+                                  color: priceDetailsSubTextColor),
+                            ),
+                            Text(
+                              'Product Dimensions	',
+                              style: thin.copyWith(
+                                  fontSize: 14,
+                                  color: priceDetailsSubTextColor),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          width: 55,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            SizedBox(),
                             Text(
                               '80336834',
                               style: regular.copyWith(
                                   fontSize: 14, color: mainTitleColor),
-                            ),
-                            SizedBox(width: 1,),
-                            SizedBox(width: 1,),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Target gender',
-                              style: thin.copyWith(
-                                  fontSize: 14, color: priceDetailsSubTextColor),
                             ),
                             Text(
                               'Unisex',
                               style: regular.copyWith(
                                   fontSize: 14, color: mainTitleColor),
                             ),
-                            SizedBox(width: 1,),
-                            SizedBox(width: 1,),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Minimum Weight Recommendation' ,
-                              style: thin.copyWith(
-                                  fontSize: 14, color: priceDetailsSubTextColor),
-                            ),
                             Text(
                               '1 Kilograms',
                               style: regular.copyWith(
                                   fontSize: 14, color: mainTitleColor),
-                            ),
-                            SizedBox(width: 1,),
-                            SizedBox(width: 1,),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Material' ,
-                              style: thin.copyWith(
-                                  fontSize: 14, color: priceDetailsSubTextColor),
                             ),
                             Text(
                               'Cotton',
                               style: regular.copyWith(
                                   fontSize: 14, color: mainTitleColor),
                             ),
-                            SizedBox(width: 1,),
-                            SizedBox(width: 1,),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Style	' ,
-                              style: thin.copyWith(
-                                  fontSize: 14, color: priceDetailsSubTextColor),
-                            ),
                             Text(
                               'Medium',
                               style: regular.copyWith(
                                   fontSize: 14, color: mainTitleColor),
-                            ),
-                            SizedBox(width: 1,),
-                            SizedBox(width: 1,),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Product Dimensions	' ,
-                              style: thin.copyWith(
-                                  fontSize: 14, color: priceDetailsSubTextColor),
                             ),
                             Text(
                               '11.4 x 23.6 x 21.7 cm; 693 Grams',
                               style: regular.copyWith(
                                   fontSize: 14, color: mainTitleColor),
                             ),
-                            SizedBox(width: 1,),
-                            SizedBox(width: 1,),
                           ],
-                        ),
+                        )
                       ],
                     ),
                   ),

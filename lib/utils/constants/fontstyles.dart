@@ -18,7 +18,7 @@ TextStyle medium =
 const TextStyle(fontWeight: FontWeight.w500, color: mainTitleColor, fontSize: 14.0,fontFamily: 'Kanit',height: 1);
 
 TextStyle thin =
-const TextStyle(fontWeight: FontWeight.w300, color: hintColor, fontSize: 16.0,fontFamily: 'Kanit',height: 1);
+const TextStyle(fontWeight: FontWeight.w300, color: hintColor, fontSize: 16.0,fontFamily: 'Kanit',height: 1,overflow: TextOverflow.ellipsis,);
 
 TextStyle regular =
 const TextStyle(fontWeight: FontWeight.w400, color: productDetailsScreenTextColor, fontSize: 14.0,fontFamily: 'Kanit',height: 1);

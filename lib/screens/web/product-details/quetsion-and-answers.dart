@@ -78,6 +78,7 @@ class CustomQuestions extends StatelessWidget {
             )
           ],
         ),
+        SizedBox(height: 11,),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

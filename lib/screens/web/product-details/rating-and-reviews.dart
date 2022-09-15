@@ -67,8 +67,9 @@ class Reviews extends StatelessWidget {
               )
             ],
           ),
+          SizedBox(height: 60,),
           Container(
-            height: 300,
+            height: 260,
             width: MediaQuery.of(context).size.width * 0.6,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
@@ -186,10 +187,12 @@ class ReviewBox extends StatelessWidget {
                 )
               ],
             ),
+            SizedBox(height: 12,),
             Text(
               title,
               style: medium.copyWith(color: mainTitleColor, fontSize: 16),
             ),
+            SizedBox(height: 3,),
             Row(
               children: [
                 RatingBar.builder(
