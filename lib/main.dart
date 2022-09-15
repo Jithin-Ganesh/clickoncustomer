@@ -1,5 +1,6 @@
 import 'package:clickoncustomer/components/buyTogetherItem.dart';
 import 'package:clickoncustomer/components/checkout_component.dart';
+import 'package:clickoncustomer/components/payment_item.dart';
 import 'package:clickoncustomer/components/productDetailTitle.dart';
 import 'package:clickoncustomer/components/reviewItems.dart';
 import 'package:clickoncustomer/components/revieworderitem.dart';
@@ -26,15 +27,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: ReviewOrderItem(
-          title: titleDueDate,
-          itemName: textYourCartItemName,
-
-          price: yourCartAmount,
-          offerPrice: offerAmount,
-          isGift: true,
-          isOrder: true,
-        ));
+        home:  PaymentItem(imageIcon: "assets/images/img_27.png",title: textSavedOptions, isCvv: true,isPay: true,));
   }
 }
 

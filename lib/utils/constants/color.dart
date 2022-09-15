@@ -68,3 +68,7 @@ const Color qtyButtonColor=Color(0xffD5D5D5);
 const Color shadowColor=Color(0xffDEE3EB);
 const Color offerPriceColor=Color(0xff89898A);
 const Color addGiftBorderColor=Color(0xffEDEDED);
+const Color paymentBorderColor=Color(0xffDBDBDB);
+const Color cvvBorderColor=Color(0xff9A9A9A);
+const Color paymentSubTextColor=Color(0xffAEAEAE);
+const Color paymentDividerColor=Color(0xffAE7E7E7);
