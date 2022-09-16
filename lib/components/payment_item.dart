@@ -1,3 +1,4 @@
+import 'package:clickoncustomer/components/checkout_component.dart';
 import 'package:clickoncustomer/components/payment_item_bankdetails.dart';
 import 'package:clickoncustomer/components/payment_sub.dart';
 import 'package:clickoncustomer/utils/constants/color.dart';
@@ -21,217 +22,248 @@ class PaymentItem extends StatelessWidget {
   final bool isPay;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
+    return Container(
+      width: MediaQuery.of(context).size.width * 0.622,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.0),
+        color: canvasColor,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            offset: Offset(0.0, 1.0), //(x,y)
+            blurRadius: 6.0,
+          ),
+        ],
+      ),
+      child: Column(
         children: [
-          Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: paymentBorderColor, width: 1)),
-            width: 1068,
-            height: 97,
-            child: Padding(
-              padding: const EdgeInsets.only(left: 19, right: 19),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5)),
-                        width: 20,
-                        height: 20,
-                        child: Checkbox(
-                          value: true,
-                          onChanged: (bool? value) {},
-                        ),
-                      ),
-                      SizedBox(
-                        width: 28,
-                      ),
-                      ImgProvider(
-                        url: "assets/images/imge_26.png",
-                        width: 35,
-                        height: 34,
-                      ),
-                      SizedBox(
-                        width: 13,
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            textClickOnWallet,
-                            style: medium.copyWith(
-                                fontSize: 16,
-                                color: productDetailsScreenTextColor),
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                textRemainingBalance,
-                                style: regular.copyWith(
-                                    fontSize: 16, color: gmailColor),
-                              ),
-                              SizedBox(
-                                width: 8,
-                              ),
-                              Text(
-                                textZero,
-                                style: regular.copyWith(
-                                    fontSize: 16, color: gmailColor),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            textUsed,
-                            style: regular.copyWith(
-                                fontSize: 16, color: gmailColor),
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                textRupees,
-                                style: regular.copyWith(
-                                    fontSize: 22, color: primaryColor),
-                              ),
-                              SizedBox(
-                                width: 2,
-                              ),
-                              Text(
-                                textBalanceWallet,
-                                style: regular.copyWith(
-                                    fontSize: 22, color: primaryColor),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
-                  )
-                ],
-              ),
+          Padding(
+            padding: const EdgeInsets.only(left: 18.0, top: 20),
+            child: PaymentTitle(
+              title: 'Payment',
+              isProcessing: true,
+              isSubmit: false,
+              slNumber: '4',
             ),
           ),
-          SizedBox(
-            height: 22,
-          ),
-          Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: paymentBorderColor, width: 1)),
-            height: 398,
-            width: 1068,
+          Padding(
+            padding: const EdgeInsets.only(
+                left: 70.0, right: 56, bottom: 64, top: 32),
             child: Column(
               children: [
-                SizedBox(
-                  height: 40,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(color: paymentBorderColor, width: 1)),
+                  width: 1068,
+                  height: 97,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 19, right: 19),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            color: primaryColor,
-                            borderRadius: BorderRadius.only(
-                              topRight: Radius.circular(10),
-                              bottomRight: Radius.circular(10),
+                        Row(
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5)),
+                              width: 20,
+                              height: 20,
+                              child: Checkbox(
+                                value: true,
+                                onChanged: (bool? value) {},
+                              ),
                             ),
-                          ),
-                          width: 246,
-                          height: 54,
-                          child: Row(
-                            children: [
-                              SizedBox(
-                                width: 24,
-                              ),
-                              ImgProvider(
-                                url: imageIcon,
-                                width: 13,
-                                height: 15,
-                                color: Colors.white,
-                                border:
-                                    Border.all(width: 2, color: Colors.white),
-                              ),
-                              SizedBox(
-                                width: 25,
-                              ),
-                              Text(
-                                title,
-                                style: medium.copyWith(
-                                    fontSize: 16, color: Colors.white),
-                              )
-                            ],
-                          ),
+                            SizedBox(
+                              width: 28,
+                            ),
+                            ImgProvider(
+                              url: "assets/images/icon-wallet.png",
+                              width: 35,
+                              height: 34,
+                            ),
+                            SizedBox(
+                              width: 13,
+                            ),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  textClickOnWallet,
+                                  style: medium.copyWith(
+                                      fontSize: 16,
+                                      color: productDetailsScreenTextColor),
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      textRemainingBalance,
+                                      style: regular.copyWith(
+                                          fontSize: 16, color: gmailColor),
+                                    ),
+                                    SizedBox(
+                                      width: 8,
+                                    ),
+                                    Text(
+                                      textZero,
+                                      style: regular.copyWith(
+                                          fontSize: 16, color: gmailColor),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        PaymentSub()
-                      ],
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          textPayBalanceUsingSavedOptions,
-                          style: medium.copyWith(
-                              fontSize: 16, color: productAvailabilityColor),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Container(
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                border: Border.all(color: paymentBorderColor)),
-                            width: 671,
-                            height: 199,
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 33, right: 36),
-                              child: Column(
-                                children: [
-                                  PaymentBank(isPay: true, isCvv: true),
-                                  SizedBox(
-                                    height: 17,
-                                  ),
-                                  const Divider(
-                                    height: 1,
-                                    color: paymentDividerColor,
-                                  ),
-                                  SizedBox(height: 18),
-                                  PaymentBank(isPay: false, isCvv: false),
-                                ],
-                              ),
-                            )),
-                        SizedBox(
-                          height: 25,
-                        ),
-                        Text(
-                          redirectText,
-                          style: thin.copyWith(
-                              fontSize: 12, color: subTextGeneralColor),
+                        Row(
+                          children: [
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  textUsed,
+                                  style: regular.copyWith(
+                                      fontSize: 16, color: gmailColor),
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      textRupees,
+                                      style: regular.copyWith(
+                                          fontSize: 22, color: primaryColor),
+                                    ),
+                                    SizedBox(
+                                      width: 2,
+                                    ),
+                                    Text(
+                                      textBalanceWallet,
+                                      style: regular.copyWith(
+                                          fontSize: 22, color: primaryColor),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ],
                         )
                       ],
                     ),
-                  ],
-                )
+                  ),
+                ),
+                SizedBox(
+                  height: 22,
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(color: paymentBorderColor, width: 1)),
+                  height: 398,
+                  width: 1068,
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 40,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                  color: primaryColor,
+                                  borderRadius: BorderRadius.only(
+                                    topRight: Radius.circular(10),
+                                    bottomRight: Radius.circular(10),
+                                  ),
+                                ),
+                                width: 246,
+                                height: 54,
+                                child: Row(
+                                  children: [
+                                    SizedBox(
+                                      width: 24,
+                                    ),
+                                    ImgProvider(
+                                      url: imageIcon,
+                                      width: 13,
+                                      height: 15,
+                                      color: Colors.white,
+                                      border: Border.all(
+                                          width: 2, color: Colors.white),
+                                    ),
+                                    SizedBox(
+                                      width: 25,
+                                    ),
+                                    Text(
+                                      title,
+                                      style: medium.copyWith(
+                                          fontSize: 16, color: Colors.white),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              PaymentSub()
+                            ],
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                textPayBalanceUsingSavedOptions,
+                                style: medium.copyWith(
+                                    fontSize: 16,
+                                    color: productAvailabilityColor),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      border: Border.all(
+                                          color: paymentBorderColor)),
+                                  width: 671,
+                                  height: 199,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 33, right: 36,top: 20),
+                                    child: Column(
+                                      children: [
+                                        PaymentBank(isPay: true, isCvv: true),
+                                        SizedBox(
+                                          height: 17,
+                                        ),
+                                        const Divider(
+                                          height: 1,
+                                          color: paymentDividerColor,
+                                        ),
+                                        SizedBox(height: 18),
+                                        PaymentBank(isPay: false, isCvv: false),
+                                      ],
+                                    ),
+                                  )),
+                              SizedBox(
+                                height: 25,
+                              ),
+                              Text(
+                                redirectText,
+                                style: thin.copyWith(
+                                    fontSize: 12, color: subTextGeneralColor),
+                              )
+                            ],
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
               ],
             ),
           ),

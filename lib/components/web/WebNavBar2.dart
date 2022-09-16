@@ -1,5 +1,6 @@
 import 'package:clickoncustomer/screens/web/cart/cart-screen.dart';
 import 'package:clickoncustomer/screens/web/home/home-screen-web.dart';
+import 'package:clickoncustomer/screens/web/your-account/your-account-web.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -160,17 +161,22 @@ class WebNavBar2 extends StatelessWidget {
               ),
               Row(
                 children: [
-                  Container(
-                    height: 40,
-                    width: 40,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50),
-                      color: primaryColor,
-                    ),
-                    child: Icon(
-                      Icons.person_outline,
-                      size: 22,
-                      color: canvasColor,
+                  InkWell(
+                    onTap: (){
+                      Navigator.pushNamed(context, YourAccountWeb.routeName);
+                    },
+                    child: Container(
+                      height: 40,
+                      width: 40,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: primaryColor,
+                      ),
+                      child: Icon(
+                        Icons.person_outline,
+                        size: 22,
+                        color: canvasColor,
+                      ),
                     ),
                   ),
                   SizedBox(

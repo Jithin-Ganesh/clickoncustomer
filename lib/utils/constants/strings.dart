@@ -63,3 +63,4 @@ String redirectText="You'll be securely redirected to MasterCard to enter your\n
 String textGmail="kvsanz@gmail.com";
 String textClickOnWallet="Clickon Wallet";
 String textAddress="Saneesh KV GMI Interactive, 2nd Floor,M.M. Gardens, Church Landing Road, ERNAKULAM,\nKERALA, 682016, India, Phone number: 9605452143";
+String textProdDescr = 'Saneesh KV GMI Interactive, 2nd Floor,M.M. Gardens, Church Landing Road, ERNAKULAM, KERALA, 682016, India, Phone number: 9605452143';

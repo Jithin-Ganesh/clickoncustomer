@@ -37,280 +37,279 @@ class ReviewOrderItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Row(
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ImgProvider(
+            url: "assets/images/img_22.png",
+            width: 12,
+            height: 8,
+          ),
+          SizedBox(width: 11),
+          Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ImgProvider(
-                url: "assets/images/img_22.png",
-                width: 12,
-                height: 8,
-              ),
-              SizedBox(width: 11),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              Row(
                 children: [
-                  Row(
-                    children: [
-                      Text(
-                        deliveryText,
-                        style: medium.copyWith(
-                            fontSize: 18, color: priceOffersSubtextColor),
-                      ),
-                      SizedBox(
-                        width: 6,
-                      ),
-                      Text(
-                        title,
-                        style: medium.copyWith(
-                            fontSize: 18, color: checkedItemsColor),
-                      ),
-                    ],
+                  Text(
+                    deliveryText,
+                    style: medium.copyWith(
+                        fontSize: 18, color: priceOffersSubtextColor),
                   ),
-                  isOrder
-                      ? Text(orderStatusText,
-                          style: thin.copyWith(
-                              fontSize: 14, color: subTextGeneralColor))
-                      : SizedBox(
-                          width: 0,
-                        ),
+                  SizedBox(
+                    width: 6,
+                  ),
+                  Text(
+                    title,
+                    style: medium.copyWith(
+                        fontSize: 18, color: checkedItemsColor),
+                  ),
                 ],
+              ),
+              isOrder
+                  ? Text(orderStatusText,
+                  style: thin.copyWith(
+                      fontSize: 14, color: subTextGeneralColor))
+                  : SizedBox(
+                width: 0,
               ),
             ],
           ),
-          SizedBox(
-            height: 18,
+        ],
+      ),
+      SizedBox(
+        height: 18,
+      ),
+      Row(
+        children: [
+          Container(
+            width: 110,
+            height: 110,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: itemContainer, width: 1)),
+            child: Padding(
+              padding: const EdgeInsets.only(
+                  top: 16, bottom: 16, left: 14, right: 16),
+              child: const ImgProvider(
+                url: "assets/images/img_21.png",
+                width: 77,
+                height: 77,
+              ),
+            ),
           ),
-          Row(
+          SizedBox(
+            width: 32,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Container(
-                width: 110,
-                height: 110,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: itemContainer, width: 1)),
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                      top: 16, bottom: 16, left: 14, right: 16),
-                  child: const ImgProvider(
-                    url: "assets/images/img_21.png",
-                    width: 77,
-                    height: 77,
-                  ),
-                ),
+              Text(
+                itemName,
+                style: regular.copyWith(
+                    fontSize: 16, color: productSubTextColor),
               ),
-              SizedBox(
-                width: 32,
+              SizedBox(height: 10,),
+              Text(
+                soldByText,
+                style: thin.copyWith(
+                    fontSize: 14, color: productDetailsScreenSubTextColor),
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                SizedBox(height: 10,),
+              Row(
                 children: [
                   Text(
-                    itemName,
-                    style: regular.copyWith(
-                        fontSize: 16, color: productSubTextColor),
-                  ),
-                  Text(
-                    soldByText,
-                    style: thin.copyWith(
-                        fontSize: 14, color: productDetailsScreenSubTextColor),
-                  ),
-                  Row(
-                    children: [
-                      Text(
-                        textRupees,
-                        style:
-                            regular.copyWith(fontSize: 18, color: primaryColor),
-                      ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      Text(
-                        price,
-                        style:
-                            medium.copyWith(fontSize: 17, color: primaryColor),
-                      ),
-                      SizedBox(
-                        width: 16,
-                      ),
-                      Text(
-                        textRupees,
-                        style: regular.copyWith(
-                          decoration: TextDecoration.lineThrough,
-                          decorationColor: offerPriceColor,
-                          color: offerPriceColor,
-                          fontSize: 18,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      Text(
-                        offerPrice,
-                        style: medium.copyWith(
-                            decoration: TextDecoration.lineThrough,
-                            decorationColor: offerPriceColor,
-                            fontSize: 17,
-                            color: offerPriceColor),
-                      ),
-                      SizedBox(
-                        width: 26,
-                      ),
-                      Container(
-                        height: 16,
-                        width: 37,
-                        decoration: const BoxDecoration(
-                            color: discountBoxColor,
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(8),
-                                bottomRight: Radius.circular(8))),
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 0.69),
-                          child: Text(
-                            discount,
-                            textAlign: TextAlign.center,
-                            style: regular.copyWith(
-                                fontSize: 12, color: defaultTextColor),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        textYourCartOffer,
-                        style: medium.copyWith(
-                            fontSize: 12, color: mainTitleColor),
-                      )
-                    ],
+                    textRupees,
+                    style:
+                    regular.copyWith(fontSize: 18, color: primaryColor),
                   ),
                   SizedBox(
                     width: 5,
                   ),
-                  Row(
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(color: qtyButtonColor, width: 2),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(5)),
-                        ),
-                        height: 28,
-                        width: 76,
-                        child: DropdownButtonHideUnderline(
-                          child: DropdownButton2(
-                              hint: Row(
-                                children: [
-                                  SizedBox(
-                                    width: 12,
-                                  ),
-                                  Text(yourCartQuantityText,
-                                      style: regular.copyWith(
-                                          fontSize: 12,
-                                          color: productSubTextColor)),
-                                  const SizedBox(
-                                    width: 3,
-                                  ),
-                                  Text(
-                                    count,
-                                    style: regular.copyWith(
-                                        fontSize: 14,
-                                        color: productSubTextColor),
-                                  )
-                                ],
-                              ),
-                              items: items
-                                  .map((item) => DropdownMenuItem<String>(
-                                        value: item,
-                                        child: Text(
-                                          item,
-                                          style: const TextStyle(
-                                            fontSize: 14,
-                                          ),
-                                        ),
-                                      ))
-                                  .toList(),
-                              value: selectedValue,
-                              onChanged: (value) {
-                                selectedValue = value as String;
-                              }),
-                        ),
+                  Text(
+                    price,
+                    style:
+                    medium.copyWith(fontSize: 17, color: primaryColor),
+                  ),
+                  SizedBox(
+                    width: 16,
+                  ),
+                  Text(
+                    textRupees,
+                    style: regular.copyWith(
+                      decoration: TextDecoration.lineThrough,
+                      decorationColor: offerPriceColor,
+                      color: offerPriceColor,
+                      fontSize: 18,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Text(
+                    offerPrice,
+                    style: medium.copyWith(
+                        decoration: TextDecoration.lineThrough,
+                        decorationColor: offerPriceColor,
+                        fontSize: 17,
+                        color: offerPriceColor),
+                  ),
+                  SizedBox(
+                    width: 26,
+                  ),
+                  Container(
+                    height: 16,
+                    width: 37,
+                    decoration: const BoxDecoration(
+                        color: discountBoxColor,
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(8),
+                            bottomRight: Radius.circular(8))),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 0.69),
+                      child: Text(
+                        discount,
+                        textAlign: TextAlign.center,
+                        style: regular.copyWith(
+                            fontSize: 12, color: defaultTextColor),
                       ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      isGift
-                          ? Container(
-                              width: 170,
-                              height: 30,
-                              decoration: const BoxDecoration(
-                                color: addGiftButtonColor,
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(5)),
-                              ),
-                              child: Row(
-                                children: [
-                                  const SizedBox(
-                                    width: 23,
-                                  ),
-                                  ImgProvider(
-                                    url: "assets/images/img_24.png",
-                                    width: 12,
-                                    height: 12,
-                                  ),
-                                  const SizedBox(
-                                    width: 18,
-                                  ),
-                                  Text(
-                                    textAlign: TextAlign.center,
-                                    textAddGiftOptions,
-                                    style: regular.copyWith(
-                                        fontSize: 12, color: Colors.white),
-                                  ),
-                                ],
-                              ))
-                          : Container(
-                              width: 170,
-                              height: 30,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                border: Border.all(
-                                    color: addGiftBorderColor, width: 1.5),
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(5)),
-                              ),
-                              child: Row(
-                                children: [
-                                  SizedBox(
-                                    width: 23,
-                                  ),
-                                  ImgProvider(
-                                    url: "assets/images/img_24.png",
-                                    width: 12,
-                                    height: 12,
-                                    color: addGiftButtonColor,
-                                  ),
-                                  SizedBox(
-                                    width: 18,
-                                  ),
-                                  Text(
-                                    textAlign: TextAlign.center,
-                                    textAddGiftOptions,
-                                    style: regular.copyWith(
-                                        fontSize: 12, color: mainTitleColor),
-                                  ),
-                                ],
-                              ))
-                    ],
+                    ),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    textYourCartOffer,
+                    style: medium.copyWith(
+                        fontSize: 12, color: mainTitleColor),
                   )
+                ],
+              ),
+              SizedBox(
+                width: 15,
+              ),
+              Row(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(color: qtyButtonColor, width: 2),
+                      borderRadius:
+                      const BorderRadius.all(Radius.circular(5)),
+                    ),
+                    height: 28,
+                    width: 76,
+                    child: DropdownButtonHideUnderline(
+                      child: DropdownButton2(
+                          hint: Row(
+                            children: [
+                              SizedBox(
+                                width: 12,
+                              ),
+                              Text(yourCartQuantityText,
+                                  style: regular.copyWith(
+                                      fontSize: 12,
+                                      color: productSubTextColor)),
+                              const SizedBox(
+                                width: 3,
+                              ),
+                              Text(
+                                count,
+                                style: regular.copyWith(
+                                    fontSize: 14,
+                                    color: productSubTextColor),
+                              )
+                            ],
+                          ),
+                          items: items
+                              .map((item) => DropdownMenuItem<String>(
+                            value: item,
+                            child: Text(
+                              item,
+                              style: const TextStyle(
+                                fontSize: 14,
+                              ),
+                            ),
+                          ))
+                              .toList(),
+                          value: selectedValue,
+                          onChanged: (value) {
+                            selectedValue = value as String;
+                          }),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  isGift
+                      ? Container(
+                      width: 170,
+                      height: 30,
+                      decoration: const BoxDecoration(
+                        color: addGiftButtonColor,
+                        borderRadius:
+                        const BorderRadius.all(Radius.circular(5)),
+                      ),
+                      child: Row(
+                        children: [
+                          const SizedBox(
+                            width: 23,
+                          ),
+                          ImgProvider(
+                            url: "assets/images/img_24.png",
+                            width: 12,
+                            height: 12,
+                          ),
+                          const SizedBox(
+                            width: 18,
+                          ),
+                          Text(
+                            textAlign: TextAlign.center,
+                            textAddGiftOptions,
+                            style: regular.copyWith(
+                                fontSize: 12, color: Colors.white),
+                          ),
+                        ],
+                      ))
+                      : Container(
+                      width: 170,
+                      height: 30,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(
+                            color: addGiftBorderColor, width: 1.5),
+                        borderRadius:
+                        const BorderRadius.all(Radius.circular(5)),
+                      ),
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: 23,
+                          ),
+                          ImgProvider(
+                            url: "assets/images/img_24.png",
+                            width: 12,
+                            height: 12,
+                            color: addGiftButtonColor,
+                          ),
+                          SizedBox(
+                            width: 18,
+                          ),
+                          Text(
+                            textAlign: TextAlign.center,
+                            textAddGiftOptions,
+                            style: regular.copyWith(
+                                fontSize: 12, color: mainTitleColor),
+                          ),
+                        ],
+                      ))
                 ],
               )
             ],
-          ),
-        ]),
+          )
+        ],
       ),
-    );
+    ]);
   }
 }
