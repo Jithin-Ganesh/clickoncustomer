@@ -78,7 +78,7 @@ class PaymentBank extends StatelessWidget {
                             color: Colors.white,
                             boxShadow: [
                               BoxShadow(
-                                color: shadowColor,
+                                color: shadowColor2,
                               )
                             ],
                             borderRadius: BorderRadius.circular(10),

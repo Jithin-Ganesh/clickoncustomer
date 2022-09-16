@@ -43,7 +43,7 @@ class WebNavBar2 extends StatelessWidget {
           width: MediaQuery.of(context).size.width * 0.45,
           child: Material(
             elevation: 3.0,
-            shadowColor: shadowColor,
+            shadowColor: shadowColor2,
             borderRadius: BorderRadius.circular(10),
             child: TextFormField(
               decoration: InputDecoration(

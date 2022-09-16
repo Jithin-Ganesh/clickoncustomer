@@ -242,7 +242,7 @@ class PaymentItem extends StatelessWidget {
                                         ),
                                         const Divider(
                                           height: 1,
-                                          color: paymentDividerColor,
+                                          color: paymentDividerColor2,
                                         ),
                                         SizedBox(height: 18),
                                         PaymentBank(isPay: false, isCvv: false),

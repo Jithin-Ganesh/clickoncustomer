@@ -104,7 +104,7 @@ class Checkout extends StatelessWidget {
               height: 45,
               child: OutlinedButton(
                   style: ButtonStyle(
-                    shadowColor: MaterialStateProperty.all<Color>(shadowColor),
+                    shadowColor: MaterialStateProperty.all<Color>(shadowColor2),
                     shape: MaterialStateProperty.all(RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.0))),
                   ),

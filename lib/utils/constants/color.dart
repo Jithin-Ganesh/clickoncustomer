@@ -82,7 +82,7 @@ const Color yourCartSubTextColor=Color(0xff4A433D);
 const Color yourItemsDeleteOutlineColor=Color(0xff7C7D80);
 const Color yourItemsLoveButtonColor=Color(0xff8C8D8F);
 const Color qtyButtonColor=Color(0xffD5D5D5);
-const Color shadowColor=Color(0xffDEE3EB);
+const Color shadowColor2=Color(0xffDEE3EB);
 const Color offerPriceColor=Color(0xff89898A);
 const Color addGiftBorderColor=Color(0xffEDEDED);
 const Color paymentBorderColor=Color(0xffDBDBDB);
@@ -98,7 +98,7 @@ const Color hintTextColor=Color(0xff545A5F);
 const Color numberColor=Color(0xff494F55);
 const Color passColor=Color(0xff4E555F);
 const Color otpSubText=Color(0xff979797);
-const Color paymentDividerColor=Color(0xffAE7E7E7);
+const Color paymentDividerColor2=Color(0xffAE7E7E7);
 const Color couponCodeColor=Color(0xff494F55);
 const Color gradiant2=Color(0xffD9D9D9
 );
