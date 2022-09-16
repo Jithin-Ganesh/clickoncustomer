@@ -1,3 +1,4 @@
+import 'package:clickoncustomer/components/payment_item_bankdetails.dart';
 import 'package:clickoncustomer/components/payment_sub.dart';
 import 'package:clickoncustomer/utils/constants/color.dart';
 import 'package:clickoncustomer/utils/constants/fontstyles.dart';
@@ -141,7 +142,8 @@ class PaymentItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Column(crossAxisAlignment: CrossAxisAlignment.start,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
                           decoration: BoxDecoration(
@@ -163,7 +165,8 @@ class PaymentItem extends StatelessWidget {
                                 width: 13,
                                 height: 15,
                                 color: Colors.white,
-                                border: Border.all(width: 2,color: Colors.white),
+                                border:
+                                    Border.all(width: 2, color: Colors.white),
                               ),
                               SizedBox(
                                 width: 25,
@@ -171,12 +174,15 @@ class PaymentItem extends StatelessWidget {
                               Text(
                                 title,
                                 style: medium.copyWith(
-                                    fontSize: 16, color:Colors.white),
+                                    fontSize: 16, color: Colors.white),
                               )
                             ],
                           ),
-                        ),SizedBox(height: 20,),
-                       PaymentSub()
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        PaymentSub()
                       ],
                     ),
                     Column(
@@ -200,122 +206,17 @@ class PaymentItem extends StatelessWidget {
                               padding:
                                   const EdgeInsets.only(left: 33, right: 36),
                               child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Row(children: [
-                                        Radio(
-                                            activeColor: primaryColor,
-                                            overlayColor:
-                                                MaterialStateColor.resolveWith(
-                                                    (states) => primaryColor),
-                                            value: true,
-                                            groupValue: true,
-                                            fillColor:
-                                                MaterialStateColor.resolveWith(
-                                                    (states) => primaryColor),
-                                            onChanged: (value) {
-                                              print(value);
-                                            }),
-                                        SizedBox(
-                                          width: 13,
-                                        ),
-                                        Text(
-                                          textDebitCardName,
-                                          style: medium.copyWith(
-                                              color: productSubTextColor,
-                                              fontSize: 16),
-                                        ),
-                                      ]),
-                                      Row(
-                                        children: [
-                                          Column(
-                                            children: [
-                                              Text(
-                                                textUserName,
-                                                style: regular.copyWith(
-                                                    fontSize: 12,
-                                                    color: productSubTextColor),
-                                              ),
-                                              Text(
-                                                textPassCode,
-                                                style: regular.copyWith(
-                                                    fontSize: 12,
-                                                    color: gmailColor),
-                                              ),
-                                            ],
-                                          ),
-                                          SizedBox(
-                                            width: 11,
-                                          ),
-                                          ImgProvider(
-                                            url: "assets/images/img_28",
-                                            width: 29,
-                                            height: 18,
-                                          ),
-                                          SizedBox(
-                                            width: 25,
-                                          ),
-                                          isCvv
-                                              ? Container(
-                                                  width: 71,
-                                                  height: 40,
-                                                  decoration: BoxDecoration(
-                                                    color: Colors.white,
-                                                    boxShadow: [
-                                                      BoxShadow(
-                                                        color: shadowColor,
-                                                      )
-                                                    ],
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            10),
-                                                  ),
-                                                  child: Padding(
-                                                    padding:
-                                                        const EdgeInsets.all(9),
-                                                    child: Text(
-                                                      textAlign:
-                                                          TextAlign.center,
-                                                      textCVV,
-                                                      style: thin.copyWith(
-                                                          fontSize: 14,
-                                                          color:
-                                                              cvvBorderColor),
-                                                    ),
-                                                  ),
-                                                )
-                                              : SizedBox(
-                                                  width: 0,
-                                                ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
+                                  PaymentBank(isPay: true, isCvv: true),
                                   SizedBox(
-                                    height: 14,
+                                    height: 17,
                                   ),
-                                  isPay
-                                      ? SizedBox(
-                                          width: 146,
-                                          height: 40,
-                                          child: ElevatedButton(
-                                              onPressed: () {},
-                                              child: Text(
-                                                textAlign: TextAlign.center,
-                                                textPayNow,
-                                                style: medium.copyWith(
-                                                    fontSize: 16,
-                                                    color: Colors.white),
-                                              )),
-                                        )
-                                      : SizedBox(
-                                          width: 0,
-                                        ),const Divider(height: 1,color: paymentDividerColor,)
+                                  const Divider(
+                                    height: 1,
+                                    color: paymentDividerColor,
+                                  ),
+                                  SizedBox(height: 18),
+                                  PaymentBank(isPay: false, isCvv: false),
                                 ],
                               ),
                             )),
