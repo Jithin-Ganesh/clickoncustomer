@@ -19,3 +19,6 @@ String tickImage="assets/images/img_19.png";
 String placeholder="assets/images/img_19.png";
 String reviewImage="assets/images/img_19.png";
 String tickGreenImage="assets/images/img_22.png";
+String logoImage="assets/images/logo-image.png";
+String clickUpLogoImage="assets/images/clickup-logo-image.png";
+String clickOnOffersImage="assets/images/clickonoffer-textimage.png";
