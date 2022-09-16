@@ -102,3 +102,8 @@ const Color paymentDividerColor2=Color(0xffAE7E7E7);
 const Color couponCodeColor=Color(0xff494F55);
 const Color gradiant2=Color(0xffD9D9D9
 );
+
+const Color countBorderColor =Color(0xffEBEBEB);
+const Color specificationsColor =Color(0xffDADADA);
+const Color ratingColor2 =Color(0xffE9871F);
+const Color reviewTextColor =Color(0xff7B848E);

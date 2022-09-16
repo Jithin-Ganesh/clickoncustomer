@@ -1,3 +1,4 @@
+import 'package:clickoncustomer/components/login_screen.dart';
 import 'package:clickoncustomer/routes.dart';
 import 'package:clickoncustomer/screens/test-screen.dart';
 import 'package:clickoncustomer/screens/web/home/home-screen-web.dart';
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         scrollBehavior: MyCustomScrollBehavior(),
-        home: const HomeScreenWeb(),
+        home:LoginScreen(),
         routes: AppRoutes().get(context),
       ),
     );

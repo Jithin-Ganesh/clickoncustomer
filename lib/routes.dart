@@ -6,6 +6,8 @@ import 'package:clickoncustomer/screens/web/review-order/review-order-screen.dar
 import 'package:clickoncustomer/screens/web/your-account/your-account-web.dart';
 import 'package:flutter/material.dart';
 
+import 'components/otp-screen.dart';
+
 class AppRoutes {
   Map<String, Widget Function(BuildContext)> get(BuildContext context) {
     return {
@@ -15,6 +17,7 @@ class AppRoutes {
       ReviewOrderScreenWeb.routeName: (context) => const ReviewOrderScreenWeb(),
       PaymentOrderScreenWeb.routeName: (context) => const PaymentOrderScreenWeb(),
       YourAccountWeb.routeName: (context) => const YourAccountWeb(),
+      OtpScreen.routeName: (context) => const OtpScreen(),
     };
   }
 }

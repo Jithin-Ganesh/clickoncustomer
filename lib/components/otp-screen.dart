@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:clickoncustomer/screens/web/home/home-screen-web.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -42,6 +43,7 @@ class _OtpScreenState extends State<OtpScreen> {
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            SizedBox(height: 201,),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -216,7 +218,9 @@ class _OtpScreenState extends State<OtpScreen> {
                                       borderRadius:
                                           BorderRadius.circular(10.0))),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pushNamedAndRemoveUntil(context, HomeScreenWeb.routeName, (route) => false);
+                            },
                             child: Text(
                               textSignInWithYourPassword,
                               style: medium.copyWith(
