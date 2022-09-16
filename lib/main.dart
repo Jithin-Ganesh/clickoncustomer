@@ -1,15 +1,18 @@
 import 'package:clickoncustomer/components/buyTogetherItem.dart';
 import 'package:clickoncustomer/components/checkout_component.dart';
+import 'package:clickoncustomer/components/login_screen.dart';
 import 'package:clickoncustomer/components/payment_item.dart';
 import 'package:clickoncustomer/components/productDetailTitle.dart';
 import 'package:clickoncustomer/components/reviewItems.dart';
 import 'package:clickoncustomer/components/revieworderitem.dart';
+import 'package:clickoncustomer/components/sign-up.dart';
 import 'package:clickoncustomer/components/similarProductItems.dart';
 import 'package:clickoncustomer/components/top_picks.dart';
 import 'package:clickoncustomer/components/yourcart.dart';
 import 'package:clickoncustomer/components/youritems_item.dart';
 import 'package:clickoncustomer/screens/test-screen.dart';
 import 'package:clickoncustomer/utils/constants/images.dart';
+import 'package:clickoncustomer/utils/constants/routes.dart';
 import 'package:clickoncustomer/utils/constants/strings.dart';
 import 'package:flutter/material.dart';
 
@@ -24,10 +27,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         title: 'Flutter Demo',
+        routes: AppRoutes.get(context),
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home:  PaymentItem(imageIcon: "assets/images/img_27.png",title: textSavedOptions, isCvv: true,isPay: true,));
+        home: const SignUp());
   }
 }
 
