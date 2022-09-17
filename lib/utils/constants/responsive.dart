@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class Responsive extends StatelessWidget {
@@ -27,10 +29,14 @@ class Responsive extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         if (constraints.maxWidth >= 1100) {
+          print('desktop ${constraints.maxWidth}');
           return desktop;
-        } else if (constraints.maxWidth<1100 && constraints.maxWidth>=850) {
+          //1100
+        } else if (constraints.maxWidth<1313 && constraints.maxWidth>=850) {
+          print('tablet ${constraints.maxWidth}');
           return tablet ;
         } else {
+          print('mobile ${constraints.maxWidth}');
           return mobile;
         }
       },

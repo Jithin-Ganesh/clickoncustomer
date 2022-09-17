@@ -33,19 +33,17 @@ class _TopPickItemState extends State<TopPickItem> {
           builder: (context, value, child) =>
               SizedBox(
                 height: 250,
-                child: Expanded(
-                  child: ListView.builder(
-                    itemCount: value.topPicks?.length,
-                    scrollDirection: Axis.horizontal,
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) {
-                      return Products(
-                        height: 242,
-                        image: value.topPicks?[index].image??"",
-                        title: value.topPicks?[index].name??"",
-                      );
-                    },
-                  ),
+                child: ListView.builder(
+                  itemCount: value.topPicks?.length,
+                  scrollDirection: Axis.horizontal,
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    return Products(
+                      height: 242,
+                      image: value.topPicks?[index].image??"",
+                      title: value.topPicks?[index].name??"",
+                    );
+                  },
                 ),
               ),
         ),

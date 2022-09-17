@@ -1,5 +1,5 @@
-import 'package:clickoncustomer/components/login_screen.dart';
 import 'package:clickoncustomer/routes.dart';
+import 'package:clickoncustomer/screens/login_screen.dart';
 import 'package:clickoncustomer/screens/test-screen.dart';
 import 'package:clickoncustomer/screens/web/home/home-screen-web.dart';
 import 'package:clickoncustomer/utils/custom-scroll.dart';

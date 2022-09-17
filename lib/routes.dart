@@ -6,7 +6,7 @@ import 'package:clickoncustomer/screens/web/review-order/review-order-screen.dar
 import 'package:clickoncustomer/screens/web/your-account/your-account-web.dart';
 import 'package:flutter/material.dart';
 
-import 'components/otp-screen.dart';
+import 'screens/otp-screen.dart';
 
 class AppRoutes {
   Map<String, Widget Function(BuildContext)> get(BuildContext context) {

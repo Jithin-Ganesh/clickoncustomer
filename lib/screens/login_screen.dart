@@ -1,4 +1,4 @@
-import 'package:clickoncustomer/components/otp-screen.dart';
+import 'package:clickoncustomer/screens/otp-screen.dart';
 import 'package:clickoncustomer/utils/constants/color.dart';
 import 'package:clickoncustomer/utils/constants/fontstyles.dart';
 import 'package:clickoncustomer/utils/constants/images.dart';

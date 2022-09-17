@@ -12,7 +12,7 @@ import '../utils/constants/fontstyles.dart';
 import '../utils/constants/images.dart';
 import '../utils/constants/strings.dart';
 import '../utils/img-provider.dart';
-import 'otp-editing-controller.dart';
+import '../components/otp-editing-controller.dart';
 
 class OtpScreen extends StatefulWidget {
   static const routeName = "/otp";
@@ -197,7 +197,9 @@ class _OtpScreenState extends State<OtpScreen> {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10)),
                         child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pushNamedAndRemoveUntil(context, HomeScreenWeb.routeName, (route) => false);
+                            },
                             child: Text(
                               textSignIn,
                               style: medium.copyWith(

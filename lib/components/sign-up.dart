@@ -6,7 +6,7 @@ import '../utils/constants/fontstyles.dart';
 import '../utils/constants/images.dart';
 import '../utils/constants/strings.dart';
 import '../utils/img-provider.dart';
-import 'otp-screen.dart';
+import '../screens/otp-screen.dart';
 
 class SignUp extends StatelessWidget {
   const SignUp({Key? key}) : super(key: key);

@@ -27,6 +27,7 @@ import 'just-launched.dart';
 
 class HomeScreenWeb extends StatefulWidget {
   static const routeName = '/home-screen-web';
+
   const HomeScreenWeb({Key? key}) : super(key: key);
 
   @override
@@ -68,8 +69,8 @@ class _HomeScreenWebState extends State<HomeScreenWeb> {
       desktop: Scaffold(
         backgroundColor: bgColor.withOpacity(0.3),
         appBar: const PreferredSize(
-            preferredSize: Size.fromHeight(175), child:  WebNavBar2()),
-        body:  FutureBuilder(
+            preferredSize: Size.fromHeight(175), child: WebNavBar2()),
+        body: FutureBuilder(
           future: context.read<CategoryProvider>().fetchHome(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
@@ -106,7 +107,8 @@ class WebHomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<CategoryProvider>(builder: (context, value, child) => SingleChildScrollView(
+    return Consumer<CategoryProvider>(
+      builder: (context, value, child) => SingleChildScrollView(
         child: Column(
           children: [
             Padding(
@@ -128,17 +130,18 @@ class WebHomeScreen extends StatelessWidget {
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    mainAxisSize: MainAxisSize.min,
                     children: [
-                      Container(
-                        decoration: containerDecoration,
-                        constraints: BoxConstraints(
-                          minWidth: MediaQuery.of(context).size.width * 0.20,
-                          maxWidth: MediaQuery.of(context).size.width * 0.50,
-
+                      Flexible(
+                        child: Container(
+                          decoration: containerDecoration,
+                          // constraints: BoxConstraints(
+                          //   minWidth: MediaQuery.of(context).size.width * 0.20,
+                          //   maxWidth: MediaQuery.of(context).size.width * 0.50,
+                          // ),
+                          child: const TopPicks(),
                         ),
-                        child: const TopPicks(),
                       ),
+                      SizedBox(width: 20,),
                       ExlusiveOffer()
                     ],
                   ),
@@ -152,7 +155,11 @@ class WebHomeScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('Best Selling Products',style: medium.copyWith(color: Colors.black,fontSize: 28),),
+                      Text(
+                        'Best Selling Products',
+                        style:
+                            medium.copyWith(color: Colors.black, fontSize: 28),
+                      ),
                     ],
                   ),
                   const SizedBox(
@@ -181,7 +188,7 @@ class WebHomeScreen extends StatelessWidget {
                   const SizedBox(
                     height: 12,
                   ),
-                   JustLaunchedList(justLaunched: value.justLaunched ?? []),
+                  JustLaunchedList(justLaunched: value.justLaunched ?? []),
                   const SizedBox(
                     height: 55,
                   ),
@@ -189,7 +196,9 @@ class WebHomeScreen extends StatelessWidget {
                   const SizedBox(
                     height: 12,
                   ),
-                  BestSelling(products: value.products ?? [],),
+                  BestSelling(
+                    products: value.products ?? [],
+                  ),
                   const SizedBox(
                     height: 25,
                   ),
@@ -204,7 +213,9 @@ class WebHomeScreen extends StatelessWidget {
                   const SizedBox(
                     height: 12,
                   ),
-                  FashionStore(products: value.products ?? [],),
+                  FashionStore(
+                    products: value.products ?? [],
+                  ),
                   const SizedBox(
                     height: 55,
                   ),
@@ -213,8 +224,8 @@ class WebHomeScreen extends StatelessWidget {
                     children: [
                       Text(
                         'Recently Viewed Products',
-                        style: medium.copyWith(
-                            color: Colors.black, fontSize: 28),
+                        style:
+                            medium.copyWith(color: Colors.black, fontSize: 28),
                         textAlign: TextAlign.left,
                       ),
                       Text(
@@ -248,57 +259,59 @@ class ExlusiveOffer extends StatelessWidget {
   Widget build(BuildContext context) {
     return ConstrainedBox(
       constraints: BoxConstraints(
-        minWidth: MediaQuery.of(context).size.width * 0.30,
-        maxWidth: MediaQuery.of(context).size.width * 0.30,
-
+        minWidth: MediaQuery.of(context).size.width * 0.28,
+        maxWidth: MediaQuery.of(context).size.width * 0.28,
       ),
-
       child: Column(
         children: [
           Container(
             height: 230,
             width: MediaQuery.of(context).size.width * 0.28,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                // image: const DecorationImage(
-                //     image: AssetImage(
-                //         "assets/images/dummy/image-exclusive.png"))
+              borderRadius: BorderRadius.circular(10),
+              // image: const DecorationImage(
+              //     image: AssetImage(
+              //         "assets/images/dummy/image-exclusive.png"))
             ),
-                     child:  ImgProvider( url: "assets/images/dummy/image-exclusive.png",height: 230,width: MediaQuery.of(context).size.width * 0.28,boxFit: BoxFit.fill,),
-                    ),
+            child: ImgProvider(
+              url: "assets/images/dummy/image-exclusive.png",
+              height: 230,
+              width: MediaQuery.of(context).size.width * 0.28,
+              boxFit: BoxFit.fill,
+            ),
+          ),
           Container(
             height: 135,
             width: MediaQuery.of(context).size.width * 0.28,
             decoration: BoxDecoration(
-                color: canvasColor,
-                borderRadius: BorderRadius.circular(10)),
+                color: canvasColor, borderRadius: BorderRadius.circular(10)),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment:
-                  MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 const ImgProvider(
                   url: "assets/images/dummy/image-qr.png",
                   height: 74,
                   width: 74,
                 ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Enjoy Fast, Simple hassle free Shopping',
-                      style: regular.copyWith(
-                          color: exclusiveOfferSubtextColor,
-                          fontSize: 16),
-                    ),
-                    Text(
-                      'Enjoy Fast, Simple hassle free Shopping',
-                      style: thin.copyWith(
-                          color: exclusiveOfferSubtextColor,
-                          fontSize: 14),
-                    ),
-                  ],
+                SizedBox(width: 5,),
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Enjoy Fast, Simple hassle free Shopping',
+                        style: regular.copyWith(
+                            color: exclusiveOfferSubtextColor, fontSize: 16),
+                      ),
+                      Text(
+                        'Enjoy Fast, Simple hassle free Shopping',
+                        style: thin.copyWith(
+                            color: exclusiveOfferSubtextColor, fontSize: 14),
+                      ),
+                    ],
+                  ),
                 )
               ],
             ),

@@ -7,6 +7,7 @@ import '../../../utils/constants/fontstyles.dart';
 
 class HomeCategoryList extends StatelessWidget {
   final List<Categories>? categories;
+
   const HomeCategoryList({Key? key, required this.categories})
       : super(key: key);
 
@@ -17,40 +18,45 @@ class HomeCategoryList extends StatelessWidget {
       child: Container(
         height: 120,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Expanded(
+            Flexible(
               child: SizedBox(
                   height: 100,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
+                    shrinkWrap: true,
                     itemBuilder: (context, index) => Padding(
-                      padding: const EdgeInsets.only(right: 59.0),
+                      padding: EdgeInsets.only(
+                          right: categories?.length == index + 1 ? 0 : 59.0),
                       child: HomeCategoryListItem(category: categories?[index]),
                     ),
                     itemCount: categories?.length,
                   )),
             ),
-            Column(
-              children: [
-                CircleAvatar(
-                  radius: 35,
-                  child: Center(
-                      child: Image.asset(
-                    "assets/images/icon-arrow-right.png",
-                    width: 16,
-                    height: 15,
-                  )),
-                  backgroundColor: textOnClickColor,
-                ),
-                SizedBox(
-                  height: 4,
-                ),
-                Text(
-                  'More',
-                  style: thin.copyWith(fontSize: 14, color: Colors.black),
-                )
-              ],
+            Padding(
+              padding: const EdgeInsets.only(left: 59),
+              child: Column(
+                children: [
+                  CircleAvatar(
+                    radius: 35,
+                    child: Center(
+                        child: Image.asset(
+                      "assets/images/icon-arrow-right.png",
+                      width: 16,
+                      height: 15,
+                    )),
+                    backgroundColor: textOnClickColor,
+                  ),
+                  SizedBox(
+                    height: 4,
+                  ),
+                  Text(
+                    'More',
+                    style: thin.copyWith(fontSize: 14, color: Colors.black),
+                  )
+                ],
+              ),
             ),
           ],
         ),
@@ -61,6 +67,7 @@ class HomeCategoryList extends StatelessWidget {
 
 class HomeCategoryListItem extends StatelessWidget {
   final Categories? category;
+
   const HomeCategoryListItem({Key? key, required this.category})
       : super(key: key);
 
