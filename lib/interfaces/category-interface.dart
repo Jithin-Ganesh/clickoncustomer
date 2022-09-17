@@ -102,6 +102,23 @@ class SampleInterface {
   }
 
 
+  static Future<List<Categories>?> fetchProductImages() async {
+    try {
+      // final response = await ApiRequest.send(
+      //   method: ApiMethod.GET,
+      //   body: {},
+      //   route: "category",
+      //   queries: {},
+      // );
+
+      return Categories.convertToList(productDetails["topPick"]);
+    } catch (error) {
+      print("fetching categories error: $error");
+      return [];
+    }
+  }
+
+
 
   static Map<String, dynamic> testCategories = {
     "success": true,
@@ -330,6 +347,37 @@ class SampleInterface {
         "id": 7,
         "name": "Smartphones",
         "image":   "assets/images/dummy/recently-7.png",
+      },
+    ]
+  };
+
+  static Map<String, dynamic> productDetails = {
+    "success": true,
+    "topPick": [
+      {
+        "id": 1,
+        "name": "Watches",
+        "image":   "assets/images/dummy/image-baby-detail.png",
+      },
+      {
+        "id": 2,
+        "name": "Footwear",
+        "image":   "assets/images/dummy/image-baby-2.png",
+      },
+      {
+        "id": 3,
+        "name": "Bags & Luggage",
+        "image":   "assets/images/dummy/image-baby-3.png",
+      },
+      {
+        "id": 4,
+        "name": "Clothing",
+        "image":   "assets/images/dummy/image-baby-4.png",
+      },
+      {
+        "id": 5,
+        "name": "Smartphones",
+        "image":   "assets/images/dummy/image-baby-2.png",
       },
     ]
   };

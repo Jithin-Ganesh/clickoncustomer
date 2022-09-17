@@ -12,6 +12,7 @@ class TopPicks extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.max,
       children: [
         SizedBox(height: 12,),
         Row(

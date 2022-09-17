@@ -47,31 +47,25 @@ class _HomeBannerCarouselState extends State<HomeBannerCarousel> {
   @override
   Widget build(BuildContext context) {
     return Stack(
+      alignment: Alignment.bottomCenter,
       children: [
-        Container(
-          height: 460,
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(20)),
-          ),
-          width: MediaQuery.of(context).size.width * 0.85,
-          child: CarouselSlider(
-            options: CarouselOptions(
-                autoPlay: true,
-                aspectRatio: 4,
-                enlargeCenterPage: true,
-                viewportFraction: 1,
-                onPageChanged: (index, reason) {
-                  setState(() {
-                    currentPage = index;
-                  });
-                }),
-            items: imageSliders,
-          ),
+        CarouselSlider(
+          options: CarouselOptions(
+              autoPlay: true,
+              aspectRatio: 3,
+              enlargeCenterPage: true,
+              viewportFraction: 1,
+              onPageChanged: (index, reason) {
+                setState(() {
+                  currentPage = index;
+                });
+              }),
+          items: imageSliders,
         ),
-        Positioned(
-          bottom: 20,
-          left: 500,
+        Padding(
+          padding: const EdgeInsets.only(bottom: 20),
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: imgList
                 .asMap()
                 .map((i, item) => MapEntry(
@@ -79,13 +73,6 @@ class _HomeBannerCarouselState extends State<HomeBannerCarousel> {
                 .values
                 .toList(),
           ),
-          // child: Row(
-          //   children: imgList.map(
-          //         (e) {
-          //       return ImageIndicators(currentPage: currentPage, index: currentPage);
-          //     },
-          //   ).toList(),
-          // ),
         )
       ],
     );
@@ -106,7 +93,7 @@ class ImageIndicators extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 100,
+      width: MediaQuery.of(context).size.width * 0.052,
       height: 3,
       margin: const EdgeInsets.symmetric(horizontal: 4.0),
       decoration: BoxDecoration(

@@ -51,7 +51,7 @@ class _CartScreenWebState extends State<CartScreenWeb> {
         ),
       ),
       desktop: Scaffold(
-        backgroundColor: bgColor.withOpacity(0.3),
+        backgroundColor: bgColor2,
         appBar: const PreferredSize(
             preferredSize: Size.fromHeight(175), child:  WebNavBar2()),
         body: Consumer<CategoryProvider>(builder: (context, value, child) => SingleChildScrollView(
@@ -84,7 +84,7 @@ class _CartScreenWebState extends State<CartScreenWeb> {
                              ],
                            ),
                          ),
-                         ZigZagSheet(),
+                         ZigZagSheet(isCoupon: false,),
                        ],
                      ),
                       SizedBox(height: 118,),

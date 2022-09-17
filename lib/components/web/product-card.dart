@@ -44,9 +44,11 @@ class ProductCard extends StatelessWidget {
                   child: Container(
                     height: 23,
                     width: 76,
-                    child: Text(
-                      'On Sale',
-                      style: medium.copyWith(fontSize: 12, color: bottomAppColor,),textAlign: TextAlign.center,
+                    child: Center(
+                      child: Text(
+                        'On Sale',
+                        style: medium.copyWith(fontSize: 12, color: bottomAppColor,),textAlign: TextAlign.center,
+                      ),
                     ),
                     decoration: BoxDecoration(
                         color: onSaleColor,

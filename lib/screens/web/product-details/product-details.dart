@@ -35,7 +35,9 @@ class ProductDetails extends StatelessWidget {
                 Row(
                   children: [
                     SizedBox(
-                        height: 18, width: 17, child: Icon(Icons.share_outlined)),
+                        height: 18,
+                        width: 17,
+                        child: Icon(Icons.share_outlined)),
                     SizedBox(
                       width: 21,
                     ),
@@ -47,6 +49,7 @@ class ProductDetails extends StatelessWidget {
                 )
               ],
             ),
+            SizedBox(height: 8,),
             Row(
               children: [
                 RatingBox(),
@@ -60,12 +63,17 @@ class ProductDetails extends StatelessWidget {
                 )
               ],
             ),
-            SizedBox(height: 13,),
+            SizedBox(
+              height: 13,
+            ),
             Text(
               'Brand: Pampers',
-              style: thin.copyWith(color: productAvailabilityColor, fontSize: 14),
+              style:
+                  thin.copyWith(color: productAvailabilityColor, fontSize: 14),
             ),
-            SizedBox(height: 19,),
+            SizedBox(
+              height: 19,
+            ),
             Row(
               children: [
                 Container(
@@ -74,17 +82,21 @@ class ProductDetails extends StatelessWidget {
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: Colors.black,
-
                   ),
                 ),
-                SizedBox(width: 10,),
+                SizedBox(
+                  width: 10,
+                ),
                 Text(
                   'Clinically proven hypoallergenic',
-                  style: thin.copyWith(color: productAvailabilityColor, fontSize: 14),
+                  style: thin.copyWith(
+                      color: productAvailabilityColor, fontSize: 14),
                 ),
               ],
             ),
-            SizedBox(height: 22,),
+            SizedBox(
+              height: 22,
+            ),
             Row(
               children: [
                 Container(
@@ -93,16 +105,24 @@ class ProductDetails extends StatelessWidget {
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: Colors.black,
-
                   ),
                 ),
-                SizedBox(width: 10,),
-                Text(
-                  'Pampers Pure Protection Diapers are made without chlorine bleaching, fragrance, lotion, parabens, and EU 26 allergens',
-                  style: thin.copyWith(color: productAvailabilityColor, fontSize: 14),
+                SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                  child: Text(
+                    'Pampers Pure Protection Diapers are made without chlorine bleaching, fragrance, lotion, parabens, and EU 26 allergens',
+                    style: thin.copyWith(
+                        color: productAvailabilityColor, fontSize: 14),
+                    maxLines: 1,
+                  ),
                 ),
               ],
-            ),  SizedBox(height: 22,),
+            ),
+            SizedBox(
+              height: 22,
+            ),
             Row(
               children: [
                 Container(
@@ -111,16 +131,21 @@ class ProductDetails extends StatelessWidget {
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: Colors.black,
-
                   ),
                 ),
-                SizedBox(width: 10,),
+                SizedBox(
+                  width: 10,
+                ),
                 Text(
                   ' Made with premium cotton, soft plant-based fibers, and other thoughtfully selected materials',
-                  style: thin.copyWith(color: productAvailabilityColor, fontSize: 14),
+                  style: thin.copyWith(
+                      color: productAvailabilityColor, fontSize: 14),
                 ),
               ],
-            ),  SizedBox(height: 22,),
+            ),
+            SizedBox(
+              height: 22,
+            ),
             Row(
               children: [
                 Container(
@@ -129,13 +154,15 @@ class ProductDetails extends StatelessWidget {
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: Colors.black,
-
                   ),
                 ),
-                SizedBox(width: 10,),
+                SizedBox(
+                  width: 10,
+                ),
                 Text(
                   'Clinically proven hypoallergenic',
-                  style: thin.copyWith(color: productAvailabilityColor, fontSize: 14),
+                  style: thin.copyWith(
+                      color: productAvailabilityColor, fontSize: 14),
                 ),
               ],
             ),
@@ -144,15 +171,16 @@ class ProductDetails extends StatelessWidget {
             ),
             Text(
               'Choose Count',
-              style:
-                  regular.copyWith(color: productAvailabilityColor, fontSize: 20),
+              style: regular.copyWith(
+                  color: productAvailabilityColor, fontSize: 20),
             ),
             SizedBox(
               height: 10,
             ),
             Container(
               height: 41,
-              child: ListView.builder(scrollDirection: Axis.horizontal,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) => CountBox(
                   count: '70',
                 ),
@@ -164,26 +192,25 @@ class ProductDetails extends StatelessWidget {
             ),
             Text(
               'Available Offers',
-              style:
-              regular.copyWith(color: productAvailabilityColor, fontSize: 20),
+              style: regular.copyWith(
+                  color: productAvailabilityColor, fontSize: 20),
             ),
             SizedBox(
               height: 10,
             ),
-           Expanded(
-             child: Container(
-               height: 260,
-               child: ListView(
-                 shrinkWrap: true,
-                 children: [
-                   AvailableOffers(),
-                   AvailableOffers(),
-                   AvailableOffers(),
-                 ],
-               ),
-             ),
-           ),
-
+            Expanded(
+              child: Container(
+                height: 260,
+                child: ListView(
+                  shrinkWrap: true,
+                  children: [
+                    AvailableOffers(),
+                    AvailableOffers(),
+                    AvailableOffers(),
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),

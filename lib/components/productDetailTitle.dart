@@ -1,3 +1,5 @@
+import 'package:clickoncustomer/components/web/discount-box.dart';
+import 'package:clickoncustomer/components/web/rating-box.dart';
 import 'package:clickoncustomer/utils/constants/color.dart';
 import 'package:clickoncustomer/utils/constants/fontstyles.dart';
 import 'package:clickoncustomer/utils/constants/images.dart';
@@ -19,23 +21,37 @@ class ProductDetailTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
+    return Container(
       color: primaryColor,
       width: MediaQuery.of(context).size.width * 1,
       height: 98,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 160.0),
-        child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-          Row(mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                // IconButton(
-                //     onPressed: () {},
-                //     icon: Stack(children: )),
-                Text(
-                  itemDescription,
-                  style: medium.copyWith(fontSize: 24, color: defaultTextColor),
+        child:
+            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+          Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+            IconButton(
+              onPressed: () {},
+              icon: Container(
+                height: 37,
+                width: 37,
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(color: canvasColor.withOpacity(0.5))),
+                child: const Center(
+                  child: Icon(
+                    Icons.keyboard_arrow_left,
+                    color: canvasColor,
+                  ),
                 ),
-              ]),
+              ),
+            ),
+            SizedBox(width: 30,),
+            Text(
+              itemDescription,
+              style: medium.copyWith(fontSize: 24, color: defaultTextColor),
+            ),
+          ]),
           Row(
             children: [
               Column(
@@ -43,53 +59,11 @@ class ProductDetailTitle extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Stack(children: [
-                        Image.asset(
-                          ratingBoxImage,
-                          width: 61,
-                          height: 22,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 10),
-                          child: Row(
-                            children: [
-                              Image.asset(
-                                ratingStarImage,
-                                width: 13,
-                                height: 12,
-                              ),
-                              const SizedBox(
-                                width: 3,
-                              ),
-                              Text(
-                                rating,
-                                style: medium.copyWith(
-                                    color: defaultTextColor, fontSize: 14),
-                              )
-                            ],
-                          ),
-                        )
-                      ]),
+                      const RatingBox(),
                       const SizedBox(
                         width: 7,
                       ),
-                      Stack(
-                        children: [
-                          Image.asset(
-                            discountBoxImage,
-                            width: 49,
-                            height: 22,
-                          ),
-                          Positioned(
-                            left: 12,
-                            child: Text(
-                              discount,
-                              style: medium.copyWith(
-                                  color: primaryColor, fontSize: 14),
-                            ),
-                          )
-                        ],
-                      ),
+                      const DiscountBox(),
                       const SizedBox(
                         width: 13,
                       ),
@@ -126,7 +100,10 @@ class ProductDetailTitle extends StatelessWidget {
                     ],
                   )
                 ],
-              ),SizedBox(width: 16,),
+              ),
+              const SizedBox(
+                width: 16,
+              ),
               Container(
                 height: 40,
                 width: 92,
@@ -156,14 +133,14 @@ class ProductDetailTitle extends StatelessWidget {
                         ),
                         items: items
                             .map((item) => DropdownMenuItem<String>(
-                          value: item,
-                          child: Text(
-                            item,
-                            style: const TextStyle(
-                              fontSize: 14,
-                            ),
-                          ),
-                        ))
+                                  value: item,
+                                  child: Text(
+                                    item,
+                                    style: const TextStyle(
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ))
                             .toList(),
                         value: selectedValue,
                         onChanged: (value) {
@@ -188,7 +165,7 @@ class ProductDetailTitle extends StatelessWidget {
                   style: medium.copyWith(fontSize: 16, color: primaryColor),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 14,
               ),
               Container(
@@ -203,7 +180,8 @@ class ProductDetailTitle extends StatelessWidget {
                   ),
                   child: Text(
                     addToCart,
-                    style: medium.copyWith(color: defaultTextColor, fontSize: 16),
+                    style:
+                        medium.copyWith(color: defaultTextColor, fontSize: 16),
                   ),
                 ),
               ),

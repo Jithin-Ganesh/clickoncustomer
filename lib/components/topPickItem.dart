@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:clickoncustomer/providers/category-provider.dart';
+import 'package:clickoncustomer/utils/constants/color.dart';
 import 'package:clickoncustomer/utils/img-provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -15,12 +16,12 @@ class TopPickItem extends StatefulWidget {
 }
 
 class _TopPickItemState extends State<TopPickItem> {
-  late CarouselController controller;
+  late ScrollController _scrollController;
 
   @override
   void initState() {
     // TODO: implement initState
-    controller = CarouselController();
+    _scrollController = ScrollController();
     super.initState();
   }
 
@@ -32,14 +33,10 @@ class _TopPickItemState extends State<TopPickItem> {
           builder: (context, value, child) =>
               SizedBox(
                 height: 250,
-
                 child: ListView.builder(
                   itemCount: value.topPicks?.length,
                   scrollDirection: Axis.horizontal,
                   shrinkWrap: true,
-                  // prototypeItem: ListTile(
-                  //   title: Text('items.first'),
-                  // ),
                   itemBuilder: (context, index) {
                     return Products(
                       height: 242,
@@ -77,25 +74,24 @@ class _TopPickItemState extends State<TopPickItem> {
             right: 0,
             child: InkWell(
               onTap: () {
-                controller.previousPage();
+
               },
               child: Container(
                 height: 37,
                 width: 37,
+                child: Icon(Icons.keyboard_arrow_right_outlined),
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 3,
-                        blurRadius: 5,
-                        offset: Offset(0, 3), // changes position of shadow
-                      ),
-                    ],
-                    image: DecorationImage(
-                        image: AssetImage(
-                            "assets/images/icon-arrow-right-circle.png"),
-                        fit: BoxFit.fitHeight)),
+                    color: canvasColor
+                    // boxShadow: [
+                    //   BoxShadow(
+                    //     color: Colors.grey.withOpacity(0.5),
+                    //     spreadRadius: 3,
+                    //     blurRadius: 5,
+                    //     offset: Offset(0, 3), // changes position of shadow
+                    //   ),
+                    // ],
+                    ),
               ),
             )),
         Positioned(
@@ -103,25 +99,23 @@ class _TopPickItemState extends State<TopPickItem> {
             left: 0,
             child: InkWell(
               onTap: () {
-                controller.nextPage();
+
               },
               child: Container(
                 height: 37,
-                width: 37,
+                width: 37, child: Icon(Icons.keyboard_arrow_left_outlined),
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 3,
-                        blurRadius: 5,
-                        offset: Offset(0, 3), // changes position of shadow
-                      ),
-                    ],
-                    image: DecorationImage(
-                        image: AssetImage(
-                            "assets/images/icon-arrow-left-rounded.png"),
-                        fit: BoxFit.contain)),
+                    color: canvasColor
+                    // boxShadow: [
+                    //   BoxShadow(
+                    //     color: Colors.grey.withOpacity(0.5),
+                    //     spreadRadius: 3,
+                    //     blurRadius: 5,
+                    //     offset: Offset(0, 3), // changes position of shadow
+                    //   ),
+                    // ],
+                  ),
               ),
             )),
       ],

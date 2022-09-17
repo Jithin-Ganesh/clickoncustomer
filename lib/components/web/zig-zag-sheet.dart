@@ -3,17 +3,24 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 
+import '../../screens/web/review-order/review-order-screen.dart';
 import '../../utils/constants/color.dart';
 import '../../utils/constants/fontstyles.dart';
 import '../elevated-buton.dart';
 
-class ZigZagSheet extends StatelessWidget {
-  const ZigZagSheet({Key? key}) : super(key: key);
+class ZigZagSheet extends StatefulWidget {
+  final bool isCoupon;
+  const ZigZagSheet({Key? key, required this.isCoupon}) : super(key: key);
 
+  @override
+  State<ZigZagSheet> createState() => _ZigZagSheetState();
+}
+
+class _ZigZagSheetState extends State<ZigZagSheet> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 371,
+      width: MediaQuery.of(context).size.width * 0.193,
       child: ClipPath(
           clipper: MovieTicketBothSidesClipper(),
           child: Container(
@@ -30,7 +37,9 @@ class ZigZagSheet extends StatelessWidget {
                       height: 40,
                       width: 310,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(context, ReviewOrderScreenWeb.routeName);
+                        },
                         child: Text(
                           'Proceed to Buy',
                           style:
@@ -38,14 +47,6 @@ class ZigZagSheet extends StatelessWidget {
                         ),
                       ),
                     ),
-                    // ButtonElevated(
-                    //   buttonTitle: 'Proceed to Buy',
-                    //   height: 40,
-                    //   width: 310,
-                    //   color: primaryColor,
-                    //   textStyle:
-                    //       medium.copyWith(color: canvasColor, fontSize: 16),
-                    // ),
                     SizedBox(
                       height: 30,
                     ),
@@ -60,7 +61,7 @@ class ZigZagSheet extends StatelessWidget {
                     ),
                     Divider(
                       thickness: 1,
-                      color: dividerColor2,
+                      color: dividerColor4,
                     ),
                     SizedBox(
                       height: 22,
@@ -79,8 +80,52 @@ class ZigZagSheet extends StatelessWidget {
                     ),
                     Divider(
                       thickness: 1,
-                      color: dividerColor2,
+                      color: dividerColor4,
                     ),
+                     Visibility(
+                       visible: widget.isCoupon,
+                       child: Column(
+                        children: [
+                          SizedBox(height: 18,),
+                          Row(children: [
+                            Text('I Have a ',  style: thin.copyWith(color: priceDetailsSubTextColor, fontSize: 14),),
+                            Text('Coupon Code ',  style: regular.copyWith(color: couponCodeColor, fontSize: 14),),
+                            Icon(Icons.keyboard_arrow_up,size: 8,)
+                          ],),
+                          SizedBox(height: 10,),
+                          Row(
+                            children: [
+                              Container(
+                                width: 214,
+                                height: 45,
+                                child: TextField(
+                                  decoration: new InputDecoration(
+                                    focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(color:  borderColor2, width: 1.0),
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(color: borderColor2, width: 1.0),
+                                    ),
+                                    hintText: 'Enter Code',
+                                    hintStyle: thin.copyWith(color: hintColor,fontSize: 14)
+                                  ),
+                                ),
+                              ),
+                              SizedBox(width: 7,),
+                              SizedBox(
+                                  height: 45,
+                                  width: 89,
+                                  child: OutlinedButton(onPressed: (){}, child: Text('Apply',style: medium.copyWith(color: hintColor),)))
+                            ],
+                          ),
+                          SizedBox(height: 60,),
+                          Divider(
+                            thickness: 1,
+                            color: dividerColor4,
+                          ),
+                        ],
+                    ),
+                     ) ,
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [

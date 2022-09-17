@@ -72,7 +72,7 @@ class _ProductDetailScreenWebState extends State<ProductDetailScreenWeb> {
                   children: [
                     Flexible(flex: 1, child: ImageDetailsWeb()),
                     SizedBox(width: 80,),
-                    Flexible(flex: 2, child: ProductDetails())
+                    Flexible(flex: 1, child: ProductDetails())
                   ],
                 ),
                 SizedBox(

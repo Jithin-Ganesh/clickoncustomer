@@ -20,102 +20,129 @@ class BottomWebBar extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    BottomWebBarItem(
-                      image: "assets/images/icon-truck.png",
-                      title: 'Worldwide shipping',
-                      description:
-                          'We ship to over 200 countries and regions world wide',
-                      width: 64,
-                      height: 40,
-                    ),
-                    BottomWebBarItem(
-                      image: "assets/images/icon-shield.png",
-                      title: 'Secure Shopping',
-                      description:
-                          'Our Buyer Protection policy covers your entire purchase journey.',
-                      height: 46.00,
-                      width: 36,
-                    ),
-                    BottomWebBarItem(
-                      image: "assets/images/icon-chat.png",
-                      title: 'Help center',
-                      description:
-                          '24x7 Support for a smooth shopping experience',
-                      width: 55,
-                      height: 50,
-                    ),
-                    BottomWebBarItem(
-                      image: "assets/images/icon-coupon.png",
-                      title: 'Great Deals',
-                      description: 'Get big savings on Exclusive Items',
-                      width: 53,
-                      height: 35,
-                    ),
-                  ],
+                Padding(
+                  padding: const EdgeInsets.only(top: 60.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      const BottomWebBarItem(
+                        image: "assets/images/icon-truck.png",
+                        title: 'Worldwide shipping',
+                        description:
+                            'We ship to over 200 countries and regions world wide',
+                        width: 64,
+                        height: 40,
+                      ),
+                      const BottomWebBarItem(
+                        image: "assets/images/icon-shield.png",
+                        title: 'Secure Shopping',
+                        description:
+                            'Our Buyer Protection policy covers your entire purchase journey.',
+                        height: 46.00,
+                        width: 36,
+                      ),
+                      const BottomWebBarItem(
+                        image: "assets/images/icon-chat.png",
+                        title: 'Help center',
+                        description:
+                            '24x7 Support for a smooth shopping experience',
+                        width: 55,
+                        height: 50,
+                      ),
+                      const BottomWebBarItem(
+                        image: "assets/images/icon-coupon.png",
+                        title: 'Great Deals',
+                        description: 'Get big savings on Exclusive Items',
+                        width: 53,
+                        height: 35,
+                      ),
+                    ],
+                  ),
                 ),
-                Divider(
+                const Divider(
                   height: 2,
                   color: dividerColor2,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'NEED HELP?',
-                          style: regular.copyWith(
-                              color: primaryColor, fontSize: 18),
+                SizedBox(height: 80,),
+                Expanded(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Flexible(
+                        flex: 1,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'NEED HELP?',
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: regular.copyWith(
+                                  color: primaryColor, fontSize: 18),
+                            ),
+                            Text(
+                              '(+91) 2340 056 789, (+91) 123 456',
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: regular.copyWith(
+                                  color: contactSubtextColor, fontSize: 24),
+                            ),
+                          ],
                         ),
-                        Text(
-                          '(+91) 2340 056 789, (+91) 123 456',
-                          style: regular.copyWith(
-                              color: contactSubtextColor, fontSize: 24),
+                      ),
+                      Flexible(
+                        flex: 1,
+                        child: Column(
+                          children: [
+                            const ImgProvider(
+                              url: "assets/images/clickOn-logo.png",
+                              height: 59,
+                              width: 96,
+                            ),
+                            Text(
+                              'Click On Offers',
+                              style: regular.copyWith(
+                                  color: contactSubtextColor, fontSize: 24),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        ImgProvider(
-                          url: "assets/images/clickOn-logo.png",
-                          height: 59,
-                          width: 96,
+                      ),
+                      Flexible(
+                        flex: 1,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Text(
+                              'Contact Us',
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: regular.copyWith(
+                                  color: primaryColor, fontSize: 18),
+                            ),
+                            Text(
+                              'query@clickonoffers.com',
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: regular.copyWith(
+                                  color: contactSubtextColor, fontSize: 24),
+                            ),
+                          ],
                         ),
-                        Text(
-                          '(+91) 2340 056 789, (+91) 123 456',
-                          style: regular.copyWith(
-                              color: contactSubtextColor, fontSize: 24),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Text(
-                          'Contact Us',
-                          style: regular.copyWith(
-                              color: primaryColor, fontSize: 18),
-                        ),
-                        Text(
-                          'query@clickonoffers.com',
-                          style: regular.copyWith(
-                              color: contactSubtextColor, fontSize: 24),
-                        ),
-                      ],
-                    ),
-                  ],
+                      ),
+                    ],
+                  ),
                 )
               ],
             ),
           ),
         ),
-        About(),
-        Privacy()
+        const About(),
+        const Privacy()
       ],
     );
   }
@@ -143,7 +170,7 @@ class Privacy extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  ImgProvider(
+                  const ImgProvider(
                     url: "assets/images/icon-globe.png",
                     height: 18,
                     width: 18,
@@ -152,7 +179,7 @@ class Privacy extends StatelessWidget {
                     'English',
                     style: thin.copyWith(fontSize: 14, color: Colors.black),
                   ),
-                  ImgProvider(
+                  const ImgProvider(
                     url: "assets/images/icon-up-down.png",
                     height: 12,
                     width: 7,
@@ -204,183 +231,88 @@ class About extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Shop',
-                      style: regular.copyWith(
-                          fontSize: 18, color: additionalInfoTitleColor),
+                  children: const [
+                    AboutItem(
+                      content: [
+                        'Cancellation & Return Policy',
+                        'Track Order Status',
+                        'FAQs',
+                        'Terms of Use'
+                      ],
+                      title: 'Shop',
                     ),
-                    Text(
-                      'Cancellation & Return Policy',
-                      style: thin.copyWith(fontSize: 14, color: Colors.black),
+                    VerticalDivider(
+                      width: 1,
+                      color: verticalDividerColor2,
                     ),
-                    Text(
-                      'Track Order Status',
-                      style: thin.copyWith(fontSize: 14, color: Colors.black),
+                    AboutItem(
+                      content: ['Orders', 'Wishlist', 'Vouchers', 'Returns'],
+                      title: 'My Account',
                     ),
-                    Text(
-                      'FAQs',
-                      style: thin.copyWith(fontSize: 14, color: Colors.black),
+                    VerticalDivider(
+                      width: 1,
+                      color: verticalDividerColor2,
                     ),
-                    Text(
-                      'Terms of Use',
-                      style: thin.copyWith(fontSize: 14, color: Colors.black),
+                    AboutItem(
+                      content: [
+                        'WhatsApp Us',
+                        'Email Us',
+                        'Call Us',
+                        'Give Feedback'
+                      ],
+                      title: 'Support',
                     ),
-                  ],
-                ),
-                VerticalDivider(
-                  width: 1,
-                  color: verticalDividerColor2,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'My Account',
-                      style: regular.copyWith(
-                          fontSize: 18, color: additionalInfoTitleColor),
+                    VerticalDivider(
+                      width: 1,
+                      color: verticalDividerColor2,
                     ),
-                    Text(
-                      'Orders',
-                      style: thin.copyWith(fontSize: 14, color: Colors.black),
+                    AboutItem(
+                      content: [
+                        'Company Info',
+                        'Brand Identity',
+                        'Careers',
+                        'Newsroom'
+                      ],
+                      title: 'About Us ',
                     ),
-                    Text(
-                      'Wishlist',
-                      style: thin.copyWith(fontSize: 14, color: Colors.black),
+                    VerticalDivider(
+                      width: 1,
+                      color: verticalDividerColor2,
                     ),
-                    Text(
-                      'Vouchers',
-                      style: thin.copyWith(fontSize: 14, color: Colors.black),
+                    AboutItem(
+                      content: ['Facebook', 'Twitter', 'Instagram'],
+                      title: 'Connect with Us',
                     ),
-                    Text(
-                      'Returns',
-                      style: thin.copyWith(fontSize: 14, color: Colors.black),
+                    VerticalDivider(
+                      width: 1,
+                      color: verticalDividerColor2,
                     ),
-                  ],
-                ),
-                VerticalDivider(
-                  width: 1,
-                  color: verticalDividerColor2,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Support',
-                      style: regular.copyWith(
-                          fontSize: 18, color: additionalInfoTitleColor),
+                    AboutItem(
+                      content: [
+                        'Download the app Enjoy Fast, Simple',
+                        'hassle free Shopping'
+                      ],
+                      title: 'Enjoy Hustle Free Shop',
                     ),
-                    Text(
-                      'WhatsApp Us',
-                      style: thin.copyWith(fontSize: 14, color: Colors.black),
-                    ),
-                    Text(
-                      'Email Us',
-                      style: thin.copyWith(fontSize: 14, color: Colors.black),
-                    ),
-                    Text(
-                      'Call Us',
-                      style: thin.copyWith(fontSize: 14, color: Colors.black),
-                    ),
-                    Text(
-                      'Give Feedback',
-                      style: thin.copyWith(fontSize: 14, color: Colors.black),
-                    ),
-                  ],
-                ),
-                VerticalDivider(
-                  width: 1,
-                  color: verticalDividerColor2,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'About Us ',
-                      style: regular.copyWith(
-                          fontSize: 18, color: additionalInfoTitleColor),
-                    ),
-                    Text(
-                      'Company Info',
-                      style: thin.copyWith(fontSize: 14, color: Colors.black),
-                    ),
-                    Text(
-                      'Brand Identity',
-                      style: thin.copyWith(fontSize: 14, color: Colors.black),
-                    ),
-                    Text(
-                      'Careers',
-                      style: thin.copyWith(fontSize: 14, color: Colors.black),
-                    ),
-                    Text(
-                      'Newsroom',
-                      style: thin.copyWith(fontSize: 14, color: Colors.black),
-                    ),
-                  ],
-                ),
-                VerticalDivider(
-                  width: 1,
-                  color: verticalDividerColor2,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Connect with Us',
-                      style: regular.copyWith(
-                          fontSize: 18, color: additionalInfoTitleColor),
-                    ),
-                    Text(
-                      'Facebook',
-                      style: thin.copyWith(fontSize: 14, color: Colors.black),
-                    ),
-                    Text(
-                      'Twitter',
-                      style: thin.copyWith(fontSize: 14, color: Colors.black),
-                    ),
-                    Text(
-                      'Instagram',
-                      style: thin.copyWith(fontSize: 14, color: Colors.black),
-                    ),
-                  ],
-                ),
-                VerticalDivider(
-                  width: 1,
-                  color: verticalDividerColor2,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Enjoy Hustle Free Shop',
-                      style: regular.copyWith(
-                          fontSize: 18, color: additionalInfoTitleColor),
-                    ),
-                    Text(
-                      'Download the app Enjoy Fast, Simple',
-                      style: thin.copyWith(fontSize: 14, color: Colors.black),
-                    ),
-                    Text(
-                      'hassle free Shopping',
-                      style: thin.copyWith(fontSize: 14, color: Colors.black),
-                    ),
-                  ],
-                ),
-              ]),
-              Divider(
+                  ]),
+              const Divider(
                 height: 1,
                 color: verticalDividerColor2,
               ),
               Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    'Shopfor: Mens Footwear  | Womens Footwear  |  Sarees  |  Casual Shoes  |  Mens Watches  |  Womens Casual Shoes  |  Frocks  |  Women Suits  |  Tops & Tunics  |  Gowns  |  Watches  |  ',
-                    style: thin.copyWith(fontSize: 14, color: Colors.black),
+                  Expanded(
+                    child: Text(
+                      'Shopfor: Mens Footwear  | Womens Footwear  |  Sarees  |  Casual Shoes  |  Mens Watches  |  Womens Casual Shoes  |  Frocks  |  Women Suits  |  Tops & Tunics  |  Gowns  |  Watches  |  ',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: thin.copyWith(fontSize: 14, color: Colors.black),
+                    ),
                   ),
                   Container(
                     height: 18,
@@ -388,13 +320,53 @@ class About extends StatelessWidget {
                     decoration: BoxDecoration(
                         color: dropDownColor2,
                         borderRadius: BorderRadius.circular(20)),
-                    child: Icon(Icons.keyboard_arrow_down_outlined),
+                    child: const Icon(Icons.keyboard_arrow_down_outlined),
                   )
                 ],
               ),
             ],
           ),
         ));
+  }
+}
+
+class AboutItem extends StatelessWidget {
+  final String title;
+  final List<String> content;
+  const AboutItem({
+    Key? key,
+    required this.title,
+    required this.content,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return FittedBox(
+      fit: BoxFit.contain,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            title,
+            style:
+                regular.copyWith(fontSize: 18, color: additionalInfoTitleColor),
+          ),
+          SizedBox(height: 32,),
+          ...content
+              .map(
+                (e) => Padding(
+                  padding: const EdgeInsets.only(bottom: 15.0),
+                  child: Text(
+                    e,
+                    style: thin.copyWith(fontSize: 14, color: Colors.black),
+                  ),
+                ),
+              )
+              .toList(),
+        ],
+      ),
+    );
   }
 }
 
@@ -417,8 +389,8 @@ class BottomWebBarItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 320,
-      height: 194,
+      width: MediaQuery.of(context).size.width * 0.16,
+      height: 150,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -428,6 +400,9 @@ class BottomWebBarItem extends StatelessWidget {
             height: height,
             width: width,
           ),
+          const SizedBox(
+            width: 48,
+          ),
           Expanded(
             child: Column(
               children: [
@@ -436,7 +411,7 @@ class BottomWebBarItem extends StatelessWidget {
                   style: regular.copyWith(
                       fontSize: 18, color: additionalInfoTitleColor),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
                 Expanded(

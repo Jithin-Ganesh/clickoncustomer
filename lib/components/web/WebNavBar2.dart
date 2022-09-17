@@ -1,5 +1,6 @@
 import 'package:clickoncustomer/screens/web/cart/cart-screen.dart';
 import 'package:clickoncustomer/screens/web/home/home-screen-web.dart';
+import 'package:clickoncustomer/screens/web/your-account/your-account-web.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -15,82 +16,91 @@ class WebNavBar2 extends StatelessWidget {
       primary: false,
       backgroundColor: canvasColor,
       elevation: 2,
-      leadingWidth: 400,
-      leading: InkWell(
-        onTap: (){
-          Navigator.pushNamed(context, HomeScreenWeb.routeName);
-        },
-        child: Column(
-          children: [
-            Image.asset(
-              'assets/images/clickOn-logo.png',
-              height: 37,
-              width: 60,
-            ),
-            Text(
-              'Click On Offers',
-              style: medium.copyWith(fontSize: 12, color: webNavTitleColor),
-            )
-          ],
-        ),
-      ),
+      leadingWidth: 0,
+      automaticallyImplyLeading: false,
+
+
       centerTitle: false,
       title: Padding(
-        padding: const EdgeInsets.only(right: 71.0),
-        child: SizedBox(
-          height: 50,
-          width: MediaQuery.of(context).size.width * 0.45,
-          child: Material(
-            elevation: 3.0,
-            shadowColor: shadowColor,
-            borderRadius: BorderRadius.circular(10),
-            child: TextFormField(
-              decoration: InputDecoration(
-                  // prefixIconConstraints:
-                  //     BoxConstraints.tight(Size.fromWidth(13)),
-                  prefixIcon: Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Image.asset(
-                      'assets/images/searchIcon.png',
-                      width: 13,
-                      height: 13,
-                    ),
+        padding: const EdgeInsets.only(left: 150),
+        child: Row(
+          children: [
+            InkWell(
+              onTap: (){
+                Navigator.pushNamed(context, HomeScreenWeb.routeName);
+              },
+              child: Column(
+                children: [
+                  Image.asset(
+                    'assets/images/clickOn-logo.png',
+                    height: 37,
+                    width: 60,
                   ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(
-                      width: 0,
-                      style: BorderStyle.none,
-                    ),
-                  ),
-                  // border: InputBorder.none,
-                  hintText: 'Search What are you looking for...',
-                  filled: true,
-                  hintStyle: thin,
-                  suffixIcon: Padding(
-                    padding: const EdgeInsets.only(right: 20.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          'All',
-                          style: medium,
-                        ),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Image.asset(
-                          'assets/images/icon-arrow-down.png',
-                          width: 8,
-                          height: 5,
-                        ),
-                      ],
-                    ),
-                  ),
-                  fillColor: Colors.white),
+                  Text(
+                    'Click On Offers',
+                    style: medium.copyWith(fontSize: 12, color: webNavTitleColor),
+                  )
+                ],
+              ),
             ),
-          ),
+            SizedBox(width: 10,),
+            Flexible(
+              child: SizedBox(
+                height: 50,
+                child: Material(
+                  elevation: 3.0,
+                  shadowColor: shadowColor2,
+                  borderRadius: BorderRadius.circular(10),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                        // prefixIconConstraints:
+                        //     BoxConstraints.tight(Size.fromWidth(13)),
+                        prefixIcon: Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: Image.asset(
+                            'assets/images/searchIcon.png',
+                            width: 13,
+                            height: 13,
+                          ),
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                          borderSide: BorderSide(
+                            width: 0,
+                            style: BorderStyle.none,
+                          ),
+                        ),
+                        // border: InputBorder.none,
+                        hintText: 'Search What are you looking for...',
+                        filled: true,
+                        hintStyle: thin,
+                        suffixIcon: Padding(
+                          padding: const EdgeInsets.only(right: 20.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                'All',
+                                style: medium,
+                              ),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Image.asset(
+                                'assets/images/icon-arrow-down.png',
+                                width: 8,
+                                height: 5,
+                              ),
+                            ],
+                          ),
+                        ),
+                        fillColor: Colors.white),
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
       actions: [
@@ -160,17 +170,22 @@ class WebNavBar2 extends StatelessWidget {
               ),
               Row(
                 children: [
-                  Container(
-                    height: 40,
-                    width: 40,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50),
-                      color: primaryColor,
-                    ),
-                    child: Icon(
-                      Icons.person_outline,
-                      size: 22,
-                      color: canvasColor,
+                  InkWell(
+                    onTap: (){
+                      Navigator.pushNamed(context, YourAccountWeb.routeName);
+                    },
+                    child: Container(
+                      height: 40,
+                      width: 40,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: primaryColor,
+                      ),
+                      child: Icon(
+                        Icons.person_outline,
+                        size: 22,
+                        color: canvasColor,
+                      ),
                     ),
                   ),
                   SizedBox(

@@ -10,6 +10,15 @@ class CategoryProvider extends ChangeNotifier {
   List<Categories>? products;
   List<Categories>? justLaunched;
   List<Categories>? recentlyAdded;
+  List<Categories>? productDetails;
+
+  Future<List<Categories>?> fetchProductImages() async {
+    productDetails = await SampleInterface.fetchProductImages();
+    notifyListeners();
+    return productDetails ?? [];
+  }
+
+
   Future<List<Categories>?> fetchCategory() async {
     categoriesList = await SampleInterface.fetchCategory();
     notifyListeners();
@@ -54,6 +63,7 @@ class CategoryProvider extends ChangeNotifier {
     await fetchTopPicks();
     await fetchCategory();
     await fetchRecentlyAdded();
+    await  fetchProductImages();
     return categoriesList ?? [];
   }
 
