@@ -34,19 +34,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: YourOrder(
-          description: textPreparingForDispatch,
-          title: textArrivingFriday,
-          itemName: textYouOrderItemName,
-          amount: textYourOrderAmount,
-          firstIcon: processingImage,
-          isArriving: false,
-          buttonStatus: false,
-          buttonText1: textTrackPackage,
-          buttonText2: textCancel,
-          itemImage: "assets/images/img_35.png",
-          secondIcon: "assets/images/img_33.png",
-        ));
+        home:YourAccount());
   }
 }
 
