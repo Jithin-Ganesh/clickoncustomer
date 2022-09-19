@@ -9,6 +9,7 @@ import '../utils/img-provider.dart';
 import '../screens/otp-screen.dart';
 
 class SignUp extends StatelessWidget {
+  static const routeName = "/signup";
   const SignUp({Key? key}) : super(key: key);
 
   @override
@@ -109,138 +110,146 @@ class SignUp extends StatelessWidget {
                       SizedBox(
                         height: 47,
                       ),
-                      SizedBox(
-                        width: 350,
-                        height: 45,
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                              helperText: textYourName,
-                              helperStyle: regular.copyWith(
-                                  fontSize: 14, color: primaryColor),
-                              border: OutlineInputBorder(
-                                  borderSide: const BorderSide(
-                                      color: primaryColor, width: 2),
-                                  borderRadius: BorderRadius.circular(10))),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 17,
-                      ),
-                      Row(
-                        children: [
-                          SizedBox(
-                            width: 50,
-                            height: 45,
-                            child: TextFormField(
-                              decoration: InputDecoration(
-                                prefixText: "+91",
-                                prefixStyle: regular.copyWith(
-                                    fontSize: 14, color: numberColor),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 91,right: 91),
+                        child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              width: 350,
+                              height: 45,
+                              child: TextFormField(
+                                autofocus: true,
+                                decoration: InputDecoration(
+                                    labelText: textYourName,
+                                    labelStyle: regular.copyWith(
+                                        fontSize: 14, color: primaryColor),
+                                    enabled: true,
+                                    border: OutlineInputBorder(
+                                        borderSide: const BorderSide(
+                                            color: primaryColor, width: 2),
+                                        borderRadius: BorderRadius.circular(10))),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 17,
+                            ),
+                            Row(
+                              children: [
+                                SizedBox(
+                                  width: 50,
+                                  height: 45,
+                                  child: TextFormField(
+                                    decoration: InputDecoration(
+                                      hintText: "+91",
+                                      hintStyle: regular.copyWith(
+                                          fontSize: 14, color: numberColor),
+                                      border: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.all(Radius.circular(10.0)),
+                                        borderSide: BorderSide(
+                                            color: textFormFieldBorderColor),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 12,
+                                ),
+                                SizedBox(
+                                  width: 268,
+                                  height: 45,
+                                  child: TextFormField(
+                                    textAlign: TextAlign.start,
+                                    decoration: InputDecoration(
+                                      hintText: textMobileNumber,
+                                      hintStyle: thin.copyWith(
+                                          fontSize: 14, color: numberColor),
+                                      border: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.all(Radius.circular(10.0)),
+                                        borderSide: BorderSide(
+                                            color: textFormFieldBorderColor),
+                                      ),
+                                    ),
+                                    keyboardType: TextInputType.number,
+                                    inputFormatters: <TextInputFormatter>[
+                                      FilteringTextInputFormatter.digitsOnly,
+                                      LengthLimitingTextInputFormatter(10),
+                                    ],
+                                    style: regular.copyWith(
+                                        fontSize: 14, color: numberColor),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 14,
+                            ),
+                            Container(
+                              width: 350,
+                              height: 45,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: TextFormField(
+                                  decoration: InputDecoration(
+                                hintText: textEmailLogin,
+                                hintStyle:
+                                    thin.copyWith(fontSize: 14, color: numberColor),
                                 border: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10.0)),
-                                  borderSide: BorderSide(
-                                      color: textFormFieldBorderColor),
+                                  borderSide:
+                                      BorderSide(color: textFormFieldBorderColor),
                                 ),
-                              ),
+                              )),
                             ),
-                          ),
-                          SizedBox(
-                            width: 12,
-                          ),
-                          SizedBox(
-                            width: 350,
-                            height: 45,
-                            child: TextFormField(
-                              decoration: InputDecoration(
-                                  hintText: textMobileNumber,
-                                  hintStyle: thin.copyWith(
-                                      fontSize: 14, color: numberColor),
-                                  border: OutlineInputBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10.0)),
-                                    borderSide: BorderSide(
-                                        color: textFormFieldBorderColor),
-                                  ),
-                                  prefixText: textMobileNumber,
-                                  prefixStyle: thin.copyWith(
-                                      fontSize: 14, color: numberColor)),
-                              keyboardType: TextInputType.number,
-                              inputFormatters: <TextInputFormatter>[
-                                FilteringTextInputFormatter.digitsOnly,
-                                LengthLimitingTextInputFormatter(10),
-                              ],
-                              style: regular.copyWith(
-                                  fontSize: 14, color: numberColor),
+                            SizedBox(
+                              height: 14,
                             ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 14,
-                      ),
-                      Container(
-                        width: 350,
-                        height: 45,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10)),
-                        child: TextFormField(
-                            decoration: InputDecoration(
-                          hintText: textEmailLogin,
-                          hintStyle:
-                              thin.copyWith(fontSize: 14, color: numberColor),
-                          border: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10.0)),
-                            borderSide:
-                                BorderSide(color: textFormFieldBorderColor),
-                          ),
-                        )),
-                      ),
-                      SizedBox(
-                        height: 14,
-                      ),
-                      Container(
-                        width: 350,
-                        height: 45,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10)),
-                        child: TextFormField(
-                            decoration: InputDecoration(
-                          hintText: textPassword,
-                          hintStyle:
-                              thin.copyWith(fontSize: 14, color: numberColor),
-                          border: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10.0)),
-                            borderSide:
-                                BorderSide(color: textFormFieldBorderColor),
-                          ),
-                        )),
-                      ),
-                      SizedBox(
-                        height: 7,
-                      ),
-                      Text(
-                        textPasswordMinLength,
-                        style: regular.copyWith(color: passColor),
-                      ),
-                      SizedBox(
-                        height: 27,
-                      ),
-                      Container(
-                        width: 350,
-                        height: 45,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10)),
-                        child: ElevatedButton(
-                            onPressed: () {},
-                            child: Text(
-                              textContinue,
-                              style: medium.copyWith(
-                                  fontSize: 16, color: Colors.white),
-                              textAlign: TextAlign.center,
-                            )),
+                            Container(
+                              width: 350,
+                              height: 45,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: TextFormField(
+                                  decoration: InputDecoration(
+                                hintText: textPassword,
+                                hintStyle:
+                                    thin.copyWith(fontSize: 14, color: numberColor),
+                                border: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10.0)),
+                                  borderSide:
+                                      BorderSide(color: textFormFieldBorderColor),
+                                ),
+                              )),
+                            ),
+                            SizedBox(
+                              height: 7,
+                            ),
+                            Text(
+                              textPasswordMinLength,
+                              style: regular.copyWith(color: passColor),
+                            ),
+                            SizedBox(
+                              height: 27,
+                            ),
+                            Container(
+                              width: 350,
+                              height: 45,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: ElevatedButton(
+                                  onPressed: () {},
+                                  child: Text(
+                                    textContinue,
+                                    style: medium.copyWith(
+                                        fontSize: 16, color: Colors.white),
+                                    textAlign: TextAlign.center,
+                                  )),
+                            ),
+                          ],
+                        ),
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
