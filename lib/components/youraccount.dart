@@ -66,9 +66,9 @@ class YourAccount extends StatelessWidget {
           ],
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 300,right: 300),
+          padding: const EdgeInsets.only(left: 50,right: 50),
           child: SizedBox(
-            height: MediaQuery.of(context).size.height * .55,
+            height: MediaQuery.of(context).size.height * .45,
             child: GridView.count(
               physics: const NeverScrollableScrollPhysics(),
               primary: false,
