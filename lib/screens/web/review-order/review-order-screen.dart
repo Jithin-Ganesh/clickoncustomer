@@ -1,4 +1,5 @@
 import 'package:clickoncustomer/components/checkout_component.dart';
+import 'package:clickoncustomer/components/web/bottom-web-bar-2.dart';
 import 'package:clickoncustomer/components/web/zig-zag-sheet.dart';
 import 'package:clickoncustomer/screens/web/review-order/stepper.dart';
 import 'package:clickoncustomer/utils/constants/responsive.dart';
@@ -42,7 +43,7 @@ class _ReviewOrderScreenWebState extends State<ReviewOrderScreenWeb> {
             preferredSize: Size.fromHeight(175), child:  WebNavBar2()),
         body: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.083,vertical: 60),
+            padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.083,right: MediaQuery.of(context).size.width * 0.083,top: 60),
             child: Column(
               children: [
                 Row(
@@ -63,7 +64,8 @@ class _ReviewOrderScreenWebState extends State<ReviewOrderScreenWeb> {
                     ZigZagSheet(isCoupon: true)
                   ],
                 ),
-
+                SizedBox(height: 218,),
+                BottomWebBar2()
               ],
             ),
           ),

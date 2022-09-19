@@ -20,50 +20,44 @@ class AccountComponent extends StatelessWidget {
   final bool isSelected;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(10)),
-            color: isSelected ? primaryColor : Colors.white),
-        width: 380,
-        height: 130,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ImgProvider(
-                url: icon,
-                width: 41,
-                height: 40,
-                border: Border.all(
-                  color: isSelected
-                      ? Colors.white
-                      : productDetailsScreenSubTextColor,
-                )),
-            SizedBox(
-              width: 16,
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: medium.copyWith(
-                      fontSize: 20,
-                      color: isSelected
-                          ? Colors.white
-                          : productDetailsScreenTextColor),
-                ),
-                Text(
-                  description,
-                  style: regular.copyWith(
-                      fontSize: 14,
-                      color: isSelected ? Colors.white : discountPriceColor),
-                ),
-              ],
-            )
-          ],
-        ),
+    return Container(
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+          color: isSelected ? primaryColor : Colors.white),
+      width: 380,
+      height: 130,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ImgProvider(
+              url: icon,
+              width: 41,
+              height: 40,boxFit: BoxFit.fill,
+             ),
+          SizedBox(
+            width: 16,
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: medium.copyWith(
+                    fontSize: 20,
+                    color: isSelected
+                        ? Colors.white
+                        : productDetailsScreenTextColor),
+              ),
+              Text(
+                description,
+                style: regular.copyWith(
+                    fontSize: 14,
+                    color: isSelected ? Colors.white : discountPriceColor),
+              ),
+            ],
+          )
+        ],
       ),
     );
   }
