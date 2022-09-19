@@ -21,131 +21,131 @@ class _ZigZagSheetState extends State<ZigZagSheet> {
   Widget build(BuildContext context) {
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.193,
-      child: ClipPath(
-          clipper: MovieTicketBothSidesClipper(),
-          child: Container(
-            width: 371,
-            alignment: Alignment.center,
-            decoration: zigzagDecoration,
-            child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 55.0, horizontal: 30),
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      height: 40,
-                      width: 310,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, ReviewOrderScreenWeb.routeName);
-                        },
-                        child: Text(
-                          'Proceed to Buy',
-                          style:
-                              medium.copyWith(color: canvasColor, fontSize: 16),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 30,
-                    ),
-                    Text(
-                      'Price Details',
+      child: Container(
+        width: 371,
+        alignment: Alignment.center,
+        decoration: zigzagDecoration,
+        child: Padding(
+          padding:
+              const EdgeInsets.symmetric(vertical: 55.0, horizontal: 30),
+          child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: 40,
+                  width: 310,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, ReviewOrderScreenWeb.routeName);
+                    },
+                    child: Text(
+                      'Proceed to Buy',
                       style:
-                          medium.copyWith(color: mainTitleColor, fontSize: 20),
+                          medium.copyWith(color: canvasColor, fontSize: 16),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                Text(
+                  'Price Details',
+                  style:
+                      medium.copyWith(color: mainTitleColor, fontSize: 20),
+                  textAlign: TextAlign.left,
+                ),
+                SizedBox(
+                  height: 19,
+                ),
+                Divider(
+                  thickness: 1,
+                  color: dividerColor4,
+                ),
+                SizedBox(
+                  height: 22,
+                ),
+                PriceItem(title: 'Price (3 items)', value: '9,053.00'),
+                SizedBox(
+                  height: 5,
+                ),
+                PriceItem(title: 'Shipping', value: 'Free'),
+                SizedBox(
+                  height: 5,
+                ),
+                PriceItem(title: 'Discount', value: '-1000.00'),
+                SizedBox(
+                  height: 52,
+                ),
+                Divider(
+                  thickness: 1,
+                  color: dividerColor4,
+                ),
+                 Visibility(
+                   visible: widget.isCoupon,
+                   child: Column(
+                    children: [
+                      SizedBox(height: 18,),
+                      Row(children: [
+                        Text('I Have a ',  style: thin.copyWith(color: priceDetailsSubTextColor, fontSize: 14),),
+                        Text('Coupon Code ',  style: regular.copyWith(color: couponCodeColor, fontSize: 14),),
+                        Icon(Icons.keyboard_arrow_up,size: 8,)
+                      ],),
+                      SizedBox(height: 10,),
+                      Row(
+                        children: [
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.111,
+                            height: 45,
+                            child: TextField(
+                              decoration: new InputDecoration(
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(color:  borderColor2, width: 1.0),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(color: borderColor2, width: 1.0),
+                                ),
+                                hintText: 'Enter Code',
+                                hintStyle: thin.copyWith(color: hintColor,fontSize: 14)
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: 7,),
+                          SizedBox(
+                              height: 45,
+                              width: MediaQuery.of(context).size.width * 0.0463,
+                              child: OutlinedButton(onPressed: (){}, child: Text('Apply',style: medium.copyWith(color: hintColor),overflow: TextOverflow.ellipsis,maxLines: 1,)))
+                        ],
+                      ),
+                      SizedBox(height: 60,),
+                      Divider(
+                        thickness: 1,
+                        color: dividerColor4,
+                      ),
+                    ],
+                ),
+                 ) ,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Subtotal',
+                      style: medium.copyWith(
+                          color: mainTitleColor, fontSize: 16),
                       textAlign: TextAlign.left,
                     ),
-                    SizedBox(
-                      height: 19,
+                    Expanded(
+                      child: Text(
+                        '8,053.00',maxLines: 1,overflow: TextOverflow.ellipsis,
+                        style: regular.copyWith(
+                            color: productAvailabilityColor, fontSize: 28),
+                        textAlign: TextAlign.left,
+                      ),
                     ),
-                    Divider(
-                      thickness: 1,
-                      color: dividerColor4,
-                    ),
-                    SizedBox(
-                      height: 22,
-                    ),
-                    PriceItem(title: 'Price (3 items)', value: '9,053.00'),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    PriceItem(title: 'Shipping', value: 'Free'),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    PriceItem(title: 'Discount', value: '-1000.00'),
-                    SizedBox(
-                      height: 52,
-                    ),
-                    Divider(
-                      thickness: 1,
-                      color: dividerColor4,
-                    ),
-                     Visibility(
-                       visible: widget.isCoupon,
-                       child: Column(
-                        children: [
-                          SizedBox(height: 18,),
-                          Row(children: [
-                            Text('I Have a ',  style: thin.copyWith(color: priceDetailsSubTextColor, fontSize: 14),),
-                            Text('Coupon Code ',  style: regular.copyWith(color: couponCodeColor, fontSize: 14),),
-                            Icon(Icons.keyboard_arrow_up,size: 8,)
-                          ],),
-                          SizedBox(height: 10,),
-                          Row(
-                            children: [
-                              Container(
-                                width: 214,
-                                height: 45,
-                                child: TextField(
-                                  decoration: new InputDecoration(
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(color:  borderColor2, width: 1.0),
-                                    ),
-                                    enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(color: borderColor2, width: 1.0),
-                                    ),
-                                    hintText: 'Enter Code',
-                                    hintStyle: thin.copyWith(color: hintColor,fontSize: 14)
-                                  ),
-                                ),
-                              ),
-                              SizedBox(width: 7,),
-                              SizedBox(
-                                  height: 45,
-                                  width: 89,
-                                  child: OutlinedButton(onPressed: (){}, child: Text('Apply',style: medium.copyWith(color: hintColor),)))
-                            ],
-                          ),
-                          SizedBox(height: 60,),
-                          Divider(
-                            thickness: 1,
-                            color: dividerColor4,
-                          ),
-                        ],
-                    ),
-                     ) ,
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Subtotal',
-                          style: medium.copyWith(
-                              color: mainTitleColor, fontSize: 16),
-                          textAlign: TextAlign.left,
-                        ),
-                        Text(
-                          '8,053.00',
-                          style: regular.copyWith(
-                              color: productAvailabilityColor, fontSize: 28),
-                          textAlign: TextAlign.left,
-                        ),
-                      ],
-                    )
-                  ]),
-            ),
-          )),
+                  ],
+                )
+              ]),
+        ),
+      ),
     );
   }
 }

@@ -14,7 +14,7 @@ class RatingsAndReviews extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 160.0),
+      padding:  EdgeInsets.symmetric(horizontal:  MediaQuery.of(context).size.width * 0.083,),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -170,8 +170,8 @@ class ReviewBox extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      '42 people found this helpful',
-                      style: regular.copyWith(
+                      '42 people found this helpful',maxLines: 1,
+                      style: regular.copyWith(overflow: TextOverflow.ellipsis,
                         color: productAvailabilityColor,
                         fontSize: 14,
                       ),
@@ -267,7 +267,7 @@ class Ratings extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 510,
-      width: 372,
+      width: MediaQuery.of(context).size.width * 0.193,
       decoration: BoxDecoration(
         color: canvasColor,
         borderRadius: BorderRadius.circular(10),
@@ -281,7 +281,7 @@ class Ratings extends StatelessWidget {
         ],
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 30),
+        padding:  EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.0208, vertical: 30),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -358,6 +358,7 @@ class RatingIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisSize: MainAxisSize.min,
       children: [
         Text(
           stars,
@@ -369,18 +370,15 @@ class RatingIndicator extends StatelessWidget {
           color: productAvailabilityColor,
           size: 15,
         ),
-        Padding(
-          padding: EdgeInsets.all(15.0),
-          child: LinearPercentIndicator(
-            width: 195,
-            animation: true,
-            lineHeight: 10,
-            animationDuration: 2500,
-            percent: percent,
-            linearStrokeCap: LinearStrokeCap.roundAll,
-            barRadius: Radius.circular(10),
-            progressColor: ratingColor2,
-          ),
+        LinearPercentIndicator(
+          width: MediaQuery.of(context).size.width * 0.1015,
+          animation: true,
+          lineHeight: 10,
+          animationDuration: 2500,
+          percent: percent,
+          linearStrokeCap: LinearStrokeCap.roundAll,
+          barRadius: Radius.circular(10),
+          progressColor: ratingColor2,
         ),
         Text(
           value,

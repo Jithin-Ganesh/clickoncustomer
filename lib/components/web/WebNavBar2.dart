@@ -18,11 +18,9 @@ class WebNavBar2 extends StatelessWidget {
       elevation: 2,
       leadingWidth: 0,
       automaticallyImplyLeading: false,
-
-
       centerTitle: false,
       title: Padding(
-        padding: const EdgeInsets.only(left: 150),
+        padding:  EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.078,),
         child: Row(
           children: [
             InkWell(

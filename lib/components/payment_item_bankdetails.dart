@@ -34,9 +34,7 @@ class PaymentBank extends StatelessWidget {
                     onChanged: (value) {
                       print(value);
                     }),
-                SizedBox(
-                  width: 13,
-                ),
+               
                 Text(
                   textDebitCardName,
                   style:
@@ -72,7 +70,7 @@ class PaymentBank extends StatelessWidget {
                   ),
                   isCvv
                       ? Container(
-                          width: 71,
+                          width: MediaQuery.of(context).size.width * 0.036,
                           height: 40,
                           decoration: BoxDecoration(
                             color: Colors.white,

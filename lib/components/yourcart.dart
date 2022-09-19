@@ -21,171 +21,163 @@ class YourCart extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: elevatedDecoration,
-      width: 1196,
+      width: MediaQuery.of(context).size.width * 0.622,
       height: 166,
       child: Padding(
-        padding: const EdgeInsets.only(right: 38, left: 24),
+        padding: const EdgeInsets.only(right: 0, left: 0),
         child:
         Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           Row(
             children: [
-              Row(
+              SizedBox(
+                width: 24,
+              ),
+              Image.asset(
+                yourCartItemImage,
+                width: MediaQuery.of(context).size.width * 0.0572,
+                height: 110,
+              ),
+              SizedBox(
+                width: 32,
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Text(
+                    textInStock,
+                    style: medium.copyWith(
+                        color: inStockTitleColor, fontSize: 12),
+                  ),
+                  Text(
+                    textYourCartItemName,maxLines: 1,overflow: TextOverflow.ellipsis,
+                    style: regular.copyWith(
+                        fontSize: 14, color: productSubTextColor),
+                  ),
+                  Row(children: [
+                    Text(textRupees),
+                    const SizedBox(
+                      width: 8.85,
+                    ),
+                    Text(
+                      yourCartAmount,
+                      style: medium.copyWith(
+                          color: priceOffersSubtextColor, fontSize: 16),
+                    ),
+                    const SizedBox(
+                      width: 18,
+                    ),
+                    Container(
+                      height: 16,
+                      width: MediaQuery.of(context).size.width * 0.0192,
+                      decoration: const BoxDecoration(
+                          color: discountBoxColor,
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(8),
+                              bottomRight: Radius.circular(8))),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 0.69),
+                        child: Text(
+                          discount,
+                          textAlign: TextAlign.center,
+                          style: regular.copyWith(
+                              fontSize: 12, color: defaultTextColor),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      textYourCartOffer,
+                      style: medium.copyWith(
+                          fontSize: 12, color: priceOffersSubtextColor),
+                    )
+                  ]),
+                  SizedBox(
+                    height: 7.72,
+                  ),
                   Row(
                     children: [
-                      SizedBox(
-                        width: 24,
-                      ),
-                      Image.asset(
-                        yourCartItemImage,
-                        width: 110,
-                        height: 110,
-                      ),
-                      SizedBox(
-                        width: 32,
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            textInStock,
-                            style: medium.copyWith(
-                                color: inStockTitleColor, fontSize: 12),
-                          ),
-                          Text(
-                            textYourCartItemName,
-                            style: regular.copyWith(
-                                fontSize: 14, color: productSubTextColor),
-                          ),
-                          Row(children: [
-                            Text(textRupees),
-                            const SizedBox(
-                              width: 8.85,
-                            ),
-                            Text(
-                              yourCartAmount,
-                              style: medium.copyWith(
-                                  color: priceOffersSubtextColor, fontSize: 16),
-                            ),
-                            const SizedBox(
-                              width: 18,
-                            ),
-                            Container(
-                              height: 16,
-                              width: 37,
-                              decoration: const BoxDecoration(
-                                  color: discountBoxColor,
-                                  borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(8),
-                                      bottomRight: Radius.circular(8))),
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 0.69),
-                                child: Text(
-                                  discount,
-                                  textAlign: TextAlign.center,
-                                  style: regular.copyWith(
-                                      fontSize: 12, color: defaultTextColor),
-                                ),
+                      Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                              color: qtyButtonColor, width: 2),
+                          borderRadius: const BorderRadius.all(
+                              Radius.circular(5)),
+                        ),
+                        height: 28,
+                        width: 76,
+                        child: DropdownButtonHideUnderline(
+                          child: DropdownButton2(
+                              hint: Row(
+                                children: [
+                                  SizedBox(
+                                    width: 12,
+                                  ),
+                                  Text(yourCartQuantityText,
+                                      style: regular.copyWith(
+                                          fontSize: 12,
+                                          color: productSubTextColor)),
+                                  const SizedBox(
+                                    width: 3,
+                                  ),
+                                  Text(
+                                    count,
+                                    style: regular.copyWith(
+                                        fontSize: 14,
+                                        color: productSubTextColor),
+                                  )
+                                ],
                               ),
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              textYourCartOffer,
-                              style: medium.copyWith(
-                                  fontSize: 12, color: priceOffersSubtextColor),
-                            )
-                          ]),
-                          SizedBox(
-                            height: 7.72,
-                          ),
-                          Row(
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                      color: qtyButtonColor, width: 2),
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(5)),
-                                ),
-                                height: 28,
-                                width: 76,
-                                child: DropdownButtonHideUnderline(
-                                  child: DropdownButton2(
-                                      hint: Row(
-                                        children: [
-                                          SizedBox(
-                                            width: 12,
-                                          ),
-                                          Text(yourCartQuantityText,
-                                              style: regular.copyWith(
-                                                  fontSize: 12,
-                                                  color: productSubTextColor)),
-                                          const SizedBox(
-                                            width: 3,
-                                          ),
-                                          Text(
-                                            count,
-                                            style: regular.copyWith(
-                                                fontSize: 14,
-                                                color: productSubTextColor),
-                                          )
-                                        ],
+                              items: items
+                                  .map((item) =>
+                                  DropdownMenuItem<String>(
+                                    value: item,
+                                    child: Text(
+                                      item,
+                                      style: const TextStyle(
+                                        fontSize: 14,
                                       ),
-                                      items: items
-                                          .map((item) =>
-                                          DropdownMenuItem<String>(
-                                            value: item,
-                                            child: Text(
-                                              item,
-                                              style: const TextStyle(
-                                                fontSize: 14,
-                                              ),
-                                            ),
-                                          ))
-                                          .toList(),
-                                      value: selectedValue,
-                                      onChanged: (value) {
-                                        selectedValue = value as String;
-                                      }),
-                                ),
-                              ),
-                              SizedBox(
-                                width: 16,
-                              ),
-                              Text(
-                                textYourCartSaveForLater,
-                                style: regular.copyWith(
-                                    color: yourCartSubTextColor, fontSize: 12),
-                              ),
-                              SizedBox(
-                                width: 13,
-                              ),
-                              Text(
-                                textSeprator,
-                                style: thin.copyWith(
-                                  fontSize: 14,
-                                  color: yourCartSubTextColor,
-                                ),
-                              ),
-                              SizedBox(
-                                width: 12,
-                              ),
-                              Text(
-                                textYourCartRemove,
-                                style: regular.copyWith(
-                                    fontSize: 12, color: removeColor),
-                              )
-                            ],
-                          )
-                        ],
+                                    ),
+                                  ))
+                                  .toList(),
+                              value: selectedValue,
+                              onChanged: (value) {
+                                selectedValue = value as String;
+                              }),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 16,
+                      ),
+                      Text(
+                        textYourCartSaveForLater,
+                        style: regular.copyWith(
+                            color: yourCartSubTextColor, fontSize: 12),
+                      ),
+                      SizedBox(
+                        width: 13,
+                      ),
+                      Text(
+                        textSeprator,
+                        style: thin.copyWith(
+                          fontSize: 14,
+                          color: yourCartSubTextColor,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 12,
+                      ),
+                      Text(
+                        textYourCartRemove,
+                        style: regular.copyWith(
+                            fontSize: 12, color: removeColor),
                       )
                     ],
-                  ),
+                  )
                 ],
-              ),
+              )
             ],
           ),
           Row(
@@ -230,7 +222,7 @@ class YourCart extends StatelessWidget {
                           const BorderRadius.all(Radius.circular(5)),
                         ),
                         height: 33,
-                        width: 87,
+                        width: MediaQuery.of(context).size.width * 0.045,
                         child: DropdownButtonHideUnderline(
                           child: DropdownButton2(
                               hint: Row(

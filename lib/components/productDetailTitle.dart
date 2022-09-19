@@ -2,7 +2,6 @@ import 'package:clickoncustomer/components/web/discount-box.dart';
 import 'package:clickoncustomer/components/web/rating-box.dart';
 import 'package:clickoncustomer/utils/constants/color.dart';
 import 'package:clickoncustomer/utils/constants/fontstyles.dart';
-import 'package:clickoncustomer/utils/constants/images.dart';
 import 'package:clickoncustomer/utils/constants/strings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +25,7 @@ class ProductDetailTitle extends StatelessWidget {
       width: MediaQuery.of(context).size.width * 1,
       height: 98,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 160.0),
+        padding:  EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.083,),
         child:
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           Row(mainAxisAlignment: MainAxisAlignment.start, children: [
@@ -46,7 +45,9 @@ class ProductDetailTitle extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(width: 30,),
+            const SizedBox(
+              width: 30,
+            ),
             Text(
               itemDescription,
               style: medium.copyWith(fontSize: 24, color: defaultTextColor),
@@ -104,51 +105,51 @@ class ProductDetailTitle extends StatelessWidget {
               const SizedBox(
                 width: 16,
               ),
-              Container(
-                height: 40,
-                width: 92,
-                child: OutlinedButton(
-                  style: OutlinedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                    side: const BorderSide(width: 1.0, color: defaultTextColor),
-                  ),
-                  onPressed: () {},
-                  child: DropdownButtonHideUnderline(
-                    child: DropdownButton2(
-                        hint: Row(
-                          children: [
-                            Text(quantityText,
-                                style: regular.copyWith(
-                                    fontSize: 14, color: defaultTextColor)),
-                            const SizedBox(
-                              width: 4,
-                            ),
-                            Text(
-                              count,
-                              style: regular.copyWith(
-                                  fontSize: 16, color: defaultTextColor),
-                            )
-                          ],
-                        ),
-                        items: items
-                            .map((item) => DropdownMenuItem<String>(
-                                  value: item,
-                                  child: Text(
-                                    item,
-                                    style: const TextStyle(
-                                      fontSize: 14,
-                                    ),
-                                  ),
-                                ))
-                            .toList(),
-                        value: selectedValue,
-                        onChanged: (value) {
-                          selectedValue = value as String;
-                        }),
-                  ),
-                ),
-              ),
+              // Container(
+              //   height: 40,
+              //   width: MediaQuery.of(context).size.width * 0.047,
+              //   child: OutlinedButton(
+              //     style: OutlinedButton.styleFrom(
+              //       shape: RoundedRectangleBorder(
+              //           borderRadius: BorderRadius.circular(10)),
+              //       side: const BorderSide(width: 1.0, color: defaultTextColor),
+              //     ),
+              //     onPressed: () {},
+              //     child: DropdownButtonHideUnderline(
+              //       child: DropdownButton2(
+              //           hint: Row(
+              //             children: [
+              //               Text(quantityText,
+              //                   style: regular.copyWith(
+              //                       fontSize: 14, color: defaultTextColor)),
+              //               const SizedBox(
+              //                 width: 4,
+              //               ),
+              //               Text(
+              //                 count,
+              //                 style: regular.copyWith(
+              //                     fontSize: 16, color: defaultTextColor),
+              //               )
+              //             ],
+              //           ),
+              //           items: items
+              //               .map((item) => DropdownMenuItem<String>(
+              //                     value: item,
+              //                     child: Text(
+              //                       item,
+              //                       style: const TextStyle(
+              //                         fontSize: 14,
+              //                       ),
+              //                     ),
+              //                   ))
+              //               .toList(),
+              //           value: selectedValue,
+              //           onChanged: (value) {
+              //             selectedValue = value as String;
+              //           }),
+              //     ),
+              //   ),
+              // ),
               const SizedBox(
                 width: 13,
               ),
@@ -169,7 +170,7 @@ class ProductDetailTitle extends StatelessWidget {
                 width: 14,
               ),
               Container(
-                width: 139,
+                width: MediaQuery.of(context).size.width * 0.072,
                 height: 40,
                 child: OutlinedButton(
                   onPressed: () {},

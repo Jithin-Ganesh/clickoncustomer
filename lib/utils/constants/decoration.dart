@@ -20,6 +20,9 @@ BoxDecoration elevatedDecoration = BoxDecoration(
 
 BoxDecoration zigzagDecoration = BoxDecoration(
   color: canvasColor,
+  image: DecorationImage(
+    image: AssetImage('assets/images/image-zigzag-bg.png')
+  ),
   boxShadow: [
     BoxShadow(
       color: Colors.grey,

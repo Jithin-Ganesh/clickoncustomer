@@ -1,12 +1,11 @@
 import 'package:clickoncustomer/components/checkout_component.dart';
 import 'package:clickoncustomer/components/revieworderitem.dart';
-import 'package:clickoncustomer/utils/img-provider.dart';
+import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../utils/constants/color.dart';
 import '../../../utils/constants/fontstyles.dart';
-import '../../../utils/constants/images.dart';
 import '../order-payment/order-payment-web.dart';
 
 class StepperReview extends StatefulWidget {
@@ -22,7 +21,7 @@ class _StepperReviewState extends State<StepperReview> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 1055,
+      height: 1196,
       width: MediaQuery.of(context).size.width * 0.622,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.0),
@@ -30,7 +29,7 @@ class _StepperReviewState extends State<StepperReview> {
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.5),
-            offset: Offset(0.0, 1.0), //(x,y)
+            offset: const Offset(0.0, 1.0), //(x,y)
             blurRadius: 6.0,
           ),
         ],
@@ -41,18 +40,79 @@ class _StepperReviewState extends State<StepperReview> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-           PaymentTitle(title: 'Review Order',isProcessing: true,isSubmit: false,slNumber: '3'),
-            SizedBox(
+            const PaymentTitle(
+                title: 'Review Order',
+                isProcessing: true,
+                isSubmit: false,
+                slNumber: '3'),
+            const SizedBox(
               height: 111,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 70.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  height: 70,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Column(
+                        children: [
+                          Container(
+                            height: 25,
+                            width: 25,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color:  checkedItemsColor,
+                            ),
+                            child: Center(
+                                child: Icon(
+                                  Icons.check,
+                                  color: canvasColor,
+                                  size: 11,
+                                )
+                            ),
+                          ),
+                          SizedBox(height: 6,),
+                          Text('Cash on Delivery (1)',style: medium.copyWith(fontSize: 16,color: reviewTextColor2),)
+                        ],
+                      ),
+                      DottedLine(lineLength: 200,dashColor: dividerColor4,),
+                      Column(
+                        children: [
+                          Container(
+                            height: 25,
+                            width: 25,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color:  circledNumberButtonColor,
+                            ),
+                            child: Center(
+                                child: Icon(
+                                  Icons.check,
+                                  color: canvasColor,
+                                  size: 11,
+                                )
+                            ),
+                          ),   SizedBox(height: 6,),
+                          Text('Pay Online  (3)',style: medium.copyWith(fontSize: 16,color: primaryColor),)
+                        ],
+                      ),
+                      //DottedLine(dashLength: 30, dashGapLength: 30),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 70.0),
               child: Divider(
                 thickness: 1,
                 color: dividerColor3,
               ),
             ),
-            Container(
+
+            SizedBox(
               height: 715,
               child: ListView.separated(
                   itemBuilder: (context, index) => Padding(
@@ -67,24 +127,28 @@ class _StepperReviewState extends State<StepperReview> {
                             offerPrice: '764.00',
                             price: '1200.00'),
                       ),
-                  separatorBuilder: (context, index) => Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 70.0),
-                    child: Divider(
+                  separatorBuilder: (context, index) => const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 70.0),
+                        child: Divider(
                           thickness: 1,
                           color: dividerColor3,
                         ),
-                  ),
+                      ),
                   itemCount: 3),
             ),
-            SizedBox(height: 40,),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 70.0),
+            const SizedBox(
+              height: 40,
+            ),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 70.0),
               child: Divider(
                 thickness: 1,
                 color: dividerColor3,
               ),
             ),
-            SizedBox(height: 38,),
+            const SizedBox(
+              height: 38,
+            ),
             Padding(
               padding: const EdgeInsets.only(left: 70.0),
               child: SizedBox(
@@ -92,12 +156,12 @@ class _StepperReviewState extends State<StepperReview> {
                 width: 310,
                 child: ElevatedButton(
                   onPressed: () {
-Navigator.pushNamed(context, PaymentOrderScreenWeb.routeName);
+                    Navigator.pushNamed(
+                        context, PaymentOrderScreenWeb.routeName);
                   },
                   child: Text(
                     'Proceed to Buy',
-                    style:
-                    medium.copyWith(color: canvasColor, fontSize: 16),
+                    style: medium.copyWith(color: canvasColor, fontSize: 16),
                   ),
                 ),
               ),
@@ -107,17 +171,7 @@ Navigator.pushNamed(context, PaymentOrderScreenWeb.routeName);
       ),
     );
   }
-
-  List<Step> getSteps() => [
-        Step(
-            title: Text(
-              'Business Register Form',
-            ),
-            content: Container()),
-        Step(
-            title: const Text(
-              'Upload Photo',
-            ),
-            content: Container()),
-      ];
 }
+
+
+

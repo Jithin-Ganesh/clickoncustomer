@@ -79,8 +79,8 @@ class Specifications extends StatelessWidget {
                     ],
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 39.0, vertical: 33),
+                    padding: EdgeInsets.symmetric(
+                        horizontal:  MediaQuery.of(context).size.width * 0.0203, vertical: 33),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -199,8 +199,8 @@ class Specifications extends StatelessWidget {
                     ],
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 39.0, vertical: 33),
+                    padding:  EdgeInsets.symmetric(
+                        horizontal:  MediaQuery.of(context).size.width * 0.0203, vertical: 33),
                     child: Row(
                       children: [
                         Column(
@@ -252,7 +252,7 @@ class Specifications extends StatelessWidget {
                           ],
                         ),
                         SizedBox(
-                          width: 55,
+                          width: MediaQuery.of(context).size.width *  0.0286,
                         ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -285,7 +285,7 @@ class Specifications extends StatelessWidget {
                                   fontSize: 14, color: mainTitleColor),
                             ),
                             Text(
-                              '11.4 x 23.6 x 21.7 cm; 693 Grams',
+                              '11.4 x 23.6 x 21.7 cm',
                               style: regular.copyWith(
                                   fontSize: 14, color: mainTitleColor),
                             ),

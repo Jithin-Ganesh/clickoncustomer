@@ -84,7 +84,7 @@ class ReviewOrderItem extends StatelessWidget {
       Row(
         children: [
           Container(
-            width: 110,
+            width: MediaQuery.of(context).size.width * 0.057,
             height: 110,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),

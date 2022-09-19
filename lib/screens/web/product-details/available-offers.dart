@@ -26,7 +26,7 @@ class AvailableOffers extends StatelessWidget {
               ImgProvider(url:'assets/images/icon-bank.png',height: 33,width: 33,),
               SizedBox(width: 34,),
               SizedBox(
-                width: 260,
+                width: MediaQuery.of(context).size.width * 0.135,
                 child: Text('Bank Offer 5% Cashback on Yes Bank Credit & Debit Cards.',maxLines: 2,style: medium,),
               )
             ],

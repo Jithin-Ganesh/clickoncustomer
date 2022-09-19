@@ -41,7 +41,7 @@ class Checkout extends StatelessWidget {
       width: MediaQuery.of(context).size.width * 0.622,
       child: Padding(
         padding:
-            const EdgeInsets.only(left: 18.0, top: 21, right: 23, bottom: 30),
+            EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.009, top:  MediaQuery.of(context).size.width *  0.0119, right: 23, bottom: 30),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -100,7 +100,7 @@ class Checkout extends StatelessWidget {
               ],
             ),
             Container(
-              width: 139,
+              width:  MediaQuery.of(context).size.width * 0.072,
               height: 45,
               child: OutlinedButton(
                   style: ButtonStyle(

@@ -44,7 +44,7 @@ class _PaymentOrderScreenWebState extends State<PaymentOrderScreenWeb> {
             preferredSize: Size.fromHeight(175), child:  WebNavBar2()),
         body: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 160.0,vertical: 60),
+            padding: EdgeInsets.symmetric(horizontal:  MediaQuery.of(context).size.width * 0.083,vertical: 60),
             child: Column(
               children: [
                 Row(

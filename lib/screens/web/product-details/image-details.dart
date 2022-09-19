@@ -115,6 +115,7 @@ class _ImageDetailsWebItemState extends State<ImageDetailsWebItem> {
             ],
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Visibility(
                 visible: selectedIndex > 0,
@@ -133,7 +134,7 @@ class _ImageDetailsWebItemState extends State<ImageDetailsWebItem> {
                   },
                   icon: Container(
                     height: 46,
-                    width: 46,
+                    width: MediaQuery.of(context).size.width *  0.0239,
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: mainTitleColor.withOpacity(0.5),
@@ -145,7 +146,6 @@ class _ImageDetailsWebItemState extends State<ImageDetailsWebItem> {
                   ),
                 ),
               ),
-              SizedBox(width: MediaQuery.of(context).size.width *  0.068,),
               Container(
                 child: ImgProvider(
                   url: value.productDetails?[selectedIndex].image ?? '',
@@ -154,7 +154,6 @@ class _ImageDetailsWebItemState extends State<ImageDetailsWebItem> {
                   boxFit: BoxFit.fill,
                 ),
               ),
-              SizedBox(width: MediaQuery.of(context).size.width *  0.068,),
               Visibility(
                 visible: selectedIndex != (value.productDetails!.length -1),
                 child: IconButton(
@@ -172,7 +171,7 @@ class _ImageDetailsWebItemState extends State<ImageDetailsWebItem> {
                   },
                   icon: Container(
                     height: 46,
-                    width: 46,
+                    width: MediaQuery.of(context).size.width *  0.0239,
                     decoration: BoxDecoration(
                       color: mainTitleColor.withOpacity(0.5),
                         shape: BoxShape.circle,

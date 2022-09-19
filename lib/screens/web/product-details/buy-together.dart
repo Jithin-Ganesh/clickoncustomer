@@ -21,7 +21,7 @@ class BuyTogether extends StatelessWidget {
               color: Colors.grey.withOpacity(0.5),
               spreadRadius: 3,
               blurRadius: 4,
-              offset: Offset(0, 3), // changes position of shadow
+              offset: const Offset(0, 3), // changes position of shadow
             ),
           ],
         ),
@@ -34,7 +34,7 @@ class BuyTogether extends StatelessWidget {
                 'Buy Together',
                 style: medium.copyWith(color: mainTitleColor, fontSize: 24),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               IntrinsicHeight(
@@ -42,7 +42,7 @@ class BuyTogether extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
-                      children: [
+                      children: const [
                         BuyTogetherItem(
                             image: "assets/images/dummy/image-baby-detail.png",
                             description:
@@ -64,7 +64,7 @@ class BuyTogether extends StatelessWidget {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          VerticalDivider(
+                          const VerticalDivider(
                             thickness: 1,
                             color: verticalDividerColor2,
                             endIndent: 5,
@@ -83,7 +83,7 @@ class BuyTogether extends StatelessWidget {
                                         fontSize: 20,
                                         color: productAvailabilityColor),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 18,
                                   ),
                                   Text(
@@ -93,7 +93,7 @@ class BuyTogether extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 10,
                               ),
                               OutlinedButton(
@@ -104,16 +104,16 @@ class BuyTogether extends StatelessWidget {
                                       fontSize: 24, color: primaryColor),
                                 ),
                                 style: OutlinedButton.styleFrom(
-                                    side: BorderSide(
+                                    side: const BorderSide(
                                         width: 1.0, color: primaryColor),
                                     shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(10))),
                               )
                             ],
                           ),
-                          SizedBox(
-                            width: 185,
-                          )
+                         // SizedBox(
+                         //    width: MediaQuery.of(context).size.width * 0.096,
+                         //  )
                         ],
                       ),
                     )

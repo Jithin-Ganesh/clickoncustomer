@@ -159,7 +159,7 @@ class PaymentItem extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(color: paymentBorderColor, width: 1)),
                   height: 398,
-                  width: 1068,
+                  width: MediaQuery.of(context).size.width *  0.556,
                   child: Column(
                     children: [
                       SizedBox(
@@ -180,7 +180,7 @@ class PaymentItem extends StatelessWidget {
                                     bottomRight: Radius.circular(10),
                                   ),
                                 ),
-                                width: 246,
+                                width: MediaQuery.of(context).size.width * 0.128,
                                 height: 54,
                                 child: Row(
                                   children: [
@@ -229,7 +229,7 @@ class PaymentItem extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(10),
                                       border: Border.all(
                                           color: paymentBorderColor)),
-                                  width: 671,
+                                  width: MediaQuery.of(context).size.width * 0.349,
                                   height: 199,
                                   child: Padding(
                                     padding: const EdgeInsets.only(

@@ -136,10 +136,12 @@ class ProductDetails extends StatelessWidget {
                 SizedBox(
                   width: 10,
                 ),
-                Text(
-                  ' Made with premium cotton, soft plant-based fibers, and other thoughtfully selected materials',
-                  style: thin.copyWith(
-                      color: productAvailabilityColor, fontSize: 14),
+                Expanded(
+                  child: Text(
+                    ' Made with premium cotton, soft plant-based fibers, and other thoughtfully selected materials',
+                    style: thin.copyWith(
+                        color: productAvailabilityColor, fontSize: 14,overflow: TextOverflow.ellipsis),maxLines: 1,
+                  ),
                 ),
               ],
             ),

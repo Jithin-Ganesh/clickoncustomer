@@ -21,12 +21,12 @@ class BuyTogetherItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 250,
+      width: MediaQuery.of(context).size.width * 0.1302,
       child: Column(children: [
         Image.asset(
           image,
           height: 135,
-          width: 135,
+          width: MediaQuery.of(context).size.width * 0.0703,
         ),
         const SizedBox(
           height: 20,
