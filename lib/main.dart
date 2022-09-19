@@ -1,3 +1,4 @@
+import 'package:clickoncustomer/components/account_subcomponent.dart';
 import 'package:clickoncustomer/components/buyTogetherItem.dart';
 import 'package:clickoncustomer/components/checkout_component.dart';
 import 'package:clickoncustomer/components/login_screen.dart';
@@ -8,6 +9,8 @@ import 'package:clickoncustomer/components/revieworderitem.dart';
 import 'package:clickoncustomer/components/sign-up.dart';
 import 'package:clickoncustomer/components/similarProductItems.dart';
 import 'package:clickoncustomer/components/top_picks.dart';
+import 'package:clickoncustomer/components/youorders-item.dart';
+import 'package:clickoncustomer/components/youraccount.dart';
 import 'package:clickoncustomer/components/yourcart.dart';
 import 'package:clickoncustomer/components/youritems_item.dart';
 import 'package:clickoncustomer/screens/test-screen.dart';
@@ -31,7 +34,19 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const LoginScreen());
+        home: YourOrder(
+          description: textPreparingForDispatch,
+          title: textArrivingFriday,
+          itemName: textYouOrderItemName,
+          amount: textYourOrderAmount,
+          firstIcon: processingImage,
+          isArriving: false,
+          buttonStatus: false,
+          buttonText1: textTrackPackage,
+          buttonText2: textCancel,
+          itemImage: "assets/images/img_35.png",
+          secondIcon: "assets/images/img_33.png",
+        ));
   }
 }
 
