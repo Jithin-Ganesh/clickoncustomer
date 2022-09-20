@@ -4,6 +4,7 @@ import 'package:clickoncustomer/components/checkout_component.dart';
 import 'package:clickoncustomer/components/login_screen.dart';
 import 'package:clickoncustomer/components/payment_item.dart';
 import 'package:clickoncustomer/components/productDetailTitle.dart';
+import 'package:clickoncustomer/components/rate-your-experience-screen1.dart';
 import 'package:clickoncustomer/components/reviewItems.dart';
 import 'package:clickoncustomer/components/revieworderitem.dart';
 import 'package:clickoncustomer/components/sign-up.dart';
@@ -18,6 +19,9 @@ import 'package:clickoncustomer/utils/constants/images.dart';
 import 'package:clickoncustomer/utils/constants/routes.dart';
 import 'package:clickoncustomer/utils/constants/strings.dart';
 import 'package:flutter/material.dart';
+
+import 'components/rate-your-experience-screen2.dart';
+import 'components/rate-your-experience-screen3.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,19 +38,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: YourOrder(
-          description: textPreparingForDispatch,
-          title: textArrivingFriday,
-          itemName: textYouOrderItemName,
-          amount: textYourOrderAmount,
-          firstIcon: processingImage,
-          isArriving: false,
-          buttonStatus: false,
-          buttonText1: textTrackPackage,
-          buttonText2: textCancel,
-          itemImage: "assets/images/img_35.png",
-          secondIcon: "assets/images/img_33.png",
-        ));
+        home:RateYourExperience3());
   }
 }
 
