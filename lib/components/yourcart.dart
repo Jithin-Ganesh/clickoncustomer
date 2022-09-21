@@ -26,7 +26,7 @@ class YourCart extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(right: 20, left: 0),
         child:
-        Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           Row(
             children: [
               SizedBox(
@@ -46,11 +46,13 @@ class YourCart extends StatelessWidget {
                 children: [
                   Text(
                     textInStock,
-                    style: medium.copyWith(
-                        color: inStockTitleColor, fontSize: 12),
+                    style:
+                        medium.copyWith(color: inStockTitleColor, fontSize: 12),
                   ),
                   Text(
-                    textYourCartItemName,maxLines: 1,overflow: TextOverflow.ellipsis,
+                    textYourCartItemName,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                     style: regular.copyWith(
                         fontSize: 14, color: productSubTextColor),
                   ),
@@ -101,10 +103,9 @@ class YourCart extends StatelessWidget {
                     children: [
                       Container(
                         decoration: BoxDecoration(
-                          border: Border.all(
-                              color: qtyButtonColor, width: 2),
-                          borderRadius: const BorderRadius.all(
-                              Radius.circular(5)),
+                          border: Border.all(color: qtyButtonColor, width: 2),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(5)),
                         ),
                         height: 28,
                         width: 76,
@@ -131,16 +132,15 @@ class YourCart extends StatelessWidget {
                                 ],
                               ),
                               items: items
-                                  .map((item) =>
-                                  DropdownMenuItem<String>(
-                                    value: item,
-                                    child: Text(
-                                      item,
-                                      style: const TextStyle(
-                                        fontSize: 14,
-                                      ),
-                                    ),
-                                  ))
+                                  .map((item) => DropdownMenuItem<String>(
+                                        value: item,
+                                        child: Text(
+                                          item,
+                                          style: const TextStyle(
+                                            fontSize: 14,
+                                          ),
+                                        ),
+                                      ))
                                   .toList(),
                               value: selectedValue,
                               onChanged: (value) {
@@ -171,8 +171,8 @@ class YourCart extends StatelessWidget {
                       ),
                       Text(
                         textYourCartRemove,
-                        style: regular.copyWith(
-                            fontSize: 12, color: removeColor),
+                        style:
+                            regular.copyWith(fontSize: 12, color: removeColor),
                       )
                     ],
                   )
@@ -198,7 +198,7 @@ class YourCart extends StatelessWidget {
                       Text(
                         textYourCartFree,
                         style:
-                        medium.copyWith(color: primaryColor, fontSize: 12),
+                            medium.copyWith(color: primaryColor, fontSize: 12),
                       )
                     ],
                   ),
@@ -219,7 +219,7 @@ class YourCart extends StatelessWidget {
                         decoration: BoxDecoration(
                           border: Border.all(color: qtyButtonColor, width: 2),
                           borderRadius:
-                          const BorderRadius.all(Radius.circular(5)),
+                              const BorderRadius.all(Radius.circular(5)),
                         ),
                         height: 33,
                         width: MediaQuery.of(context).size.width * 0.045,
@@ -238,14 +238,14 @@ class YourCart extends StatelessWidget {
                               ),
                               items: items
                                   .map((item) => DropdownMenuItem<String>(
-                                value: item,
-                                child: Text(
-                                  item,
-                                  style: const TextStyle(
-                                    fontSize: 14,
-                                  ),
-                                ),
-                              ))
+                                        value: item,
+                                        child: Text(
+                                          item,
+                                          style: const TextStyle(
+                                            fontSize: 14,
+                                          ),
+                                        ),
+                                      ))
                                   .toList(),
                               value: selectedValue,
                               onChanged: (value) {
