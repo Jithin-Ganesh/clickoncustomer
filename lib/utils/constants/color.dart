@@ -111,3 +111,4 @@ const Color specificationsColor =Color(0xffDADADA);
 const Color ratingColor2 =Color(0xffE9871F);
 const Color reviewTextColor =Color(0xff7B848E);
 const Color reviewTextColor2 =Color(0xffA7A7A7);
+const Color accountPathColor =Color(0xff567EA4);

@@ -1,3 +1,4 @@
+import 'package:clickoncustomer/screens/web/account-order/account-order-screen.dart';
 import 'package:clickoncustomer/utils/constants/responsive.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -126,6 +127,9 @@ class _YourAccountWebState extends State<YourAccountWeb> {
                           crossAxisCount: 3,
                           children: <Widget>[
                             AccountComponent(
+                              onPressed: (){
+                                Navigator.pushNamed(context, AccountOrderScreenWeb.routeName);
+                              },
                                 title: titleYourOrders,
                                 description: titleManageAllYourOrders,
                                 icon: clickOnOffersWalletImage,

@@ -24,7 +24,7 @@ class YourCart extends StatelessWidget {
       width: MediaQuery.of(context).size.width * 0.622,
       height: 166,
       child: Padding(
-        padding: const EdgeInsets.only(right: 0, left: 0),
+        padding: const EdgeInsets.only(right: 20, left: 0),
         child:
         Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           Row(

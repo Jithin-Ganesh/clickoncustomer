@@ -140,6 +140,15 @@ TextStyle? textButtonTextStyle(Set<MaterialState> state) {
   return medium.copyWith(color: Colors.black, fontSize: 16);
 }
 
+
+TextStyle? accountPathTextStyle = regular.copyWith(color: accountPathColor);
+TextStyle? accountTitleStyle = medium.copyWith(color: passColor, fontSize: 32);
+TextStyle? archiveStyle = medium.copyWith(color: vectorColor);
+TextStyle? orderPlacedStyle = regular.copyWith(color: productAvailabilityColor);
+
+
+
+
 TextStyle? outlinedButtonTextStyle(Set<MaterialState> state) {
   if (state.contains(MaterialState.disabled)) {
     return medium.copyWith(color: disableColor, fontSize: 16);

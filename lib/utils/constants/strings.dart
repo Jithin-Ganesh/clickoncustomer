@@ -113,3 +113,4 @@ String textGmail="kvsanz@gmail.com";
 
 String textAddress="Saneesh KV GMI Interactive, 2nd Floor,M.M. Gardens, Church Landing Road, ERNAKULAM,\nKERALA, 682016, India, Phone number: 9605452143";
 String textProdDescr = 'Saneesh KV GMI Interactive, 2nd Floor,M.M. Gardens, Church Landing Road, ERNAKULAM, KERALA, 682016, India, Phone number: 9605452143';
+String prodDesc = 'UGREEN HDMI Switch 4K HDMI Splitter, 2 Input 1 Output Splitter Support fo TV Stick, Nintendo Switch, Xbox, PS4, HDTV, Monitor, Projector';

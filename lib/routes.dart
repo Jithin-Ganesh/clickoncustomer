@@ -1,3 +1,4 @@
+import 'package:clickoncustomer/screens/web/account-order/account-order-screen.dart';
 import 'package:clickoncustomer/screens/web/cart/cart-screen.dart';
 import 'package:clickoncustomer/screens/web/home/home-screen-web.dart';
 import 'package:clickoncustomer/screens/web/order-payment/order-payment-web.dart';
@@ -17,6 +18,7 @@ class AppRoutes {
       ReviewOrderScreenWeb.routeName: (context) => const ReviewOrderScreenWeb(),
       PaymentOrderScreenWeb.routeName: (context) => const PaymentOrderScreenWeb(),
       YourAccountWeb.routeName: (context) => const YourAccountWeb(),
+      AccountOrderScreenWeb.routeName: (context) => const AccountOrderScreenWeb(),
       OtpScreen.routeName: (context) => const OtpScreen(),
     };
   }

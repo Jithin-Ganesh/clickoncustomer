@@ -42,6 +42,7 @@ class BuyTogether extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: const [
                         BuyTogetherItem(
                             image: "assets/images/dummy/image-baby-detail.png",
@@ -50,7 +51,7 @@ class BuyTogether extends StatelessWidget {
                             price: 809.00),
                         Icon(
                           Icons.add,
-                          size: 40,
+                          size: 30,
                         ),
                         BuyTogetherItem(
                             image: "assets/images/dummy/image-baby-detail.png",
@@ -98,10 +99,13 @@ class BuyTogether extends StatelessWidget {
                               ),
                               OutlinedButton(
                                 onPressed: () {},
-                                child: Text(
-                                  'Add to Cart',
-                                  style: medium.copyWith(
-                                      fontSize: 24, color: primaryColor),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    'Add to Cart',
+                                    style: medium.copyWith(
+                                        fontSize: 16, color: primaryColor),
+                                  ),
                                 ),
                                 style: OutlinedButton.styleFrom(
                                     side: const BorderSide(
