@@ -1,25 +1,24 @@
+import 'package:clickoncustomer/utils/constants/decoration.dart';
 import 'package:clickoncustomer/utils/constants/fontstyles.dart';
 import 'package:clickoncustomer/utils/constants/strings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../utils/constants/color.dart';
-import '../utils/constants/images.dart';
-import '../utils/img-provider.dart';
+import '../../../utils/constants/color.dart';
+import '../../../utils/constants/images.dart';
+import '../../../utils/img-provider.dart';
 
-class OrderDetails extends StatelessWidget {
-  const OrderDetails({Key? key}) : super(key: key);
+class OrderDetailsItemWeb extends StatelessWidget {
+  const OrderDetailsItemWeb({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Container(
-
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
-            child: Padding(
-                padding: const EdgeInsets.only(right: 43, left: 34, top: 50),
-                child: Column(mainAxisSize: MainAxisSize.min,
-                    children: [
+    return Container(
+        decoration: containerDecoration,
+        child: Padding(
+            padding: const EdgeInsets.only(right: 43, left: 34, top: 50,bottom: 40),
+            child: Column(mainAxisSize: MainAxisSize.min,
+                children: [
                   Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -162,7 +161,7 @@ class OrderDetails extends StatelessWidget {
                                 height: 38,
                                 decoration: BoxDecoration(
                                     borderRadius:
-                                        BorderRadius.all(Radius.circular(5))),
+                                    BorderRadius.all(Radius.circular(5))),
                                 child: OutlinedButton(
                                   onPressed: () {},
                                   child: Text(
@@ -182,7 +181,7 @@ class OrderDetails extends StatelessWidget {
                                 height: 38,
                                 decoration: BoxDecoration(
                                     borderRadius:
-                                        BorderRadius.all(Radius.circular(5))),
+                                    BorderRadius.all(Radius.circular(5))),
                                 child: OutlinedButton(
                                   onPressed: () {},
                                   child: Text(
@@ -202,7 +201,7 @@ class OrderDetails extends StatelessWidget {
                                 height: 38,
                                 decoration: BoxDecoration(
                                     borderRadius:
-                                        BorderRadius.all(Radius.circular(5))),
+                                    BorderRadius.all(Radius.circular(5))),
                                 child: OutlinedButton(
                                   onPressed: () {},
                                   child: Text(
@@ -222,57 +221,57 @@ class OrderDetails extends StatelessWidget {
                     height: 103,
                   ),
                   Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children:[
-                  Row(
-                    children: [
-                      ImgProvider(
-                        url: "assets/images/img_35.png",
-                        width: 90,
-                        height: 71,
-                      ),
-                      SizedBox(
-                        width: 34,
-                      ),
-                      Column(crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            textYouOrderItemName,
-                            style: regular.copyWith(
-                                fontSize: 14, color: orderPlacedTextColor),
-                          ),
-                          Row(
-                            children: [
-                              Container(
-                                height: 16,
-                                width: 37,
-                                decoration: const BoxDecoration(
-                                    color: discountBoxColor,
-                                    borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(8),
-                                        bottomRight: Radius.circular(8))),
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 0.69),
-                                  child: Text(
-                                    discount,
-                                    textAlign: TextAlign.center,
-                                    style: regular.copyWith(
-                                        fontSize: 12, color: defaultTextColor),
-                                  ),
+                    children:[
+                      Row(
+                          children: [
+                            ImgProvider(
+                              url: "assets/images/img_35.png",
+                              width: 90,
+                              height: 71,
+                            ),
+                            SizedBox(
+                              width: 34,
+                            ),
+                            Column(crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  textYouOrderItemName,
+                                  style: regular.copyWith(
+                                      fontSize: 14, color: orderPlacedTextColor),
                                 ),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Text(
-                                textYourCartOffer,
-                                style: medium.copyWith(
-                                    fontSize: 12, color: mainTitleColor),
-                              )
-                            ],
-                          )
-                        ],
-                      ),
-            ]),
+                                Row(
+                                  children: [
+                                    Container(
+                                      height: 16,
+                                      width: 37,
+                                      decoration: const BoxDecoration(
+                                          color: discountBoxColor,
+                                          borderRadius: BorderRadius.only(
+                                              topLeft: Radius.circular(8),
+                                              bottomRight: Radius.circular(8))),
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(left: 0.69),
+                                        child: Text(
+                                          discount,
+                                          textAlign: TextAlign.center,
+                                          style: regular.copyWith(
+                                              fontSize: 12, color: defaultTextColor),
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Text(
+                                      textYourCartOffer,
+                                      style: medium.copyWith(
+                                          fontSize: 12, color: mainTitleColor),
+                                    )
+                                  ],
+                                )
+                              ],
+                            ),
+                          ]),
                       Row(
                         children: [
                           Container(
@@ -297,6 +296,6 @@ class OrderDetails extends StatelessWidget {
 
                     ],
                   ),
-                ]))));
+                ])));
   }
 }

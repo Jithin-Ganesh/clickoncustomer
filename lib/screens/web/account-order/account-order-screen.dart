@@ -1,6 +1,7 @@
 import 'package:clickoncustomer/components/web/account-title-bar.dart';
 import 'package:clickoncustomer/components/web/bottom-web-bar-2.dart';
 import 'package:clickoncustomer/components/youorders-item.dart';
+import 'package:clickoncustomer/screens/web/order-details/order-details-screen.dart';
 import 'package:clickoncustomer/utils/constants/responsive.dart';
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
 import 'package:flutter/cupertino.dart';
@@ -60,11 +61,11 @@ class _AccountOrderScreenWebState extends State<AccountOrderScreenWeb> {
                     padding: EdgeInsets.symmetric(
                         horizontal: MediaQuery.of(context).size.width * 0.187),
                     child: Column(
-                      children: [
+                      children: const [
                         SizedBox(
                           height: 61,
                         ),
-                        AccountTitleBar(title: 'Your Orders'),
+                        AccountTitleBar(title: 'Your Orders',isYourOrder: true),
                         SizedBox(
                           height: 141,
                         ),
@@ -77,7 +78,7 @@ class _AccountOrderScreenWebState extends State<AccountOrderScreenWeb> {
                   ),
                   Padding(
                     padding:  EdgeInsets.symmetric(horizontal:  MediaQuery.of(context).size.width * 0.083),
-                    child: BottomWebBar2(),
+                    child: const BottomWebBar2(),
                   )
                 ],
               ),
@@ -97,7 +98,7 @@ class OrderHistoryTabBar extends StatelessWidget {
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.7,
       child: ContainedTabBarView(
-        tabs: [
+        tabs: const [
           Text('All Orders'),
           Text('Cancelled Orders'),
           Text('Returned Orders'),
@@ -111,7 +112,7 @@ class OrderHistoryTabBar extends StatelessWidget {
             labelStyle: medium,
             unselectedLabelColor: productAvailabilityColor,
             alignment: TabBarAlignment.start),
-        views: [
+        views: const [
           TabBarItem(),
           TabBarItem(),
           TabBarItem(),
@@ -141,7 +142,7 @@ class TabBarItem extends StatelessWidget {
                       '10 orders placed in',
                       style: orderPlacedStyle,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 20,
                     ),
                     OutlinedButton(
@@ -152,18 +153,18 @@ class TabBarItem extends StatelessWidget {
                               'Last 3 months',
                               style: orderPlacedStyle,
                             ),
-                            Icon(Icons.keyboard_arrow_down_outlined),
+                            const Icon(Icons.keyboard_arrow_down_outlined),
                           ],
                         )),
                   ],
                 ),
                 Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.archive_outlined,
                       size: 18,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 7,
                     ),
                     Text(
@@ -174,8 +175,8 @@ class TabBarItem extends StatelessWidget {
                 )
               ],
             ),
-            SizedBox(height: 30,),
-            OrderHistoryItems(),
+            const SizedBox(height: 30,),
+            const OrderHistoryItems(),
           ],
         ),
       ),
@@ -192,7 +193,9 @@ class OrderHistoryItems extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        YourOrder(
+        YourOrder(onPressed: (){
+          Navigator.pushNamed(context, OrderDetailsScreenWeb.routeName);
+        },
             description: 'Preparing for Dispatch',
             title: 'Arriving Friday',
             itemName: prodDesc,

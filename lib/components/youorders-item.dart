@@ -20,7 +20,7 @@ class YourOrder extends StatelessWidget {
       required this.buttonText1,
       required this.buttonText2,
       required this.itemImage,
-      required this.secondIcon})
+      required this.secondIcon, this.onPressed})
       : super(key: key);
 
   final List<String> items = [
@@ -41,6 +41,8 @@ class YourOrder extends StatelessWidget {
   final String itemImage;
   final String amount;
   final bool isArriving;
+  final VoidCallback? onPressed;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -260,7 +262,7 @@ class YourOrder extends StatelessWidget {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(5))),
                   child: OutlinedButton(
-                    onPressed: () {},
+                    onPressed:onPressed,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

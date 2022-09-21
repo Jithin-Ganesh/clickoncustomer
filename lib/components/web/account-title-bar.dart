@@ -9,7 +9,9 @@ import '../../utils/constants/themes.dart';
 
 class AccountTitleBar extends StatefulWidget {
   final String title;
-  const AccountTitleBar({Key? key, required this.title}) : super(key: key);
+  final String? subTitle;
+  final bool isYourOrder;
+  const AccountTitleBar({Key? key, required this.title, this.isYourOrder = false,  this.subTitle}) : super(key: key);
 
   @override
   State<AccountTitleBar> createState() => _AccountTitleBarState();
@@ -26,7 +28,13 @@ class _AccountTitleBarState extends State<AccountTitleBar> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Your Account ›',style: accountPathTextStyle,),
+              Row(
+                children: [
+                  Text('Your Account ›',style: accountPathTextStyle,),
+                  SizedBox(width: 12,),
+                  Text(widget.subTitle ?? '',style: accountPathTextStyle,),
+                ],
+              ),
               SizedBox(height: 7,),
               Text(
                 widget.title,
@@ -34,7 +42,7 @@ class _AccountTitleBarState extends State<AccountTitleBar> {
               ),
             ],
           ),
-          Row(
+          widget.isYourOrder ? Row(
             children: [
               SizedBox(
                 height: 50,
@@ -85,7 +93,7 @@ class _AccountTitleBarState extends State<AccountTitleBar> {
                 ),
               )
             ],
-          ),
+          ) : SizedBox(),
         ],
       ),
     );
