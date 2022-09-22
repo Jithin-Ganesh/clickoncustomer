@@ -46,7 +46,7 @@ class _StepperReviewState extends State<StepperReview> {
                 isSubmit: false,
                 slNumber: '3'),
             const SizedBox(
-              height: 111,
+              height: 39,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -63,21 +63,29 @@ class _StepperReviewState extends State<StepperReview> {
                             width: 25,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              color:  checkedItemsColor,
+                              color: checkedItemsColor,
                             ),
                             child: Center(
                                 child: Icon(
-                                  Icons.check,
-                                  color: canvasColor,
-                                  size: 11,
-                                )
-                            ),
+                              Icons.check,
+                              color: canvasColor,
+                              size: 11,
+                            )),
                           ),
-                          SizedBox(height: 6,),
-                          Text('Cash on Delivery (1)',style: medium.copyWith(fontSize: 16,color: reviewTextColor2),)
+                          SizedBox(
+                            height: 6,
+                          ),
+                          Text(
+                            'Cash on Delivery (1)',
+                            style: medium.copyWith(
+                                fontSize: 16, color: reviewTextColor2),
+                          )
                         ],
                       ),
-                      DottedLine(lineLength: 200,dashColor: dividerColor4,),
+                      DottedLine(
+                        lineLength: 215,
+                        dashColor: dividerColor4,
+                      ),
                       Column(
                         children: [
                           Container(
@@ -85,17 +93,23 @@ class _StepperReviewState extends State<StepperReview> {
                             width: 25,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              color:  circledNumberButtonColor,
+                              color: circledNumberButtonColor,
                             ),
                             child: Center(
                                 child: Icon(
-                                  Icons.check,
-                                  color: canvasColor,
-                                  size: 11,
-                                )
-                            ),
-                          ),   SizedBox(height: 6,),
-                          Text('Pay Online  (3)',style: medium.copyWith(fontSize: 16,color: primaryColor),)
+                              Icons.check,
+                              color: canvasColor,
+                              size: 11,
+                            )),
+                          ),
+                          SizedBox(
+                            height: 6,
+                          ),
+                          Text(
+                            'Pay Online  (3)',
+                            style: medium.copyWith(
+                                fontSize: 16, color: primaryColor),
+                          )
                         ],
                       ),
                       //DottedLine(dashLength: 30, dashGapLength: 30),
@@ -111,7 +125,6 @@ class _StepperReviewState extends State<StepperReview> {
                 color: dividerColor3,
               ),
             ),
-
             SizedBox(
               height: 715,
               child: ListView.separated(
@@ -155,6 +168,13 @@ class _StepperReviewState extends State<StepperReview> {
                 height: 40,
                 width: 310,
                 child: ElevatedButton(
+                  style: ButtonStyle(
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                  ),
                   onPressed: () {
                     Navigator.pushNamed(
                         context, PaymentOrderScreenWeb.routeName);
@@ -172,6 +192,3 @@ class _StepperReviewState extends State<StepperReview> {
     );
   }
 }
-
-
-

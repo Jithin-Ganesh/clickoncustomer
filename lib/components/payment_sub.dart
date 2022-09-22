@@ -12,7 +12,7 @@ class PaymentSub extends StatelessWidget {
     return Container(
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Row(
-        children: [
+        children: [SizedBox(width: 24,),
           ImgProvider(
             url: "assets/images/img_29.png",
             width: 20,
@@ -33,7 +33,7 @@ class PaymentSub extends StatelessWidget {
         height: 20,
       ),
       Row(
-        children: [
+        children: [SizedBox(width: 24,),
           ImgProvider(
             url: "assets/images/img_30.png",
             width: 19,
@@ -64,7 +64,7 @@ class PaymentSub extends StatelessWidget {
         height: 20,
       ),
       Row(
-        children: [
+        children: [SizedBox(width: 24,),
           ImgProvider(
             url: "assets/images/img_31.png",
             width: 16,
@@ -85,7 +85,7 @@ class PaymentSub extends StatelessWidget {
         height: 20,
       ),
       Row(
-        children: [
+        children: [SizedBox(width: 24,),
           ImgProvider(
             url: "assets/images/img_32.png",
             width: 19,

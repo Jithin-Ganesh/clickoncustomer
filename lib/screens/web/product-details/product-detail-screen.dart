@@ -80,7 +80,7 @@ class _ProductDetailScreenWebState extends State<ProductDetailScreenWeb> {
                 ),
                 BuyTogether(),
                 Specifications(specs: specs),
-                SizedBox(height: 54,),
+                SizedBox(height: 53,),
                 RatingsAndReviews(),
                 SizedBox(height: 54,),
                 QuestionsAndAnswers(),

@@ -14,7 +14,9 @@ class RatingsAndReviews extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:  EdgeInsets.symmetric(horizontal:  MediaQuery.of(context).size.width * 0.083,),
+      padding: EdgeInsets.symmetric(
+        horizontal: MediaQuery.of(context).size.width * 0.083,
+      ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -67,7 +69,9 @@ class Reviews extends StatelessWidget {
               )
             ],
           ),
-          SizedBox(height: 60,),
+          SizedBox(
+            height: 45,
+          ),
           Container(
             height: 260,
             width: MediaQuery.of(context).size.width * 0.6,
@@ -82,6 +86,7 @@ class Reviews extends StatelessWidget {
             height: 30,
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 'See all reviews',
@@ -89,6 +94,32 @@ class Reviews extends StatelessWidget {
                     color: reviewTextColor,
                     fontSize: 14,
                     decoration: TextDecoration.underline),
+              ),
+              Container(
+                width: 135,
+                height: 30,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    border: Border.all(color: circledLoveButtonColor)),
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                      top: 5, left: 14, bottom: 6,),
+                  child: Row(
+                    children: [
+                      Text(
+                        'Top reviews',
+                        style: regular.copyWith(
+                            color: reviewTextColor, fontSize: 14),
+                      ),
+                      SizedBox(
+                        width: 21,
+                      ),
+                      Icon(
+                        Icons.keyboard_arrow_down_sharp,size: 15,
+                      )
+                    ],
+                  ),
+                ),
               ),
             ],
           ),
@@ -151,7 +182,7 @@ class ReviewBox extends StatelessWidget {
                       ),
                       child: Icon(
                         Icons.person_outline,
-                        size: 22,
+                        size: 19,
                         color: canvasColor,
                       ),
                     ),
@@ -170,14 +201,16 @@ class ReviewBox extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      '42 people found this helpful',maxLines: 1,
-                      style: regular.copyWith(overflow: TextOverflow.ellipsis,
+                      '42 people found this helpful',
+                      maxLines: 1,
+                      style: regular.copyWith(
+                        overflow: TextOverflow.ellipsis,
                         color: productAvailabilityColor,
                         fontSize: 14,
                       ),
                     ),
                     SizedBox(
-                      width: 12,
+                      width: 23,
                     ),
                     Icon(
                       Icons.keyboard_arrow_down_outlined,
@@ -187,12 +220,16 @@ class ReviewBox extends StatelessWidget {
                 )
               ],
             ),
-            SizedBox(height: 12,),
+            SizedBox(
+              height: 12,
+            ),
             Text(
               title,
               style: medium.copyWith(color: mainTitleColor, fontSize: 16),
             ),
-            SizedBox(height: 3,),
+            SizedBox(
+              height: 3,
+            ),
             Row(
               children: [
                 RatingBar.builder(
@@ -222,7 +259,7 @@ class ReviewBox extends StatelessWidget {
               ],
             ),
             SizedBox(
-              height: 25,
+              height: 16,
             ),
             Row(
               children: [
@@ -232,7 +269,7 @@ class ReviewBox extends StatelessWidget {
                       color: productAvailabilityColor, fontSize: 14),
                 ),
                 SizedBox(
-                  width: 17,
+                  width: 8,
                 ),
                 Text(
                   'Verified Purchase',
@@ -258,8 +295,6 @@ class ReviewBox extends StatelessWidget {
   }
 }
 
-
-
 class Ratings extends StatelessWidget {
   const Ratings({Key? key}) : super(key: key);
 
@@ -281,7 +316,9 @@ class Ratings extends StatelessWidget {
         ],
       ),
       child: Padding(
-        padding:  EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.0208, vertical: 30),
+        padding: EdgeInsets.symmetric(
+            horizontal: MediaQuery.of(context).size.width * 0.0208,
+            vertical: 30),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -298,7 +335,7 @@ class Ratings extends StatelessWidget {
                   size: 40,
                 ),
                 SizedBox(
-                  width: 18,
+                  width: 16,
                 ),
                 Text(
                   '4.4',
@@ -309,14 +346,15 @@ class Ratings extends StatelessWidget {
                   width: 24,
                 ),
                 VerticalDivider(
-                  color: verticalDividerColor,
-                  width: 1,
+                  color: likeDislikeDateColor,
+                  width: 3,
                 ),
                 SizedBox(
                   width: 24,
                 ),
                 Expanded(
-                  child: Text(
+                  child:
+                  Text(
                     '138 Ratings & 4 Reviews',
                     maxLines: 2,
                     style: regular.copyWith(
@@ -332,11 +370,11 @@ class Ratings extends StatelessWidget {
                   fontSize: 14,
                   decoration: TextDecoration.underline),
             ),
-            RatingIndicator(percent: 0.7, value: '70 %', stars: '5'),
-            RatingIndicator(percent: 0.16, value: '16 %', stars: '4'),
-            RatingIndicator(percent: 0.09, value: '9 %', stars: '3'),
-            RatingIndicator(percent: 0.03, value: '3 %', stars: '2'),
-            RatingIndicator(percent: 0.03, value: '3 %', stars: '1'),
+            RatingIndicator(percent: 0.7, value: '70%', stars: '5'),
+            RatingIndicator(percent: 0.16, value: '16%', stars: '4'),
+            RatingIndicator(percent: 0.09, value: '9%', stars: '3'),
+            RatingIndicator(percent: 0.03, value: '3%', stars: '2'),
+            RatingIndicator(percent: 0.03, value: '3%', stars: '1'),
           ],
         ),
       ),
@@ -364,7 +402,7 @@ class RatingIndicator extends StatelessWidget {
           stars,
           style:
               regular.copyWith(color: productAvailabilityColor, fontSize: 14),
-        ),
+        ),SizedBox(width: 11,),
         Icon(
           Icons.star,
           color: productAvailabilityColor,

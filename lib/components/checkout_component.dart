@@ -40,8 +40,11 @@ class Checkout extends StatelessWidget {
       ),
       width: MediaQuery.of(context).size.width * 0.622,
       child: Padding(
-        padding:
-            EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.009, top:  MediaQuery.of(context).size.width *  0.0119, right: 23, bottom: 30),
+        padding: EdgeInsets.only(
+            left: MediaQuery.of(context).size.width * 0.009,
+            top: MediaQuery.of(context).size.width * 0.0119,
+            right: 23,
+            bottom: 30),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -55,7 +58,7 @@ class Checkout extends StatelessWidget {
                   slNumber: slNumber,
                 ),
                 SizedBox(
-                  height: 17,
+                  height: 15,
                 ),
                 isAccount
                     ? Row(children: [
@@ -100,7 +103,7 @@ class Checkout extends StatelessWidget {
               ],
             ),
             Container(
-              width:  MediaQuery.of(context).size.width * 0.072,
+              width: MediaQuery.of(context).size.width * 0.072,
               height: 45,
               child: OutlinedButton(
                   style: ButtonStyle(
@@ -167,7 +170,7 @@ class _PaymentTitleState extends State<PaymentTitle> {
                   )
                 : Text(
                     widget.slNumber ?? '',
-                    style: medium.copyWith(color: canvasColor),
+                    style: medium.copyWith(color: canvasColor,fontSize: 14),
                   ),
           ),
         ),
@@ -176,7 +179,7 @@ class _PaymentTitleState extends State<PaymentTitle> {
         ),
         Text(
           widget.title,
-          style: medium.copyWith(fontSize: 20, color: priceOffersSubtextColor),
+          style: medium.copyWith(fontSize: 20, color: mainTitleColor),
         ),
       ],
     );

@@ -20,7 +20,9 @@ class LoginScreen extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(height: 201,),
+              SizedBox(
+                height: 201,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -32,7 +34,6 @@ class LoginScreen extends StatelessWidget {
                         ),
                         color: primaryColor),
                     width: 301,
-                    height: 558,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -57,7 +58,7 @@ class LoginScreen extends StatelessWidget {
                                   ),
                                 ])),
                         SizedBox(
-                          height: 97,
+                          height: 142,
                         ),
                         Padding(
                           padding: EdgeInsets.only(left: 24.58, right: 36.83),
@@ -94,19 +95,9 @@ class LoginScreen extends StatelessWidget {
                           height: 36,
                         ),
                         ImgProvider(
-                          url: clickUpLogoImage,
-                          width: 70,
-                          height: 43,
-                          color: Colors.white,
-                        ),
-                        SizedBox(
-                          height: 6,
-                        ),
-                        ImgProvider(
-                          url: clickOnOffersImage,
+                          url: "assets/images/img_39.png",
                           width: 97,
-                          height: 9.91,
-                          color: Colors.white,
+                          height: 49,
                         ),
                         SizedBox(
                           height: 33,
@@ -154,14 +145,22 @@ class LoginScreen extends StatelessWidget {
                         Container(
                           width: 350,
                           height: 45,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10)),
                           child: ElevatedButton(
+                              style: ButtonStyle(
+                                shape: MaterialStateProperty.all<
+                                        RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10))),
+                              ),
                               onPressed: () {
-                                Navigator.of(context).pushNamed(OtpScreen.routeName);
+                                Navigator.of(context)
+                                    .pushNamed(OtpScreen.routeName);
                               },
                               child: Text(
                                 textContinue,
+                                style: medium.copyWith(
+                                    fontSize: 16, color: Colors.white),
                                 textAlign: TextAlign.center,
                               )),
                         ),
@@ -181,7 +180,7 @@ class LoginScreen extends StatelessWidget {
                           children: [
                             Text(
                               textHavingTrouble,
-                              style: medium.copyWith(
+                              style: regular.copyWith(
                                   fontSize: 14, color: emailTextColor),
                             ),
                             SizedBox(
@@ -189,7 +188,7 @@ class LoginScreen extends StatelessWidget {
                             ),
                             Text(
                               textGetHelp,
-                              style: medium.copyWith(
+                              style: regular.copyWith(
                                   fontSize: 14, color: primaryColor),
                             ),
                           ],
@@ -197,17 +196,25 @@ class LoginScreen extends StatelessWidget {
                         SizedBox(
                           height: 38,
                         ),
-                        SizedBox(
+                        Container(
                           width: 350,
                           height: 45,
                           child: OutlinedButton(
+                              style: ButtonStyle(
+                                shape: MaterialStateProperty.all(
+                                    RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10.0))),
+                              ),
                               onPressed: () {
-                                Navigator.pushNamed(context, OtpScreen.routeName);
+                                Navigator.pushNamed(
+                                    context, OtpScreen.routeName);
                               },
                               child: Text(
                                 textCreateAccount,
                                 style: medium.copyWith(
-                                    fontSize: 16, color: createAccountTextColor),
+                                    fontSize: 16,
+                                    color: createAccountTextColor),
                               )),
                         )
                       ],
@@ -218,12 +225,13 @@ class LoginScreen extends StatelessWidget {
               SizedBox(
                 height: 157,
               ),
-              const SizedBox(
-                  width: 841,
-                  child: Divider(
-                    height: 1,
-                    color: dividerBorderColor,
-                  )),
+              SizedBox(
+                width: 841,
+                child: Divider(
+                  height: 3,
+                  color: bottomAppColor,
+                ),
+              ),
               SizedBox(
                 height: 22,
               ),

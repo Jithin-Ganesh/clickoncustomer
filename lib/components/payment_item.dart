@@ -65,11 +65,11 @@ class PaymentItem extends StatelessWidget {
                         Row(
                           children: [
                             Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5)),
                               width: 20,
                               height: 20,
-                              child: Checkbox(
+                              child: Checkbox(shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(5)),
+
                                 value: true,
                                 onChanged: (bool? value) {},
                               ),
@@ -79,7 +79,7 @@ class PaymentItem extends StatelessWidget {
                             ),
                             ImgProvider(
                               url: "assets/images/icon-wallet.png",
-                              width: 35,
+                              width: 33,
                               height: 34,
                             ),
                             SizedBox(
@@ -131,7 +131,7 @@ class PaymentItem extends StatelessWidget {
                                     Text(
                                       textRupees,
                                       style: regular.copyWith(
-                                          fontSize: 22, color: primaryColor),
+                                          fontSize: 18, color: primaryColor),
                                     ),
                                     SizedBox(
                                       width: 2,
@@ -166,7 +166,7 @@ class PaymentItem extends StatelessWidget {
                         height: 40,
                       ),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Column(
@@ -185,7 +185,7 @@ class PaymentItem extends StatelessWidget {
                                 child: Row(
                                   children: [
                                     SizedBox(
-                                      width: 24,
+                                      width: 26,
                                     ),
                                     ImgProvider(
                                       url: imageIcon,

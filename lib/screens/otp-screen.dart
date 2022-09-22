@@ -43,7 +43,9 @@ class _OtpScreenState extends State<OtpScreen> {
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(height: 201,),
+            SizedBox(
+              height: 201,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -55,7 +57,6 @@ class _OtpScreenState extends State<OtpScreen> {
                       ),
                       color: primaryColor),
                   width: 301,
-                  height: 558,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -80,7 +81,7 @@ class _OtpScreenState extends State<OtpScreen> {
                                 ),
                               ])),
                       SizedBox(
-                        height: 97,
+                        height: 142,
                       ),
                       Padding(
                         padding: EdgeInsets.only(left: 24.58, right: 36.83),
@@ -117,19 +118,9 @@ class _OtpScreenState extends State<OtpScreen> {
                         height: 36,
                       ),
                       ImgProvider(
-                        url: clickUpLogoImage,
-                        width: 70,
-                        height: 43,
-                        color: Colors.white,
-                      ),
-                      SizedBox(
-                        height: 6,
-                      ),
-                      ImgProvider(
-                        url: clickOnOffersImage,
+                        url: "assets/images/img_39.png",
                         width: 97,
-                        height: 9.91,
-                        color: Colors.white,
+                        height: 49,
                       ),
                       SizedBox(
                         height: 53,
@@ -151,7 +142,7 @@ class _OtpScreenState extends State<OtpScreen> {
                         height: 28,
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 165,right: 165),
+                        padding: const EdgeInsets.only(left: 165, right: 165),
                         child: OtpEditingController(
                           otpController: otpController,
                           onOtpFieldChanged: (completed) {
@@ -171,7 +162,8 @@ class _OtpScreenState extends State<OtpScreen> {
                       SizedBox(
                         height: 27,
                       ),
-                      Row(mainAxisAlignment: MainAxisAlignment.center,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
                             textResentOtp,
@@ -194,11 +186,16 @@ class _OtpScreenState extends State<OtpScreen> {
                       Container(
                         width: 350,
                         height: 45,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10)),
                         child: ElevatedButton(
+                            style: ButtonStyle(
+                              shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10))),
+                            ),
                             onPressed: () {
-                              Navigator.pushNamedAndRemoveUntil(context, HomeScreenWeb.routeName, (route) => false);
+                              Navigator.pushNamedAndRemoveUntil(context,
+                                  HomeScreenWeb.routeName, (route) => false);
                             },
                             child: Text(
                               textSignIn,
@@ -221,7 +218,8 @@ class _OtpScreenState extends State<OtpScreen> {
                                           BorderRadius.circular(10.0))),
                             ),
                             onPressed: () {
-                              Navigator.pushNamedAndRemoveUntil(context, HomeScreenWeb.routeName, (route) => false);
+                              Navigator.pushNamedAndRemoveUntil(context,
+                                  HomeScreenWeb.routeName, (route) => false);
                             },
                             child: Text(
                               textSignInWithYourPassword,
@@ -261,8 +259,8 @@ class _OtpScreenState extends State<OtpScreen> {
             const SizedBox(
                 width: 841,
                 child: Divider(
-                  height: 1,
-                  color: dividerBorderColor,
+                  height: 3,
+                  color: bottomAppColor,
                 )),
             SizedBox(
               height: 22,

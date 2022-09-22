@@ -34,7 +34,7 @@ String textYourCartFree="Free";
 String textYourCartCOD="COD";
 String textCVV="CVV";
 String textSeprator="|";
-String yourCartQuantityText="Qty:";
+String yourCartQuantityText="Qty:1";
 String yourCartDeliveryDate="Delivery by Fri Aug 12 | ";
 String textYourItemsPrice="\$ 32";
 String textYourItemsOfferPrice="\$ 42";
@@ -108,7 +108,7 @@ String textSignIn = "Sign-In";
 String textResentOtp = "Resent OTP in: ";
 String textRights = "©2010-2022 Click on Offers. All rights reserved.";
 String textTermsAndConditions =
-    "By continuing, you agree to clickonoffer's Conditions of\nUse and Privacy Notice.";
+    "By continuing, you agree to clickonoffer's Conditions\nof Use and Privacy Notice.";
 String textCreateAccount = "CREATE ACCOUNT";
 String textPassCode = "xxxx 2143 ";
 String textUserName = "SANEESH KV ";

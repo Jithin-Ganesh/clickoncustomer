@@ -31,8 +31,8 @@ class CustomQuestions extends StatelessWidget {
                   width: 18,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(10),
-                          bottomRight: Radius.circular(10)),
+                          topLeft: Radius.circular(5),
+                          bottomRight: Radius.circular(5)),
                       color: primaryColor),
                   child: Center(
                     child: Text(
@@ -40,7 +40,7 @@ class CustomQuestions extends StatelessWidget {
                       style: regular.copyWith(color: canvasColor, fontSize: 14),
                     ),
                   ),
-                ),  SizedBox(width: 18,),
+                ),  SizedBox(width: 11,),
                 Text(
                   question,
                   style: regular.copyWith(color: mainTitleColor, fontSize: 16),
@@ -54,22 +54,22 @@ class CustomQuestions extends StatelessWidget {
                   style: regular.copyWith(
                       color: productAvailabilityColor, fontSize: 14),
                 ),
-                SizedBox(width: 18,),
+                SizedBox(width: 14,),
                 Icon(
                   Icons.thumb_up,
                   size: 18,
                   color: ogPriceColor,
-                ),  SizedBox(width: 18,),
+                ),  SizedBox(width: 25,),
                 Text(
                   dislike,
                   style: regular.copyWith(
                       color: productAvailabilityColor, fontSize: 14),
-                ),  SizedBox(width: 18,),
+                ),  SizedBox(width: 14,),
                 Icon(
                   Icons.thumb_down,
                   size: 18,
                   color: ogPriceColor,
-                ),  SizedBox(width: 18,),
+                ),  SizedBox(width: 23,),
                 Icon(
                   Icons.keyboard_arrow_down_outlined,
                   size: 18,
@@ -87,7 +87,7 @@ class CustomQuestions extends StatelessWidget {
                 Text(
                   'A',
                   style: regular.copyWith(color: mainTitleColor, fontSize: 16),
-                ),  SizedBox(width: 18,),
+                ),  SizedBox(width: 20,),
                 Text(
                   answer,
                   style: regular.copyWith(color: mainTitleColor, fontSize: 16),
@@ -133,7 +133,7 @@ class QuestionsAndAnswers extends StatelessWidget {
                     width: 25,
                   ),
                   ElevatedButton(
-                    style: ElevatedButton.styleFrom(
+                    style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                       primary: productDetailsScreenBoxColor,
                     ),
                     onPressed: () {},

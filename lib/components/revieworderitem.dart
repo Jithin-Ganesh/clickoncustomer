@@ -91,7 +91,7 @@ class ReviewOrderItem extends StatelessWidget {
                 border: Border.all(color: itemContainer, width: 1)),
             child: Padding(
               padding: const EdgeInsets.only(
-                  top: 16, bottom: 16, left: 14, right: 16),
+                  top: 16, bottom: 16, left: 14, right: 18),
               child: const ImgProvider(
                 url: "assets/images/img_21.png",
                 width: 77,
@@ -111,13 +111,12 @@ class ReviewOrderItem extends StatelessWidget {
                 style: regular.copyWith(
                     fontSize: 16, color: productSubTextColor),
               ),
-              SizedBox(height: 10,),
               Text(
                 soldByText,
                 style: thin.copyWith(
                     fontSize: 14, color: productDetailsScreenSubTextColor),
               ),
-                SizedBox(height: 10,),
+                SizedBox(height: 4,),
               Row(
                 children: [
                   Text(
@@ -157,7 +156,7 @@ class ReviewOrderItem extends StatelessWidget {
                         color: offerPriceColor),
                   ),
                   SizedBox(
-                    width: 26,
+                    width: 18,
                   ),
                   Container(
                     height: 16,
@@ -168,7 +167,7 @@ class ReviewOrderItem extends StatelessWidget {
                             topLeft: Radius.circular(8),
                             bottomRight: Radius.circular(8))),
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 0.69),
+                      padding: const EdgeInsets.only(left: 0.69,top: 2),
                       child: Text(
                         discount,
                         textAlign: TextAlign.center,
@@ -188,20 +187,20 @@ class ReviewOrderItem extends StatelessWidget {
                 ],
               ),
               SizedBox(
-                width: 15,
+                width: 6,
               ),
               Row(
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                      border: Border.all(color: qtyButtonColor, width: 2),
+                      border: Border.all(color: qtyButtonColor, width:1.5),
                       borderRadius:
                       const BorderRadius.all(Radius.circular(5)),
                     ),
-                    height: 28,
-                    width: 76,
+                    height: 30,
+                    width: 72,
                     child: DropdownButtonHideUnderline(
-                      child: DropdownButton2(
+                      child: DropdownButton2(icon: Icon(Icons.keyboard_arrow_down_rounded,color: dropArrowColor,size: 18,),
                           hint: Row(
                             children: [
                               SizedBox(
@@ -210,16 +209,7 @@ class ReviewOrderItem extends StatelessWidget {
                               Text(yourCartQuantityText,
                                   style: regular.copyWith(
                                       fontSize: 12,
-                                      color: productSubTextColor)),
-                              const SizedBox(
-                                width: 3,
-                              ),
-                              Text(
-                                count,
-                                style: regular.copyWith(
-                                    fontSize: 14,
-                                    color: productSubTextColor),
-                              )
+                                      color: mainTitleColor)),
                             ],
                           ),
                           items: items
@@ -262,7 +252,7 @@ class ReviewOrderItem extends StatelessWidget {
                             height: 12,
                           ),
                           const SizedBox(
-                            width: 18,
+                            width: 12,
                           ),
                           Text(
                             textAlign: TextAlign.center,

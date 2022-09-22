@@ -15,7 +15,7 @@ class ReviewItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 200,
+      width: 190,
       height: 256,
       child: Stack(children: [
         Image.asset(
@@ -40,8 +40,8 @@ class ReviewItem extends StatelessWidget {
                   color: primaryColor,
                 ),
                 child: Icon(
-                  Icons.person_outline,
-                  size: 22,
+                  Icons.person_outline_rounded,
+                  size: 15,
                   color: canvasColor,
                 ),
               ),
@@ -54,7 +54,7 @@ class ReviewItem extends StatelessWidget {
                   Text(
                     textCustomerNAme,
                     style: regular.copyWith(
-                        fontSize: 12, color: loveButtonColor),
+                        fontSize: 14, color: Colors.white),
                   ),
                   RatingBar.builder(
                     direction: Axis.horizontal,

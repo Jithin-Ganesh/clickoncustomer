@@ -15,7 +15,7 @@ class PaymentBank extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisSize: MainAxisSize.min,
+        mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -34,7 +34,9 @@ class PaymentBank extends StatelessWidget {
                     onChanged: (value) {
                       print(value);
                     }),
-               
+                SizedBox(
+                  width: 13,
+                ),
                 Text(
                   textDebitCardName,
                   style:
@@ -106,6 +108,12 @@ class PaymentBank extends StatelessWidget {
                   width: 146,
                   height: 40,
                   child: ElevatedButton(
+                      style: ButtonStyle(
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10.0),
+                                     ))),
                       onPressed: () {},
                       child: Text(
                         textAlign: TextAlign.center,

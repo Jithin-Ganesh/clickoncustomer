@@ -1,5 +1,6 @@
 import 'package:clickoncustomer/components/buyTogetherItem.dart';
 import 'package:clickoncustomer/utils/constants/color.dart';
+import 'package:clickoncustomer/utils/constants/strings.dart';
 
 import 'package:flutter/material.dart';
 import '../../../utils/constants/fontstyles.dart';
@@ -48,7 +49,7 @@ class BuyTogether extends StatelessWidget {
                             image: "assets/images/dummy/image-baby-detail.png",
                             description:
                                 'Pampers Pure Protection Baby Diapers, Medium Size... ',
-                            price: 809.00),
+                            price: "809.00"),
                         Icon(
                           Icons.add,
                           size: 30,
@@ -57,7 +58,7 @@ class BuyTogether extends StatelessWidget {
                             image: "assets/images/dummy/image-baby-detail.png",
                             description:
                                 'Pampers Pure Protection Baby Diapers, Medium Size... ',
-                            price: 809.00),
+                            price: "809.00"),
                       ],
                     ),
                     Container(
@@ -85,8 +86,10 @@ class BuyTogether extends StatelessWidget {
                                         color: productAvailabilityColor),
                                   ),
                                   const SizedBox(
-                                    width: 18,
+                                    width: 15,
                                   ),
+                                  Text(textRupees,style: regular.copyWith(fontSize: 18,color: mainTitleColor),
+                                  ),SizedBox(width: 2,),
                                   Text(
                                     '2008.00',
                                     style: regular.copyWith(

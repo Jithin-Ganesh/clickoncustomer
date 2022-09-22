@@ -9,7 +9,7 @@ import '../utils/constants/images.dart';
 class BuyTogetherItem extends StatelessWidget {
   final String image;
   final String description;
-  final double price;
+  final String price;
 
   const BuyTogetherItem(
       {Key? key,
@@ -35,7 +35,8 @@ class BuyTogetherItem extends StatelessWidget {
           SizedBox(
               height: 20,
               width: 20,
-              child: Checkbox(
+              child: Checkbox(shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5)),
                 value: true,
                 onChanged: (bool? value) {},
               )),
@@ -48,13 +49,13 @@ class BuyTogetherItem extends StatelessWidget {
               children: [
                 Text(
                   description,
-                  style: regular.copyWith(fontSize: 14, color: hintColor,),maxLines: 2,
+                  style: thin.copyWith(fontSize: 12, color: productSubTextColor,),maxLines: 2,
                 ),
                 const SizedBox(
                   height: 4.16,
                 ),
                 Text(
-                  textRupees + price.toString(),
+                  textRupees + price,
                   style: regular.copyWith(
                       fontSize: 16, color: groupOrdersAmountTextColor),
                 )

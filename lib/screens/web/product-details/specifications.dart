@@ -23,7 +23,7 @@ class Specifications extends StatelessWidget {
             style: medium.copyWith(color: mainTitleColor, fontSize: 20),
           ),
           SizedBox(
-            height: 38,
+            height: 28,
           ),
           Container(
             height: 165,
@@ -44,7 +44,7 @@ class Specifications extends StatelessWidget {
                           fontSize: 20, color: productAvailabilityColor),
                     ),
                     SizedBox(
-                      height: 9,
+                      height: 8.4,
                     ),
                     Text(
                       specs,
@@ -57,7 +57,7 @@ class Specifications extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 36,
+            height: 46,
           ),
           Row(
             children: [
@@ -102,7 +102,7 @@ class Specifications extends StatelessWidget {
                                       color: priceDetailsSubTextColor),
                                 ),
                                 SizedBox(
-                                  height: 16,
+                                  height: 14,
                                 ),
                                 Text(
                                   'No of Diapers Per Pack',
@@ -123,7 +123,7 @@ class Specifications extends StatelessWidget {
                                       fontSize: 14, color: mainTitleColor),
                                 ),
                                 SizedBox(
-                                  height: 16,
+                                  height: 14,
                                 ),
                                 Text(
                                   '26',

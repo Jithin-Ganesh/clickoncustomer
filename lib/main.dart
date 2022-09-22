@@ -17,15 +17,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-       providers: ProviderTree().get(context),
+      providers: ProviderTree().get(context),
       child: MaterialApp(
-        title: 'Flutter Demo', debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
-
           primarySwatch: Colors.blue,
         ),
         scrollBehavior: MyCustomScrollBehavior(),
-        home:LoginScreen(),
+        home: LoginScreen(),
         routes: AppRoutes().get(context),
       ),
     );
@@ -34,7 +34,6 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
-
 
   final String title;
 
@@ -47,23 +46,18 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _incrementCounter() {
     setState(() {
-
       _counter++;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
-
         title: Text(widget.title),
       ),
       body: Center(
-
         child: Column(
-
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(

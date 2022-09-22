@@ -25,7 +25,9 @@ class ProductDetailTitle extends StatelessWidget {
       width: MediaQuery.of(context).size.width * 1,
       height: 98,
       child: Padding(
-        padding:  EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.083,),
+        padding: EdgeInsets.symmetric(
+          horizontal: MediaQuery.of(context).size.width * 0.083,
+        ),
         child:
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           Row(mainAxisAlignment: MainAxisAlignment.start, children: [
@@ -46,7 +48,7 @@ class ProductDetailTitle extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              width: 30,
+              width: 28,
             ),
             Text(
               itemDescription,
@@ -88,12 +90,12 @@ class ProductDetailTitle extends StatelessWidget {
                             fontSize: 14, color: defaultTextColor),
                       ),
                       const SizedBox(
-                        width: 3,
+                        width: 8,
                       ),
                       Text(
                         textActualAmount,
                         style: regular.copyWith(
-                            fontSize: 14,
+                            fontSize: 16,
                             color: defaultTextColor,
                             decoration: TextDecoration.lineThrough,
                             decorationColor: defaultTextColor),
@@ -105,72 +107,76 @@ class ProductDetailTitle extends StatelessWidget {
               const SizedBox(
                 width: 16,
               ),
-              // Container(
-              //   height: 40,
-              //   width: MediaQuery.of(context).size.width * 0.047,
-              //   child: OutlinedButton(
-              //     style: OutlinedButton.styleFrom(
-              //       shape: RoundedRectangleBorder(
-              //           borderRadius: BorderRadius.circular(10)),
-              //       side: const BorderSide(width: 1.0, color: defaultTextColor),
-              //     ),
-              //     onPressed: () {},
-              //     child: DropdownButtonHideUnderline(
-              //       child: DropdownButton2(
-              //           hint: Row(
-              //             children: [
-              //               Text(quantityText,
-              //                   style: regular.copyWith(
-              //                       fontSize: 14, color: defaultTextColor)),
-              //               const SizedBox(
-              //                 width: 4,
-              //               ),
-              //               Text(
-              //                 count,
-              //                 style: regular.copyWith(
-              //                     fontSize: 16, color: defaultTextColor),
-              //               )
-              //             ],
-              //           ),
-              //           items: items
-              //               .map((item) => DropdownMenuItem<String>(
-              //                     value: item,
-              //                     child: Text(
-              //                       item,
-              //                       style: const TextStyle(
-              //                         fontSize: 14,
-              //                       ),
-              //                     ),
-              //                   ))
-              //               .toList(),
-              //           value: selectedValue,
-              //           onChanged: (value) {
-              //             selectedValue = value as String;
-              //           }),
-              //     ),
-              //   ),
-              // ),
+              Container(
+                height: 40,
+                width: 89,
+                child: OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    side: const BorderSide(width: 1.0, color: defaultTextColor),
+                  ),
+                  onPressed: () {},
+                  child: DropdownButtonHideUnderline(
+                    child: DropdownButton2(icon:Icon( Icons.keyboard_arrow_down_outlined,color: Colors.white,),
+                        hint: Row(
+                          children: [
+                            Text(quantityText,
+                                style: medium.copyWith(
+                                    fontSize: 14, color: defaultTextColor)),
+                            const SizedBox(
+                              width: 4,
+                            ),
+                            Text(
+                              count,
+                              style: medium.copyWith(
+                                  fontSize: 16, color: defaultTextColor),
+                            )
+                          ],
+                        ),
+                        items: items
+                            .map((item) => DropdownMenuItem<String>(
+                                  value: item,
+                                  child: Text(
+                                    item,
+                                    style: const TextStyle(
+                                      fontSize: 10,
+                                    ),
+                                  ),
+                                ))
+                            .toList(),
+                        value: selectedValue,
+                        onChanged: (value) {
+                          selectedValue = value as String;
+                        }),
+                  ),
+                ),
+              ),
               const SizedBox(
                 width: 13,
               ),
-              MaterialButton(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)),
-                textColor: primaryColor,
-                onPressed: () {},
-                color: defaultTextColor,
-                minWidth: 147,
+              SizedBox(
+                width: 145,
                 height: 40,
-                child: Text(
-                  buyNow,
-                  style: medium.copyWith(fontSize: 16, color: primaryColor),
+                child: MaterialButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  textColor: primaryColor,
+                  onPressed: () {},
+                  color: defaultTextColor,
+                  minWidth: 147,
+                  height: 40,
+                  child: Text(
+                    buyNow,
+                    style: medium.copyWith(fontSize: 16, color: primaryColor),
+                  ),
                 ),
               ),
               const SizedBox(
                 width: 14,
               ),
               Container(
-                width: MediaQuery.of(context).size.width * 0.072,
+                width: 139,
                 height: 40,
                 child: OutlinedButton(
                   onPressed: () {},

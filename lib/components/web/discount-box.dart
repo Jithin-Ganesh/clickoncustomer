@@ -11,18 +11,18 @@ class DiscountBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 22,
-      width: 61,
+      width: 49,
       decoration: BoxDecoration(
           color: canvasColor,
           borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(10), bottomRight: Radius.circular(10))),
+              topLeft: Radius.circular(12), bottomRight: Radius.circular(12))),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
             '10%',
-            style: medium.copyWith(color: primaryColor, fontSize: 14),
+            style: semiBold.copyWith(color: primaryColor, fontSize: 14),
           ),
         ],
       ),
