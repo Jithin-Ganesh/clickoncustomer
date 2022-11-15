@@ -17,9 +17,9 @@ import '../components/otp-editing-controller.dart';
 class OtpScreen extends StatefulWidget {
   static const routeName = "/otp";
   const OtpScreen({
-    Key? key,
+    Key? key, this.phoneNumber,
   }) : super(key: key);
-
+  final String? phoneNumber;
   @override
   State<OtpScreen> createState() => _OtpScreenState();
 }
@@ -28,6 +28,13 @@ class _OtpScreenState extends State<OtpScreen> {
   late OtpFieldController otpController;
   bool isOtpFilled = false;
   String? otp;
+
+
+  OtpScreen _args() {
+    final args = ModalRoute.of(context)!.settings.arguments as OtpScreen;
+    return args;
+  }
+
 
   @override
   void initState() {

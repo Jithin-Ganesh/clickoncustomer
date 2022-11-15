@@ -18,6 +18,7 @@ class CustomTitleBarViewAll extends StatelessWidget {
       children: [
         Text(title,style: medium.copyWith(color: Colors.black,fontSize: 28),textAlign: TextAlign.left,),
         Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('ViewAll',style: medium.copyWith(color: groupOrdersTitleTextColor),),
             SizedBox(width: 5,),

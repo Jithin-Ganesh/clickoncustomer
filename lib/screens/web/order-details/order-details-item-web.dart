@@ -1,3 +1,4 @@
+import 'package:clickoncustomer/screens/web/order-feedback/order-seller-feedback-screen-web.dart';
 import 'package:clickoncustomer/utils/constants/decoration.dart';
 import 'package:clickoncustomer/utils/constants/fontstyles.dart';
 import 'package:clickoncustomer/utils/constants/strings.dart';
@@ -163,7 +164,9 @@ class OrderDetailsItemWeb extends StatelessWidget {
                                     borderRadius:
                                     BorderRadius.all(Radius.circular(5))),
                                 child: OutlinedButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.pushNamed(context, OrderSellerFeedBackScreenWeb.routeName);
+                                  },
                                   child: Text(
                                     textAlign: TextAlign.center,
                                     "Leave seller feedback",

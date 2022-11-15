@@ -22,7 +22,6 @@ class YourAccountWeb extends StatefulWidget {
 }
 
 class _YourAccountWebState extends State<YourAccountWeb> {
-
   @override
   Widget build(BuildContext context) {
     const double itemHeight = 130;
@@ -58,10 +57,10 @@ class _YourAccountWebState extends State<YourAccountWeb> {
               ])),
           child: SingleChildScrollView(
             child: Padding(
-              padding:  EdgeInsets.symmetric(horizontal: 160),
+              padding: EdgeInsets.symmetric(horizontal: 160),
               child: Column(children: [
                 Padding(
-                  padding:  EdgeInsets.symmetric(horizontal: 198),
+                  padding: EdgeInsets.symmetric(horizontal: 198),
                   child: Column(
                     children: [
                       SizedBox(
@@ -73,19 +72,32 @@ class _YourAccountWebState extends State<YourAccountWeb> {
                           Row(children: [
                             Text(
                               titleYourAccount,
-                              style: medium.copyWith(color: passColor, fontSize: 32),
+                              style: medium.copyWith(
+                                  color: passColor, fontSize: 32),
                             ),
                           ]),
                           Row(
                             children: [
                               Container(
-                                decoration: BoxDecoration(
-                                  color: canvasColor,
-                                    borderRadius: BorderRadius.circular(10)),
                                 width: 126,
                                 height: 45,
                                 child: OutlinedButton(
                                   onPressed: () {},
+                                  style: ButtonStyle(
+                                    shape: MaterialStateProperty.all(
+                                        RoundedRectangleBorder(
+                                            borderRadius:
+                                            BorderRadius.circular(10.0))),
+                                    backgroundColor:
+                                    MaterialStateProperty.resolveWith<Color>(
+                                            (states) {
+                                          if (states
+                                              .contains(MaterialState.disabled)) {
+                                            return canvasColor;
+                                          }
+                                          return canvasColor;
+                                        }),
+                                  ),
                                   child: Text(
                                     titleHelpCenter,
                                     style: medium.copyWith(
@@ -96,13 +108,25 @@ class _YourAccountWebState extends State<YourAccountWeb> {
                               SizedBox(
                                 width: 14,
                               ),
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: canvasColor,
-                                    borderRadius: BorderRadius.circular(10)),
+                              SizedBox(
                                 width: 50,
                                 height: 45,
                                 child: OutlinedButton(
+                                  style: ButtonStyle(
+                                    shape: MaterialStateProperty.all(
+                                        RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10.0))),
+                                    backgroundColor:
+                                        MaterialStateProperty.resolveWith<Color>(
+                                            (states) {
+                                      if (states
+                                          .contains(MaterialState.disabled)) {
+                                        return canvasColor;
+                                      }
+                                      return canvasColor;
+                                    }),
+                                  ),
                                   onPressed: () {},
                                   child: Icon(
                                     Icons.power_settings_new_rounded,
@@ -115,21 +139,25 @@ class _YourAccountWebState extends State<YourAccountWeb> {
                           )
                         ],
                       ),
-                      SizedBox(height: 88,),
+                      SizedBox(
+                        height: 88,
+                      ),
                       SizedBox(
                         height: 350,
                         child: GridView.count(
                           childAspectRatio: (itemWidth / itemHeight),
                           physics: const NeverScrollableScrollPhysics(),
                           primary: false,
-                          crossAxisSpacing: 30,shrinkWrap: true,
+                          crossAxisSpacing: 30,
+                          shrinkWrap: true,
                           mainAxisSpacing: 34,
                           crossAxisCount: 3,
                           children: <Widget>[
                             AccountComponent(
-                              onPressed: (){
-                                Navigator.pushNamed(context, AccountOrderScreenWeb.routeName);
-                              },
+                                onPressed: () {
+                                  Navigator.pushNamed(
+                                      context, AccountOrderScreenWeb.routeName);
+                                },
                                 title: titleYourOrders,
                                 description: titleManageAllYourOrders,
                                 icon: clickOnOffersWalletImage,
@@ -162,20 +190,22 @@ class _YourAccountWebState extends State<YourAccountWeb> {
                           ],
                         ),
                       ),
-                      SizedBox(height: 59,),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children:[
-                          ImageIndicators2(currentPage: 1, index: 1),
-                          ImageIndicators2(currentPage: 1, index: 1),
-                          ImageIndicators2(currentPage: 1, index: 1),
-                          ImageIndicators2(currentPage: 1, index: 1),
-                          ImageIndicators2(currentPage: 1, index: 1),
-                          ImageIndicators2(currentPage: 1, index: 1),
-                        ]
-
+                      SizedBox(
+                        height: 59,
                       ),
-                      SizedBox(height: 322,),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ImageIndicators2(currentPage: 1, index: 1),
+                            ImageIndicators2(currentPage: 1, index: 1),
+                            ImageIndicators2(currentPage: 1, index: 1),
+                            ImageIndicators2(currentPage: 1, index: 1),
+                            ImageIndicators2(currentPage: 1, index: 1),
+                            ImageIndicators2(currentPage: 1, index: 1),
+                          ]),
+                      SizedBox(
+                        height: 322,
+                      ),
                     ],
                   ),
                 ),
@@ -188,7 +218,6 @@ class _YourAccountWebState extends State<YourAccountWeb> {
     );
   }
 }
-
 
 class ImageIndicators2 extends StatelessWidget {
   const ImageIndicators2({
@@ -206,11 +235,10 @@ class ImageIndicators2 extends StatelessWidget {
     return Container(
       width: 8,
       height: 8,
-      margin: const EdgeInsets.symmetric(horizontal: 4.0),
+      margin: const EdgeInsets.symmetric(horizontal: 10.0),
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color:
-      primaryColor,
+        color: primaryColor,
       ),
     );
   }

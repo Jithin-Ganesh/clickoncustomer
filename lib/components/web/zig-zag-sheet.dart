@@ -1,4 +1,5 @@
 import 'package:clickoncustomer/utils/constants/decoration.dart';
+import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
@@ -57,10 +58,7 @@ class _ZigZagSheetState extends State<ZigZagSheet> {
                 SizedBox(
                   height: 19,
                 ),
-                Divider(
-                  thickness: 1,
-                  color: dividerColor4,
-                ),
+                DottedLine(lineLength: MediaQuery.of(context).size.width *  0.1604,dashColor: dividerColor4,),
                 SizedBox(
                   height: 22,
                 ),

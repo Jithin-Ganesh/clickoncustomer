@@ -234,7 +234,7 @@ class About extends StatelessWidget {
               Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
+                  children:  [
                     AboutItem(
                       content: [
                         'Cancellation & Return Policy',
@@ -290,12 +290,36 @@ class About extends StatelessWidget {
                       width: 1,
                       color: verticalDividerColor2,
                     ),
-                    AboutItem(
-                      content: [
-                        'Download the app Enjoy Fast, Simple',
-                        'hassle free Shopping'
-                      ],
-                      title: 'Enjoy Hustle Free Shop',
+                    FittedBox(
+                      fit: BoxFit.contain,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Enjoy Hustle Free Shop',
+                            style:
+                            regular.copyWith(fontSize: 18, color: additionalInfoTitleColor),
+                          ),
+                          SizedBox(height: 32,),
+                          Padding(
+                              padding:  EdgeInsets.only(bottom: 15.0),
+                              child: Text(
+                                'Download the app Enjoy Fast',
+                                style: thin.copyWith(fontSize: 14, color: Colors.black),
+                              ),
+                            ),
+                          Padding(
+                            padding:  EdgeInsets.only(bottom: 15.0),
+                            child: Text(
+                              'hassle free Shopping',
+                              style: thin.copyWith(fontSize: 14, color: Colors.black),
+                            ),
+                          ),
+                          ImgProvider(url: 'asses/images/image-app-store.png',width: 246,height: 40,)
+
+                        ],
+                      ),
                     ),
                   ]),
               const Divider(
@@ -412,7 +436,7 @@ class BottomWebBarItem extends StatelessWidget {
                       fontSize: 18, color: additionalInfoTitleColor),
                 ),
                 const SizedBox(
-                  height: 5,
+                  height: 8,
                 ),
                 Expanded(
                   child: Text(

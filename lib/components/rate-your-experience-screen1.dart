@@ -1,3 +1,4 @@
+import 'package:clickoncustomer/utils/constants/decoration.dart';
 import 'package:clickoncustomer/utils/constants/fontstyles.dart';
 import 'package:clickoncustomer/utils/constants/strings.dart';
 import 'package:clickoncustomer/utils/img-provider.dart';
@@ -12,10 +13,9 @@ class RateYourExperience extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Column(mainAxisSize: MainAxisSize.min, children: [
-      Container(
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+    return Column(mainAxisSize: MainAxisSize.min, children: [
+      Container( width: MediaQuery.of(context).size.width * 0.626,height: 160,
+        decoration: containerDecoration,
         child: Padding(
           padding: const EdgeInsets.only(left: 40, top: 45),
           child: Row(
@@ -96,8 +96,8 @@ class RateYourExperience extends StatelessWidget {
         height: 5,
       ),
       Container(
-        height: 327,
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+        height: 436, width: MediaQuery.of(context).size.width * 0.626,
+        decoration: containerDecoration,
         child: Padding(
             padding: const EdgeInsets.only(left: 40, top: 45),
             child: Column(
@@ -126,7 +126,7 @@ class RateYourExperience extends StatelessWidget {
                   direction: Axis.horizontal,
                   allowHalfRating: true,
                   itemSize: 38,
-                  itemCount: 5,
+                  itemCount: 5,initialRating: 1,
                   itemPadding: const EdgeInsets.symmetric(horizontal: 1),
                   itemBuilder: (context, _) => const Icon(
                     Icons.star,
@@ -151,7 +151,7 @@ class RateYourExperience extends StatelessWidget {
                     ),
                     Radio(
                         fillColor: MaterialStateColor.resolveWith(
-                            (states) => primaryColor),
+                                (states) => primaryColor),
                         splashRadius: 8,
                         value: false,
                         groupValue: false,
@@ -171,7 +171,7 @@ class RateYourExperience extends StatelessWidget {
                     ),
                     Radio(
                         fillColor: MaterialStateColor.resolveWith(
-                            (states) => primaryColor),
+                                (states) => primaryColor),
                         splashRadius: 8,
                         value: true,
                         groupValue: false,
@@ -208,27 +208,37 @@ class RateYourExperience extends StatelessWidget {
                 ),
                 Container(
                     decoration:
-                        BoxDecoration(borderRadius: BorderRadius.circular(10),color: textFieldColor),
+                    BoxDecoration(borderRadius: BorderRadius.circular(10),border: Border.all(color:  textFieldColor)),
                     width: 971,
                     height: 85,
-                    child: TextFormField()),
+                    child: TextFormField(
+                      decoration: InputDecoration(
+
+                        fillColor:textFieldColor,
+                        contentPadding: const EdgeInsets.only(left: 10,right: 10,bottom: 5,top: 50),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey),
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                      ),
+                    )),
                 SizedBox(
                   height: 22,
                 ),
                 Container(
                   decoration:
-                      BoxDecoration(borderRadius: BorderRadius.circular(5)),
+                  BoxDecoration(borderRadius: BorderRadius.circular(5)),
                   child: ElevatedButton(
                       onPressed: () {},
                       child: Text(
                         textSubmit,
                         style:
-                            regular.copyWith(fontSize: 14, color: Colors.white),
+                        regular.copyWith(fontSize: 14, color: Colors.white),
                       )),
                 )
               ],
             )),
       )
-    ]));
+    ]);
   }
 }

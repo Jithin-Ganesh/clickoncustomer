@@ -52,6 +52,7 @@ class AccountComponent extends StatelessWidget {
                           ? Colors.white
                           : productDetailsScreenTextColor),
                 ),
+                SizedBox(height: 6,),
                 Text(
                   description,
                   style: regular.copyWith(

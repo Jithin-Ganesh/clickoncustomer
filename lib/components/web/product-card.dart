@@ -17,7 +17,7 @@ class ProductCard extends StatelessWidget {
         Navigator.pushNamed(context, ProductDetailScreenWeb.routeName);
       },
       child: Container(
-        height: 340,
+        height: 360,
         width: 198,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -68,6 +68,7 @@ class ProductCard extends StatelessWidget {
                 )
               ],
             ),
+            SizedBox(height: 12,),
             Expanded(
               child: Text(
                 'Pampers Pure Protection Baby Diapers, Medium Size... ',

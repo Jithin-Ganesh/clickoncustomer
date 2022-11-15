@@ -1,6 +1,7 @@
 import 'package:clickoncustomer/screens/web/cart/cart-screen.dart';
 import 'package:clickoncustomer/screens/web/home/home-screen-web.dart';
 import 'package:clickoncustomer/screens/web/your-account/your-account-web.dart';
+import 'package:clickoncustomer/utils/img-provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -45,6 +46,7 @@ class WebNavBar2 extends StatelessWidget {
             Flexible(
               child: SizedBox(
                 height: 50,
+                width: MediaQuery.of(context).size.width *  0.404,
                 child: Material(
                   elevation: 3.0,
                   shadowColor: shadowColor2,
@@ -194,13 +196,13 @@ class WebNavBar2 extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Welcome!',
+                        'Hello,',
                         style: thin.copyWith(color: productAvailabilityColor),
                       ),
                       Row(
                         children: [
                           Text(
-                            'Deliver to',
+                            'sign-in',
                             style: medium,
                           ),
                           Image.asset(
@@ -241,10 +243,11 @@ class WebNavBar2 extends StatelessWidget {
                       onPressed: () {
                         Navigator.pushNamed(context, CartScreenWeb.routeName);
                       },
-                      icon: Image.asset(
-                        'assets/images/icon-cart.png',
-                        height: 35,
-                        width: 38,
+                      icon: ImgProvider(
+                         url: 'assets/images/icon-cart.png',
+                        height: 45,
+                        width: 48,
+                        boxFit: BoxFit.contain,
                       )),
                   SizedBox(
                     width: 25,

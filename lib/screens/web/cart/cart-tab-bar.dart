@@ -39,30 +39,33 @@ class CartTabBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
-      height: 720,
-      child: ContainedTabBarView(
-        tabs: [
-          Text('Saved for later'),
-          Text('Buy it again'),
-          Text('Move from wishlist'),
-        ],
-        tabBarProperties: TabBarProperties(
-          height: 32.0,isScrollable: true,
-          indicatorColor: primaryColor,
-          indicatorWeight: 3.0,
-          labelPadding: EdgeInsets.only(right: 37),
-          indicatorPadding: EdgeInsets.only(top: 15,right: 37,),
-          labelColor: Colors.black,
-          labelStyle: regular.copyWith(color: primaryColor),
-          unselectedLabelColor: Colors.black,
+    return  Padding(
+      padding:  EdgeInsets.only(right: MediaQuery.of(context).size.width * 0.209),
+      child: Container(
+        height: 1000,
+        child: ContainedTabBarView(
+          tabs: [
+            Text('Saved for later'),
+            Text('Buy it again'),
+            Text('Move from wishlist'),
+          ],
+          tabBarProperties: TabBarProperties(
+            height: 32.0,isScrollable: true,
+            indicatorColor: primaryColor,
+            indicatorWeight: 3.0,
+            labelPadding: EdgeInsets.only(right: 37),
+            indicatorPadding: EdgeInsets.only(top: 15,right: 37,),
+            labelColor: Colors.black,
+            labelStyle: regular.copyWith(color: primaryColor),
+            unselectedLabelColor: Colors.black,
+          ),
+          views: [
+            CartTabBarItem(),
+            CartTabBarItem(),
+            CartTabBarItem(),
+          ],
+          onChange: (index) => print(index),
         ),
-        views: [
-          CartTabBarItem(),
-          CartTabBarItem(),
-          CartTabBarItem(),
-        ],
-        onChange: (index) => print(index),
       ),
     );
   }

@@ -1,3 +1,4 @@
+import 'package:clickoncustomer/providers/auth.dart';
 import 'package:clickoncustomer/providers/category-provider.dart';
 import 'package:clickoncustomer/providers/home.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ class ProviderTree {
     return [
       ChangeNotifierProvider.value(value: HomeProvider()),
       ChangeNotifierProvider.value(value: CategoryProvider()),
+      ChangeNotifierProvider.value(value: AuthProvider()),
     ];
   }
 }

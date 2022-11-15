@@ -113,7 +113,7 @@ class WebHomeScreen extends StatelessWidget {
           children: [
             Padding(
               padding:
-                  const EdgeInsets.symmetric(horizontal: 150.0, vertical: 60),
+                  const EdgeInsets.only(left: 150.0,right: 150, top: 42,bottom: 60),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -146,7 +146,7 @@ class WebHomeScreen extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(
-                    height: 55,
+                    height: 61,
                   ),
                   const GroupOrders(),
                   const SizedBox(
@@ -175,14 +175,14 @@ class WebHomeScreen extends StatelessWidget {
                   ),
                   const ProductsForYouList(),
                   const SizedBox(
-                    height: 25,
+                    height: 60,
                   ),
                   const Divider(
                     color: horizontalDividerColor,
                     height: 1,
                   ),
                   const SizedBox(
-                    height: 25,
+                    height: 60,
                   ),
                   const CustomTitleBarViewAll(title: 'Just Launched'),
                   const SizedBox(
@@ -194,24 +194,24 @@ class WebHomeScreen extends StatelessWidget {
                   ),
                   const CustomTitleBarViewAll(title: 'Best Selling'),
                   const SizedBox(
-                    height: 12,
+                    height: 26,
                   ),
                   BestSelling(
                     products: value.products ?? [],
                   ),
                   const SizedBox(
-                    height: 25,
+                    height: 64,
                   ),
                   const Divider(
                     color: horizontalDividerColor,
                     height: 1,
                   ),
                   const SizedBox(
-                    height: 25,
+                    height: 52,
                   ),
                   const CustomTitleBarViewAll(title: 'Fashion Store'),
                   const SizedBox(
-                    height: 12,
+                    height: 25,
                   ),
                   FashionStore(
                     products: value.products ?? [],
@@ -236,7 +236,7 @@ class WebHomeScreen extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(
-                    height: 12,
+                    height: 26,
                   ),
                   RecentlyViewedProducts(recently: value.recentlyAdded ?? []),
                 ],
@@ -259,14 +259,14 @@ class ExlusiveOffer extends StatelessWidget {
   Widget build(BuildContext context) {
     return ConstrainedBox(
       constraints: BoxConstraints(
-        minWidth: MediaQuery.of(context).size.width * 0.28,
-        maxWidth: MediaQuery.of(context).size.width * 0.28,
+        minWidth: MediaQuery.of(context).size.width * 0.239,
+        maxWidth: MediaQuery.of(context).size.width * 0.239,
       ),
       child: Column(
         children: [
           Container(
             height: 230,
-            width: MediaQuery.of(context).size.width * 0.28,
+            width: MediaQuery.of(context).size.width * 0.239,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               // image: const DecorationImage(
@@ -276,13 +276,13 @@ class ExlusiveOffer extends StatelessWidget {
             child: ImgProvider(
               url: "assets/images/dummy/image-exclusive.png",
               height: 230,
-              width: MediaQuery.of(context).size.width * 0.28,
+              width: MediaQuery.of(context).size.width * 0.239,
               boxFit: BoxFit.fill,
             ),
           ),
           Container(
             height: 135,
-            width: MediaQuery.of(context).size.width * 0.28,
+            width: MediaQuery.of(context).size.width * 0.239,
             decoration: BoxDecoration(
                 color: canvasColor, borderRadius: BorderRadius.circular(10)),
             child: Row(

@@ -7,9 +7,55 @@ import 'package:clickoncustomer/utils/img-provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
-class LoginScreen extends StatelessWidget {
+import '../providers/auth.dart';
+import '../utils/toast-message.dart';
+
+class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  late TextEditingController phoneController;
+
+  @override
+  void initState() {
+    phoneController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    phoneController.dispose();
+    super.dispose();
+  }
+
+
+  void authenticate() {
+    Provider.of<AuthProvider>(context, listen: false).enableLoading();
+    Provider.of<AuthProvider>(context, listen: false)
+        .login(phone: phoneController.text)
+        .then((value) {
+      if (value) {
+        Provider.of<AuthProvider>(context, listen: false).disableLoading();
+        Navigator.of(context).pushNamed(OtpScreen.routeName,
+            arguments: OtpScreen(
+              phoneNumber: phoneController.text,
+            ));
+
+      } else {
+
+        //showMessage( message: "Something went wrong",);
+        Provider.of<AuthProvider>(context, listen: false).disableLoading();
+      }
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -123,6 +169,7 @@ class LoginScreen extends StatelessWidget {
                           width: 350,
                           height: 45,
                           child: TextFormField(
+                            controller: phoneController,
                             decoration: InputDecoration(
                               border: OutlineInputBorder(
                                 borderRadius:
@@ -158,7 +205,7 @@ class LoginScreen extends StatelessWidget {
                               borderRadius: BorderRadius.circular(10)),
                           child: ElevatedButton(
                               onPressed: () {
-                                Navigator.of(context).pushNamed(OtpScreen.routeName);
+                               authenticate();
                               },
                               child: Text(
                                 textContinue,

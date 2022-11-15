@@ -2,6 +2,9 @@ import 'package:clickoncustomer/screens/web/account-order/account-order-screen.d
 import 'package:clickoncustomer/screens/web/cart/cart-screen.dart';
 import 'package:clickoncustomer/screens/web/home/home-screen-web.dart';
 import 'package:clickoncustomer/screens/web/order-details/order-details-screen.dart';
+import 'package:clickoncustomer/screens/web/order-feedback/order-delivery-feedback.dart';
+import 'package:clickoncustomer/screens/web/order-feedback/order-product-review.dart';
+import 'package:clickoncustomer/screens/web/order-feedback/order-seller-feedback-screen-web.dart';
 import 'package:clickoncustomer/screens/web/order-payment/order-payment-web.dart';
 import 'package:clickoncustomer/screens/web/product-details/product-detail-screen.dart';
 import 'package:clickoncustomer/screens/web/review-order/review-order-screen.dart';
@@ -21,6 +24,9 @@ class AppRoutes {
       YourAccountWeb.routeName: (context) => const YourAccountWeb(),
       AccountOrderScreenWeb.routeName: (context) => const AccountOrderScreenWeb(),
       OrderDetailsScreenWeb.routeName: (context) => const OrderDetailsScreenWeb(),
+      OrderSellerFeedBackScreenWeb.routeName: (context) => const OrderSellerFeedBackScreenWeb(),
+      OrderDeliveryFeedBackScreenWeb.routeName: (context) => const OrderDeliveryFeedBackScreenWeb(),
+      OrderProductReviewScreenWeb.routeName: (context) => const OrderProductReviewScreenWeb(),
       OtpScreen.routeName: (context) => const OtpScreen(),
     };
   }

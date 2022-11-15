@@ -17,7 +17,7 @@ class FashionStore extends StatelessWidget {
         children: [
           Expanded(
             child: SizedBox(
-              height: 300,
+              height: 327,
               child: ListView.builder(
                 itemBuilder: (context, index) => Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15),

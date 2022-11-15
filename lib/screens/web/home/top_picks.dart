@@ -29,7 +29,7 @@ class TopPicks extends StatelessWidget {
           ],
         ),
         SizedBox(height: 29,),
-        TopPickItem(),
+        const TopPickItem(),
         SizedBox(height: 40,)
       ],
     );

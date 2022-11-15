@@ -19,35 +19,44 @@ class GroupOrders extends StatelessWidget {
         padding:
             const EdgeInsets.only(left: 30.0, right: 29, top: 25, bottom: 42),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      "assets/images/icon-group-orders.png",
-                      height: 34,
-                      width: 36,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          'Group',
-                          style: semiBold.copyWith(
-                              fontSize: 16, color: outlinedButtonColor,height: 1),
-                        ),
-                        Text(
-                          'Orders',
-                          style: semiBold.copyWith(
-                              fontSize: 22, color: groupOrdersTitleTextColor,height: 1),
-                        ),
-                      ],
-                    )
-                  ],
+                Padding(
+                  padding: const EdgeInsets.only(left: 35.0),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        "assets/images/icon-group-orders.png",
+                        height: 34,
+                        width: 36,
+                      ),
+                      SizedBox(width: 7,),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            'Group',
+                            style: semiBold.copyWith(
+                                fontSize: 16,
+                                color: outlinedButtonColor,
+                                height: 1),
+                          ),
+                          Text(
+                            'Orders',
+                            style: semiBold.copyWith(
+                                fontSize: 22,
+                                color: groupOrdersTitleTextColor,
+                                height: 1),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
                 ),
                 Row(
                   children: [
@@ -58,6 +67,7 @@ class GroupOrders extends StatelessWidget {
                           height: 31,
                           width: 33,
                         ),
+                        SizedBox(width: 9,),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [

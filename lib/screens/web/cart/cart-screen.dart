@@ -97,6 +97,12 @@ class _CartScreenWebState extends State<CartScreenWeb> {
                         height: 31,
                       ),
                       const ProductsForYouList(),
+                      SizedBox(height: 60,),
+                      const Divider(
+                        color: horizontalDividerColor,
+                        height: 1,
+                      ),
+                      SizedBox(height: 75,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -117,6 +123,7 @@ class _CartScreenWebState extends State<CartScreenWeb> {
                         height: 12,
                       ),
                       RecentlyViewedProducts(recently: value.recentlyAdded ?? []),
+                      SizedBox(height: 106,)
 
                     ],
                   ),

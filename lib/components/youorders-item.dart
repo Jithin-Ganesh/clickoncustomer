@@ -233,6 +233,7 @@ class YourOrder extends StatelessWidget {
                                 fontSize: 14, color: orderPlacedTextColor),
                           ),
                         ),
+                        SizedBox(height: 6,),
                         Row(
                           children: [
                             Text(textRupees),
@@ -279,7 +280,7 @@ class YourOrder extends StatelessWidget {
                         Icon(
                           Icons.keyboard_arrow_right,
                           color: productDetailsScreenTextColor,
-                          size: 10,
+                          size: 20,
                         )
                       ],
                     ),

@@ -49,13 +49,14 @@ class YourCart extends StatelessWidget {
                     style:
                         medium.copyWith(color: inStockTitleColor, fontSize: 12),
                   ),
+                  SizedBox(height: 6,),
                   Text(
                     textYourCartItemName,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: regular.copyWith(
                         fontSize: 14, color: productSubTextColor),
-                  ),
+                  ),    SizedBox(height: 6,),
                   Row(children: [
                     Text(textRupees),
                     const SizedBox(
@@ -77,8 +78,7 @@ class YourCart extends StatelessWidget {
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(8),
                               bottomRight: Radius.circular(8))),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 0.69),
+                      child: Center(
                         child: Text(
                           discount,
                           textAlign: TextAlign.center,
