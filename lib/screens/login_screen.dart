@@ -37,21 +37,17 @@ class _LoginScreenState extends State<LoginScreen> {
 
 
   void authenticate() {
-    Provider.of<AuthProvider>(context, listen: false).enableLoading();
+   // Provider.of<AuthProvider>(context, listen: false).enableLoading();
     Provider.of<AuthProvider>(context, listen: false)
         .login(phone: phoneController.text)
         .then((value) {
       if (value) {
-        Provider.of<AuthProvider>(context, listen: false).disableLoading();
+       // Provider.of<AuthProvider>(context, listen: false).disableLoading();
         Navigator.of(context).pushNamed(OtpScreen.routeName,
             arguments: OtpScreen(
               phoneNumber: phoneController.text,
             ));
 
-      } else {
-
-        //showMessage( message: "Something went wrong",);
-        Provider.of<AuthProvider>(context, listen: false).disableLoading();
       }
     });
   }
@@ -171,14 +167,14 @@ class _LoginScreenState extends State<LoginScreen> {
                           child: TextFormField(
                             controller: phoneController,
                             decoration: InputDecoration(
-                              border: OutlineInputBorder(
+                              border: const OutlineInputBorder(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10.0)),
                                 borderSide:
                                     BorderSide(color: textFormFieldBorderColor),
                               ),
                               prefixIcon: Padding(
-                                padding: EdgeInsets.only(
+                                padding: const EdgeInsets.only(
                                     left: 14, top: 12, bottom: 10),
                                 child: Text("+91",
                                     textAlign: TextAlign.center,
@@ -191,6 +187,12 @@ class _LoginScreenState extends State<LoginScreen> {
                               FilteringTextInputFormatter.digitsOnly,
                               LengthLimitingTextInputFormatter(10),
                             ],
+                            validator: (String? value) {
+                              if (value == null || value.toString().length != 10) {
+                                return " Enter a valid phone number";
+                              }
+                              return null;
+                            },
                             style: regular.copyWith(
                                 fontSize: 14, color: numberColor),
                           ),
@@ -205,6 +207,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               borderRadius: BorderRadius.circular(10)),
                           child: ElevatedButton(
                               onPressed: () {
+
                                authenticate();
                               },
                               child: Text(

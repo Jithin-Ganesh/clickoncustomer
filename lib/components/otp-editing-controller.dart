@@ -32,30 +32,25 @@ class OtpEditingController extends StatefulWidget {
 class _OtpEditingControllerState extends State<OtpEditingController> {
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        OTPTextField(width: 200,
-          controller: widget.otpController,
-          length: 4,
-          fieldWidth: 39,
-          textFieldAlignment: MainAxisAlignment.spaceAround,
-          fieldStyle: FieldStyle.box,
-          style: const TextStyle(fontSize: 12),
-          onChanged: (pin) {
-            widget.onOtpFieldChanged(pin.length == 4);
-          },
-          onCompleted: (pin) {
-            widget.onOtpCompleted(pin);
+    return OTPTextField(
+      width: 250,
+      controller: widget.otpController,
+      length: 6,
+      fieldWidth: 30,
+      textFieldAlignment: MainAxisAlignment.spaceAround,
+      fieldStyle: FieldStyle.box,
+      style: const TextStyle(fontSize: 12),
+      onChanged: (pin) {
+        widget.onOtpFieldChanged(pin.length == 6);
+      },
+      onCompleted: (pin) {
+        widget.onOtpCompleted(pin);
 
-            log("success");
-          },
-          keyboardType: TextInputType.number,
-          inputFormatter: <TextInputFormatter>[
-            FilteringTextInputFormatter.digitsOnly
-          ],
-        ),
+        log("success");
+      },
+      keyboardType: TextInputType.number,
+      inputFormatter: <TextInputFormatter>[
+        FilteringTextInputFormatter.digitsOnly
       ],
     );
   }

@@ -1,3 +1,4 @@
+import 'package:clickoncustomer/models/product-model.dart';
 import 'package:clickoncustomer/screens/web/product-details/product-detail-screen.dart';
 import 'package:clickoncustomer/utils/constants/color.dart';
 import 'package:clickoncustomer/utils/constants/fontstyles.dart';
@@ -6,15 +7,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ProductCard extends StatelessWidget {
-  final String? image;
+ final ProductModel? product;
 
-  const ProductCard({Key? key, this.image}) : super(key: key);
+  const ProductCard({Key? key, required this.product}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: (){
-        Navigator.pushNamed(context, ProductDetailScreenWeb.routeName);
+        Navigator.pushNamed(context, ProductDetailScreenWeb.routeName,arguments: ProductDetailScreenWeb(productId: product?.id,));
       },
       child: Container(
         height: 360,
@@ -27,16 +28,16 @@ class ProductCard extends StatelessWidget {
                 Container(
                   height: 257,
                   width: 198,
+                  decoration: BoxDecoration(
+                      color: canvasColor,
+                      borderRadius: BorderRadius.circular(10)),
                   child: Center(
                     child: ImgProvider(
-                      url: image ?? '',
+                      url: product?.image ?? '',
                       height: 147,
                       width: 114,
                     ),
                   ),
-                  decoration: BoxDecoration(
-                      color: canvasColor,
-                      borderRadius: BorderRadius.circular(10)),
                 ),
                 Positioned(
                   top: 0,
@@ -44,17 +45,17 @@ class ProductCard extends StatelessWidget {
                   child: Container(
                     height: 23,
                     width: 76,
+                    decoration: const BoxDecoration(
+                        color: onSaleColor,
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(10),
+                            bottomRight: Radius.circular(10))),
                     child: Center(
                       child: Text(
                         'On Sale',
                         style: medium.copyWith(fontSize: 12, color: bottomAppColor,),textAlign: TextAlign.center,
                       ),
                     ),
-                    decoration: BoxDecoration(
-                        color: onSaleColor,
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(10),
-                            bottomRight: Radius.circular(10))),
                   ),
                 ),
                 Positioned(
@@ -71,7 +72,7 @@ class ProductCard extends StatelessWidget {
             SizedBox(height: 12,),
             Expanded(
               child: Text(
-                'Pampers Pure Protection Baby Diapers, Medium Size... ',
+                '${product?.description}',
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style: thin.copyWith(fontSize: 12, color: productSubTextColor),
@@ -80,12 +81,12 @@ class ProductCard extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  '14,999',
+                  '${product?.price}',
                   style: regular.copyWith(fontSize: 17, color: primaryColor),
                 ),
                 SizedBox(width: 8,),
                 Text(
-                  '16,999',
+                  '${product?.price}',
                   style: thin.copyWith(fontSize: 17, color: ogPriceColor,decoration: TextDecoration.lineThrough),
                 ),
               ],

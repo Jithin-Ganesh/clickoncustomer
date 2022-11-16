@@ -1,4 +1,6 @@
+import 'package:clickoncustomer/models/product-model.dart';
 import 'package:clickoncustomer/providers/category-provider.dart';
+import 'package:clickoncustomer/providers/home-provider.dart';
 import 'package:clickoncustomer/utils/constants/color.dart';
 import 'package:clickoncustomer/utils/constants/decoration.dart';
 import 'package:clickoncustomer/utils/constants/fontstyles.dart';
@@ -124,19 +126,14 @@ class GroupOrders extends StatelessWidget {
             const SizedBox(
               height: 26,
             ),
-            Consumer<CategoryProvider>(
+            Consumer<HomeProvider>(
               builder: (context, value, child) => SizedBox(
                 height: 420,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: value.groupOrders?.length,
+                  itemCount: value.products?.length,
                   itemBuilder: (context, index) => GroupOrderItem(
-                      image: value.groupOrders?[index].image ?? '',
-                      sellingPrice: '125',
-                      sold: '50',
-                      buyers: '10',
-                      price: '200',
-                      wallet: '12'),
+                       product: value.products?[index],),
                 ),
               ),
             )
@@ -148,20 +145,10 @@ class GroupOrders extends StatelessWidget {
 }
 
 class GroupOrderItem extends StatelessWidget {
-  final String image;
-  final String sellingPrice;
-  final String sold;
-  final String buyers;
-  final String price;
-  final String wallet;
+final ProductModel? product;
   const GroupOrderItem(
       {Key? key,
-      required this.image,
-      required this.sellingPrice,
-      required this.sold,
-      required this.buyers,
-      required this.price,
-      required this.wallet})
+      required this.product})
       : super(key: key);
 
   @override
@@ -183,7 +170,7 @@ class GroupOrderItem extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: ImgProvider(
-                      url: image,
+                      url: product?.image ?? '',
                       height: 254,
                       width: 225,
                     ),
@@ -240,7 +227,7 @@ class GroupOrderItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  '₹$sellingPrice',
+                  '₹${product?.price}',
                   style: regular.copyWith(
                       fontSize: 24, color: groupOrdersAmountTextColor),
                 ),
@@ -254,7 +241,7 @@ class GroupOrderItem extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),
                     child: Center(
                       child: Text(
-                        '$sold Sold',
+                        'Sold',
                         style: semiBold,
                       ),
                     ),
@@ -287,7 +274,7 @@ class GroupOrderItem extends StatelessWidget {
                           width: 4,
                         ),
                         Text(
-                          buyers,
+                          '10',
                           style: medium.copyWith(
                               fontSize: 14, color: groupOrdersValuesColor),
                         ),
@@ -314,7 +301,7 @@ class GroupOrderItem extends StatelessWidget {
                           width: 4,
                         ),
                         Text(
-                          price,
+                          '${product?.price}',
                           style: medium.copyWith(
                               fontSize: 14, color: groupOrdersValuesColor),
                         ),
@@ -341,7 +328,7 @@ class GroupOrderItem extends StatelessWidget {
                           width: 4,
                         ),
                         Text(
-                          wallet,
+                          '10',
                           style: medium.copyWith(
                               fontSize: 14, color: groupOrdersValuesColor),
                         ),

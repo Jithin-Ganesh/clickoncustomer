@@ -1,4 +1,5 @@
 import 'package:clickoncustomer/components/topPickItem.dart';
+import 'package:clickoncustomer/models/product-model.dart';
 import 'package:clickoncustomer/screens/web/home/top_picks.dart';
 import 'package:clickoncustomer/providers/category-provider.dart';
 import 'package:clickoncustomer/screens/web/home/products-for-you.dart';
@@ -19,6 +20,7 @@ import '../../../components/web/bottom-web-bar.dart';
 import '../../../components/web/custom-titlebar-with-viewall.dart';
 import '../../../components/web/web-nav-bar.dart';
 import '../../../models/category.dart';
+import '../../../providers/home-provider.dart';
 import 'best-selling.dart';
 import 'category-list.dart';
 import 'fashion-store.dart';
@@ -71,7 +73,7 @@ class _HomeScreenWebState extends State<HomeScreenWeb> {
         appBar: const PreferredSize(
             preferredSize: Size.fromHeight(175), child: WebNavBar2()),
         body: FutureBuilder(
-          future: context.read<CategoryProvider>().fetchHome(),
+          future: context.read<HomeProvider>().fetchHome(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Container(
@@ -86,7 +88,7 @@ class _HomeScreenWebState extends State<HomeScreenWeb> {
               );
             } else {
               if (snapshot.hasData) {
-                final catList = snapshot.data as List<Categories>;
+                final catList = snapshot.data as List<ProductModel>?;
                 return WebHomeScreen();
               }
             }
@@ -112,8 +114,8 @@ class WebHomeScreen extends StatelessWidget {
         child: Column(
           children: [
             Padding(
-              padding:
-                  const EdgeInsets.only(left: 150.0,right: 150, top: 42,bottom: 60),
+              padding: const EdgeInsets.only(
+                  left: 150.0, right: 150, top: 42, bottom: 60),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -141,7 +143,9 @@ class WebHomeScreen extends StatelessWidget {
                           child: const TopPicks(),
                         ),
                       ),
-                      SizedBox(width: 20,),
+                      SizedBox(
+                        width: 20,
+                      ),
                       ExlusiveOffer()
                     ],
                   ),
@@ -196,9 +200,7 @@ class WebHomeScreen extends StatelessWidget {
                   const SizedBox(
                     height: 26,
                   ),
-                  BestSelling(
-                    products: value.products ?? [],
-                  ),
+                  BestSelling(),
                   const SizedBox(
                     height: 64,
                   ),
@@ -213,9 +215,7 @@ class WebHomeScreen extends StatelessWidget {
                   const SizedBox(
                     height: 25,
                   ),
-                  FashionStore(
-                    products: value.products ?? [],
-                  ),
+                  FashionStore(),
                   const SizedBox(
                     height: 55,
                   ),
@@ -295,7 +295,9 @@ class ExlusiveOffer extends StatelessWidget {
                   height: 74,
                   width: 74,
                 ),
-                SizedBox(width: 5,),
+                SizedBox(
+                  width: 5,
+                ),
                 Expanded(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,

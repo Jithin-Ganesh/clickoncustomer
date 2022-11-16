@@ -6,13 +6,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/style.dart';
+import 'package:provider/provider.dart';
 
+import '../providers/auth.dart';
 import '../utils/constants/color.dart';
 import '../utils/constants/fontstyles.dart';
 import '../utils/constants/images.dart';
 import '../utils/constants/strings.dart';
 import '../utils/img-provider.dart';
 import '../components/otp-editing-controller.dart';
+import '../utils/pref_utils.dart';
+import '../utils/toast-message.dart';
 
 class OtpScreen extends StatefulWidget {
   static const routeName = "/otp";
@@ -33,6 +37,22 @@ class _OtpScreenState extends State<OtpScreen> {
   OtpScreen _args() {
     final args = ModalRoute.of(context)!.settings.arguments as OtpScreen;
     return args;
+  }
+
+
+  otpVerification() {
+    //Provider.of<AuthProvider>(context, listen: false).enableLoading();
+
+    Provider.of<AuthProvider>(context, listen: false)
+        .verifyOTP(phone: _args().phoneNumber, otp: otp)
+        .then((value) async {
+     // Provider.of<AuthProvider>(context, listen: false).disableLoading();
+      if (PrefUtils().getToken() != null) {
+        //showMessage( message: "Otp Verified",);
+        Navigator.pushNamedAndRemoveUntil(context, HomeScreenWeb.routeName, (route) => false);
+
+      }
+    });
   }
 
 
@@ -205,7 +225,8 @@ class _OtpScreenState extends State<OtpScreen> {
                             borderRadius: BorderRadius.circular(10)),
                         child: ElevatedButton(
                             onPressed: () {
-                              Navigator.pushNamedAndRemoveUntil(context, HomeScreenWeb.routeName, (route) => false);
+                              otpVerification();
+                              //Navigator.pushNamedAndRemoveUntil(context, HomeScreenWeb.routeName, (route) => false);
                             },
                             child: Text(
                               textSignIn,
@@ -228,7 +249,8 @@ class _OtpScreenState extends State<OtpScreen> {
                                           BorderRadius.circular(10.0))),
                             ),
                             onPressed: () {
-                              Navigator.pushNamedAndRemoveUntil(context, HomeScreenWeb.routeName, (route) => false);
+                              otpVerification();
+                              //Navigator.pushNamedAndRemoveUntil(context, HomeScreenWeb.routeName, (route) => false);
                             },
                             child: Text(
                               textSignInWithYourPassword,
