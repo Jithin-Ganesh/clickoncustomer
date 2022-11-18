@@ -2,6 +2,8 @@ class ProductModel {
   int? id;
   String? name;
   String? price;
+  String? amount;
+  String? deliveryCharge;
   String? productCode;
   String? alternativeName;
   double? offer;
@@ -15,11 +17,14 @@ class ProductModel {
   int? quantity;
   int? subcategoryId;
   int? categoryId;
+  int? cartId;
 
   ProductModel({
     this.id,
     this.name,
     this.price,
+    this.amount,
+    this.deliveryCharge,
     this.offer,
     this.image,
     this.thumbnail,
@@ -31,6 +36,7 @@ class ProductModel {
     this.subcategoryId,
     this.businessId,
     this.categoryId,
+    this.cartId,
   });
 
   ProductModel.fromJson(Map<String, dynamic> json) {
@@ -39,6 +45,8 @@ class ProductModel {
     name = json['name'];
     productCode = json['product_code'];
     price = json['price'].toString();
+    amount = json['amount'].toString();
+    deliveryCharge = json['deliveryCharge'].toString();
     if (json["offer"] is int) {
       offer = json['offer'].toDouble();
     }
@@ -52,6 +60,7 @@ class ProductModel {
     quantity = json['quantity'];
     subcategoryId = json['subCategoryId'];
     categoryId = json['categoryId'];
+    cartId = json['cartId'];
   }
 
   static List<ProductModel> convertToList(List<dynamic> list) {

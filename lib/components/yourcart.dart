@@ -1,22 +1,32 @@
+import 'package:clickoncustomer/models/product-model.dart';
 import 'package:clickoncustomer/utils/constants/color.dart';
 import 'package:clickoncustomer/utils/constants/decoration.dart';
 import 'package:clickoncustomer/utils/constants/fontstyles.dart';
 import 'package:clickoncustomer/utils/constants/images.dart';
 import 'package:clickoncustomer/utils/constants/strings.dart';
+import 'package:clickoncustomer/utils/img-provider.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class YourCart extends StatelessWidget {
-  YourCart({Key? key, this.selectedValue}) : super(key: key);
+
+class YourCart extends StatefulWidget {
+  final ProductModel? product;
+  YourCart({Key? key,  required this.product, }) : super(key: key);
+
+
+  @override
+  State<YourCart> createState() => _YourCartState();
+}
+
+class _YourCartState extends State<YourCart> {
   final List<String> items = [
     'Item1',
     'Item2',
     'Item3',
     'Item4',
   ];
-  late final String? selectedValue;
-
+  String? selectedValue;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,7 +34,7 @@ class YourCart extends StatelessWidget {
       width: MediaQuery.of(context).size.width * 0.622,
       height: 166,
       child: Padding(
-        padding: const EdgeInsets.only(right: 20, left: 0),
+        padding: const EdgeInsets.only(right: 20, left: 0,top: 12),
         child:
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           Row(
@@ -32,8 +42,8 @@ class YourCart extends StatelessWidget {
               SizedBox(
                 width: 24,
               ),
-              Image.asset(
-                yourCartItemImage,
+              ImgProvider(
+                url: widget.product?.image ?? '',
                 width: MediaQuery.of(context).size.width * 0.0572,
                 height: 110,
               ),
@@ -51,7 +61,7 @@ class YourCart extends StatelessWidget {
                   ),
                   SizedBox(height: 6,),
                   Text(
-                    textYourCartItemName,
+                    widget.product?.name ?? '',
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: regular.copyWith(
@@ -63,7 +73,7 @@ class YourCart extends StatelessWidget {
                       width: 8.85,
                     ),
                     Text(
-                      yourCartAmount,
+                      widget.product?.amount ?? '',
                       style: medium.copyWith(
                           color: priceOffersSubtextColor, fontSize: 16),
                     ),
@@ -91,7 +101,7 @@ class YourCart extends StatelessWidget {
                       width: 10,
                     ),
                     Text(
-                      textYourCartOffer,
+                      widget.product?.offer.toString() ?? '',
                       style: medium.copyWith(
                           fontSize: 12, color: priceOffersSubtextColor),
                     )
@@ -116,7 +126,7 @@ class YourCart extends StatelessWidget {
                                   SizedBox(
                                     width: 12,
                                   ),
-                                  Text(yourCartQuantityText,
+                                  Text(widget.product?.quantity.toString() ?? '',
                                       style: regular.copyWith(
                                           fontSize: 12,
                                           color: productSubTextColor)),
