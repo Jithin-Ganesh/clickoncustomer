@@ -20,5 +20,14 @@ class CartProvider extends ChangeNotifier {
   }
 
 
+  // Delete Cart
+  Future<void> deleteCart({
+    int? cartId,
+  }) async {
+    await CartInterface.deleteCart( cartId: cartId);
+  }
+
+
+
 }
 

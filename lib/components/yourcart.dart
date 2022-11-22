@@ -1,18 +1,24 @@
-import 'package:clickoncustomer/models/product-model.dart';
+
+import 'package:clickoncustomer/components/web/custom-alert-box.dart';
+import 'package:clickoncustomer/providers/cart-provider.dart';
+import 'package:clickoncustomer/screens/web/cart/cart-screen.dart';
 import 'package:clickoncustomer/utils/constants/color.dart';
 import 'package:clickoncustomer/utils/constants/decoration.dart';
 import 'package:clickoncustomer/utils/constants/fontstyles.dart';
-import 'package:clickoncustomer/utils/constants/images.dart';
 import 'package:clickoncustomer/utils/constants/strings.dart';
 import 'package:clickoncustomer/utils/img-provider.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../models/cart-products.dart';
 
 
 class YourCart extends StatefulWidget {
-  final ProductModel? product;
-  YourCart({Key? key,  required this.product, }) : super(key: key);
+  final CartProduct? product;
+  final int? cartId;
+  YourCart({Key? key,  required this.product, this.cartId, }) : super(key: key);
 
 
   @override
@@ -73,7 +79,7 @@ class _YourCartState extends State<YourCart> {
                       width: 8.85,
                     ),
                     Text(
-                      widget.product?.amount ?? '',
+                      widget.product?.amount.toString() ?? '',
                       style: medium.copyWith(
                           color: priceOffersSubtextColor, fontSize: 16),
                     ),
@@ -179,10 +185,26 @@ class _YourCartState extends State<YourCart> {
                       SizedBox(
                         width: 12,
                       ),
-                      Text(
-                        textYourCartRemove,
-                        style:
-                            regular.copyWith(fontSize: 12, color: removeColor),
+                      TextButton(
+                       onPressed: () {
+                         showMyDialog(
+                           screenContext: context,
+                           buttonName: "Remove",
+                           title: "Alert!",
+                           contentText: "Do you really want to clear the cart?",
+                           onConfirm: () {
+                             Provider.of<CartProvider>(context, listen: false)
+                                 .deleteCart( cartId: widget.cartId)
+                                 .then((value) {
+                                   Provider.of<CartProvider>(context,listen: false).fetchCart();
+                               Navigator.pushNamed(context, CartScreenWeb.routeName);
+                             });
+                           },
+                         );
+                       },
+                       child: Text( textYourCartRemove,
+                         style:
+                         regular.copyWith(fontSize: 12, color: removeColor),)
                       )
                     ],
                   )

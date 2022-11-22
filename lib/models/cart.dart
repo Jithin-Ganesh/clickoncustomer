@@ -1,18 +1,17 @@
 
 
-import 'package:clickoncustomer/models/product-model.dart';
+import 'package:clickoncustomer/models/cart-products.dart';
 
 class Cart {
   int? id;
-  String? itemTotal;
-  String? offer;
-  String? tax;
-  String? netTotal;
+  int? itemTotal;
+  int? offer;
+  int? tax;
+  int? netTotal;
+  int? userId;
   String? createdAt;
   String? updatedAt;
-  String? courierCharges;
-  int? userId;
-  List<ProductModel>? cartProducts;
+  List<CartProduct>? cartProducts;
 
   Cart(
       {this.id,
@@ -20,33 +19,32 @@ class Cart {
         this.offer,
         this.tax,
         this.netTotal,
+        this.userId,
         this.createdAt,
         this.updatedAt,
-        this.userId,
         this.cartProducts});
 
   Cart.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    itemTotal = json['itemTotal'].toString();
-    offer = json['offer'].toString();
-    tax = json['tax'].toString();
-    netTotal = json['netTotal'].toString();
+    itemTotal = json['itemTotal'];
+    offer = json['offer'];
+    tax = json['tax'];
+    netTotal = json['netTotal'];
+    userId = json['userId'];
     createdAt = json['createdAt'];
     updatedAt = json['updatedAt'];
-    userId = json['userId'];
-    courierCharges = json['courierCharges'];
     if (json['cartProducts'] != null) {
-      cartProducts = ProductModel.convertToList(json['cartProducts']);
+      cartProducts = CartProduct.convertToList(json['cartProducts']);
     }
   }
 
   static List<Cart> convertToList(List<dynamic> list) {
-    if (list == null) return [];
-
     List<Cart> data = [];
-    list.forEach((element) {
+    for (var element in list) {
       data.add(Cart.fromJson(element));
-    });
+    }
     return data;
   }
+
+
 }

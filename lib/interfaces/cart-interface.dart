@@ -14,8 +14,8 @@ class CartInterface {
         route: "cart",
         queries: {},
       );
-      if (response["cart"] != null) {
-        return Cart.fromJson(response["cart"]);
+      if (response != null) {
+        return Cart.convertToList(response)[0];
       } else {
         return null;
       }
@@ -38,6 +38,24 @@ class CartInterface {
       );
     } catch (error) {
       print("adding cart error: $error");
+    }
+  }
+
+
+  //delete cart
+
+  static Future<void> deleteCart({
+    int? cartId,
+  }) async {
+    try {
+      return await ApiRequest.send(
+        method: ApiMethod.DELETE,
+        body: {},
+        route: "cart/$cartId",
+        queries: {},
+      );
+    } catch (error) {
+      print("fetching cart error: $error");
     }
   }
 

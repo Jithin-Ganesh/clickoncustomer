@@ -175,9 +175,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                               prefixIcon: Padding(
                                 padding: const EdgeInsets.only(
-                                    left: 14, top: 12, bottom: 10),
+                                    left: 14, top: 13, bottom: 10),
                                 child: Text("+91",
-                                    textAlign: TextAlign.center,
                                     style: regular.copyWith(
                                         fontSize: 14, color: hintTextColor)),
                               ),
