@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import '../../utils/constants/color.dart';
 import '../../utils/constants/fontstyles.dart';
 
+
 class CustomTitleBarViewAll extends StatelessWidget {
   final String title;
   const CustomTitleBarViewAll({

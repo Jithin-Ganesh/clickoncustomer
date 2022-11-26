@@ -1,7 +1,7 @@
 import 'package:carousel_indicator/carousel_indicator.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:clickoncustomer/utils/constants/color.dart';
-import 'package:clickoncustomer/utils/constants/fontstyles.dart';
+
 import 'package:clickoncustomer/utils/global-key.dart';
 import 'package:clickoncustomer/utils/img-provider.dart';
 import 'package:flutter/cupertino.dart';

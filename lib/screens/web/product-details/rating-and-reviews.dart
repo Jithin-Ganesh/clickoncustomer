@@ -8,6 +8,7 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 import '../../../utils/constants/color.dart';
 import '../../../utils/constants/fontstyles.dart';
 
+
 class RatingsAndReviews extends StatelessWidget {
   const RatingsAndReviews({Key? key}) : super(key: key);
 

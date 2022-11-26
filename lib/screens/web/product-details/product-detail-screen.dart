@@ -16,6 +16,7 @@ import '../../../components/web/WebNavBar2.dart';
 import '../../../components/web/bottom-web-bar.dart';
 import '../../../components/web/custom-titlebar-with-viewall.dart';
 import '../../../components/web/web-nav-bar.dart';
+
 import '../../../utils/constants/fontstyles.dart';
 import '../../../utils/img-provider.dart';
 import '../home/products-for-you.dart';

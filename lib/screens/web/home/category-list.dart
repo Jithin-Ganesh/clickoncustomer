@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 
 import '../../../utils/constants/fontstyles.dart';
 
+
+
 class HomeCategoryList extends StatelessWidget {
   final List<Categories>? categories;
 

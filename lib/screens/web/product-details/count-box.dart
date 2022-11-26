@@ -1,6 +1,8 @@
 import 'package:clickoncustomer/utils/constants/color.dart';
-import 'package:clickoncustomer/utils/constants/fontstyles.dart';
+
 import 'package:flutter/cupertino.dart';
+
+import '../../../utils/constants/fontstyles.dart';
 
 class CountBox extends StatelessWidget {
   final String count;

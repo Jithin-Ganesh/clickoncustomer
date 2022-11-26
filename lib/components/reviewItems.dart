@@ -7,6 +7,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import '../utils/constants/color.dart';
 import '../utils/constants/fontstyles.dart';
 
+
 class ReviewItem extends StatelessWidget {
   final String image;
 

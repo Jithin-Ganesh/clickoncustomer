@@ -7,6 +7,8 @@ import 'package:material_floating_search_bar/material_floating_search_bar.dart';
 
 import '../../utils/constants/fontstyles.dart';
 
+
+
 class WebNavBar extends StatelessWidget {
   const WebNavBar({Key? key}) : super(key: key);
 

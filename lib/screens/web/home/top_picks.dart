@@ -1,9 +1,10 @@
 import 'package:clickoncustomer/utils/constants/color.dart';
-import 'package:clickoncustomer/utils/constants/fontstyles.dart';
+
 import 'package:clickoncustomer/utils/constants/strings.dart';
 import 'package:flutter/material.dart';
 
 import '../../../components/TopPickItem.dart';
+import '../../../utils/constants/fontstyles.dart';
 
 class TopPicks extends StatelessWidget {
   const TopPicks({Key? key}) : super(key: key);

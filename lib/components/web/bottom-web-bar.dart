@@ -1,8 +1,10 @@
 import 'package:clickoncustomer/utils/constants/color.dart';
-import 'package:clickoncustomer/utils/constants/fontstyles.dart';
+
 import 'package:clickoncustomer/utils/img-provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import '../../utils/constants/fontstyles.dart';
 
 class BottomWebBar extends StatelessWidget {
   const BottomWebBar({Key? key}) : super(key: key);

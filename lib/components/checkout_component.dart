@@ -1,11 +1,13 @@
 import 'package:clickoncustomer/utils/constants/color.dart';
 import 'package:clickoncustomer/utils/constants/decoration.dart';
-import 'package:clickoncustomer/utils/constants/fontstyles.dart';
+
 import 'package:clickoncustomer/utils/constants/images.dart';
 import 'package:clickoncustomer/utils/constants/strings.dart';
 import 'package:clickoncustomer/utils/img-provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import '../utils/constants/fontstyles.dart';
 
 class Checkout extends StatelessWidget {
   const Checkout({

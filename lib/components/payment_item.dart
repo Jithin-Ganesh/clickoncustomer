@@ -1,12 +1,12 @@
 import 'package:clickoncustomer/components/checkout_component.dart';
 import 'package:clickoncustomer/components/payment_item_bankdetails.dart';
 import 'package:clickoncustomer/components/payment_sub.dart';
-import 'package:clickoncustomer/utils/constants/color.dart';
-import 'package:clickoncustomer/utils/constants/fontstyles.dart';
-import 'package:clickoncustomer/utils/constants/strings.dart';
+import 'package:clickoncustomer/utils/constants/color.dart';import 'package:clickoncustomer/utils/constants/strings.dart';
 import 'package:clickoncustomer/utils/img-provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import '../utils/constants/fontstyles.dart';
 
 class PaymentItem extends StatelessWidget {
   const PaymentItem(

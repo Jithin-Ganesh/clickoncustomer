@@ -1,11 +1,13 @@
 import 'package:clickoncustomer/providers/category-provider.dart';
 import 'package:clickoncustomer/utils/constants/color.dart';
 import 'package:clickoncustomer/utils/constants/decoration.dart';
-import 'package:clickoncustomer/utils/constants/fontstyles.dart';
+
 import 'package:clickoncustomer/utils/img-provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../../../utils/constants/fontstyles.dart';
 
 class GroupOrders extends StatelessWidget {
   const GroupOrders({Key? key}) : super(key: key);

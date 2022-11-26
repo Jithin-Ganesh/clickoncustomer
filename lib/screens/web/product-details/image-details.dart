@@ -9,6 +9,7 @@ import 'package:provider/provider.dart';
 import '../../../utils/constants/color.dart';
 import '../../../utils/constants/fontstyles.dart';
 
+
 class ImageDetailsWebItem extends StatefulWidget {
   const ImageDetailsWebItem({Key? key}) : super(key: key);
 

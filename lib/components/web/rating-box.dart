@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../../utils/constants/color.dart';
 import '../../utils/constants/fontstyles.dart';
 
+
 class RatingBox extends StatelessWidget {
   const RatingBox({Key? key}) : super(key: key);
 

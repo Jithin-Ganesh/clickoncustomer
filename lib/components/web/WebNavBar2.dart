@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import '../../utils/constants/color.dart';
 import '../../utils/constants/fontstyles.dart';
 
+
 class WebNavBar2 extends StatelessWidget {
   const WebNavBar2({Key? key}) : super(key: key);
 

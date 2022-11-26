@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import '../../../utils/constants/color.dart';
 import '../../../utils/constants/fontstyles.dart';
 
+
 class AvailableOffers extends StatelessWidget {
   const AvailableOffers({Key? key}) : super(key: key);
 

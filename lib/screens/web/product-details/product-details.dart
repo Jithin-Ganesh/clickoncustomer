@@ -2,11 +2,11 @@ import 'package:clickoncustomer/components/web/rating-box.dart';
 import 'package:clickoncustomer/screens/web/product-details/available-offers.dart';
 import 'package:clickoncustomer/screens/web/product-details/buy-together.dart';
 import 'package:clickoncustomer/screens/web/product-details/count-box.dart';
-import 'package:clickoncustomer/utils/constants/fontstyles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../utils/constants/color.dart';
+import '../../../utils/constants/fontstyles.dart';
 
 class ProductDetails extends StatelessWidget {
   const ProductDetails({Key? key}) : super(key: key);

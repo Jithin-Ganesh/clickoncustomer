@@ -1,9 +1,11 @@
 import 'package:clickoncustomer/screens/web/product-details/product-detail-screen.dart';
 import 'package:clickoncustomer/utils/constants/color.dart';
-import 'package:clickoncustomer/utils/constants/fontstyles.dart';
+
 import 'package:clickoncustomer/utils/img-provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import '../../utils/constants/fontstyles.dart';
 
 class ProductCard extends StatelessWidget {
   final String? image;

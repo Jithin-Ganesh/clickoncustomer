@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
-
-
 import 'color.dart';
+
+
+
 
 TextStyle extraBold =
 const TextStyle(fontWeight: FontWeight.w900, color: Colors.black, fontSize: 28.0,fontFamily: 'Kanit',height: 1);

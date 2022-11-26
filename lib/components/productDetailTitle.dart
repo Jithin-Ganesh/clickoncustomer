@@ -1,11 +1,13 @@
 import 'package:clickoncustomer/components/web/discount-box.dart';
 import 'package:clickoncustomer/components/web/rating-box.dart';
 import 'package:clickoncustomer/utils/constants/color.dart';
-import 'package:clickoncustomer/utils/constants/fontstyles.dart';
+
 import 'package:clickoncustomer/utils/constants/strings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
+
+import '../utils/constants/fontstyles.dart';
 
 class ProductDetailTitle extends StatelessWidget {
   ProductDetailTitle({Key? key}) : super(key: key);
@@ -118,7 +120,11 @@ class ProductDetailTitle extends StatelessWidget {
                   ),
                   onPressed: () {},
                   child: DropdownButtonHideUnderline(
-                    child: DropdownButton2(icon:Icon( Icons.keyboard_arrow_down_outlined,color: Colors.white,),
+                    child: DropdownButton2(
+                        icon: Icon(
+                          Icons.keyboard_arrow_down_outlined,
+                          color: Colors.white,
+                        ),
                         hint: Row(
                           children: [
                             Text(quantityText,

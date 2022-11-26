@@ -1,9 +1,11 @@
 import 'package:clickoncustomer/components/web/home-product-box.dart';
 import 'package:clickoncustomer/utils/constants/color.dart';
-import 'package:clickoncustomer/utils/constants/fontstyles.dart';
+
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import '../../../utils/constants/fontstyles.dart';
 
 class TabBarItem extends StatelessWidget {
   TabBarItem({Key? key}) : super(key: key);

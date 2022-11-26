@@ -1,9 +1,10 @@
 import 'package:clickoncustomer/utils/constants/color.dart';
-import 'package:clickoncustomer/utils/constants/fontstyles.dart';
+
 import 'package:clickoncustomer/utils/constants/strings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../utils/constants/fontstyles.dart';
 import '../utils/constants/images.dart';
 
 class BuyTogetherItem extends StatelessWidget {

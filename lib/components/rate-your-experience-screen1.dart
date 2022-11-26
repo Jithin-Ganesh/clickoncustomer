@@ -1,4 +1,4 @@
-import 'package:clickoncustomer/utils/constants/fontstyles.dart';
+
 import 'package:clickoncustomer/utils/constants/strings.dart';
 import 'package:clickoncustomer/utils/img-provider.dart';
 import 'package:flutter/cupertino.dart';
@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import '../utils/constants/color.dart';
+import '../utils/constants/fontstyles.dart';
 
 class RateYourExperience extends StatelessWidget {
   const RateYourExperience({Key? key}) : super(key: key);

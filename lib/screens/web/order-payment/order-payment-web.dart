@@ -7,7 +7,7 @@ import '../../../components/checkout_component.dart';
 import '../../../components/web/WebNavBar2.dart';
 import '../../../components/web/zig-zag-sheet.dart';
 import '../../../utils/constants/color.dart';
-import '../../../utils/constants/fontstyles.dart';
+
 import '../../../utils/constants/images.dart';
 import '../../../utils/constants/strings.dart';
 import '../../../utils/img-provider.dart';

@@ -3,7 +3,9 @@ import 'package:clickoncustomer/utils/constants/color.dart';
 import 'package:clickoncustomer/utils/constants/strings.dart';
 
 import 'package:flutter/material.dart';
+
 import '../../../utils/constants/fontstyles.dart';
+
 
 class BuyTogether extends StatelessWidget {
   const BuyTogether({Key? key}) : super(key: key);

@@ -7,7 +7,7 @@ import 'package:clickoncustomer/screens/web/home/tab-bar.dart';
 import 'package:clickoncustomer/screens/web/home/web-carousel-slider.dart';
 import 'package:clickoncustomer/utils/constants/color.dart';
 import 'package:clickoncustomer/utils/constants/decoration.dart';
-import 'package:clickoncustomer/utils/constants/fontstyles.dart';
+
 import 'package:clickoncustomer/utils/constants/responsive.dart';
 import 'package:clickoncustomer/utils/img-provider.dart';
 import 'package:flutter/cupertino.dart';
@@ -19,6 +19,7 @@ import '../../../components/web/bottom-web-bar.dart';
 import '../../../components/web/custom-titlebar-with-viewall.dart';
 import '../../../components/web/web-nav-bar.dart';
 import '../../../models/category.dart';
+import '../../../utils/constants/fontstyles.dart';
 import 'best-selling.dart';
 import 'category-list.dart';
 import 'fashion-store.dart';

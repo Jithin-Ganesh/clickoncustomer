@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../utils/constants/color.dart';
 import '../../../utils/constants/fontstyles.dart';
 
+
 class Specifications extends StatelessWidget {
   final String specs;
   const Specifications({Key? key, required this.specs}) : super(key: key);

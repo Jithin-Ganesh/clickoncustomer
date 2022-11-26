@@ -1,10 +1,11 @@
 import 'package:clickoncustomer/utils/constants/decoration.dart';
-import 'package:clickoncustomer/utils/constants/fontstyles.dart';
+
 import 'package:clickoncustomer/utils/constants/strings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../utils/constants/color.dart';
+import '../../../utils/constants/fontstyles.dart';
 import '../../../utils/constants/images.dart';
 import '../../../utils/img-provider.dart';
 
