@@ -102,12 +102,12 @@ class CartBody extends StatelessWidget {
                   const SizedBox(
                     height: 91,
                   ),
-                  Row(
+              Consumer<CartProvider>(builder: (context, value, child) => Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Expanded(
-                        child: Consumer<CartProvider>(builder: (context, value, child) => Column(
+                        child:  Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               const Padding(
@@ -125,13 +125,13 @@ class CartBody extends StatelessWidget {
                               )
                             ],
                           ),
-                        ),
+
                       ),
-                      const ZigZagSheet(
-                        isCoupon: false,
+                       ZigZagSheet(
+                        isCoupon: false
                       ),
                     ],
-                  ),
+                  ),),
                   const SizedBox(
                     height: 118,
                   ),

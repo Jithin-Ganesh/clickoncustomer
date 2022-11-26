@@ -65,7 +65,7 @@ class BottomWebBar extends StatelessWidget {
                   height: 2,
                   color: dividerColor2,
                 ),
-                SizedBox(height: 80,),
+                const SizedBox(height: 80,),
                 Expanded(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -235,7 +235,7 @@ class About extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children:  [
-                    AboutItem(
+                    const AboutItem(
                       content: [
                         'Cancellation & Return Policy',
                         'Track Order Status',
@@ -244,19 +244,19 @@ class About extends StatelessWidget {
                       ],
                       title: 'Shop',
                     ),
-                    VerticalDivider(
+                    const VerticalDivider(
                       width: 1,
                       color: verticalDividerColor2,
                     ),
-                    AboutItem(
+                    const AboutItem(
                       content: ['Orders', 'Wishlist', 'Vouchers', 'Returns'],
                       title: 'My Account',
                     ),
-                    VerticalDivider(
+                    const VerticalDivider(
                       width: 1,
                       color: verticalDividerColor2,
                     ),
-                    AboutItem(
+                    const AboutItem(
                       content: [
                         'WhatsApp Us',
                         'Email Us',
@@ -265,11 +265,11 @@ class About extends StatelessWidget {
                       ],
                       title: 'Support',
                     ),
-                    VerticalDivider(
+                    const VerticalDivider(
                       width: 1,
                       color: verticalDividerColor2,
                     ),
-                    AboutItem(
+                    const AboutItem(
                       content: [
                         'Company Info',
                         'Brand Identity',
@@ -278,15 +278,15 @@ class About extends StatelessWidget {
                       ],
                       title: 'About Us ',
                     ),
-                    VerticalDivider(
+                    const VerticalDivider(
                       width: 1,
                       color: verticalDividerColor2,
                     ),
-                    AboutItem(
+                    const AboutItem(
                       content: ['Facebook', 'Twitter', 'Instagram'],
                       title: 'Connect with Us',
                     ),
-                    VerticalDivider(
+                    const VerticalDivider(
                       width: 1,
                       color: verticalDividerColor2,
                     ),
@@ -301,22 +301,22 @@ class About extends StatelessWidget {
                             style:
                             regular.copyWith(fontSize: 18, color: additionalInfoTitleColor),
                           ),
-                          SizedBox(height: 32,),
+                          const SizedBox(height: 32,),
                           Padding(
-                              padding:  EdgeInsets.only(bottom: 15.0),
+                              padding:  const EdgeInsets.only(bottom: 15.0),
                               child: Text(
                                 'Download the app Enjoy Fast',
                                 style: thin.copyWith(fontSize: 14, color: Colors.black),
                               ),
                             ),
                           Padding(
-                            padding:  EdgeInsets.only(bottom: 15.0),
+                            padding:  const EdgeInsets.only(bottom: 15.0),
                             child: Text(
                               'hassle free Shopping',
                               style: thin.copyWith(fontSize: 14, color: Colors.black),
                             ),
                           ),
-                          ImgProvider(url: 'asses/images/image-app-store.png',width: 246,height: 40,)
+                          const ImgProvider(url: 'asses/images/image-app-store.png',width: 246,height: 40,)
 
                         ],
                       ),
@@ -376,7 +376,7 @@ class AboutItem extends StatelessWidget {
             style:
                 regular.copyWith(fontSize: 18, color: additionalInfoTitleColor),
           ),
-          SizedBox(height: 32,),
+          const SizedBox(height: 32,),
           ...content
               .map(
                 (e) => Padding(

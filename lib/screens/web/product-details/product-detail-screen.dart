@@ -121,8 +121,8 @@ class _ProductDetailComponentState extends State<ProductDetailComponent> {
           ProductDetailTitle(productId: widget.product.product?.id,quantity: quantity),
           const SizedBox(height: 80,),
           Row(
-            children: const [
-              Flexible(flex: 1, child: ImageDetailsWeb()),
+            children:  [
+              Flexible(flex: 1, child: ImageDetailsWeb(productModel: widget.product.product,)),
               SizedBox(width: 80,),
               Flexible(flex: 1, child: ProductDetails())
             ],

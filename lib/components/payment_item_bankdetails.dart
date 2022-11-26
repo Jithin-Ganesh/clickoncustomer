@@ -1,21 +1,35 @@
+import 'package:clickoncustomer/components/elevated-buton.dart';
+import 'package:clickoncustomer/providers/cart-provider.dart';
+import 'package:clickoncustomer/screens/web/home/home-screen-web.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../models/cart.dart';
+import '../providers/order.dart';
 import '../utils/constants/color.dart';
 import '../utils/constants/fontstyles.dart';
 import '../utils/constants/strings.dart';
 import '../utils/img-provider.dart';
+import '../utils/toast-message.dart';
 
-class PaymentBank extends StatelessWidget {
-  const PaymentBank({Key? key, required this.isPay, required this.isCvv})
+class PaymentBank extends StatefulWidget {
+  const PaymentBank(
+      {Key? key, required this.isPay, required this.isCvv, this.cart})
       : super(key: key);
   final bool isPay;
   final bool isCvv;
+  final Cart? cart;
 
+  @override
+  State<PaymentBank> createState() => _PaymentBankState();
+}
+
+class _PaymentBankState extends State<PaymentBank> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisSize: MainAxisSize.min,
+        mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -34,7 +48,6 @@ class PaymentBank extends StatelessWidget {
                     onChanged: (value) {
                       print(value);
                     }),
-               
                 Text(
                   textDebitCardName,
                   style:
@@ -68,7 +81,7 @@ class PaymentBank extends StatelessWidget {
                   SizedBox(
                     width: 25,
                   ),
-                  isCvv
+                  widget.isCvv
                       ? Container(
                           width: MediaQuery.of(context).size.width * 0.036,
                           height: 40,
@@ -101,22 +114,52 @@ class PaymentBank extends StatelessWidget {
           SizedBox(
             height: 14,
           ),
-          isPay
-              ? SizedBox(
-                  width: 146,
+          widget.isPay
+              ? ButtonElevated(
+                  onPressed: placeOrder(
+                      payOnline: [widget.cart?.cartProducts?[0].id],
+                      cartId: widget.cart?.id,
+                      billing: 1,
+                      shipping: 1,
+                      cod: [widget.cart?.cartProducts?[0].id]),
+                  buttonTitle: textPayNow,
+                  isButtonEnable: true,
                   height: 40,
-                  child: ElevatedButton(
-                      onPressed: () {},
-                      child: Text(
-                        textAlign: TextAlign.center,
-                        textPayNow,
-                        style:
-                            medium.copyWith(fontSize: 16, color: Colors.white),
-                      )),
+                  width: 90,
+                  elevation: 0,
+                  textStyle: medium.copyWith(fontSize: 16, color: Colors.white),
+                  color: primaryColor,
                 )
               : SizedBox(
                   width: 0,
                 ),
         ]);
+  }
+
+  placeOrder(
+      {required List<int?> cod,
+      required List<int?> payOnline,
+      required int? shipping,
+      required int? billing,
+      required int? cartId}) {
+    Provider.of<OrderProvider>(context, listen: false)
+        .placeOrder(
+            cod: cod,
+            shipping: shipping,
+            billing: billing,
+            cartId: cartId,
+            payOnline: payOnline)
+        .then((value) {
+      if (value!.success!) {
+        Navigator.of(context).pushNamed(HomeScreenWeb.routeName);
+        showMessage(
+          message: "Order Placed",
+        );
+      } else {
+        showMessage(
+          message: "Error in Order Placing",
+        );
+      }
+    });
   }
 }

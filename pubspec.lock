@@ -106,6 +106,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.5"
+  date_format:
+    dependency: "direct main"
+    description:
+      name: date_format
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.7"
   dotted_line:
     dependency: "direct main"
     description:
@@ -119,7 +126,7 @@ packages:
       name: dropdown_button2
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.7.2"
+    version: "1.9.1"
   dropdown_search:
     dependency: "direct main"
     description:
@@ -127,6 +134,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.1"
+  email_validator:
+    dependency: "direct main"
+    description:
+      name: email_validator
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.1.17"
   fake_async:
     dependency: transitive
     description:
