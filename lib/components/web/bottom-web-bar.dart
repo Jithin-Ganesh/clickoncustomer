@@ -67,7 +67,7 @@ class BottomWebBar extends StatelessWidget {
                   height: 2,
                   color: dividerColor2,
                 ),
-                SizedBox(height: 80,),
+                const SizedBox(height: 80,),
                 Expanded(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -236,8 +236,8 @@ class About extends StatelessWidget {
               Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    AboutItem(
+                  children:  [
+                    const AboutItem(
                       content: [
                         'Cancellation & Return Policy',
                         'Track Order Status',
@@ -246,19 +246,19 @@ class About extends StatelessWidget {
                       ],
                       title: 'Shop',
                     ),
-                    VerticalDivider(
+                    const VerticalDivider(
                       width: 1,
                       color: verticalDividerColor2,
                     ),
-                    AboutItem(
+                    const AboutItem(
                       content: ['Orders', 'Wishlist', 'Vouchers', 'Returns'],
                       title: 'My Account',
                     ),
-                    VerticalDivider(
+                    const VerticalDivider(
                       width: 1,
                       color: verticalDividerColor2,
                     ),
-                    AboutItem(
+                    const AboutItem(
                       content: [
                         'WhatsApp Us',
                         'Email Us',
@@ -267,11 +267,11 @@ class About extends StatelessWidget {
                       ],
                       title: 'Support',
                     ),
-                    VerticalDivider(
+                    const VerticalDivider(
                       width: 1,
                       color: verticalDividerColor2,
                     ),
-                    AboutItem(
+                    const AboutItem(
                       content: [
                         'Company Info',
                         'Brand Identity',
@@ -280,24 +280,48 @@ class About extends StatelessWidget {
                       ],
                       title: 'About Us ',
                     ),
-                    VerticalDivider(
+                    const VerticalDivider(
                       width: 1,
                       color: verticalDividerColor2,
                     ),
-                    AboutItem(
+                    const AboutItem(
                       content: ['Facebook', 'Twitter', 'Instagram'],
                       title: 'Connect with Us',
                     ),
-                    VerticalDivider(
+                    const VerticalDivider(
                       width: 1,
                       color: verticalDividerColor2,
                     ),
-                    AboutItem(
-                      content: [
-                        'Download the app Enjoy Fast, Simple',
-                        'hassle free Shopping'
-                      ],
-                      title: 'Enjoy Hustle Free Shop',
+                    FittedBox(
+                      fit: BoxFit.contain,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Enjoy Hustle Free Shop',
+                            style:
+                            regular.copyWith(fontSize: 18, color: additionalInfoTitleColor),
+                          ),
+                          const SizedBox(height: 32,),
+                          Padding(
+                              padding:  const EdgeInsets.only(bottom: 15.0),
+                              child: Text(
+                                'Download the app Enjoy Fast',
+                                style: thin.copyWith(fontSize: 14, color: Colors.black),
+                              ),
+                            ),
+                          Padding(
+                            padding:  const EdgeInsets.only(bottom: 15.0),
+                            child: Text(
+                              'hassle free Shopping',
+                              style: thin.copyWith(fontSize: 14, color: Colors.black),
+                            ),
+                          ),
+                          const ImgProvider(url: 'asses/images/image-app-store.png',width: 246,height: 40,)
+
+                        ],
+                      ),
                     ),
                   ]),
               const Divider(
@@ -354,7 +378,7 @@ class AboutItem extends StatelessWidget {
             style:
                 regular.copyWith(fontSize: 18, color: additionalInfoTitleColor),
           ),
-          SizedBox(height: 32,),
+          const SizedBox(height: 32,),
           ...content
               .map(
                 (e) => Padding(
@@ -414,7 +438,7 @@ class BottomWebBarItem extends StatelessWidget {
                       fontSize: 18, color: additionalInfoTitleColor),
                 ),
                 const SizedBox(
-                  height: 5,
+                  height: 8,
                 ),
                 Expanded(
                   child: Text(

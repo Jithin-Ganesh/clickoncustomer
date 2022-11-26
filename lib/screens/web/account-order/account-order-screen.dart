@@ -146,17 +146,21 @@ class TabBarItem extends StatelessWidget {
                     const SizedBox(
                       width: 20,
                     ),
-                    OutlinedButton(
-                        onPressed: () {},
-                        child: Row(
-                          children: [
-                            Text(
-                              'Last 3 months',
-                              style: orderPlacedStyle,
-                            ),
-                            const Icon(Icons.keyboard_arrow_down_outlined),
-                          ],
-                        )),
+                    SizedBox(
+                      height: 38,
+                      width: 151,
+                      child: OutlinedButton(
+                          onPressed: () {},
+                          child: Row(
+                            children: [
+                              Text(
+                                'Last 3 months',
+                                style: orderPlacedStyle,
+                              ),
+                              const Icon(Icons.keyboard_arrow_down_outlined,size: 20,),
+                            ],
+                          )),
+                    ),
                   ],
                 ),
                 Row(

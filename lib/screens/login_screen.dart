@@ -1,17 +1,57 @@
 import 'package:clickoncustomer/screens/otp-screen.dart';
 import 'package:clickoncustomer/utils/constants/color.dart';
-
+import 'package:clickoncustomer/utils/constants/fontstyles.dart';
 import 'package:clickoncustomer/utils/constants/images.dart';
 import 'package:clickoncustomer/utils/constants/strings.dart';
 import 'package:clickoncustomer/utils/img-provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
-import '../utils/constants/fontstyles.dart';
+import '../providers/auth.dart';
+import '../utils/toast-message.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  late TextEditingController phoneController;
+
+  @override
+  void initState() {
+    phoneController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    phoneController.dispose();
+    super.dispose();
+  }
+
+
+  void authenticate() {
+   // Provider.of<AuthProvider>(context, listen: false).enableLoading();
+    Provider.of<AuthProvider>(context, listen: false)
+        .login(phone: phoneController.text)
+        .then((value) {
+      if (value) {
+       // Provider.of<AuthProvider>(context, listen: false).disableLoading();
+        Navigator.of(context).pushNamed(OtpScreen.routeName,
+            arguments: OtpScreen(
+              phoneNumber: phoneController.text,
+            ));
+
+      }
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +62,7 @@ class LoginScreen extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(
-                height: 201,
-              ),
+              SizedBox(height: 201,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -36,6 +74,7 @@ class LoginScreen extends StatelessWidget {
                         ),
                         color: primaryColor),
                     width: 301,
+                    height: 558,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -60,7 +99,7 @@ class LoginScreen extends StatelessWidget {
                                   ),
                                 ])),
                         SizedBox(
-                          height: 142,
+                          height: 97,
                         ),
                         Padding(
                           padding: EdgeInsets.only(left: 24.58, right: 36.83),
@@ -97,9 +136,19 @@ class LoginScreen extends StatelessWidget {
                           height: 36,
                         ),
                         ImgProvider(
-                          url: "assets/images/img_39.png",
+                          url: clickUpLogoImage,
+                          width: 70,
+                          height: 43,
+                          color: Colors.white,
+                        ),
+                        SizedBox(
+                          height: 6,
+                        ),
+                        ImgProvider(
+                          url: clickOnOffersImage,
                           width: 97,
-                          height: 49,
+                          height: 9.91,
+                          color: Colors.white,
                         ),
                         SizedBox(
                           height: 33,
@@ -116,18 +165,18 @@ class LoginScreen extends StatelessWidget {
                           width: 350,
                           height: 45,
                           child: TextFormField(
+                            controller: phoneController,
                             decoration: InputDecoration(
-                              border: OutlineInputBorder(
+                              border: const OutlineInputBorder(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10.0)),
                                 borderSide:
                                     BorderSide(color: textFormFieldBorderColor),
                               ),
                               prefixIcon: Padding(
-                                padding: EdgeInsets.only(
-                                    left: 14, top: 12, bottom: 10),
+                                padding: const EdgeInsets.only(
+                                    left: 14, top: 13, bottom: 10),
                                 child: Text("+91",
-                                    textAlign: TextAlign.center,
                                     style: regular.copyWith(
                                         fontSize: 14, color: hintTextColor)),
                               ),
@@ -137,6 +186,12 @@ class LoginScreen extends StatelessWidget {
                               FilteringTextInputFormatter.digitsOnly,
                               LengthLimitingTextInputFormatter(10),
                             ],
+                            validator: (String? value) {
+                              if (value == null || value.toString().length != 10) {
+                                return " Enter a valid phone number";
+                              }
+                              return null;
+                            },
                             style: regular.copyWith(
                                 fontSize: 14, color: numberColor),
                           ),
@@ -147,22 +202,15 @@ class LoginScreen extends StatelessWidget {
                         Container(
                           width: 350,
                           height: 45,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10)),
                           child: ElevatedButton(
-                              style: ButtonStyle(
-                                shape: MaterialStateProperty.all<
-                                        RoundedRectangleBorder>(
-                                    RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(10))),
-                              ),
                               onPressed: () {
-                                Navigator.of(context)
-                                    .pushNamed(OtpScreen.routeName);
+
+                               authenticate();
                               },
                               child: Text(
                                 textContinue,
-                                style: medium.copyWith(
-                                    fontSize: 16, color: Colors.white),
                                 textAlign: TextAlign.center,
                               )),
                         ),
@@ -182,7 +230,7 @@ class LoginScreen extends StatelessWidget {
                           children: [
                             Text(
                               textHavingTrouble,
-                              style: regular.copyWith(
+                              style: medium.copyWith(
                                   fontSize: 14, color: emailTextColor),
                             ),
                             SizedBox(
@@ -190,7 +238,7 @@ class LoginScreen extends StatelessWidget {
                             ),
                             Text(
                               textGetHelp,
-                              style: regular.copyWith(
+                              style: medium.copyWith(
                                   fontSize: 14, color: primaryColor),
                             ),
                           ],
@@ -198,25 +246,17 @@ class LoginScreen extends StatelessWidget {
                         SizedBox(
                           height: 38,
                         ),
-                        Container(
+                        SizedBox(
                           width: 350,
                           height: 45,
                           child: OutlinedButton(
-                              style: ButtonStyle(
-                                shape: MaterialStateProperty.all(
-                                    RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(10.0))),
-                              ),
                               onPressed: () {
-                                Navigator.pushNamed(
-                                    context, OtpScreen.routeName);
+                                Navigator.pushNamed(context, OtpScreen.routeName);
                               },
                               child: Text(
                                 textCreateAccount,
                                 style: medium.copyWith(
-                                    fontSize: 16,
-                                    color: createAccountTextColor),
+                                    fontSize: 16, color: createAccountTextColor),
                               )),
                         )
                       ],
@@ -227,13 +267,12 @@ class LoginScreen extends StatelessWidget {
               SizedBox(
                 height: 157,
               ),
-              SizedBox(
-                width: 841,
-                child: Divider(
-                  height: 3,
-                  color: bottomAppColor,
-                ),
-              ),
+              const SizedBox(
+                  width: 841,
+                  child: Divider(
+                    height: 1,
+                    color: dividerBorderColor,
+                  )),
               SizedBox(
                 height: 22,
               ),

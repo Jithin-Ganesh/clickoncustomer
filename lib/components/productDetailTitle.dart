@@ -6,12 +6,16 @@ import 'package:clickoncustomer/utils/constants/strings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:provider/provider.dart';
+
+import '../providers/cart-provider.dart';
 
 import '../utils/constants/fontstyles.dart';
 
 class ProductDetailTitle extends StatelessWidget {
-  ProductDetailTitle({Key? key}) : super(key: key);
-
+  ProductDetailTitle({Key? key, required this.productId, this.quantity}) : super(key: key);
+final int? productId;
+final int? quantity;
   final List<String> items = [
     'Item1',
     'Item2',
@@ -185,7 +189,10 @@ class ProductDetailTitle extends StatelessWidget {
                 width: 139,
                 height: 40,
                 child: OutlinedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Provider.of<CartProvider>(context, listen: false)
+                        .addCart(productId: productId, qty: quantity);
+                  },
                   style: OutlinedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10)),

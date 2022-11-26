@@ -199,6 +199,16 @@ class SampleInterface {
         "name": "Smartphones",
         "image":   "assets/images/dummy/image-top-pick-5.png",
       },
+      {
+        "id": 6,
+        "name": "Watches",
+        "image":   "assets/images/dummy/image-watch.png",
+      },
+      {
+        "id": 7,
+        "name": "Footwear",
+        "image":   "assets/images/dummy/image-top-pick-2.png",
+      },
     ]
   };
 

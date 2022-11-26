@@ -1,3 +1,4 @@
+import 'package:clickoncustomer/models/product-model.dart';
 import 'package:clickoncustomer/providers/category-provider.dart';
 import 'package:clickoncustomer/utils/constants/decoration.dart';
 import 'package:clickoncustomer/utils/img-provider.dart';
@@ -11,7 +12,8 @@ import '../../../utils/constants/fontstyles.dart';
 
 
 class ImageDetailsWebItem extends StatefulWidget {
-  const ImageDetailsWebItem({Key? key}) : super(key: key);
+  final ProductModel? productModel;
+  const ImageDetailsWebItem({Key? key, this.productModel}) : super(key: key);
 
   @override
   State<ImageDetailsWebItem> createState() => _ImageDetailsWebItemState();
@@ -75,10 +77,11 @@ class _ImageDetailsWebItemState extends State<ImageDetailsWebItem> {
                                 borderRadius: BorderRadius.all(Radius.circular(10)),
                                 border: Border.all(color: selectedIndex == index ? subTextGeneralColor : specificationsColor)),
                             child: ImgProvider(
-                              url: value.productDetails?[index].image ?? '',
+                              url: widget.productModel?.image ?? '',
                               height: 80,
                               width: 80,
                               boxFit: BoxFit.fill,
+
                             )),
                       ),
                     ),
@@ -193,7 +196,8 @@ class _ImageDetailsWebItemState extends State<ImageDetailsWebItem> {
 }
 
 class ImageDetailsWeb extends StatelessWidget {
-  const ImageDetailsWeb({Key? key}) : super(key: key);
+  final ProductModel? productModel;
+  const ImageDetailsWeb({Key? key,  this.productModel}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -215,8 +219,8 @@ class ImageDetailsWeb extends StatelessWidget {
             unselectedLabelColor: mainTitleColor,
           ),
           views: [
-            ImageDetailsWebItem(),
-            ImageDetailsWebItem(),
+            ImageDetailsWebItem(productModel: productModel),
+            ImageDetailsWebItem(productModel: productModel),
           ],
         ),
       ),

@@ -1,16 +1,19 @@
 import 'package:clickoncustomer/routes.dart';
 import 'package:clickoncustomer/screens/login_screen.dart';
-import 'package:clickoncustomer/screens/test-screen.dart';
-import 'package:clickoncustomer/screens/web/home/home-screen-web.dart';
 import 'package:clickoncustomer/utils/custom-scroll.dart';
+import 'package:clickoncustomer/utils/pref_utils.dart';
 import 'package:clickoncustomer/utils/providers.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  await Hive.openBox(PrefUtils.APP_NAME);
   runApp(const MyApp());
 }
-
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 

@@ -56,16 +56,5 @@ class CategoryProvider extends ChangeNotifier {
   }
 
 
-  Future<List<Categories>?> fetchHome()async{
-    await fetchJustLaunched();
-    await fetchProducts();
-    await fetchGroupOrders();
-    await fetchTopPicks();
-    await fetchCategory();
-    await fetchRecentlyAdded();
-    await  fetchProductImages();
-    return categoriesList ?? [];
-  }
-
 
 }

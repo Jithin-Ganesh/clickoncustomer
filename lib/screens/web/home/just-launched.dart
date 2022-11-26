@@ -15,7 +15,7 @@ class JustLaunchedList extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: HomeProductBox(
             height: 306,
-            width: 297,
+            width: MediaQuery.of(context).size.width * 0.154,
           image: justLaunched[index].image,
         ),
       ),scrollDirection: Axis.horizontal,padding: EdgeInsets.symmetric(horizontal: 15),itemCount: justLaunched.length,),

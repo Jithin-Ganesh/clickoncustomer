@@ -26,12 +26,13 @@ class _ProductsState extends State<Products> {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 8.0),
       height: widget.height ?? 500,
+      width: MediaQuery.of(context).size.width * 0.096,
       child: Column(
         children: [
           ImgProvider(
             url: widget.image,
             height: 210,
-            width: 186,
+            width: MediaQuery.of(context).size.width * 0.096,
           ),
           const SizedBox(
             height: 9.7,

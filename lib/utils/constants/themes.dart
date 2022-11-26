@@ -143,6 +143,8 @@ TextStyle? textButtonTextStyle(Set<MaterialState> state) {
 
 
 TextStyle? accountPathTextStyle = regular.copyWith(color: accountPathColor);
+TextStyle? feedBackSelectedStyle = medium.copyWith(color: primaryColor);
+TextStyle? feedBackUnSelectedStyle = medium.copyWith(color: productAvailabilityColor);
 TextStyle? accountTitleStyle = medium.copyWith(color: passColor, fontSize: 32);
 TextStyle? archiveStyle = medium.copyWith(color: vectorColor);
 TextStyle? orderPlacedStyle = regular.copyWith(color: productAvailabilityColor);

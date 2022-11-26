@@ -15,7 +15,8 @@ class YourItems extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: containerDecoration,
-      width: 227,
+      width: MediaQuery.of(context).size.width * 0.118,
+      height: 428,
       child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,

@@ -37,7 +37,7 @@ class HomeCategoryList extends StatelessWidget {
                   )),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 59),
+              padding: const EdgeInsets.only(left: 61),
               child: Column(
                 children: [
                   CircleAvatar(

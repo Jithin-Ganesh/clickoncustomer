@@ -1,13 +1,8 @@
+
 import 'package:clickoncustomer/utils/constants/color.dart';
-import 'package:clickoncustomer/utils/constants/decoration.dart';
-
-import 'package:clickoncustomer/utils/constants/images.dart';
+import 'package:clickoncustomer/utils/constants/fontstyles.dart';
 import 'package:clickoncustomer/utils/constants/strings.dart';
-import 'package:clickoncustomer/utils/img-provider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../utils/constants/fontstyles.dart';
 
 class Checkout extends StatelessWidget {
   const Checkout({
@@ -17,12 +12,13 @@ class Checkout extends StatelessWidget {
     required this.isAccount,
     this.isSubmit = true,
     this.isProcessing = false,
-    this.slNumber,
+    this.slNumber, this.onPressed,
   }) : super(key: key);
 
   final String title;
   final String text;
   final bool isAccount;
+  final VoidCallback? onPressed;
   final bool isSubmit;
   final bool isProcessing;
   final String? slNumber;
@@ -35,18 +31,15 @@ class Checkout extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.5),
-            offset: Offset(0.0, 1.0), //(x,y)
+            offset: const Offset(0.0, 1.0), //(x,y)
             blurRadius: 6.0,
           ),
         ],
       ),
       width: MediaQuery.of(context).size.width * 0.622,
       child: Padding(
-        padding: EdgeInsets.only(
-            left: MediaQuery.of(context).size.width * 0.009,
-            top: MediaQuery.of(context).size.width * 0.0119,
-            right: 23,
-            bottom: 30),
+        padding:
+            EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.009, top:  MediaQuery.of(context).size.width *  0.0119, right: 23, bottom: 30),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -59,12 +52,12 @@ class Checkout extends StatelessWidget {
                   isSubmit: isSubmit,
                   slNumber: slNumber,
                 ),
-                SizedBox(
-                  height: 15,
+                const SizedBox(
+                  height: 17,
                 ),
                 isAccount
                     ? Row(children: [
-                        SizedBox(
+                        const SizedBox(
                           width: 71,
                         ),
                         Text(
@@ -73,7 +66,7 @@ class Checkout extends StatelessWidget {
                               fontSize: 16,
                               color: productDetailsScreenTotalColor),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 42,
                         ),
                         Text(
@@ -82,12 +75,12 @@ class Checkout extends StatelessWidget {
                               regular.copyWith(fontSize: 16, color: gmailColor),
                         )
                       ])
-                    : Container(
+                    : SizedBox(
                         height: 55,
                         width: 655,
                         child: Row(
                           children: [
-                            SizedBox(
+                            const SizedBox(
                               width: 71,
                             ),
                             Expanded(
@@ -104,8 +97,8 @@ class Checkout extends StatelessWidget {
                       ),
               ],
             ),
-            Container(
-              width: MediaQuery.of(context).size.width * 0.072,
+            SizedBox(
+              width:  MediaQuery.of(context).size.width * 0.072,
               height: 45,
               child: OutlinedButton(
                   style: ButtonStyle(
@@ -113,7 +106,7 @@ class Checkout extends StatelessWidget {
                     shape: MaterialStateProperty.all(RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.0))),
                   ),
-                  onPressed: () {},
+                  onPressed: onPressed,
                   child: Text(
                     textChange,
                     style: medium.copyWith(
@@ -149,7 +142,7 @@ class _PaymentTitleState extends State<PaymentTitle> {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        SizedBox(
+        const SizedBox(
           width: 18,
         ),
         Container(
@@ -165,23 +158,23 @@ class _PaymentTitleState extends State<PaymentTitle> {
           ),
           child: Center(
             child: widget.isSubmit
-                ? Icon(
+                ? const Icon(
                     Icons.check,
                     color: canvasColor,
                     size: 11,
                   )
                 : Text(
                     widget.slNumber ?? '',
-                    style: medium.copyWith(color: canvasColor,fontSize: 14),
+                    style: medium.copyWith(color: canvasColor),
                   ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           width: 27,
         ),
         Text(
           widget.title,
-          style: medium.copyWith(fontSize: 20, color: mainTitleColor),
+          style: medium.copyWith(fontSize: 20, color: priceOffersSubtextColor),
         ),
       ],
     );

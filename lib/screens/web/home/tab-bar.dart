@@ -25,11 +25,14 @@ class TabBarItem extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Wrap(
-        spacing: 30,
-        runSpacing: 30,
-        children: images,
+    return Padding(
+      padding: const EdgeInsets.only(top: 34.0),
+      child: Container(
+        child: Wrap(
+          spacing: 30,
+          runSpacing: 30,
+          children: images,
+        ),
       ),
     );
   }
@@ -58,6 +61,8 @@ class CustomTabBarView extends StatelessWidget {
           labelColor: Colors.black,
           labelStyle: regular,
           unselectedLabelColor: Colors.black,
+          alignment: TabBarAlignment.center,
+          width: 1000
         ),
         views: [
           TabBarItem(),

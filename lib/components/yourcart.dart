@@ -1,24 +1,38 @@
+
+import 'package:clickoncustomer/components/web/custom-alert-box.dart';
+import 'package:clickoncustomer/providers/cart-provider.dart';
+import 'package:clickoncustomer/screens/web/cart/cart-screen.dart';
 import 'package:clickoncustomer/utils/constants/color.dart';
 import 'package:clickoncustomer/utils/constants/decoration.dart';
-
-import 'package:clickoncustomer/utils/constants/images.dart';
+import 'package:clickoncustomer/utils/constants/fontstyles.dart';
 import 'package:clickoncustomer/utils/constants/strings.dart';
+import 'package:clickoncustomer/utils/img-provider.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-import '../utils/constants/fontstyles.dart';
+import '../models/cart-products.dart';
 
-class YourCart extends StatelessWidget {
-  YourCart({Key? key, this.selectedValue}) : super(key: key);
+
+class YourCart extends StatefulWidget {
+  final CartProduct? product;
+  final int? cartId;
+  YourCart({Key? key,  required this.product, this.cartId, }) : super(key: key);
+
+
+  @override
+  State<YourCart> createState() => _YourCartState();
+}
+
+class _YourCartState extends State<YourCart> {
   final List<String> items = [
     'Item1',
     'Item2',
     'Item3',
     'Item4',
   ];
-  late final String? selectedValue;
-
+  String? selectedValue;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -26,7 +40,7 @@ class YourCart extends StatelessWidget {
       width: MediaQuery.of(context).size.width * 0.622,
       height: 166,
       child: Padding(
-        padding: const EdgeInsets.only(right: 20, left: 0),
+        padding: const EdgeInsets.only(right: 20, left: 0,top: 12),
         child:
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           Row(
@@ -34,8 +48,8 @@ class YourCart extends StatelessWidget {
               SizedBox(
                 width: 24,
               ),
-              Image.asset(
-                yourCartItemImage,
+              ImgProvider(
+                url: widget.product?.image ?? '',
                 width: MediaQuery.of(context).size.width * 0.0572,
                 height: 110,
               ),
@@ -51,20 +65,21 @@ class YourCart extends StatelessWidget {
                     style:
                         medium.copyWith(color: inStockTitleColor, fontSize: 12),
                   ),
+                  SizedBox(height: 6,),
                   Text(
-                    textYourCartItemName,
+                    widget.product?.name ?? '',
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: regular.copyWith(
                         fontSize: 14, color: productSubTextColor),
-                  ),
+                  ),    SizedBox(height: 6,),
                   Row(children: [
                     Text(textRupees),
                     const SizedBox(
                       width: 8.85,
                     ),
                     Text(
-                      yourCartAmount,
+                      widget.product?.amount.toString() ?? '',
                       style: medium.copyWith(
                           color: priceOffersSubtextColor, fontSize: 16),
                     ),
@@ -79,8 +94,7 @@ class YourCart extends StatelessWidget {
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(8),
                               bottomRight: Radius.circular(8))),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 0.69),
+                      child: Center(
                         child: Text(
                           discount,
                           textAlign: TextAlign.center,
@@ -93,7 +107,7 @@ class YourCart extends StatelessWidget {
                       width: 10,
                     ),
                     Text(
-                      textYourCartOffer,
+                      widget.product?.offer.toString() ?? '',
                       style: medium.copyWith(
                           fontSize: 12, color: priceOffersSubtextColor),
                     )
@@ -118,7 +132,7 @@ class YourCart extends StatelessWidget {
                                   SizedBox(
                                     width: 12,
                                   ),
-                                  Text(yourCartQuantityText,
+                                  Text(widget.product?.quantity.toString() ?? '',
                                       style: regular.copyWith(
                                           fontSize: 12,
                                           color: productSubTextColor)),
@@ -171,10 +185,26 @@ class YourCart extends StatelessWidget {
                       SizedBox(
                         width: 12,
                       ),
-                      Text(
-                        textYourCartRemove,
-                        style:
-                            regular.copyWith(fontSize: 12, color: removeColor),
+                      TextButton(
+                       onPressed: () {
+                         showMyDialog(
+                           screenContext: context,
+                           buttonName: "Remove",
+                           title: "Alert!",
+                           contentText: "Do you really want to clear the cart?",
+                           onConfirm: () {
+                             Provider.of<CartProvider>(context, listen: false)
+                                 .deleteCart( cartId: widget.cartId)
+                                 .then((value) {
+                                   Provider.of<CartProvider>(context,listen: false).fetchCart();
+                               Navigator.pushNamed(context, CartScreenWeb.routeName);
+                             });
+                           },
+                         );
+                       },
+                       child: Text( textYourCartRemove,
+                         style:
+                         regular.copyWith(fontSize: 12, color: removeColor),)
                       )
                     ],
                   )

@@ -1,4 +1,5 @@
 import 'package:clickoncustomer/screens/web/order-details/order-details-item-web.dart';
+import 'package:clickoncustomer/screens/web/order-details/order-timeline.dart';
 import 'package:clickoncustomer/utils/constants/responsive.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -65,7 +66,10 @@ class _OrderDetailsScreenWebState extends State<OrderDetailsScreenWeb> {
                         SizedBox(height: 57,),
                         OrderDetailsTitleBar(),
                         SizedBox(height: 5,),
-                        OrderDetailsItemWeb()
+                        OrderDetailsItemWeb(),
+                      SizedBox(height: 30,),
+                      //OrderTimeLine(),
+                      SizedBox(height: 311,)
                       ],
                     ),
                   ),
