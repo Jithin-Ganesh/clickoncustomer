@@ -1,11 +1,12 @@
 import 'package:clickoncustomer/interfaces/auth-interface.dart';
 import 'package:flutter/cupertino.dart';
 
+import '../models/login.dart';
 import '../utils/pref_utils.dart';
 
 class AuthProvider with ChangeNotifier {
 
-
+  Login? loginModel;
   bool isLoading = false;
 
   enableLoading() {
@@ -20,9 +21,9 @@ class AuthProvider with ChangeNotifier {
 
   //Login
   Future<bool> login({required String phone}) async {
-    final otp = await AuthInterface.login(phone: phone);
+     loginModel = await AuthInterface.login(phone: phone);
 
-    return otp?.isNotEmpty ?? false;
+    return loginModel != null;
   }
 
   //Verify OTP

@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'images.dart';
-class ImgProvider extends StatelessWidget {
+class ImgProvider2 extends StatelessWidget {
   final String url;
   final double? height;
   final double? width;
@@ -18,7 +18,7 @@ class ImgProvider extends StatelessWidget {
   final double? radius;
 
   //width, height, fit ....
-  const ImgProvider({
+  const ImgProvider2({
     Key? key,
     required this.url,
     this.height,
@@ -36,28 +36,40 @@ class ImgProvider extends StatelessWidget {
 
     //url
     if (url == "") {
-      return Image(
+      return  Image(
         image: AssetImage(placeholder),
-        fit: BoxFit.fill,
+        fit: placeHolderBoxFit ?? boxFit,
       );
     } else if (url.contains("http") || url.contains("https")) {
       return CachedNetworkImage(
         imageUrl: url,
         fit: boxFit,
-        placeholder: (context, url) => Image(image: AssetImage(placeholder)),
-        errorWidget: (context, url, error) =>
-            Image(image: AssetImage(placeholder)),
+        placeholder: (context, url) => Image.asset(
+          placeholder,
+          fit: placeHolderBoxFit ?? boxFit,
+        ),
+        errorWidget: (context, url, error) => Image.asset(
+          placeholder,
+          fit: placeHolderBoxFit ?? boxFit,
+        ),
       );
       //return FadeInImage.assetNetwork(placeholder: placeholder, image: url, fit: boxFit,imageErrorBuilder: ,);
     } else if (url.contains('svg')) {
       return SvgPicture.asset(url);
     } else if (['png', 'jpg', 'jpeg'].contains(url.split(".").last)) {
-      return Image(
-        image: AssetImage(url),
+      return Image.asset(
+        url,
         fit: boxFit,
+        errorBuilder: (context, url, error) => Image.asset(
+          placeholder,
+          fit: placeHolderBoxFit ?? boxFit,
+        ),
       );
     } else {
-      return Container();
+      return Image.asset(
+        placeholder,
+        fit: boxFit,
+      );
     }
   }
 

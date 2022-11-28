@@ -1,7 +1,10 @@
+import 'package:clickoncustomer/providers/auth.dart';
 import 'package:clickoncustomer/screens/web/account-order/account-order-screen.dart';
+import 'package:clickoncustomer/screens/web/profile/profile-screen.dart';
 import 'package:clickoncustomer/utils/constants/responsive.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../components/account_subcomponent.dart';
 import '../../../components/web/WebNavBar2.dart';
@@ -108,30 +111,33 @@ class _YourAccountWebState extends State<YourAccountWeb> {
                               SizedBox(
                                 width: 14,
                               ),
-                              SizedBox(
-                                width: 50,
-                                height: 45,
-                                child: OutlinedButton(
-                                  style: ButtonStyle(
-                                    shape: MaterialStateProperty.all(
-                                        RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(10.0))),
-                                    backgroundColor:
-                                        MaterialStateProperty.resolveWith<Color>(
-                                            (states) {
-                                      if (states
-                                          .contains(MaterialState.disabled)) {
+                              Consumer<AuthProvider>(builder: (context, value, child) => SizedBox(
+                                  width: 50,
+                                  height: 45,
+                                  child: OutlinedButton(
+                                    style: ButtonStyle(
+                                      shape: MaterialStateProperty.all(
+                                          RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(10.0))),
+                                      backgroundColor:
+                                          MaterialStateProperty.resolveWith<Color>(
+                                              (states) {
+                                        if (states
+                                            .contains(MaterialState.disabled)) {
+                                          return canvasColor;
+                                        }
                                         return canvasColor;
-                                      }
-                                      return canvasColor;
-                                    }),
-                                  ),
-                                  onPressed: () {},
-                                  child: Icon(
-                                    Icons.power_settings_new_rounded,
-                                    color: primaryColor,
-                                    size: 21,
+                                      }),
+                                    ),
+                                    onPressed: () {
+                                      Navigator.pushNamed(context, ProfileWebScreen.routeName,arguments: ProfileWebScreen(id: value.loginModel?.userId,));
+                                    },
+                                    child: Icon(
+                                      Icons.power_settings_new_rounded,
+                                      color: primaryColor,
+                                      size: 21,
+                                    ),
                                   ),
                                 ),
                               )

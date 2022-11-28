@@ -316,7 +316,7 @@ class About extends StatelessWidget {
                               style: thin.copyWith(fontSize: 14, color: Colors.black),
                             ),
                           ),
-                          const ImgProvider(url: 'asses/images/image-app-store.png',width: 246,height: 40,)
+                          const ImgProvider(url: 'assets/images/image-app-store.png',width: 246,height: 40,)
 
                         ],
                       ),

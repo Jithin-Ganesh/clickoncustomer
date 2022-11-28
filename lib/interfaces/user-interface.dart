@@ -1,5 +1,6 @@
 
 import '../models/address.dart';
+import '../models/user.dart';
 import '../utils/api/api_exception.dart';
 import '../utils/api/api_methods.dart';
 import '../utils/api/api_request.dart';
@@ -107,21 +108,21 @@ class UserInterface {
     }
   }
 
-  // // 5 . fetch User Profile
-  //
-  // static Future<User?> fetchUserProfile() async{
-  //   try {
-  //     final response = await ApiRequest.send(
-  //         method: ApiMethod.GET,
-  //         body: {},
-  //         route: "profile",
-  //         queries: {});
-  //     return User.fromJson(response["user"]);
-  //   } catch (err) {
-  //     print("fetching address error: $err");
-  //     return null;
-  //   }
-  // }
+  // 5 . fetch User Profile
+
+  static Future<User?> fetchUserProfile({required int? id}) async{
+    try {
+      final response = await ApiRequest.send(
+          method: ApiMethod.GET,
+          body: {},
+          route: "user/$id",
+          queries: {});
+      return User.fromJson(response);
+    } catch (err) {
+      print("fetching address error: $err");
+      return null;
+    }
+  }
 
 
 }
