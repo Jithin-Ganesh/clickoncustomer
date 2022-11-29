@@ -116,12 +116,14 @@ class _PaymentBankState extends State<PaymentBank> {
           ),
           widget.isPay
               ? ButtonElevated(
-                  onPressed: placeOrder(
-                      payOnline: [widget.cart?.cartProducts?[0].id],
-                      cartId: widget.cart?.id,
-                      billing: 1,
-                      shipping: 1,
-                      cod: [widget.cart?.cartProducts?[0].id]),
+                  onPressed: (){
+                    placeOrder(
+                        payOnline: [widget.cart?.cartProducts?[0].id],
+                        cartId: widget.cart?.id,
+                        billing: 1,
+                        shipping: 1,
+                        cod: [widget.cart?.cartProducts?[0].id]);
+                  },
                   buttonTitle: textPayNow,
                   isButtonEnable: true,
                   height: 40,

@@ -1,12 +1,11 @@
+import 'package:clickoncustomer/models/product-model.dart';
 import 'package:clickoncustomer/utils/constants/color.dart';
-
-import 'package:clickoncustomer/utils/constants/images.dart';
+import 'package:clickoncustomer/utils/constants/fontstyles.dart';
 import 'package:clickoncustomer/utils/img-provider.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../utils/constants/fontstyles.dart';
 import '../utils/constants/strings.dart';
 
 class ReviewOrderItem extends StatelessWidget {
@@ -15,18 +14,12 @@ class ReviewOrderItem extends StatelessWidget {
       required this.title,
       this.selectedValue,
       required this.isOrder,
-      required this.isGift,
-      required this.itemName,
-      required this.price,
-      required this.offerPrice})
+      required this.isGift, this.product})
       : super(key: key);
   final String title;
-  final String itemName;
-
+  final ProductModel? product;
   final bool isOrder;
   final bool isGift;
-  final String price;
-  final String offerPrice;
 
   final List<String> items = [
     'Item1',
@@ -42,12 +35,12 @@ class ReviewOrderItem extends StatelessWidget {
       Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ImgProvider(
+          const ImgProvider(
             url: "assets/images/img_22.png",
             width: 12,
             height: 8,
           ),
-          SizedBox(width: 11),
+          const SizedBox(width: 11),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -58,7 +51,7 @@ class ReviewOrderItem extends StatelessWidget {
                     style: medium.copyWith(
                         fontSize: 18, color: priceOffersSubtextColor),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 6,
                   ),
                   Text(
@@ -72,14 +65,14 @@ class ReviewOrderItem extends StatelessWidget {
                   ? Text(orderStatusText,
                   style: thin.copyWith(
                       fontSize: 14, color: subTextGeneralColor))
-                  : SizedBox(
+                  : const SizedBox(
                 width: 0,
               ),
             ],
           ),
         ],
       ),
-      SizedBox(
+      const SizedBox(
         height: 18,
       ),
       Row(
@@ -90,17 +83,17 @@ class ReviewOrderItem extends StatelessWidget {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(color: itemContainer, width: 1)),
-            child: Padding(
-              padding: const EdgeInsets.only(
-                  top: 16, bottom: 16, left: 14, right: 18),
-              child: const ImgProvider(
+            child: const Padding(
+              padding: EdgeInsets.only(
+                  top: 16, bottom: 16, left: 14, right: 16),
+              child: ImgProvider(
                 url: "assets/images/img_21.png",
                 width: 77,
                 height: 77,
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 32,
           ),
           Column(
@@ -108,16 +101,17 @@ class ReviewOrderItem extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(
-                itemName,
+                product?.name ?? '',
                 style: regular.copyWith(
                     fontSize: 16, color: productSubTextColor),
               ),
+              const SizedBox(height: 10,),
               Text(
                 soldByText,
                 style: thin.copyWith(
                     fontSize: 14, color: productDetailsScreenSubTextColor),
               ),
-                SizedBox(height: 4,),
+                const SizedBox(height: 10,),
               Row(
                 children: [
                   Text(
@@ -125,15 +119,15 @@ class ReviewOrderItem extends StatelessWidget {
                     style:
                     regular.copyWith(fontSize: 18, color: primaryColor),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 5,
                   ),
                   Text(
-                    price,
+                    product?.price ?? '',
                     style:
                     medium.copyWith(fontSize: 17, color: primaryColor),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 16,
                   ),
                   Text(
@@ -145,19 +139,19 @@ class ReviewOrderItem extends StatelessWidget {
                       fontSize: 18,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 5,
                   ),
                   Text(
-                    offerPrice,
+                    product?.offer.toString() ?? '',
                     style: medium.copyWith(
                         decoration: TextDecoration.lineThrough,
                         decorationColor: offerPriceColor,
                         fontSize: 17,
                         color: offerPriceColor),
                   ),
-                  SizedBox(
-                    width: 18,
+                  const SizedBox(
+                    width: 26,
                   ),
                   Container(
                     height: 16,
@@ -168,7 +162,7 @@ class ReviewOrderItem extends StatelessWidget {
                             topLeft: Radius.circular(8),
                             bottomRight: Radius.circular(8))),
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 0.69,top: 2),
+                      padding: const EdgeInsets.only(left: 0.69),
                       child: Text(
                         discount,
                         textAlign: TextAlign.center,
@@ -177,7 +171,7 @@ class ReviewOrderItem extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Text(
@@ -187,30 +181,39 @@ class ReviewOrderItem extends StatelessWidget {
                   )
                 ],
               ),
-              SizedBox(
-                width: 6,
+              const SizedBox(
+                width: 15,
               ),
               Row(
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                      border: Border.all(color: qtyButtonColor, width:1.5),
+                      border: Border.all(color: qtyButtonColor, width: 2),
                       borderRadius:
                       const BorderRadius.all(Radius.circular(5)),
                     ),
-                    height: 30,
-                    width: 72,
+                    height: 28,
+                    width: 76,
                     child: DropdownButtonHideUnderline(
-                      child: DropdownButton2(icon: Icon(Icons.keyboard_arrow_down_rounded,color: dropArrowColor,size: 18,),
+                      child: DropdownButton2(
                           hint: Row(
                             children: [
-                              SizedBox(
+                              const SizedBox(
                                 width: 12,
                               ),
                               Text(yourCartQuantityText,
                                   style: regular.copyWith(
                                       fontSize: 12,
-                                      color: mainTitleColor)),
+                                      color: productSubTextColor)),
+                              const SizedBox(
+                                width: 3,
+                              ),
+                              Text(
+                                count,
+                                style: regular.copyWith(
+                                    fontSize: 14,
+                                    color: productSubTextColor),
+                              )
                             ],
                           ),
                           items: items
@@ -230,7 +233,7 @@ class ReviewOrderItem extends StatelessWidget {
                           }),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 5,
                   ),
                   isGift
@@ -247,13 +250,13 @@ class ReviewOrderItem extends StatelessWidget {
                           const SizedBox(
                             width: 23,
                           ),
-                          ImgProvider(
+                          const ImgProvider(
                             url: "assets/images/img_24.png",
                             width: 12,
                             height: 12,
                           ),
                           const SizedBox(
-                            width: 12,
+                            width: 18,
                           ),
                           Text(
                             textAlign: TextAlign.center,
@@ -275,16 +278,16 @@ class ReviewOrderItem extends StatelessWidget {
                       ),
                       child: Row(
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             width: 23,
                           ),
-                          ImgProvider(
+                          const ImgProvider(
                             url: "assets/images/img_24.png",
                             width: 12,
                             height: 12,
                             color: addGiftButtonColor,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 18,
                           ),
                           Text(

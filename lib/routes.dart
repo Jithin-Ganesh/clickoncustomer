@@ -7,6 +7,7 @@ import 'package:clickoncustomer/screens/web/order-feedback/order-product-review.
 import 'package:clickoncustomer/screens/web/order-feedback/order-seller-feedback-screen-web.dart';
 import 'package:clickoncustomer/screens/web/order-payment/order-payment-web.dart';
 import 'package:clickoncustomer/screens/web/product-details/product-detail-screen.dart';
+import 'package:clickoncustomer/screens/web/profile/profile-screen.dart';
 import 'package:clickoncustomer/screens/web/review-order/review-order-screen.dart';
 import 'package:clickoncustomer/screens/web/your-account/your-account-web.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +29,7 @@ class AppRoutes {
       OrderDeliveryFeedBackScreenWeb.routeName: (context) => const OrderDeliveryFeedBackScreenWeb(),
       OrderProductReviewScreenWeb.routeName: (context) => const OrderProductReviewScreenWeb(),
       OtpScreen.routeName: (context) => const OtpScreen(),
+      ProfileWebScreen.routeName: (context) => const ProfileWebScreen(),
     };
   }
 }

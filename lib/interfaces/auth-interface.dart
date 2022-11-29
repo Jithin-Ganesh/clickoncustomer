@@ -1,13 +1,14 @@
 
 
 
+import '../models/login.dart';
 import '../utils/api/api_methods.dart';
 import '../utils/api/api_request.dart';
 
 class AuthInterface {
 
   //Login API
-  static Future<String?> login(
+  static Future<Login?> login(
       {required String phone}) async {
     try {
       final response = await ApiRequest.send(
@@ -17,10 +18,10 @@ class AuthInterface {
             "username": phone
           },
           queries: {});
-      return response['code'];
+      return Login.fromJson(response);
     } catch (err) {
       print("Authentication error: $err");
-      return '';
+      return null;
     }
   }
 

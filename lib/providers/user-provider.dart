@@ -2,6 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import '../interfaces/user-interface.dart';
 import '../models/address.dart';
+import '../models/user.dart';
 
 class UserProvider with ChangeNotifier {
   List<Address>? addressList;
@@ -9,6 +10,7 @@ class UserProvider with ChangeNotifier {
   bool isPhoto = false;
   bool isLogo = false;
   String? billingAddress;
+  User? user;
 
 
   selectAddress(Address? address) {
@@ -98,6 +100,14 @@ class UserProvider with ChangeNotifier {
     await UserInterface.deleteAddress(addressId: addressId);
     notifyListeners();
   }
+
+  // fetch user profile
+  Future<User?> fetchUserProfile({required int? id}) async {
+    user = await UserInterface.fetchUserProfile(id: id);
+    notifyListeners();
+    return user;
+  }
+
 
 
 }

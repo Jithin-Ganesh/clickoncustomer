@@ -22,7 +22,7 @@ class OrderInterface {
           body: {
             "billingAddress": billing,
             "shippingAddress": shipping,
-            "pay_online_products": payOnline
+            "pay_online_products": [0]
             ,
             "cod_products": cod
           },
