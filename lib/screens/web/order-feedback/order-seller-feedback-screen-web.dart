@@ -63,7 +63,7 @@ class _OrderSellerFeedBackScreenWebState extends State<OrderSellerFeedBackScreen
                       ),
                       FeedBackTitleBar(title: 'Rate your experience',subTitle: 'Your Orders',),
                       SizedBox(height: 57,),
-                      RateYourExperience(),
+                      RateYourExperienceScreen(),
                       SizedBox(height: 306,)
                     ],
                   ),

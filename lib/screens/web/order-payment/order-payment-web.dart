@@ -11,6 +11,7 @@ import '../../../components/web/zig-zag-sheet.dart';
 import '../../../providers/user-provider.dart';
 import '../../../utils/constants/color.dart';
 
+import '../../../utils/constants/fontstyles.dart';
 import '../../../utils/constants/images.dart';
 import '../../../utils/constants/strings.dart';
 import '../../../utils/img-provider.dart';

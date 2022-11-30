@@ -1,3 +1,4 @@
+import 'package:clickoncustomer/models/order_review_model.dart';
 import 'package:clickoncustomer/utils/constants/color.dart';
 
 import 'package:clickoncustomer/utils/constants/strings.dart';
@@ -6,23 +7,25 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../screens/web/order-details/order-details-item-web.dart';
+import '../screens/web/order-details/order-details-screen.dart';
 import '../utils/constants/fontstyles.dart';
 
 class YourOrder extends StatelessWidget {
   YourOrder(
       {Key? key,
       this.selectedValue,
+      this.order,
       required this.description,
       required this.title,
-      required this.itemName,
-      required this.amount,
       required this.firstIcon,
       required this.isArriving,
       required this.buttonStatus,
       required this.buttonText1,
       required this.buttonText2,
       required this.itemImage,
-      required this.secondIcon, this.onPressed})
+      required this.secondIcon,
+      this.onPressed})
       : super(key: key);
 
   final List<String> items = [
@@ -32,6 +35,7 @@ class YourOrder extends StatelessWidget {
     'Item4',
   ];
   late final String? selectedValue;
+  final OrderReviewModel? order;
   final bool buttonStatus;
   final String buttonText1;
   final String buttonText2;
@@ -39,9 +43,9 @@ class YourOrder extends StatelessWidget {
   final String secondIcon;
   final String title;
   final String description;
-  final String itemName;
+
   final String itemImage;
-  final String amount;
+
   final bool isArriving;
   final VoidCallback? onPressed;
 
@@ -58,14 +62,13 @@ class YourOrder extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.only(right: 42, left: 24, top: 22),
           child:
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox( width: MediaQuery.of(context).size.width * 0.453,
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.453,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -167,7 +170,8 @@ class YourOrder extends StatelessWidget {
                           ),
                           DropdownButtonHideUnderline(
                             child: DropdownButton2(
-                                hint: Row( crossAxisAlignment: CrossAxisAlignment.start,
+                                hint: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     SizedBox(
                                       width: 12,
@@ -228,14 +232,18 @@ class YourOrder extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(
-                          width: MediaQuery.of(context).size.width *  0.304,
+                          width: MediaQuery.of(context).size.width * 0.304,
                           child: Text(
-                            itemName,maxLines: 2,overflow: TextOverflow.ellipsis,
+                            order?.productName ?? "",
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
                             style: regular.copyWith(
                                 fontSize: 14, color: orderPlacedTextColor),
                           ),
                         ),
-                        SizedBox(height: 6,),
+                        SizedBox(
+                          height: 6,
+                        ),
                         Row(
                           children: [
                             Text(textRupees),
@@ -243,7 +251,7 @@ class YourOrder extends StatelessWidget {
                               width: 5,
                             ),
                             Text(
-                              amount,
+                              order?.netTotal.toString() ?? "",
                               style: medium.copyWith(
                                   fontSize: 17,
                                   color: productDetailsScreenTextColor),
@@ -265,7 +273,11 @@ class YourOrder extends StatelessWidget {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(5))),
                   child: OutlinedButton(
-                    onPressed:onPressed,
+                    onPressed: () {
+                      Navigator.of(context).pushNamed(
+                          OrderDetailsScreenWeb.routeName,
+                          arguments:OrderDetailsScreenWeb(id:order?.id??0, ));
+                    },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

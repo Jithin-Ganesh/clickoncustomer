@@ -1,11 +1,14 @@
 import 'package:clickoncustomer/components/web/account-title-bar.dart';
 import 'package:clickoncustomer/components/web/bottom-web-bar-2.dart';
 import 'package:clickoncustomer/components/youorders-item.dart';
+import 'package:clickoncustomer/models/order_review_model.dart';
+import 'package:clickoncustomer/providers/order.dart';
 import 'package:clickoncustomer/screens/web/order-details/order-details-screen.dart';
 import 'package:clickoncustomer/utils/constants/responsive.dart';
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../components/web/WebNavBar2.dart';
 import '../../../utils/constants/color.dart';
@@ -66,7 +69,8 @@ class _AccountOrderScreenWebState extends State<AccountOrderScreenWeb> {
                         SizedBox(
                           height: 61,
                         ),
-                        AccountTitleBar(title: 'Your Orders',isYourOrder: true),
+                        AccountTitleBar(
+                            title: 'Your Orders', isYourOrder: true),
                         SizedBox(
                           height: 141,
                         ),
@@ -78,7 +82,8 @@ class _AccountOrderScreenWebState extends State<AccountOrderScreenWeb> {
                     ),
                   ),
                   Padding(
-                    padding:  EdgeInsets.symmetric(horizontal:  MediaQuery.of(context).size.width * 0.083),
+                    padding: EdgeInsets.symmetric(
+                        horizontal: MediaQuery.of(context).size.width * 0.083),
                     child: const BottomWebBar2(),
                   )
                 ],
@@ -157,7 +162,10 @@ class TabBarItem extends StatelessWidget {
                                 'Last 3 months',
                                 style: orderPlacedStyle,
                               ),
-                              const Icon(Icons.keyboard_arrow_down_outlined,size: 20,),
+                              const Icon(
+                                Icons.keyboard_arrow_down_outlined,
+                                size: 20,
+                              ),
                             ],
                           )),
                     ),
@@ -180,7 +188,9 @@ class TabBarItem extends StatelessWidget {
                 )
               ],
             ),
-            const SizedBox(height: 30,),
+            const SizedBox(
+              height: 30,
+            ),
             const OrderHistoryItems(),
           ],
         ),
@@ -189,90 +199,54 @@ class TabBarItem extends StatelessWidget {
   }
 }
 
-class OrderHistoryItems extends StatelessWidget {
+class OrderHistoryItems extends StatefulWidget {
   const OrderHistoryItems({
     Key? key,
   }) : super(key: key);
 
   @override
+  State<OrderHistoryItems> createState() => _OrderHistoryItemsState();
+}
+
+class _OrderHistoryItemsState extends State<OrderHistoryItems> {
+  @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        YourOrder(onPressed: (){
-          Navigator.pushNamed(context, OrderDetailsScreenWeb.routeName);
-        },
-            description: 'Preparing for Dispatch',
-            title: 'Arriving Friday',
-            itemName: prodDesc,
-            amount: '1,054.00',
-            firstIcon: 'assets/images/icon-return.png',
-            isArriving: true,
-            buttonStatus: true,
-            buttonText1: 'Track Package',
-            buttonText2: 'Cancel',
-            itemImage: 'assets/images/dummy/image-projector.png',
-            secondIcon: 'assets/images/icon-dispatch-green.png'),
-        YourOrder(
-            description: 'Return will closed on 31-Aug-2022',
-            title: 'Delivered on 01-Sep-2022',
-            itemName: prodDesc,
-            amount: '1,054.00',
-            firstIcon: 'assets/images/icon-return.png',
-            isArriving: false,
-            buttonStatus: false,
-            buttonText1: 'Return item',
-            buttonText2: 'Cancel',
-            itemImage: 'assets/images/dummy/image-baby-detail.png',
-            secondIcon: 'assets/images/icon-dispatch-yellow.png'),
-        YourOrder(
-            description: 'Preparing for Dispatch',
-            title: 'Arriving Friday',
-            itemName: prodDesc,
-            amount: '1,054.00',
-            firstIcon: 'assets/images/icon-return.png',
-            isArriving: true,
-            buttonStatus: true,
-            buttonText1: 'Track Package',
-            buttonText2: 'Cancel',
-            itemImage: 'assets/images/dummy/image-projector.png',
-            secondIcon: 'assets/images/icon-dispatch-green.png'),
-        YourOrder(
-            description: 'Preparing for Dispatch',
-            title: 'Arriving Friday',
-            itemName: prodDesc,
-            amount: '1,054.00',
-            firstIcon: 'assets/images/icon-return.png',
-            isArriving: true,
-            buttonStatus: true,
-            buttonText1: 'Track Package',
-            buttonText2: 'Cancel',
-            itemImage: 'assets/images/dummy/image-projector.png',
-            secondIcon: 'assets/images/icon-dispatch-green.png'),
-        YourOrder(
-            description: 'Preparing for Dispatch',
-            title: 'Arriving Friday',
-            itemName: prodDesc,
-            amount: '1,054.00',
-            firstIcon: 'assets/images/icon-return.png',
-            isArriving: true,
-            buttonStatus: true,
-            buttonText1: 'Track Package',
-            buttonText2: 'Cancel',
-            itemImage: 'assets/images/dummy/image-projector.png',
-            secondIcon: 'assets/images/icon-dispatch-green.png'),
-        YourOrder(
-            description: 'Preparing for Dispatch',
-            title: 'Arriving Friday',
-            itemName: prodDesc,
-            amount: '1,054.00',
-            firstIcon: 'assets/images/icon-return.png',
-            isArriving: true,
-            buttonStatus: true,
-            buttonText1: 'Track Package',
-            buttonText2: 'Cancel',
-            itemImage: 'assets/images/dummy/image-projector.png',
-            secondIcon: 'assets/images/icon-dispatch-green.png'),
-      ],
-    );
+    return SizedBox(
+        height: 1000,
+        child: FutureBuilder(
+            future: Provider.of<OrderProvider>(context, listen: false)
+                .getOrderList(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(child: CircularProgressIndicator());
+              } else {
+                if (snapshot.hasData) {
+                  final orderList = snapshot.data as List<OrderReviewModel>;
+
+                 return ListView.builder(
+                    physics: NeverScrollableScrollPhysics(),
+                    itemCount: 6,
+                    itemBuilder: (context, index) {
+                      final order = orderList?[index];
+                      return YourOrder(
+                          order: order,
+                          description: 'Return will closed on 31-Aug-2022',
+                          title: 'Delivered on 01-Sep-2022',
+                          firstIcon: 'assets/images/icon-return.png',
+                          isArriving: false,
+                          buttonStatus: false,
+                          buttonText1: 'Return item',
+                          buttonText2: 'Cancel',
+                          itemImage:
+                              'assets/images/dummy/image-baby-detail.png',
+                          secondIcon: 'assets/images/icon-dispatch-yellow.png');
+                    },
+                  );
+                }
+              }
+              return Text(
+                snapshot.error.toString(),
+              );
+            }));
   }
 }
