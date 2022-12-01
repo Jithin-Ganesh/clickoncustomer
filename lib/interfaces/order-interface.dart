@@ -59,7 +59,7 @@ class OrderInterface {
       );
       return OrderReviewModel.fromJson(response);
     } catch (error) {
-      log("company error: $error");
+      log("get order id error: $error");
       return OrderReviewModel();
     }
   }

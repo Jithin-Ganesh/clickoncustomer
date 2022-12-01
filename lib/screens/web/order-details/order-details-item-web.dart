@@ -214,7 +214,7 @@ class _OrderDetailsItemWebState extends State<OrderDetailsItemWeb> {
                             Navigator.of(context).pushNamed(
                                 RateYourExperienceScreen.routeName,
                                 arguments: RateYourExperienceScreen(
-                                    productId: widget.productId?? 0));
+                                    productId: widget.productId));
                           },
                           child: Text(
                             textAlign: TextAlign.center,

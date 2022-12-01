@@ -14,9 +14,7 @@ class OrderReviewModel {
   int? offer;
   int? netTotal;
   int? deliveryCharge;
-  Null? expectedDeliveryDate;
-  Null? trackingLink;
-  Null? courierAgency;
+
   int? userId;
   int? businessId;
   String? createdAt;
@@ -38,9 +36,7 @@ class OrderReviewModel {
       this.offer,
       this.netTotal,
       this.deliveryCharge,
-      this.expectedDeliveryDate,
-      this.trackingLink,
-      this.courierAgency,
+
       this.userId,
       this.businessId,
       this.createdAt,
@@ -62,9 +58,7 @@ class OrderReviewModel {
     offer = json['offer'];
     netTotal = json['netTotal'];
     deliveryCharge = json['deliveryCharge'];
-    expectedDeliveryDate = json['expected_delivery_date'];
-    trackingLink = json['tracking_link'];
-    courierAgency = json['courier_agency'];
+
     userId = json['userId'];
     businessId = json['businessId'];
     createdAt = json['createdAt'];

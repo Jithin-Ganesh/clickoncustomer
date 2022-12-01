@@ -17,7 +17,7 @@ class ReviewProductInterface {
           },
           route: "product/$productId/review",
           queries: {});
-      return response;
+      return response != null;
     } catch (err) {
       throw ApiException(err.toString());
     }
