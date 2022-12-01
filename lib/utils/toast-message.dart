@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'global-key.dart';
-void showMessage({required String message, bool isSuccess = true}) {
+
+void showSnackBar({required String message, required BuildContext context, bool isSuccess = true}) {
   SnackBar _snackBar = SnackBar(
-    content: Text(message??''),
+    content: Text(message),
     backgroundColor: isSuccess?Colors.green.shade600: Colors.orangeAccent,
 
   );
-  ScaffoldMessenger.of(navigatorKey.currentContext!).showSnackBar(_snackBar);
+  ScaffoldMessenger.of(context).showSnackBar(_snackBar);
 }

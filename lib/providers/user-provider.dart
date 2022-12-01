@@ -2,6 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import '../interfaces/user-interface.dart';
 import '../models/address.dart';
+import '../models/product-model.dart';
 import '../models/user.dart';
 
 class UserProvider with ChangeNotifier {
@@ -11,7 +12,7 @@ class UserProvider with ChangeNotifier {
   bool isLogo = false;
   String? billingAddress;
   User? user;
-
+  List<ProductModel> wishList = [];
 
   selectAddress(Address? address) {
     selectedAddress = address;
@@ -106,6 +107,40 @@ class UserProvider with ChangeNotifier {
     user = await UserInterface.fetchUserProfile(id: id);
     notifyListeners();
     return user;
+  }
+
+  // add to wishlist
+  Future<bool> addToWishList({required int? productId}) async {
+    final status = await UserInterface.addToWishList(productId: productId);
+    //fetchWishList();
+    notifyListeners();
+    return status;
+  }
+
+  // delete from wishlist
+  Future<void> deleteWishList({required int? productId}) async {
+    await UserInterface.deleteFromWishList(productId: productId);
+    fetchWishList();
+    notifyListeners();
+  }
+
+
+
+  // fetch wishlist
+  Future<List<ProductModel>?> fetchWishList() async {
+    wishList = (await UserInterface.fetchWishList())!;
+    notifyListeners();
+    return wishList;
+  }
+
+  // Check whether wishlisted
+  bool isWishListed(int? productId) {
+    if (wishList.isNotEmpty) {
+      final index = wishList.indexWhere((element) => element.id == productId);
+      return index > -1;
+    } else {
+      return false;
+    }
   }
 
 

@@ -1,4 +1,7 @@
 
+import 'package:clickoncustomer/models/product-model.dart';
+import 'package:clickoncustomer/utils/global-key.dart';
+
 import '../models/address.dart';
 import '../models/user.dart';
 import '../utils/api/api_exception.dart';
@@ -38,7 +41,7 @@ class UserInterface {
           route: isEdit ? "address/$addressId" : "address",
           queries: {});
       if(response["message"]!=null){
-        showMessage(message: 'Address Saved',);
+        showSnackBar(message: 'Address Added', context: navigatorKey.currentState!.context);
       }
       return response;
 
@@ -124,5 +127,52 @@ class UserInterface {
     }
   }
 
+  //fetch wishlist
+  static Future<List<ProductModel>?> fetchWishList() async{
+    try {
+      final response = await ApiRequest.send(
+          method: ApiMethod.GET,
+          body: {},
+          route: "wishlist",
+          queries: {});
+      return ProductModel.convertToList(response["wishlist"]);
+    } catch (err) {
+      print("fetching wishlist error: $err");
+      return [];
+    }
+  }
+
+
+  // add to wishlist
+  static Future<bool> addToWishList({required int? productId}) async{
+    try {
+      final response = await ApiRequest.send(
+          method: ApiMethod.POST,
+          body: {
+            "productId": productId ?? 0
+          },
+          route: "wishlist",
+          queries: {});
+      return response["wishlisted"];
+    } catch (err) {
+      print("adding wishlist error: $err");
+      return false;
+    }
+  }
+
+  //delete from wishlist
+  static Future<bool> deleteFromWishList({required int? productId}) async{
+    try {
+      final response = await ApiRequest.send(
+          method: ApiMethod.DELETE,
+          body: {},
+          route: "wishlist/$productId",
+          queries: {});
+      return response["success"];
+    } catch (err) {
+      print("deleting wishlist error: $err");
+      return false;
+    }
+  }
 
 }

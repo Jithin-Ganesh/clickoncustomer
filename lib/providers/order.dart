@@ -9,7 +9,7 @@ class OrderProvider extends ChangeNotifier {
   List<OrderReviewModel> orderList = [];
   OrderReviewModel? order;
 
-  Future<Message?> placeOrder({
+  Future<bool> placeOrder({
     required List<int?> cod,
     required List<int?> payOnline,
     required int? shipping,

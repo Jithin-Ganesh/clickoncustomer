@@ -10,7 +10,7 @@ import '../utils/api/api_request.dart';
 
 class OrderInterface {
   //  placeOrder
-  static Future<Message?> placeOrder(
+  static Future<bool> placeOrder(
       {required List<int?> cod,
       required List<int?> payOnline,
       required int? shipping,
@@ -28,7 +28,7 @@ class OrderInterface {
           route: "cart/$cartId/checkout",
           queries: {});
 
-      return Message.fromJson(response);
+      return response != null;
     } catch (err) {
       throw ApiException(err.toString());
     }

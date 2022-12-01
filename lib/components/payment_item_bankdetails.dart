@@ -10,6 +10,7 @@ import '../providers/order.dart';
 import '../utils/constants/color.dart';
 import '../utils/constants/fontstyles.dart';
 import '../utils/constants/strings.dart';
+import '../utils/global-key.dart';
 import '../utils/img-provider.dart';
 import '../utils/toast-message.dart';
 
@@ -152,15 +153,11 @@ class _PaymentBankState extends State<PaymentBank> {
             cartId: cartId,
             payOnline: payOnline)
         .then((value) {
-      if (value!.success!) {
+      if (value) {
         Navigator.of(context).pushNamed(HomeScreenWeb.routeName);
-        showMessage(
-          message: "Order Placed",
-        );
+        showSnackBar(message: 'Order Placed', context: context);
       } else {
-        showMessage(
-          message: "Error in Order Placing",
-        );
+        showSnackBar(message: 'Order Not Placed', context: context);
       }
     });
   }

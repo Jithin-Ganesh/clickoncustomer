@@ -3,6 +3,7 @@ import 'package:clickoncustomer/components/web/rating-box.dart';
 import 'package:clickoncustomer/utils/constants/color.dart';
 
 import 'package:clickoncustomer/utils/constants/strings.dart';
+import 'package:clickoncustomer/utils/toast-message.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
@@ -11,6 +12,7 @@ import 'package:provider/provider.dart';
 import '../providers/cart-provider.dart';
 
 import '../utils/constants/fontstyles.dart';
+import '../utils/global-key.dart';
 
 class ProductDetailTitle extends StatelessWidget {
   ProductDetailTitle({Key? key, required this.productId, this.quantity}) : super(key: key);
@@ -191,7 +193,7 @@ final int? quantity;
                 child: OutlinedButton(
                   onPressed: () {
                     Provider.of<CartProvider>(context, listen: false)
-                        .addCart(productId: productId, qty: quantity);
+                        .addCart(productId: productId, qty: quantity).then((value) => showSnackBar(message: 'Added to Cart', context: context));
                   },
                   style: OutlinedButton.styleFrom(
                     shape: RoundedRectangleBorder(

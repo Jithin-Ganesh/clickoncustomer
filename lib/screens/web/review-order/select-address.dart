@@ -31,8 +31,28 @@ class AddressListAlertBox extends StatelessWidget {
               child: const Icon(Icons.close,size: 18,),
             ),
           ),
-          const Text(
-            'Address List',
+          Row(
+            children: [
+              const Text(
+                'Address List',
+              ),
+              Spacer(),
+              ButtonElevated(
+                buttonTitle: 'Add New Address',
+                onPressed: (){
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                          child: AddAddressWeb(isEdit: false,),
+                        );
+                      });
+                },
+                height: 50,
+                width: MediaQuery.of(context).size.width * 0.1,
+              )
+            ],
           ),
         ],
       ),
@@ -46,28 +66,9 @@ class AddressListAlertBox extends StatelessWidget {
         width:
         MediaQuery.of(context).size.width * 0.6,
         child: Expanded(
-          child: Consumer<UserProvider>(builder: (context, value, child) =>Column(
-            children: [
-               AddressListView(
-                  addresses: value.addressList,
-                ),
-                ButtonElevated(
-                  buttonTitle: 'Add New Address',
-                  onPressed: (){
-                    showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 30.0),
-                            child: AddAddressWeb(isEdit: false,),
-                          );
-                        });
-                  },
-                  height: 50,
-                  width: MediaQuery.of(context).size.width * 0.4,
-                )
-            ],
-          ),),
+          child: Consumer<UserProvider>(builder: (context, value, child) =>AddressListView(
+             addresses: value.addressList,
+           ),),
         ),
       ),
     );
