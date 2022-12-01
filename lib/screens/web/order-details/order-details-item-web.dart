@@ -13,9 +13,9 @@ import '../../../utils/constants/images.dart';
 import '../../../utils/img-provider.dart';
 
 class OrderDetailsItemWeb extends StatefulWidget {
-  const OrderDetailsItemWeb({Key? key, this.product}) : super(key: key);
+  const OrderDetailsItemWeb({Key? key, this.productId}) : super(key: key);
 
-  final ProductModel? product;
+  final int? productId;
 
   @override
   State<OrderDetailsItemWeb> createState() => _OrderDetailsItemWebState();
@@ -214,7 +214,7 @@ class _OrderDetailsItemWebState extends State<OrderDetailsItemWeb> {
                             Navigator.of(context).pushNamed(
                                 RateYourExperienceScreen.routeName,
                                 arguments: RateYourExperienceScreen(
-                                    productId: widget.product?.id ?? 0));
+                                    productId: widget.productId?? 0));
                           },
                           child: Text(
                             textAlign: TextAlign.center,

@@ -17,10 +17,11 @@ import '../../../utils/img-provider.dart';
 
 class OrderDetailsScreenWeb extends StatefulWidget {
   static const routeName = '/order-details-web';
-  const OrderDetailsScreenWeb({Key? key, this.id, })
-      : super(key: key);
+  const OrderDetailsScreenWeb({
+    Key? key,
+    this.id,
+  }) : super(key: key);
   final int? id;
-
 
   @override
   _OrderDetailsScreenWebState createState() => _OrderDetailsScreenWebState();
@@ -65,6 +66,7 @@ class _OrderDetailsScreenWebState extends State<OrderDetailsScreenWeb> {
                     final order = snapshot.data as OrderReviewModel;
                     return OrderDetailBody(
                       order: order,
+                      productId: order?.productId,
                     );
                   }
                 }
@@ -79,10 +81,11 @@ class _OrderDetailsScreenWebState extends State<OrderDetailsScreenWeb> {
 class OrderDetailBody extends StatelessWidget {
   const OrderDetailBody({
     Key? key,
-    required this.order, this.product,
+    required this.order,
+    this.productId,
   }) : super(key: key);
   final OrderReviewModel order;
-  final ProductModel? product;
+  final int? productId;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -102,7 +105,7 @@ class OrderDetailBody extends StatelessWidget {
               padding: EdgeInsets.symmetric(
                   horizontal: MediaQuery.of(context).size.width * 0.187),
               child: Column(
-                children:  [
+                children: [
                   const SizedBox(
                     height: 61,
                   ),
@@ -117,7 +120,9 @@ class OrderDetailBody extends StatelessWidget {
                   const SizedBox(
                     height: 5,
                   ),
-                  OrderDetailsItemWeb(product:product ,),
+                  OrderDetailsItemWeb(
+                    productId: productId,
+                  ),
                   const SizedBox(
                     height: 30,
                   ),

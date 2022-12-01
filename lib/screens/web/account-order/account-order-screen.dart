@@ -225,9 +225,9 @@ class _OrderHistoryItemsState extends State<OrderHistoryItems> {
 
                  return ListView.builder(
                     physics: NeverScrollableScrollPhysics(),
-                    itemCount: 6,
+                    itemCount: orderList.length,
                     itemBuilder: (context, index) {
-                      final order = orderList?[index];
+                      final order = orderList[index];
                       return YourOrder(
                           order: order,
                           description: 'Return will closed on 31-Aug-2022',

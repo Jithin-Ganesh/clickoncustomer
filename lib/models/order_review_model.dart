@@ -5,6 +5,7 @@ class OrderReviewModel {
   String? productName;
   String? thumbnail;
   int? price;
+  int? productId;
   int? status;
   int? quantity;
   String? productCode;
@@ -28,6 +29,7 @@ class OrderReviewModel {
       this.productName,
       this.thumbnail,
       this.price,
+      this.productId,
       this.status,
       this.quantity,
       this.productCode,
@@ -51,6 +53,7 @@ class OrderReviewModel {
     productName = json['productName'];
     thumbnail = json['thumbnail'];
     price = json['price'];
+    productId=json["productId"];
     status = json['status'];
     quantity = json['quantity'];
     productCode = json['product_code'];
