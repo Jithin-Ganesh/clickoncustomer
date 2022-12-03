@@ -9,12 +9,12 @@ import '../../../utils/constants/color.dart';
 import '../../../utils/constants/fontstyles.dart';
 
 class AddressListView extends StatelessWidget {
-  final   List<Address>? addresses;
-  const AddressListView({Key? key, required this.addresses}) : super(key: key);
+  final List<Address>? addresses;
+  const AddressListView({Key? key, this.addresses}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return  ListView.builder(
+    return ListView.builder(
       padding: EdgeInsets.symmetric(horizontal: 50),
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
@@ -24,24 +24,29 @@ class AddressListView extends StatelessWidget {
           padding: const EdgeInsets.only(bottom: 20),
           child: Expanded(
               child: SizedBox(
-                child: AddressCard(address: addresses?[index], index: index,),
-                width: MediaQuery.of(context).size.width * 0.8,
-              )),
+            child: AddressCard(
+              address: addresses?[index],
+              index: index,
+            ),
+            width: MediaQuery.of(context).size.width * 0.8,
+          )),
         );
       },
-    );;
+    );
+    ;
   }
 }
-
 
 class AddressCard extends StatelessWidget {
   final Address? address;
   final int index;
-  const AddressCard({Key? key, required this.address, required this.index}) : super(key: key);
+  const AddressCard({Key? key, required this.address, required this.index})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<UserProvider>(builder: (context, value, child) => Container(
+    return Consumer<UserProvider>(
+      builder: (context, value, child) => Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.0),
           color: canvasColor,
@@ -62,34 +67,40 @@ class AddressCard extends StatelessWidget {
             children: [
               Text(
                 address?.getFullAddress() ?? '',
-                style: thin.copyWith(fontSize: 15, color: priceOffersSubtextColor),
+                style:
+                    thin.copyWith(fontSize: 15, color: priceOffersSubtextColor),
               ),
-              value.isAddressSelected(address?.id) ? ButtonElevated(
-                onPressed: (){
-                  value.removeAddress();
-                },
-                isButtonEnable: true,
-                buttonTitle: 'Deliver here',
-                width:  MediaQuery.of(context).size.width * 0.072,
-                height: 45,
-              ) : SizedBox(
-                width:  MediaQuery.of(context).size.width * 0.072,
-                height: 45,
-                child: OutlinedButton(
-                    style: ButtonStyle(
-                      shadowColor: MaterialStateProperty.all<Color>(shadowColor2),
-                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0))),
+              value.isAddressSelected(address?.id)
+                  ? ButtonElevated(
+                      onPressed: () {
+                        value.removeAddress();
+                      },
+                      isButtonEnable: true,
+                      buttonTitle: 'Deliver here',
+                      width: MediaQuery.of(context).size.width * 0.072,
+                      height: 45,
+                    )
+                  : SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.072,
+                      height: 45,
+                      child: OutlinedButton(
+                          style: ButtonStyle(
+                            shadowColor:
+                                MaterialStateProperty.all<Color>(shadowColor2),
+                            shape: MaterialStateProperty.all(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0))),
+                          ),
+                          onPressed: () {
+                            value.selectAddress(address);
+                          },
+                          child: Text(
+                            'Deliver Here',
+                            style: medium.copyWith(
+                                fontSize: 14,
+                                color: productDetailsScreenTextColor),
+                          )),
                     ),
-                    onPressed: (){
-                      value.selectAddress(address);
-                    },
-                    child: Text(
-                      'Deliver Here',
-                      style: medium.copyWith(
-                          fontSize: 14, color: productDetailsScreenTextColor),
-                    )),
-              ),
             ],
           ),
         ),

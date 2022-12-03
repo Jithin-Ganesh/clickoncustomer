@@ -91,16 +91,15 @@ class _YourAccountWebState extends State<YourAccountWeb> {
                                     shape: MaterialStateProperty.all(
                                         RoundedRectangleBorder(
                                             borderRadius:
-                                            BorderRadius.circular(10.0))),
-                                    backgroundColor:
-                                    MaterialStateProperty.resolveWith<Color>(
-                                            (states) {
-                                          if (states
-                                              .contains(MaterialState.disabled)) {
-                                            return canvasColor;
-                                          }
-                                          return canvasColor;
-                                        }),
+                                                BorderRadius.circular(10.0))),
+                                    backgroundColor: MaterialStateProperty
+                                        .resolveWith<Color>((states) {
+                                      if (states
+                                          .contains(MaterialState.disabled)) {
+                                        return canvasColor;
+                                      }
+                                      return canvasColor;
+                                    }),
                                   ),
                                   child: Text(
                                     titleHelpCenter,
@@ -112,7 +111,8 @@ class _YourAccountWebState extends State<YourAccountWeb> {
                               SizedBox(
                                 width: 14,
                               ),
-                              Consumer<AuthProvider>(builder: (context, value, child) => SizedBox(
+                              Consumer<AuthProvider>(
+                                builder: (context, value, child) => SizedBox(
                                   width: 50,
                                   height: 45,
                                   child: OutlinedButton(
@@ -121,9 +121,8 @@ class _YourAccountWebState extends State<YourAccountWeb> {
                                           RoundedRectangleBorder(
                                               borderRadius:
                                                   BorderRadius.circular(10.0))),
-                                      backgroundColor:
-                                          MaterialStateProperty.resolveWith<Color>(
-                                              (states) {
+                                      backgroundColor: MaterialStateProperty
+                                          .resolveWith<Color>((states) {
                                         if (states
                                             .contains(MaterialState.disabled)) {
                                           return canvasColor;
@@ -132,7 +131,11 @@ class _YourAccountWebState extends State<YourAccountWeb> {
                                       }),
                                     ),
                                     onPressed: () {
-                                      Navigator.pushNamed(context, ProfileWebScreen.routeName,arguments: ProfileWebScreen(id: value.loginModel?.userId,));
+                                      Navigator.pushNamed(
+                                          context, ProfileWebScreen.routeName,
+                                          arguments: ProfileWebScreen(
+                                            id: value.loginModel?.userId,
+                                          ));
                                     },
                                     child: Icon(
                                       Icons.power_settings_new_rounded,

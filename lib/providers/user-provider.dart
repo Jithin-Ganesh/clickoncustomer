@@ -50,6 +50,7 @@ class UserProvider with ChangeNotifier {
     String? phoneNumber,
     required bool isEdit,
     int? addressId,
+    int? userId,
   }) async {
     final message = await UserInterface.addUserAddress(
       firstName: firstName ?? "",
@@ -59,6 +60,7 @@ class UserProvider with ChangeNotifier {
       city: city,
       country: country,
       pinCode: pinCode,
+      userId: userId,
       state: state,
       isEdit: isEdit,
       addressId: addressId,phoneNumber: phoneNumber
@@ -68,8 +70,8 @@ class UserProvider with ChangeNotifier {
   }
 
   //  fetch user address
-  Future<List<Address>> fetchAddressList() async {
-    addressList = await UserInterface.fetchAddressList();
+  Future<List<Address>> fetchAddressList({required int? userID}) async {
+    addressList = await UserInterface.fetchAddressList(userId: userID);
     notifyListeners();
     return addressList ?? [];
   }

@@ -13,6 +13,7 @@ import 'package:provider/provider.dart';
 
 import '../../../components/web/WebNavBar2.dart';
 import '../../../models/address.dart';
+import '../../../models/user.dart';
 import '../../../utils/constants/color.dart';
 import '../../../utils/constants/decoration.dart';
 import '../../../utils/constants/fontstyles.dart';
@@ -21,8 +22,8 @@ import '../../../utils/img-provider.dart';
 
 class ReviewOrderScreenWeb extends StatefulWidget {
   static const routeName = '/review-order-screen-web';
-  const ReviewOrderScreenWeb({Key? key}) : super(key: key);
-
+  const ReviewOrderScreenWeb({Key? key, this.user}) : super(key: key);
+final User? user;
   @override
   _ReviewOrderScreenWebState createState() => _ReviewOrderScreenWebState();
 }
@@ -37,7 +38,9 @@ class _ReviewOrderScreenWebState extends State<ReviewOrderScreenWeb> {
   @override
   void initState() {
     // TODO: implement initState
-    Provider.of<UserProvider>(context,listen: false).fetchAddressList();
+    Provider.of<UserProvider>(context,listen: false).fetchAddressList(userID:widget.user?.id );
+
+    Provider.of<UserProvider>(context,listen: false).fetchUserProfile(id: null );
     super.initState();
   }
 

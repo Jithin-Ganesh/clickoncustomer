@@ -1,5 +1,6 @@
 import 'package:clickoncustomer/components/checkout_component.dart';
 import 'package:clickoncustomer/components/revieworderitem.dart';
+import 'package:clickoncustomer/providers/auth.dart';
 import 'package:clickoncustomer/providers/product-provider.dart';
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/cupertino.dart';
@@ -40,7 +41,8 @@ class _StepperReviewState extends State<StepperReview> {
       child: Padding(
         padding:
             const EdgeInsets.only(left: 18.0, top: 21, right: 23, bottom: 30),
-        child: Consumer<HomeProvider>(builder: (context, value, child) => Column(
+        child: Consumer<HomeProvider>(
+          builder: (context, value, child) => Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const PaymentTitle(
@@ -66,21 +68,29 @@ class _StepperReviewState extends State<StepperReview> {
                               width: 25,
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                color:  checkedItemsColor,
+                                color: checkedItemsColor,
                               ),
                               child: Center(
                                   child: Icon(
-                                    Icons.check,
-                                    color: canvasColor,
-                                    size: 11,
-                                  )
-                              ),
+                                Icons.check,
+                                color: canvasColor,
+                                size: 11,
+                              )),
                             ),
-                            SizedBox(height: 6,),
-                            Text('Cash on Delivery (1)',style: medium.copyWith(fontSize: 16,color: reviewTextColor2),)
+                            SizedBox(
+                              height: 6,
+                            ),
+                            Text(
+                              'Cash on Delivery (1)',
+                              style: medium.copyWith(
+                                  fontSize: 16, color: reviewTextColor2),
+                            )
                           ],
                         ),
-                        DottedLine(lineLength: 200,dashColor: dividerColor4,),
+                        DottedLine(
+                          lineLength: 200,
+                          dashColor: dividerColor4,
+                        ),
                         Column(
                           children: [
                             Container(
@@ -88,17 +98,23 @@ class _StepperReviewState extends State<StepperReview> {
                               width: 25,
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                color:  circledNumberButtonColor,
+                                color: circledNumberButtonColor,
                               ),
                               child: Center(
                                   child: Icon(
-                                    Icons.check,
-                                    color: canvasColor,
-                                    size: 11,
-                                  )
-                              ),
-                            ),   SizedBox(height: 6,),
-                            Text('Pay Online  (3)',style: medium.copyWith(fontSize: 16,color: primaryColor),)
+                                Icons.check,
+                                color: canvasColor,
+                                size: 11,
+                              )),
+                            ),
+                            SizedBox(
+                              height: 6,
+                            ),
+                            Text(
+                              'Pay Online  (3)',
+                              style: medium.copyWith(
+                                  fontSize: 16, color: primaryColor),
+                            )
                           ],
                         ),
                         //DottedLine(dashLength: 30, dashGapLength: 30),
@@ -114,7 +130,6 @@ class _StepperReviewState extends State<StepperReview> {
                   color: dividerColor3,
                 ),
               ),
-
               SizedBox(
                 height: 250,
                 child: ListView.separated(
@@ -122,10 +137,11 @@ class _StepperReviewState extends State<StepperReview> {
                           padding: const EdgeInsets.symmetric(
                               vertical: 40.0, horizontal: 70),
                           child: ReviewOrderItem(
-                              title: 'Tomorrow',product: value.products?[index],
-                              isOrder: true,
-                              isGift: true,
-                               ),
+                            title: 'Tomorrow',
+                            product: value.products?[index],
+                            isOrder: true,
+                            isGift: true,
+                          ),
                         ),
                     separatorBuilder: (context, index) => const Padding(
                           padding: EdgeInsets.symmetric(horizontal: 70.0),
@@ -151,17 +167,22 @@ class _StepperReviewState extends State<StepperReview> {
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 70.0),
-                child: SizedBox(
-                  height: 40,
-                  width: 310,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(
-                          context, PaymentOrderScreenWeb.routeName);
-                    },
-                    child: Text(
-                      'Proceed to Buy',
-                      style: medium.copyWith(color: canvasColor, fontSize: 16),
+                child: Consumer<AuthProvider>(
+                  builder: (context, authValue, child) => SizedBox(
+                    height: 40,
+                    width: 310,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.pushNamed(
+                            context, PaymentOrderScreenWeb.routeName,
+                            arguments: PaymentOrderScreenWeb(
+                                id: authValue.loginModel?.id));
+                      },
+                      child: Text(
+                        'Proceed to Buy',
+                        style:
+                            medium.copyWith(color: canvasColor, fontSize: 16),
+                      ),
                     ),
                   ),
                 ),
@@ -173,6 +194,3 @@ class _StepperReviewState extends State<StepperReview> {
     );
   }
 }
-
-
-
