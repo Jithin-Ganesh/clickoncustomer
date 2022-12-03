@@ -1,4 +1,5 @@
 import 'package:clickoncustomer/components/payment_item.dart';
+import 'package:clickoncustomer/screens/web/review-order/address-list.dart';
 import 'package:clickoncustomer/utils/constants/responsive.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,6 +9,8 @@ import 'package:provider/provider.dart';
 import '../../../components/checkout_component.dart';
 import '../../../components/web/WebNavBar2.dart';
 import '../../../components/web/zig-zag-sheet.dart';
+import '../../../models/address.dart';
+import '../../../models/user.dart';
 import '../../../providers/user-provider.dart';
 import '../../../utils/constants/color.dart';
 
@@ -15,17 +18,27 @@ import '../../../utils/constants/fontstyles.dart';
 import '../../../utils/constants/images.dart';
 import '../../../utils/constants/strings.dart';
 import '../../../utils/img-provider.dart';
+import '../review-order/add-address.dart';
 import '../review-order/select-address.dart';
 
 class PaymentOrderScreenWeb extends StatefulWidget {
   static const routeName = '/payment-order-screen-web';
-  const PaymentOrderScreenWeb({Key? key}) : super(key: key);
+
+  const PaymentOrderScreenWeb({Key? key, this.id}) : super(key: key);
+
+  final int? id;
 
   @override
   _PaymentOrderScreenWebState createState() => _PaymentOrderScreenWebState();
 }
 
 class _PaymentOrderScreenWebState extends State<PaymentOrderScreenWeb> {
+  PaymentOrderScreenWeb get _args {
+    final args =
+        ModalRoute.of(context)!.settings.arguments as PaymentOrderScreenWeb;
+    return args;
+  }
+
   final List<String> items = [
     'Address 1',
     'Address 2',
@@ -33,6 +46,14 @@ class _PaymentOrderScreenWebState extends State<PaymentOrderScreenWeb> {
   ];
 
   String selectedValue = 'Address 1';
+  @override
+  void initState() {
+    // TODO: implement initState
+    Provider.of<UserProvider>(context, listen: false)
+        .fetchAddressList(userID: _args.id);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Responsive(
@@ -132,12 +153,10 @@ class _PaymentOrderScreenWebState extends State<PaymentOrderScreenWeb> {
             bottom: 30),
         child: Consumer<UserProvider>(
           builder: (context, value, child) => Row(
-            mainAxisAlignment:
-            MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Column(
-                crossAxisAlignment:
-                CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const PaymentTitle(
                     title: 'Delivery Address',
@@ -158,9 +177,9 @@ class _PaymentOrderScreenWebState extends State<PaymentOrderScreenWeb> {
                         ),
                         Expanded(
                           child: Text(
-                            value.selectedAddress?.getFullAddress() ?? 'No Address Selected',
-                            style: thin.copyWith(
-                                color: productSubTextColor),
+                            value.selectedAddress?.getFullAddress() ??
+                                'No Address Selected',
+                            style: thin.copyWith(color: productSubTextColor),
                             maxLines: 3,
                             overflow: TextOverflow.ellipsis,
                           ),
@@ -171,23 +190,39 @@ class _PaymentOrderScreenWebState extends State<PaymentOrderScreenWeb> {
                 ],
               ),
               SizedBox(
-                width:  MediaQuery.of(context).size.width * 0.072,
+                width: MediaQuery.of(context).size.width * 0.072,
                 height: 45,
                 child: OutlinedButton(
                     style: ButtonStyle(
-                      shadowColor: MaterialStateProperty.all<Color>(shadowColor2),
+                      shadowColor:
+                          MaterialStateProperty.all<Color>(shadowColor2),
                       shape: MaterialStateProperty.all(RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0))),
                     ),
-                    onPressed: (){
-                      showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 30.0),
-                              child: AddressListAlertBox( ),
-                            );
-                          });
+                    onPressed: () {
+                      if (value.addressList != null) {
+                        showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 30.0),
+                                child: AddressListAlertBox(),
+                              );
+                            });
+                      } else if (value.addressList == null) {
+                        showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 30.0),
+                                child: AddAddressWeb(id:_args.id ,
+                                  isEdit: false,
+                                ),
+                              );
+                            });
+                      }
                     },
                     child: Text(
                       textChange,
@@ -201,5 +236,4 @@ class _PaymentOrderScreenWebState extends State<PaymentOrderScreenWeb> {
       ),
     );
   }
-
 }

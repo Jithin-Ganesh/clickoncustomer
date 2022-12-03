@@ -14,7 +14,6 @@ class OrderReviewModel {
   int? offer;
   int? netTotal;
   int? deliveryCharge;
-
   int? userId;
   int? businessId;
   String? createdAt;

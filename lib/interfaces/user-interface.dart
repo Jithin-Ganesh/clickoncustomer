@@ -1,4 +1,3 @@
-
 import 'package:clickoncustomer/models/product-model.dart';
 import 'package:clickoncustomer/utils/global-key.dart';
 
@@ -11,7 +10,7 @@ import '../utils/toast-message.dart';
 
 class UserInterface {
 //  add address
-  static Future<Map<String,dynamic>> addUserAddress({
+  static Future<Map<String, dynamic>> addUserAddress({
     String? state,
     String? country,
     String? city,
@@ -23,6 +22,7 @@ class UserInterface {
     String? lastName,
     required bool isEdit,
     int? addressId,
+    int? userId,
   }) async {
     try {
       final response = await ApiRequest.send(
@@ -36,15 +36,17 @@ class UserInterface {
             "pincode": pinCode,
             "state": state,
             "country": country,
-            "phoneNumber": phoneNumber
+            "phoneNumber": phoneNumber,
+            "userId":userId,
           },
           route: isEdit ? "address/$addressId" : "address",
           queries: {});
-      if(response["message"]!=null){
-        showSnackBar(message: 'Address Added', context: navigatorKey.currentState!.context);
+      if (response["message"] != null) {
+        showSnackBar(
+            message: 'Address Added',
+            context: navigatorKey.currentState!.context);
       }
       return response;
-
     } catch (err) {
       print("error");
       throw ApiException(err.toString());
@@ -53,11 +55,11 @@ class UserInterface {
 
   //2 . add user profile
 
-  static Future<bool> addUserProfile(
-      { String? firstName,
-        String? email,
-        String? lastName,
-      }) async {
+  static Future<bool> addUserProfile({
+    String? firstName,
+    String? email,
+    String? lastName,
+  }) async {
     try {
       final response = await ApiRequest.send(
           method: ApiMethod.POST,
@@ -74,15 +76,13 @@ class UserInterface {
     }
   }
 
-
-
   // get address list
 
-  static Future<List<Address>?> fetchAddressList() async{
+  static Future<List<Address>?> fetchAddressList({required int? userId}) async {
     try {
       final response = await ApiRequest.send(
           method: ApiMethod.GET,
-          body: {},
+          body: {"userId": userId},
           route: "address",
           queries: {});
       return Address.convertToList(response);
@@ -92,8 +92,6 @@ class UserInterface {
     }
   }
 
-
-
 //  delete Address
 
   static Future<void> deleteAddress({
@@ -102,7 +100,7 @@ class UserInterface {
     try {
       await ApiRequest.send(
         method: ApiMethod.DELETE,
-        body: { },
+        body: {},
         route: "address/$addressId",
         queries: {},
       );
@@ -113,13 +111,10 @@ class UserInterface {
 
   // 5 . fetch User Profile
 
-  static Future<User?> fetchUserProfile({required int? id}) async{
+  static Future<User?> fetchUserProfile({required int? id}) async {
     try {
       final response = await ApiRequest.send(
-          method: ApiMethod.GET,
-          body: {},
-          route: "user/$id",
-          queries: {});
+          method: ApiMethod.GET, body: {}, route: "user/$id", queries: {});
       return User.fromJson(response);
     } catch (err) {
       print("fetching address error: $err");
@@ -128,13 +123,10 @@ class UserInterface {
   }
 
   //fetch wishlist
-  static Future<List<ProductModel>?> fetchWishList() async{
+  static Future<List<ProductModel>?> fetchWishList() async {
     try {
       final response = await ApiRequest.send(
-          method: ApiMethod.GET,
-          body: {},
-          route: "wishlist",
-          queries: {});
+          method: ApiMethod.GET, body: {}, route: "wishlist", queries: {});
       return ProductModel.convertToList(response["wishlist"]);
     } catch (err) {
       print("fetching wishlist error: $err");
@@ -142,15 +134,12 @@ class UserInterface {
     }
   }
 
-
   // add to wishlist
-  static Future<bool> addToWishList({required int? productId}) async{
+  static Future<bool> addToWishList({required int? productId}) async {
     try {
       final response = await ApiRequest.send(
           method: ApiMethod.POST,
-          body: {
-            "productId": productId ?? 0
-          },
+          body: {"productId": productId ?? 0},
           route: "wishlist",
           queries: {});
       return response["wishlisted"];
@@ -161,7 +150,7 @@ class UserInterface {
   }
 
   //delete from wishlist
-  static Future<bool> deleteFromWishList({required int? productId}) async{
+  static Future<bool> deleteFromWishList({required int? productId}) async {
     try {
       final response = await ApiRequest.send(
           method: ApiMethod.DELETE,
@@ -174,5 +163,4 @@ class UserInterface {
       return false;
     }
   }
-
 }

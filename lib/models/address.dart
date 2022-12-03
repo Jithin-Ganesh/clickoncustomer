@@ -11,6 +11,7 @@ class Address {
   String? phoneNumber;
   String? createdAt;
   String? updatedAt;
+  int? userId;
 
   Address(
       {this.id,
@@ -23,11 +24,12 @@ class Address {
         this.state,
         this.country,
         this.phoneNumber,
-        this.createdAt,
+        this.createdAt,this.userId,
         this.updatedAt});
 
   Address.fromJson(Map<String, dynamic> json) {
     id = json['id'];
+    userId=json["userId"];
     firstName = json['firstName'];
     lastName = json['lastName'];
     addressLine1 = json['addressLine1'];

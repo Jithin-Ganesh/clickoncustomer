@@ -15,9 +15,11 @@ class AddAddressWeb extends StatefulWidget {
     Key? key,
     this.address,
     required this.isEdit,
+    this.id,
   }) : super(key: key);
   final Address? address;
   final bool isEdit;
+  final int? id;
 
   @override
   State<AddAddressWeb> createState() => _AddAddressWebState();
@@ -86,10 +88,8 @@ class _AddAddressWebState extends State<AddAddressWeb> {
   Widget build(BuildContext context) {
     return AlertDialog(
       content: SizedBox(
-        height: MediaQuery.of(context).size.height *
-            0.5,
-        width:
-        MediaQuery.of(context).size.width * 0.4,
+        height: MediaQuery.of(context).size.height * 0.5,
+        width: MediaQuery.of(context).size.width * 0.4,
         child: Form(
           key: _formKey,
           child: SingleChildScrollView(
@@ -100,15 +100,18 @@ class _AddAddressWebState extends State<AddAddressWeb> {
                   children: [
                     Text(
                       "Add new Delivery Address ",
-                      style: Theme.of(context).textTheme.headline1?.copyWith(fontSize: 18, color: priceOffersSubtextColor),
+                      style: Theme.of(context).textTheme.headline1?.copyWith(
+                          fontSize: 18, color: priceOffersSubtextColor),
                     ),
                     Spacer(),
                     InkWell(
-                      onTap: (){
+                      onTap: () {
                         Navigator.pop(context);
                       },
-
-                      child: const Icon(Icons.close,size: 18,),
+                      child: const Icon(
+                        Icons.close,
+                        size: 18,
+                      ),
                     ),
                   ],
                 ),
@@ -265,21 +268,22 @@ class _AddAddressWebState extends State<AddAddressWeb> {
                       width: 20,
                     ),
                     Expanded(
-                        flex: 2,
-                        child: AddressFiledWeb(
-                            validation: (value) {
-                              if (value!.isEmpty) {
-                                return "Required";
-                              } else if (value.length < 5) {
-                                return "Give a Valid Address";
-                              }
-                              return null;
-                            },
-                            textInputFormatter: [
-                              NoLeadingSpaceFormatter(),
-                            ],
-                            controller: _addressLine2Controller,
-                            title: "Address Line 2"),),
+                      flex: 2,
+                      child: AddressFiledWeb(
+                          validation: (value) {
+                            if (value!.isEmpty) {
+                              return "Required";
+                            } else if (value.length < 5) {
+                              return "Give a Valid Address";
+                            }
+                            return null;
+                          },
+                          textInputFormatter: [
+                            NoLeadingSpaceFormatter(),
+                          ],
+                          controller: _addressLine2Controller,
+                          title: "Address Line 2"),
+                    ),
                   ],
                 ),
                 const SizedBox(
@@ -299,14 +303,19 @@ class _AddAddressWebState extends State<AddAddressWeb> {
                             ? null
                             : () {
                                 if (_formKey.currentState!.validate()) {
-                                  Provider.of<AuthProvider>(context, listen: false)
+                                  Provider.of<AuthProvider>(context,
+                                          listen: false)
                                       .enableLoading();
-                                  Provider.of<UserProvider>(context, listen: false)
+                                  Provider.of<UserProvider>(context,
+                                          listen: false)
                                       .addUserAddress(
+                                          userId: widget.id,
                                           firstName: _firstNameController.text,
                                           lastName: _lastNameController.text,
-                                          addressLine1: _address1Controller.text,
-                                          addressLine2: _addressLine2Controller.text,
+                                          addressLine1:
+                                              _address1Controller.text,
+                                          addressLine2:
+                                              _addressLine2Controller.text,
                                           state: _stateController.text,
                                           pinCode: _pinCodeController.text,
                                           country: _countryController.text,
@@ -316,7 +325,7 @@ class _AddAddressWebState extends State<AddAddressWeb> {
                                       .then((value) {
                                     Provider.of<UserProvider>(context,
                                             listen: false)
-                                        .fetchAddressList()
+                                        .fetchAddressList(userID: null)
                                         .then((value) {
                                       widget.isEdit
                                           ? Provider.of<UserProvider>(context,
@@ -476,7 +485,7 @@ class _InputTextFieldState extends State<InputTextField> {
               isDense: true,
               suffixIcon: widget.suffixIcon,
               labelText: widget.labelText,
-             labelStyle: Theme.of(context).textTheme.subtitle1,
+              labelStyle: Theme.of(context).textTheme.subtitle1,
 
               filled: false,
               hintText: widget.hintText,
