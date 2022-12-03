@@ -1,1 +1,1 @@
-const String placeholder = "assets/images/placeholder.png";
+const String placeholder = "assets/images/placeholder.jpg";

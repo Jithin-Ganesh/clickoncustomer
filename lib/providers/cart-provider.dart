@@ -5,6 +5,13 @@ import '../models/cart.dart';
 
 class CartProvider extends ChangeNotifier {
   Cart? cart;
+  int? quantity;
+
+
+  void setQuantity({required int qty}){
+    quantity = qty;
+    notifyListeners();
+  }
 
   //Fetch Cart
   Future<Cart?> fetchCart() async {
@@ -15,8 +22,8 @@ class CartProvider extends ChangeNotifier {
 
 
   // Add To Cart
-  Future<void> addCart({required int? productId, required int? qty}) async {
-    await CartInterface.addCart(productId: productId, quantity: qty);
+  Future<void> addCart({required int? productId,}) async {
+    await CartInterface.addCart(productId: productId, quantity: quantity);
   }
 
 

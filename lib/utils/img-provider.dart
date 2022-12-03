@@ -36,17 +36,14 @@ class ImgProvider extends StatelessWidget {
 
     //url
     if (url == "") {
-      return Image(
-        image: AssetImage(placeholder),
-        fit: BoxFit.fill,
-      );
+      return Image.asset('assets/images/placeholder.jpg');
     } else if (url.contains("http") || url.contains("https")) {
       return CachedNetworkImage(
         imageUrl: url,
         fit: boxFit,
-        placeholder: (context, url) => Image(image: AssetImage(placeholder)),
+        placeholder: (context, url) => Image.asset('assets/images/placeholder.jpg'),
         errorWidget: (context, url, error) =>
-            Image(image: AssetImage(placeholder)),
+            Image.asset('assets/images/placeholder.jpg'),
       );
       //return FadeInImage.assetNetwork(placeholder: placeholder, image: url, fit: boxFit,imageErrorBuilder: ,);
     } else if (url.contains('svg')) {

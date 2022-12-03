@@ -9,6 +9,7 @@ import 'package:provider/provider.dart';
 
 import '../../../utils/constants/color.dart';
 import '../../../utils/constants/fontstyles.dart';
+import '../../../utils/image-provider.dart';
 
 
 class ImageDetailsWebItem extends StatefulWidget {
@@ -77,12 +78,7 @@ class _ImageDetailsWebItemState extends State<ImageDetailsWebItem> {
                                 borderRadius: BorderRadius.all(Radius.circular(10)),
                                 border: Border.all(color: selectedIndex == index ? subTextGeneralColor : specificationsColor)),
                             child: ImgProvider(
-                              url: widget.productModel?.image ?? '',
-                              height: 80,
-                              width: 80,
-                              boxFit: BoxFit.fill,
-
-                            )),
+                              url: widget.productModel?.image ?? '', )),
                       ),
                     ),
                     itemCount: 5,
@@ -150,13 +146,11 @@ class _ImageDetailsWebItemState extends State<ImageDetailsWebItem> {
                   ),
                 ),
               ),
-              Container(
-                child: ImgProvider(
-                  url: value.productDetails?[selectedIndex].image ?? '',
-                  height: 410,
-                  width: MediaQuery.of(context).size.width *0.213,
-                  boxFit: BoxFit.fill,
-                ),
+              ImgProvider(
+                url: value.productDetails?[selectedIndex].image ?? '',
+                height: 410,
+                width: MediaQuery.of(context).size.width *0.213,
+                boxFit: BoxFit.fill,
               ),
               Visibility(
                 visible: selectedIndex != (value.productDetails!.length -1),

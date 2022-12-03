@@ -15,14 +15,10 @@ import '../utils/constants/fontstyles.dart';
 import '../utils/global-key.dart';
 
 class ProductDetailTitle extends StatelessWidget {
-  ProductDetailTitle({Key? key, required this.productId, this.quantity}) : super(key: key);
+  ProductDetailTitle({Key? key, required this.productId,}) : super(key: key);
 final int? productId;
-final int? quantity;
   final List<String> items = [
-    'Item1',
-    'Item2',
-    'Item3',
-    'Item4',
+    '1','2','3','4'
   ];
   String? selectedValue;
 
@@ -160,6 +156,7 @@ final int? quantity;
                         value: selectedValue,
                         onChanged: (value) {
                           selectedValue = value as String;
+                          Provider.of<CartProvider>(context,listen: false).setQuantity(qty: int.parse(selectedValue ?? '0'));
                         }),
                   ),
                 ),
@@ -193,7 +190,7 @@ final int? quantity;
                 child: OutlinedButton(
                   onPressed: () {
                     Provider.of<CartProvider>(context, listen: false)
-                        .addCart(productId: productId, qty: quantity).then((value) => showSnackBar(message: 'Added to Cart', context: context));
+                        .addCart(productId: productId,).then((value) => showSnackBar(message: 'Added to Cart', context: context));
                   },
                   style: OutlinedButton.styleFrom(
                     shape: RoundedRectangleBorder(

@@ -27,10 +27,10 @@ class YourCart extends StatefulWidget {
 
 class _YourCartState extends State<YourCart> {
   final List<String> items = [
-    'Item1',
-    'Item2',
-    'Item3',
-    'Item4',
+    '1',
+    '2',
+    '3',
+    '4',
   ];
   String? selectedValue;
   @override

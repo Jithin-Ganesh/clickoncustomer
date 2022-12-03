@@ -112,13 +112,12 @@ class ProductDetailComponent extends StatefulWidget {
 }
 
 class _ProductDetailComponentState extends State<ProductDetailComponent> {
-  int quantity = 1;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
         children: [
-          ProductDetailTitle(productId: widget.product.product?.id,quantity: quantity),
+          ProductDetailTitle(productId: widget.product.product?.id),
           const SizedBox(height: 80,),
           Row(
             children:  [
