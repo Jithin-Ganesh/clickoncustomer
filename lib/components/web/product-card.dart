@@ -30,7 +30,7 @@ class _ProductCardState extends State<ProductCard> {
           height: 360,
           width: 198,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Stack(
                 children: [
@@ -78,7 +78,7 @@ class _ProductCardState extends State<ProductCard> {
                                 : value.addToWishList(productId: widget.product?.id);
                           });
                         },
-                        icon: ImgProvider(
+                        icon: ImgProvider(height: 28,width: 28,
                           url: "assets/images/icon-fav.png",
                         )),
                   )
@@ -96,7 +96,7 @@ class _ProductCardState extends State<ProductCard> {
               Row(
                 children: [
                   Text(
-                    '${widget.product?.price}',
+                    '${widget.product?.offer}',
                     style: regular.copyWith(fontSize: 17, color: primaryColor),
                   ),
                   SizedBox(width: 8,),

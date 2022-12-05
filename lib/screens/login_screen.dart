@@ -35,23 +35,20 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 
-
   void authenticate() {
-   // Provider.of<AuthProvider>(context, listen: false).enableLoading();
+    // Provider.of<AuthProvider>(context, listen: false).enableLoading();
     Provider.of<AuthProvider>(context, listen: false)
         .login(phone: phoneController.text)
         .then((value) {
       if (value) {
-       // Provider.of<AuthProvider>(context, listen: false).disableLoading();
+        // Provider.of<AuthProvider>(context, listen: false).disableLoading();
         Navigator.of(context).pushNamed(OtpScreen.routeName,
             arguments: OtpScreen(
               phoneNumber: phoneController.text,
             ));
-
       }
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +59,9 @@ class _LoginScreenState extends State<LoginScreen> {
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(height: 201,),
+              SizedBox(
+                height: 201,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -187,7 +186,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               LengthLimitingTextInputFormatter(10),
                             ],
                             validator: (String? value) {
-                              if (value == null || value.toString().length != 10) {
+                              if (value == null ||
+                                  value.toString().length != 10) {
                                 return " Enter a valid phone number";
                               }
                               return null;
@@ -206,8 +206,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               borderRadius: BorderRadius.circular(10)),
                           child: ElevatedButton(
                               onPressed: () {
-
-                               authenticate();
+                                authenticate();
                               },
                               child: Text(
                                 textContinue,
@@ -251,12 +250,14 @@ class _LoginScreenState extends State<LoginScreen> {
                           height: 45,
                           child: OutlinedButton(
                               onPressed: () {
-                                Navigator.pushNamed(context, OtpScreen.routeName);
+                                Navigator.pushNamed(
+                                    context, OtpScreen.routeName);
                               },
                               child: Text(
                                 textCreateAccount,
                                 style: medium.copyWith(
-                                    fontSize: 16, color: createAccountTextColor),
+                                    fontSize: 16,
+                                    color: createAccountTextColor),
                               )),
                         )
                       ],
@@ -267,12 +268,10 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(
                 height: 157,
               ),
-              const SizedBox(
-                  width: 841,
-                  child: Divider(
-                    height: 1,
-                    color: dividerBorderColor,
-                  )),
+              Divider(
+                height: 5,
+                color: dividerBorderColor,
+              ),
               SizedBox(
                 height: 22,
               ),

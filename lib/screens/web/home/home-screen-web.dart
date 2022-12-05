@@ -154,7 +154,7 @@ class WebHomeScreen extends StatelessWidget {
                   ),
                   const GroupOrders(),
                   const SizedBox(
-                    height: 55,
+                    height: 45,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
