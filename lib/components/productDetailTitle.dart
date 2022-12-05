@@ -113,7 +113,6 @@ final int? productId;
               ),
               Container(
                 height: 40,
-                width: 89,
                 child: OutlinedButton(
                   style: OutlinedButton.styleFrom(
                     shape: RoundedRectangleBorder(
@@ -136,7 +135,7 @@ final int? productId;
                               width: 4,
                             ),
                             Text(
-                              count,
+                              selectedValue ?? '1',
                               style: medium.copyWith(
                                   fontSize: 16, color: defaultTextColor),
                             )

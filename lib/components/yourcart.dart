@@ -124,7 +124,6 @@ class _YourCartState extends State<YourCart> {
                               const BorderRadius.all(Radius.circular(5)),
                         ),
                         height: 28,
-                        width: 76,
                         child: DropdownButtonHideUnderline(
                           child: DropdownButton2(
                               hint: Row(
@@ -254,7 +253,6 @@ class _YourCartState extends State<YourCart> {
                               const BorderRadius.all(Radius.circular(5)),
                         ),
                         height: 33,
-                        width: MediaQuery.of(context).size.width * 0.045,
                         child: DropdownButtonHideUnderline(
                           child: DropdownButton2(
                               hint: Row(

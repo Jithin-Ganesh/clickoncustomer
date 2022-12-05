@@ -5,7 +5,7 @@ import '../models/cart.dart';
 
 class CartProvider extends ChangeNotifier {
   Cart? cart;
-  int? quantity;
+  int quantity = 1;
 
 
   void setQuantity({required int qty}){

@@ -127,6 +127,7 @@ class CartBody extends StatelessWidget {
                           ),
 
                       ),
+                       SizedBox(width: 30,),
                        ZigZagSheet(
                         isCoupon: false
                       ),

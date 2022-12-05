@@ -194,7 +194,6 @@ class ReviewOrderItem extends StatelessWidget {
                       borderRadius: const BorderRadius.all(Radius.circular(5)),
                     ),
                     height: 28,
-                    width: 76,
                     child: DropdownButtonHideUnderline(
                       child: DropdownButton2(
                           hint: Row(
@@ -210,7 +209,7 @@ class ReviewOrderItem extends StatelessWidget {
                                 width: 3,
                               ),
                               Text(
-                                count,
+                                selectedValue ?? '1',
                                 style: regular.copyWith(
                                     fontSize: 14, color: productSubTextColor),
                               )

@@ -22,7 +22,6 @@ class UserInterface {
     String? lastName,
     required bool isEdit,
     int? addressId,
-    int? userId,
   }) async {
     try {
       final response = await ApiRequest.send(
@@ -37,7 +36,6 @@ class UserInterface {
             "state": state,
             "country": country,
             "phoneNumber": phoneNumber,
-            "userId":userId,
           },
           route: isEdit ? "address/$addressId" : "address",
           queries: {});
