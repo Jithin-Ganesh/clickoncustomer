@@ -50,7 +50,6 @@ class UserProvider with ChangeNotifier {
     String? phoneNumber,
     required bool isEdit,
     int? addressId,
-    int? userId,
   }) async {
     final message = await UserInterface.addUserAddress(
       firstName: firstName ?? "",
@@ -60,7 +59,6 @@ class UserProvider with ChangeNotifier {
       city: city,
       country: country,
       pinCode: pinCode,
-      userId: userId,
       state: state,
       isEdit: isEdit,
       addressId: addressId,phoneNumber: phoneNumber

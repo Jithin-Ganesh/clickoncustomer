@@ -167,22 +167,18 @@ class _StepperReviewState extends State<StepperReview> {
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 70.0),
-                child: Consumer<AuthProvider>(
-                  builder: (context, authValue, child) => SizedBox(
-                    height: 40,
-                    width: 310,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushNamed(
-                            context, PaymentOrderScreenWeb.routeName,
-                            arguments: PaymentOrderScreenWeb(
-                                id: authValue.loginModel?.id));
-                      },
-                      child: Text(
-                        'Proceed to Buy',
-                        style:
-                            medium.copyWith(color: canvasColor, fontSize: 16),
-                      ),
+                child: SizedBox(
+                  height: 40,
+                  width: 310,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(
+                          context, PaymentOrderScreenWeb.routeName);
+                    },
+                    child: Text(
+                      'Proceed to Buy',
+                      style:
+                      medium.copyWith(color: canvasColor, fontSize: 16),
                     ),
                   ),
                 ),

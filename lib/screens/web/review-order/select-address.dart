@@ -18,19 +18,17 @@ class AddressListAlertBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Stack(
+      title: Column(
         children: [
-          Positioned(
-            top: 0,
-            right: 10,
-            child: InkWell(
-              onTap: (){
+          Row(
+            children: [
+              Spacer(),
+              IconButton(onPressed: (){
                 Navigator.pop(context);
-              },
-
-              child: const Icon(Icons.close,size: 18,),
-            ),
+              }, icon: Icon(Icons.close,size: 14,)),
+            ],
           ),
+          SizedBox(height: 10,),
           Row(
             children: [
               const Text(

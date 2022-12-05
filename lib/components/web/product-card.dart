@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../utils/constants/fontstyles.dart';
+import '../../utils/image-provider.dart';
 
 class ProductCard extends StatefulWidget {
  final ProductModel? product;
@@ -42,9 +43,8 @@ class _ProductCardState extends State<ProductCard> {
                         borderRadius: BorderRadius.circular(10)),
                     child: Center(
                       child: ImgProvider(
-                        url: widget.product?.image ?? '',
-                        height: 147,
-                        width: 114,
+                        url:  widget.product?.image ?? '',
+                        boxFit: BoxFit.fill,
                       ),
                     ),
                   ),

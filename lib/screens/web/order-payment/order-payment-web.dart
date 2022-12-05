@@ -24,20 +24,16 @@ import '../review-order/select-address.dart';
 class PaymentOrderScreenWeb extends StatefulWidget {
   static const routeName = '/payment-order-screen-web';
 
-  const PaymentOrderScreenWeb({Key? key, this.id}) : super(key: key);
+  const PaymentOrderScreenWeb({Key? key,}) : super(key: key);
 
-  final int? id;
+
 
   @override
   _PaymentOrderScreenWebState createState() => _PaymentOrderScreenWebState();
 }
 
 class _PaymentOrderScreenWebState extends State<PaymentOrderScreenWeb> {
-  PaymentOrderScreenWeb get _args {
-    final args =
-        ModalRoute.of(context)!.settings.arguments as PaymentOrderScreenWeb;
-    return args;
-  }
+
 
   final List<String> items = [
     'Address 1',
@@ -46,13 +42,7 @@ class _PaymentOrderScreenWebState extends State<PaymentOrderScreenWeb> {
   ];
 
   String selectedValue = 'Address 1';
-  @override
-  void initState() {
-    // TODO: implement initState
-    Provider.of<UserProvider>(context, listen: false)
-        .fetchAddressList(userID: _args.id);
-    super.initState();
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -87,17 +77,17 @@ class _PaymentOrderScreenWebState extends State<PaymentOrderScreenWeb> {
                   children: [
                     Column(
                       children: [
-                        Checkout(
+                        const Checkout(
                             title: 'Account',
                             text: 'ID: kvsanz',
                             isAccount: true,
                             isProcessing: false,
                             isSubmit: true),
-                        SizedBox(
+                        const SizedBox(
                           height: 14,
                         ),
                         DeliveryAddress(context),
-                        SizedBox(
+                        const SizedBox(
                           height: 14,
                         ),
                         Checkout(
@@ -107,10 +97,10 @@ class _PaymentOrderScreenWebState extends State<PaymentOrderScreenWeb> {
                           isSubmit: true,
                           isProcessing: false,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 14,
                         ),
-                        PaymentItem(
+                        const PaymentItem(
                             imageIcon: 'assets/images/icon-book-mark.png',
                             title: 'Demo',
                             isCvv: true,
@@ -120,7 +110,7 @@ class _PaymentOrderScreenWebState extends State<PaymentOrderScreenWeb> {
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.0182,
                     ),
-                    ZigZagSheet(isCoupon: true)
+                    const ZigZagSheet(isCoupon: true)
                   ],
                 ),
               ],
@@ -204,8 +194,8 @@ class _PaymentOrderScreenWebState extends State<PaymentOrderScreenWeb> {
                         showDialog(
                             context: context,
                             builder: (BuildContext context) {
-                              return Padding(
-                                padding: const EdgeInsets.symmetric(
+                              return const Padding(
+                                padding: EdgeInsets.symmetric(
                                     horizontal: 30.0),
                                 child: AddressListAlertBox(),
                               );
@@ -217,7 +207,7 @@ class _PaymentOrderScreenWebState extends State<PaymentOrderScreenWeb> {
                               return Padding(
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 30.0),
-                                child: AddAddressWeb(id:_args.id ,
+                                child: AddAddressWeb(
                                   isEdit: false,
                                 ),
                               );
