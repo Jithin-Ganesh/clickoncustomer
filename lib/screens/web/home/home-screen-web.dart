@@ -20,7 +20,8 @@ import '../../../components/web/bottom-web-bar.dart';
 import '../../../components/web/custom-titlebar-with-viewall.dart';
 import '../../../components/web/web-nav-bar.dart';
 import '../../../models/category.dart';
-import '../../../providers/home-provider.dart';
+
+import '../../../providers/home_provider.dart';
 import 'best-selling.dart';
 import 'category-list.dart';
 import 'fashion-store.dart';

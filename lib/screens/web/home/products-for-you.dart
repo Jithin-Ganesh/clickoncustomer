@@ -1,8 +1,10 @@
 import 'package:clickoncustomer/components/web/product-card.dart';
 import 'package:clickoncustomer/providers/category-provider.dart';
-import 'package:clickoncustomer/providers/home-provider.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
+
+import '../../../providers/home_provider.dart';
 
 class ProductsForYouList extends StatelessWidget {
   const ProductsForYouList({Key? key}) : super(key: key);

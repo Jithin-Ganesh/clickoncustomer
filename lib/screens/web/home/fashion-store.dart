@@ -1,10 +1,11 @@
 import 'package:clickoncustomer/components/web/product-card.dart';
 import 'package:clickoncustomer/models/category.dart';
-import 'package:clickoncustomer/providers/home-provider.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 
 import '../../../components/web/home-product-box.dart';
+import '../../../providers/home_provider.dart';
 
 class FashionStore extends StatelessWidget {
   FashionStore({Key? key,}) : super(key: key);

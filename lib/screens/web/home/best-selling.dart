@@ -5,7 +5,8 @@ import 'package:clickoncustomer/providers/product-provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 
-import '../../../providers/home-provider.dart';
+
+import '../../../providers/home_provider.dart';
 
 class BestSelling extends StatelessWidget {
   BestSelling({Key? key, }) : super(key: key);

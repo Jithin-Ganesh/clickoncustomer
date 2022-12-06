@@ -1,6 +1,6 @@
 import 'package:clickoncustomer/models/product-model.dart';
 import 'package:clickoncustomer/providers/category-provider.dart';
-import 'package:clickoncustomer/providers/home-provider.dart';
+
 import 'package:clickoncustomer/utils/constants/color.dart';
 import 'package:clickoncustomer/utils/constants/decoration.dart';
 
@@ -9,6 +9,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../providers/home_provider.dart';
 import '../../../utils/constants/fontstyles.dart';
 
 class GroupOrders extends StatelessWidget {
