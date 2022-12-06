@@ -172,7 +172,7 @@ final ProductModel? product;
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: ImgProvider(
-                      url: product?.image ?? '',
+                      url: product?.images ?? '',
                       height: 254,
                       width: 225,
                     ),

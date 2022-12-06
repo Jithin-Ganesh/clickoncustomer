@@ -64,7 +64,7 @@ class _ImageDetailsWebItemState extends State<ImageDetailsWebItem> {
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                       border: Border.all(color:  specificationsColor)),
                   child: ImgProvider(
-                    url: widget.productModel?.image ?? '', )),
+                    url: widget.productModel?.images ?? '', )),
               SizedBox(width: MediaQuery.of(context).size.width * 0.068,),
               // IconButton(
               //   onPressed: () {
@@ -127,7 +127,7 @@ class _ImageDetailsWebItemState extends State<ImageDetailsWebItem> {
               //   ),
               // ),
               ImgProvider(
-                url: widget.productModel?.image ?? '',
+                url: widget.productModel?.images ?? '',
                 height: 410,
                 width: MediaQuery.of(context).size.width *0.213,
                 boxFit: BoxFit.fill,

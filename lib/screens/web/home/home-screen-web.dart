@@ -265,21 +265,21 @@ class ExlusiveOffer extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            height: 230,
-            width: MediaQuery.of(context).size.width * 0.239,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              // image: const DecorationImage(
-              //     image: AssetImage(
-              //         "assets/images/dummy/image-exclusive.png"))
-            ),
-            child: ImgProvider(
-              url: "assets/images/dummy/image-exclusive.png",
               height: 230,
-              width: MediaQuery.of(context).size.width * 0.239,
-              boxFit: BoxFit.fill,
-            ),
-          ),
+              width: MediaQuery.of(context).size.width * 0.259,
+              decoration: BoxDecoration(
+                color: groupOrdersAmountTextColor,
+                borderRadius: BorderRadius.circular(10),
+                // image: const DecorationImage(
+                //     image: AssetImage(
+                //         "assets/images/dummy/image-exclusive.png"))
+              ),
+              child:  ImgProvider(
+                url: "assets/images/dummy/image-exclusive.png",
+                height: 230,
+                width: MediaQuery.of(context).size.width * 0.239,
+                boxFit: BoxFit.fill,
+              ),),
           Container(
             height: 135,
             width: MediaQuery.of(context).size.width * 0.239,

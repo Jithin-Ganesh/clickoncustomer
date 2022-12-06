@@ -43,7 +43,7 @@ class _ProductCardState extends State<ProductCard> {
                         borderRadius: BorderRadius.circular(10)),
                     child: Center(
                       child: ImgProvider(
-                        url:  widget.product?.image ?? '',
+                        url:  widget.product?.images ?? '',
                         boxFit: BoxFit.fill,
                       ),
                     ),
@@ -96,12 +96,12 @@ class _ProductCardState extends State<ProductCard> {
               Row(
                 children: [
                   Text(
-                    '${widget.product?.offer}',
+                    '${widget.product?.sellingPrice}',
                     style: regular.copyWith(fontSize: 17, color: primaryColor),
                   ),
                   SizedBox(width: 8,),
                   Text(
-                    '${widget.product?.price}',
+                    '${widget.product?.mrpPrice}',
                     style: thin.copyWith(fontSize: 17, color: ogPriceColor,decoration: TextDecoration.lineThrough),
                   ),
                 ],

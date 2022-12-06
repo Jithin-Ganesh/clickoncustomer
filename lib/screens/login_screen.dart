@@ -98,7 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ),
                                 ])),
                         SizedBox(
-                          height: 97,
+                          height: 142,
                         ),
                         Padding(
                           padding: EdgeInsets.only(left: 24.58, right: 36.83),
@@ -145,8 +145,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         ImgProvider(
                           url: clickOnOffersImage,
-                          width: 97,
-                          height: 9.91,
+                          width: 98,
+                          height: 10.5,
                           color: Colors.white,
                         ),
                         SizedBox(
@@ -199,27 +199,39 @@ class _LoginScreenState extends State<LoginScreen> {
                         SizedBox(
                           height: 15,
                         ),
-                        Container(
-                          width: 350,
-                          height: 45,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10)),
-                          child: ElevatedButton(
-                              onPressed: () {
-                                authenticate();
-                              },
-                              child: Text(
-                                textContinue,
-                                textAlign: TextAlign.center,
-                              )),
-                        ),
-                        SizedBox(
-                          height: 11,
-                        ),
-                        Text(
-                          textTermsAndConditions,
-                          style: medium.copyWith(
-                              fontSize: 12, color: emailTextColor),
+                        Column(crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              width: 350,
+                              height: 45,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: ElevatedButton(
+                                style:ButtonStyle(
+                                  shape: MaterialStateProperty.all(
+                                      RoundedRectangleBorder(
+                                          borderRadius:
+                                          BorderRadius.circular(10.0))),
+                                ),
+                                  onPressed: () {
+                                    authenticate();
+                                  },
+                                  child: Text(
+                                    textContinue,
+                                    style: medium.copyWith(
+                                        fontSize: 16, color: Colors.white),
+                                    textAlign: TextAlign.center,
+                                  )),
+                            ),
+                            SizedBox(
+                              height: 11,
+                            ),
+                            Text(
+                              textTermsAndConditions,
+                              style: medium.copyWith(
+                                  fontSize: 12, color: emailTextColor),
+                            ),
+                          ],
                         ),
                         SizedBox(
                           height: 38,
@@ -229,7 +241,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           children: [
                             Text(
                               textHavingTrouble,
-                              style: medium.copyWith(
+                              style: regular.copyWith(
                                   fontSize: 14, color: emailTextColor),
                             ),
                             SizedBox(
@@ -237,7 +249,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             Text(
                               textGetHelp,
-                              style: medium.copyWith(
+                              style: regular.copyWith(
                                   fontSize: 14, color: primaryColor),
                             ),
                           ],
@@ -268,9 +280,12 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(
                 height: 157,
               ),
-              Divider(
-                height: 5,
-                color: dividerBorderColor,
+              Padding(
+                padding: const EdgeInsets.only(left: 320,right: 320),
+                child: Divider(
+                  height: 2,
+                  color: dividerBorderColor,
+                ),
               ),
               SizedBox(
                 height: 22,
