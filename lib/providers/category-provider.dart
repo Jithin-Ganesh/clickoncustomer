@@ -21,6 +21,9 @@ class CategoryProvider extends ChangeNotifier {
 
   Future<List<Categories>?> fetchCategory() async {
     categoriesList = await SampleInterface.fetchCategory();
+    fetchRecentlyAdded();
+    fetchGroupOrders();
+    fetchJustLaunched();
     notifyListeners();
     return categoriesList ?? [];
   }

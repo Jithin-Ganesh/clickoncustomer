@@ -107,7 +107,7 @@ class BottomWebBar extends StatelessWidget {
                             Text(
                               'Click On Offers',
                               style: regular.copyWith(
-                                  color: contactSubtextColor, fontSize: 24),
+                                  color: clickOnOffersTitleColor, fontSize: 24),
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                             ),
@@ -169,24 +169,27 @@ class Privacy extends StatelessWidget {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(color: globeBorderColor)),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const ImgProvider(
-                    url: "assets/images/icon-globe.png",
-                    height: 18,
-                    width: 18,
-                  ),
-                  Text(
-                    'English',
-                    style: thin.copyWith(fontSize: 14, color: Colors.black),
-                  ),
-                  const ImgProvider(
-                    url: "assets/images/icon-up-down.png",
-                    height: 12,
-                    width: 7,
-                  ),
-                ],
+              child: Padding(
+                padding: const EdgeInsets.only(left: 17,right: 13),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const ImgProvider(
+                      url: "assets/images/icon-globe.png",
+                      height: 18,
+                      width: 18,
+                    ),
+                    Text(
+                      'English',
+                      style: thin.copyWith(fontSize: 14, color: Colors.black),
+                    ),
+                    const ImgProvider(
+                      url: "assets/images/icon-up-down.png",
+                      height: 12,
+                      width: 7,
+                    ),
+                  ],
+                ),
               ),
             ),
             Text(
@@ -301,7 +304,7 @@ class About extends StatelessWidget {
                           Text(
                             'Enjoy Hustle Free Shop',
                             style:
-                            regular.copyWith(fontSize: 18, color: additionalInfoTitleColor),
+                            regular.copyWith(fontSize: 18, color: Colors.black),
                           ),
                           const SizedBox(height: 32,),
                           Padding(
@@ -337,7 +340,7 @@ class About extends StatelessWidget {
                       'Shopfor: Mens Footwear  | Womens Footwear  |  Sarees  |  Casual Shoes  |  Mens Watches  |  Womens Casual Shoes  |  Frocks  |  Women Suits  |  Tops & Tunics  |  Gowns  |  Watches  |  ',
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: thin.copyWith(fontSize: 14, color: Colors.black),
+                      style: thin.copyWith(fontSize: 12, color: Colors.black),
                     ),
                   ),
                   Container(
@@ -376,7 +379,7 @@ class AboutItem extends StatelessWidget {
           Text(
             title,
             style:
-                regular.copyWith(fontSize: 18, color: additionalInfoTitleColor),
+                regular.copyWith(fontSize: 18, color: Colors.black),
           ),
           const SizedBox(height: 32,),
           ...content
@@ -430,7 +433,7 @@ class BottomWebBarItem extends StatelessWidget {
             width: 48,
           ),
           Expanded(
-            child: Column(
+            child: Column(crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   title,

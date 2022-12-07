@@ -38,11 +38,11 @@ class BuyTogether extends StatelessWidget {
                 style: medium.copyWith(color: mainTitleColor, fontSize: 24),
               ),
               const SizedBox(
-                height: 20,
+                height: 36,
               ),
               IntrinsicHeight(
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,

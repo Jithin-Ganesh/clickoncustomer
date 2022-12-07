@@ -127,7 +127,7 @@ class ReviewOrderItem extends StatelessWidget {
                     width: 5,
                   ),
                   Text(
-                    product?.price ?? '',
+                    product?.price as String ,
                     style: medium.copyWith(fontSize: 17, color: primaryColor),
                   ),
                   const SizedBox(

@@ -21,7 +21,8 @@ import '../utils/toast-message.dart';
 class OtpScreen extends StatefulWidget {
   static const routeName = "/otp";
   const OtpScreen({
-    Key? key, this.phoneNumber,
+    Key? key,
+    this.phoneNumber,
   }) : super(key: key);
   final String? phoneNumber;
   @override
@@ -33,12 +34,10 @@ class _OtpScreenState extends State<OtpScreen> {
   bool isOtpFilled = false;
   String? otp;
 
-
   OtpScreen _args() {
     final args = ModalRoute.of(context)!.settings.arguments as OtpScreen;
     return args;
   }
-
 
   otpVerification() {
     //Provider.of<AuthProvider>(context, listen: false).enableLoading();
@@ -46,15 +45,14 @@ class _OtpScreenState extends State<OtpScreen> {
     Provider.of<AuthProvider>(context, listen: false)
         .verifyOTP(phone: _args().phoneNumber, otp: otp)
         .then((value) async {
-     // Provider.of<AuthProvider>(context, listen: false).disableLoading();
+      // Provider.of<AuthProvider>(context, listen: false).disableLoading();
       if (PrefUtils().getToken() != null) {
         //showMessage( message: "Otp Verified",);
-        Navigator.pushNamedAndRemoveUntil(context, HomeScreenWeb.routeName, (route) => false);
-
+        Navigator.pushNamedAndRemoveUntil(
+            context, HomeScreenWeb.routeName, (route) => false);
       }
     });
   }
-
 
   @override
   void initState() {
@@ -70,7 +68,9 @@ class _OtpScreenState extends State<OtpScreen> {
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(height: 201,),
+            SizedBox(
+              height: 201,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -107,7 +107,7 @@ class _OtpScreenState extends State<OtpScreen> {
                                 ),
                               ])),
                       SizedBox(
-                        height: 97,
+                        height: 142,
                       ),
                       Padding(
                         padding: EdgeInsets.only(left: 24.58, right: 36.83),
@@ -154,8 +154,8 @@ class _OtpScreenState extends State<OtpScreen> {
                       ),
                       ImgProvider(
                         url: clickOnOffersImage,
-                        width: 97,
-                        height: 9.91,
+                        width: 98,
+                        height: 10.5,
                         color: Colors.white,
                       ),
                       SizedBox(
@@ -178,7 +178,7 @@ class _OtpScreenState extends State<OtpScreen> {
                         height: 28,
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 165,right: 165),
+                        padding: const EdgeInsets.only(left: 165, right: 165),
                         child: OtpEditingController(
                           otpController: otpController,
                           onOtpFieldChanged: (completed) {
@@ -198,7 +198,8 @@ class _OtpScreenState extends State<OtpScreen> {
                       SizedBox(
                         height: 27,
                       ),
-                      Row(mainAxisAlignment: MainAxisAlignment.center,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
                             textResentOtp,
@@ -224,6 +225,12 @@ class _OtpScreenState extends State<OtpScreen> {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10)),
                         child: ElevatedButton(
+                            style: ButtonStyle(
+                              shape: MaterialStateProperty.all(
+                                  RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.circular(10.0))),
+                            ),
                             onPressed: () {
                               otpVerification();
                               //Navigator.pushNamedAndRemoveUntil(context, HomeScreenWeb.routeName, (route) => false);

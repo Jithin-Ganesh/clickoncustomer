@@ -45,7 +45,7 @@ final int? productId;
                     border: Border.all(color: canvasColor.withOpacity(0.5))),
                 child: const Center(
                   child: Icon(
-                    Icons.keyboard_arrow_left,
+                    Icons.keyboard_arrow_left,size: 23,
                     color: canvasColor,
                   ),
                 ),
@@ -56,7 +56,7 @@ final int? productId;
             ),
             Text(
               itemDescription,
-              style: medium.copyWith(fontSize: 24, color: defaultTextColor),
+              style: medium.copyWith(fontSize: 24, color: Colors.white),
             ),
           ]),
           Row(
@@ -77,12 +77,12 @@ final int? productId;
                       Text(
                         textRupees,
                         style: regular.copyWith(
-                            color: defaultTextColor, fontSize: 22),
+                            color: Colors.white, fontSize: 22),
                       ),
                       Text(
                         textAmount,
                         style: regular.copyWith(
-                            fontSize: 28, color: defaultTextColor),
+                            fontSize: 28, color: Colors.white),
                       ),
                     ],
                   ),
@@ -143,6 +143,7 @@ final int? productId;
                         ),
                         items: items
                             .map((item) => DropdownMenuItem<String>(
+
                                   value: item,
                                   child: Text(
                                     item,

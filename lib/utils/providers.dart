@@ -7,7 +7,8 @@ import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 
 import '../providers/cart-provider.dart';
-import '../providers/home-provider.dart';
+
+import '../providers/home_provider.dart';
 import '../providers/order.dart';
 
 class ProviderTree {

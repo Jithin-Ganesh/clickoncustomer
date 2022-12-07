@@ -20,7 +20,8 @@ import '../../../components/web/bottom-web-bar.dart';
 import '../../../components/web/custom-titlebar-with-viewall.dart';
 import '../../../components/web/web-nav-bar.dart';
 import '../../../models/category.dart';
-import '../../../providers/home-provider.dart';
+
+import '../../../providers/home_provider.dart';
 import 'best-selling.dart';
 import 'category-list.dart';
 import 'fashion-store.dart';
@@ -153,7 +154,7 @@ class WebHomeScreen extends StatelessWidget {
                   ),
                   const GroupOrders(),
                   const SizedBox(
-                    height: 55,
+                    height: 45,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -264,57 +265,60 @@ class ExlusiveOffer extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            height: 230,
-            width: MediaQuery.of(context).size.width * 0.239,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              // image: const DecorationImage(
-              //     image: AssetImage(
-              //         "assets/images/dummy/image-exclusive.png"))
-            ),
-            child: ImgProvider(
-              url: "assets/images/dummy/image-exclusive.png",
               height: 230,
-              width: MediaQuery.of(context).size.width * 0.239,
-              boxFit: BoxFit.fill,
-            ),
-          ),
+              width: MediaQuery.of(context).size.width * 0.259,
+              decoration: BoxDecoration(
+                color: groupOrdersAmountTextColor,
+                borderRadius: BorderRadius.circular(10),
+                // image: const DecorationImage(
+                //     image: AssetImage(
+                //         "assets/images/dummy/image-exclusive.png"))
+              ),
+              child:  ImgProvider(
+                url: "assets/images/dummy/image-exclusive.png",
+                height: 230,
+                width: MediaQuery.of(context).size.width * 0.239,
+                boxFit: BoxFit.fill,
+              ),),
           Container(
             height: 135,
             width: MediaQuery.of(context).size.width * 0.239,
             decoration: BoxDecoration(
                 color: canvasColor, borderRadius: BorderRadius.circular(10)),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                const ImgProvider(
-                  url: "assets/images/dummy/image-qr.png",
-                  height: 74,
-                  width: 74,
-                ),
-                SizedBox(
-                  width: 5,
-                ),
-                Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Enjoy Fast, Simple hassle free Shopping',
-                        style: regular.copyWith(
-                            color: exclusiveOfferSubtextColor, fontSize: 16),
-                      ),
-                      Text(
-                        'Enjoy Fast, Simple hassle free Shopping',
-                        style: thin.copyWith(
-                            color: exclusiveOfferSubtextColor, fontSize: 14),
-                      ),
-                    ],
+            child: Padding(
+              padding: const EdgeInsets.only(left: 26,right: 42),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  const ImgProvider(
+                    url: "assets/images/dummy/image-qr.png",
+                    height: 74,
+                    width: 74,
                   ),
-                )
-              ],
+                  SizedBox(
+                    width: 21,
+                  ),
+                  Expanded(
+                    child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Enjoy Fast, Simple hassle free Shopping',
+                          style: regular.copyWith(
+                              color: exclusiveOfferSubtextColor, fontSize: 16),
+                        ),SizedBox(height: 2,),
+                        Text(
+                          'Scan to Download the app',
+                          style: thin.copyWith(
+                              color: exclusiveOfferSubtextColor, fontSize: 14),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
             ),
           )
         ],

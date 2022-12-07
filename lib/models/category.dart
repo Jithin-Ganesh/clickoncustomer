@@ -1,18 +1,31 @@
 class Categories {
+  String? image;
   int? id;
   String? name;
-  late String image;
+  int? commission;
+  String? description;
+  String? createdAt;
+  String? updatedAt;
 
   Categories(
-      {this.id,
+      {this.image,
+        this.id,
         this.name,
-        required this.image,});
+        this.commission,
+        this.description,
+        this.createdAt,
+        this.updatedAt});
 
   Categories.fromJson(Map<String, dynamic> json) {
+    image = json['image'];
     id = json['id'];
     name = json['name'];
-    image = json['image'] ?? '';
+    commission = json['commission'];
+    description = json['description'];
+    createdAt = json['createdAt'];
+    updatedAt = json['updatedAt'];
   }
+
   static List<Categories> convertToList(List<dynamic> list) {
     if (list == null) return [];
 
@@ -23,3 +36,5 @@ class Categories {
     return data;
   }
 }
+
+
