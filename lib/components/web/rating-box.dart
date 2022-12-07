@@ -33,7 +33,7 @@ class RatingBox extends StatelessWidget {
               padding: const EdgeInsets.only(top: 3.0),
               child: Text(
                 '4.4',
-                style: medium.copyWith(color: canvasColor, fontSize: 14),
+                style: medium.copyWith(color: Colors.white, fontSize: 14),
               ),
             )
           ],

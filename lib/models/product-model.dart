@@ -4,7 +4,7 @@ class ProductModel {
   int? id;
   String? name;
   int? price;
-  int? offer;
+  double? offer;
   String? description;
   String? hSN;
   int? cGST;

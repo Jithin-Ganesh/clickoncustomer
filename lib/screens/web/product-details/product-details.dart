@@ -39,14 +39,14 @@ class ProductDetails extends StatelessWidget {
                       SizedBox(
                           height: 18,
                           width: 17,
-                          child: Icon(Icons.share_outlined)),
+                          child: Icon(Icons.share_outlined,color: productAvailabilityColor,)),
                       SizedBox(
                         width: 21,
                       ),
                       SizedBox(
                           height: 18,
                           width: 17,
-                          child: Icon(Icons.favorite_border_outlined))
+                          child: Icon(Icons.favorite_border_outlined,color: productAvailabilityColor))
                     ],
                   )
                 ],
@@ -186,7 +186,7 @@ class ProductDetails extends StatelessWidget {
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) => CountBox(
-                    count: '70',
+                    count: '19',
                   ),
                   itemCount: 4,
                 ),

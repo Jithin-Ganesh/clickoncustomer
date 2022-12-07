@@ -28,7 +28,7 @@ class AvailableOffers extends StatelessWidget {
               SizedBox(width: 34,),
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.135,
-                child: Text('Bank Offer 5% Cashback on Yes Bank Credit & Debit Cards.',maxLines: 2,style: medium,),
+                child: Text('Bank Offer 5% Cashback on Yes Bank Credit & Debit Cards.',maxLines: 2,style: medium.copyWith(fontSize: 14),),
               )
             ],
           ),

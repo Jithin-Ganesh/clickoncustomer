@@ -63,8 +63,11 @@ class _ImageDetailsWebItemState extends State<ImageDetailsWebItem> {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                       border: Border.all(color:  specificationsColor)),
-                  child: ImgProvider(
-                    url: widget.productModel?.images ?? '', )),
+                  child: Padding(
+                    padding: const EdgeInsets.all(14),
+                    child: ImgProvider(height: 50,width: 50,
+                      url: widget.productModel?.images ?? '', ),
+                  )),
               SizedBox(width: MediaQuery.of(context).size.width * 0.068,),
               // IconButton(
               //   onPressed: () {
@@ -181,8 +184,8 @@ class ImageDetailsWeb extends StatelessWidget {
         height: 620,
         child: ContainedTabBarView(
           tabs: [
-            Text('Images (5)'),
-            Text('Videos (1)'),
+            Text('Images (5)',style: medium.copyWith(fontSize: 16,color: mainTitleColor),),
+            Text('Videos (1)',style: medium.copyWith(fontSize: 16,color: mainTitleColor),),
           ],
           tabBarProperties: TabBarProperties(
             height: 32.0,

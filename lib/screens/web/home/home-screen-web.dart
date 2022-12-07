@@ -124,10 +124,9 @@ class WebHomeScreen extends StatelessWidget {
                   const SizedBox(
                     height: 44,
                   ),
-                  Consumer<CategoryProvider>(
-                      builder: (context, value, child) => HomeCategoryList(
-                            categories: value.categoriesList,
-                          )),
+                  HomeCategoryList(
+                    categories: value.categoriesList,
+                  ),
                   const SizedBox(
                     height: 50,
                   ),
@@ -286,37 +285,40 @@ class ExlusiveOffer extends StatelessWidget {
             width: MediaQuery.of(context).size.width * 0.239,
             decoration: BoxDecoration(
                 color: canvasColor, borderRadius: BorderRadius.circular(10)),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                const ImgProvider(
-                  url: "assets/images/dummy/image-qr.png",
-                  height: 74,
-                  width: 74,
-                ),
-                SizedBox(
-                  width: 5,
-                ),
-                Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Enjoy Fast, Simple hassle free Shopping',
-                        style: regular.copyWith(
-                            color: exclusiveOfferSubtextColor, fontSize: 16),
-                      ),
-                      Text(
-                        'Enjoy Fast, Simple hassle free Shopping',
-                        style: thin.copyWith(
-                            color: exclusiveOfferSubtextColor, fontSize: 14),
-                      ),
-                    ],
+            child: Padding(
+              padding: const EdgeInsets.only(left: 26,right: 42),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  const ImgProvider(
+                    url: "assets/images/dummy/image-qr.png",
+                    height: 74,
+                    width: 74,
                   ),
-                )
-              ],
+                  SizedBox(
+                    width: 21,
+                  ),
+                  Expanded(
+                    child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Enjoy Fast, Simple hassle free Shopping',
+                          style: regular.copyWith(
+                              color: exclusiveOfferSubtextColor, fontSize: 16),
+                        ),SizedBox(height: 2,),
+                        Text(
+                          'Scan to Download the app',
+                          style: thin.copyWith(
+                              color: exclusiveOfferSubtextColor, fontSize: 14),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
             ),
           )
         ],

@@ -5,8 +5,7 @@ import 'package:clickoncustomer/models/product-model.dart';
 class ProductDetailModel {
   ProductModel? family;
   String? message;
-  String? selling_price;
-  String?mrp_price;
+
   int? selectedProductId;
   ProductModel? product;
   List<Attributes>? attributes;
@@ -15,7 +14,7 @@ class ProductDetailModel {
       {this.family,
         this.selectedProductId,
         this.product,
-        this.attributes,this.selling_price,this.mrp_price
+        this.attributes,
       });
 
   ProductDetailModel.fromJson(Map<String, dynamic> json) {
@@ -23,8 +22,7 @@ class ProductDetailModel {
     family =
     json['family'] != null ? ProductModel.fromJson(json['family']) : null;
     selectedProductId = json['selectedProductId'];
-    selling_price=json["selling_price"];
-    mrp_price=json["mrp_price"];
+
     product =
     json['product'] != null ? ProductModel.fromJson(json['product']) : null;
     if (json['attributes'] != null&&json['attributes'] != []) {

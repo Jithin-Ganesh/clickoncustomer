@@ -22,7 +22,7 @@ class FashionStore extends StatelessWidget {
                 height: 327,
                 child: ListView.builder(
                   itemBuilder: (context, index) => Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    padding: const EdgeInsets.all(10.0),
                     child: ProductCard(product: value.products?[index]),
                   ),
                   itemCount:  value.products?.length,
