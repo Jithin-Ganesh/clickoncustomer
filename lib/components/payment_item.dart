@@ -45,7 +45,7 @@ class PaymentItem extends StatelessWidget {
                 title: 'Payment',
                 isProcessing: true,
                 isSubmit: false,
-                slNumber: '4',
+                slNumber: '3',
               ),
             ),
             Padding(
@@ -171,49 +171,49 @@ class PaymentItem extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  decoration: const BoxDecoration(
-                                    color: primaryColor,
-                                    borderRadius: BorderRadius.only(
-                                      topRight: Radius.circular(10),
-                                      bottomRight: const Radius.circular(10),
-                                    ),
-                                  ),
-                                  width: MediaQuery.of(context).size.width * 0.128,
-                                  height: 54,
-                                  child: Row(
-                                    children: [
-                                      const SizedBox(
-                                        width: 24,
-                                      ),
-                                      ImgProvider(
-                                        url: imageIcon,
-                                        width: 13,
-                                        height: 15,
-                                        color: Colors.white,
-                                        border: Border.all(
-                                            width: 2, color: Colors.white),
-                                      ),
-                                      const SizedBox(
-                                        width: 25,
-                                      ),
-                                      Text(
-                                        title,
-                                        style: medium.copyWith(
-                                            fontSize: 16, color: Colors.white),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                const PaymentSub()
-                              ],
-                            ),
+                            // Column(
+                            //   crossAxisAlignment: CrossAxisAlignment.start,
+                            //   children: [
+                            //     Container(
+                            //       decoration: const BoxDecoration(
+                            //         color: primaryColor,
+                            //         borderRadius: BorderRadius.only(
+                            //           topRight: Radius.circular(10),
+                            //           bottomRight: const Radius.circular(10),
+                            //         ),
+                            //       ),
+                            //       width: MediaQuery.of(context).size.width * 0.128,
+                            //       height: 54,
+                            //       child: Row(
+                            //         children: [
+                            //           const SizedBox(
+                            //             width: 24,
+                            //           ),
+                            //           ImgProvider(
+                            //             url: imageIcon,
+                            //             width: 13,
+                            //             height: 15,
+                            //             color: Colors.white,
+                            //             border: Border.all(
+                            //                 width: 2, color: Colors.white),
+                            //           ),
+                            //           const SizedBox(
+                            //             width: 25,
+                            //           ),
+                            //           Text(
+                            //             title,
+                            //             style: medium.copyWith(
+                            //                 fontSize: 16, color: Colors.white),
+                            //           )
+                            //         ],
+                            //       ),
+                            //     ),
+                            //     const SizedBox(
+                            //       height: 20,
+                            //     ),
+                            //     //const PaymentSub()
+                            //   ],
+                            // ),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [

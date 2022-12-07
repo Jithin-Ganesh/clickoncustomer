@@ -11,6 +11,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../components/payment_item.dart';
 import '../../../components/web/WebNavBar2.dart';
 import '../../../models/address.dart';
 import '../../../models/user.dart';
@@ -77,27 +78,32 @@ class _ReviewOrderScreenWebState extends State<ReviewOrderScreenWeb> {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Column(
-                      children: [
-                        const Checkout(
-                            title: 'Account',
-                            text: 'ID: kvsanz',
-                            isAccount: true,
-                            isProcessing: false,
-                            isSubmit: true),
-                        const SizedBox(
-                          height: 14,
-                        ),
-                        DeliveryAddress(context),
-                        const SizedBox(
-                          height: 14,
-                        ),
-                        const StepperReview(),
-                        const SizedBox(
-                          height: 14,
-                        ),
-                        const PaymentTile()
-                      ],
+                    Consumer<UserProvider>(builder: (context, value, child) => Column(
+                        children: [
+                          const Checkout(
+                              title: 'Account',
+                              text: 'ID: kvsanz',
+                              isAccount: true,
+                              isProcessing: false,
+                              isSubmit: true),
+                          const SizedBox(
+                            height: 14,
+                          ),
+                          DeliveryAddress(context),
+                          // const SizedBox(
+                          //   height: 14,
+                          // ),
+                          // const StepperReview(),
+                          const SizedBox(
+                            height: 14,
+                          ),
+                          value.selectedAddress == null ? PaymentTile() :  PaymentItem(
+                              imageIcon: 'assets/images/icon-book-mark.png',
+                              title: 'Demo',
+                              isCvv: true,
+                              isPay: true)
+                        ],
+                      ),
                     ),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.0182,
@@ -236,7 +242,7 @@ class PaymentTile extends StatelessWidget {
             title: 'Payment',
             isProcessing: false,
             isSubmit: false,
-            slNumber: '4'),
+            slNumber: '3'),
       ),
     );
   }
