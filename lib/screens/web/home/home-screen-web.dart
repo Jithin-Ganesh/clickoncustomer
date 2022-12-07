@@ -123,10 +123,9 @@ class WebHomeScreen extends StatelessWidget {
                   const SizedBox(
                     height: 44,
                   ),
-                  Consumer<CategoryProvider>(
-                      builder: (context, value, child) => HomeCategoryList(
-                            categories: value.categoriesList,
-                          )),
+                  HomeCategoryList(
+                    categories: value.categoriesList,
+                  ),
                   const SizedBox(
                     height: 50,
                   ),
