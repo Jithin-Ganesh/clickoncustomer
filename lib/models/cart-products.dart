@@ -60,7 +60,6 @@ class CartProduct {
     updatedAt = json['updatedAt'];
   }
 
-
   static List<CartProduct> convertToList(List<dynamic> list) {
     List<CartProduct> data = [];
     for (var element in list) {
@@ -68,6 +67,5 @@ class CartProduct {
     }
     return data;
   }
-
 }
 

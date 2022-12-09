@@ -2,15 +2,25 @@ import 'package:clickoncustomer/models/order_review_model.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../interfaces/order-interface.dart';
+import '../models/cart-products.dart';
 import '../models/message.dart';
 import '../models/order.dart';
 
 class OrderProvider extends ChangeNotifier {
   List<OrderReviewModel> orderList = [];
   OrderReviewModel? order;
+  List<int?> cod= [];
+
+  addCod({required List<CartProduct>? products}){
+    products?.forEach((element) {
+      cod.add(element.id);
+    });
+    notifyListeners();
+  }
+
+
 
   Future<bool> placeOrder({
-    required List<int?> cod,
     required List<int?> payOnline,
     required int? shipping,
     required int? billing,
@@ -22,6 +32,7 @@ class OrderProvider extends ChangeNotifier {
         billing: billing,
         cod: cod,
         shipping: shipping);
+    cod.clear();
     notifyListeners();
     return response;
   }

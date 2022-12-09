@@ -87,16 +87,17 @@ class _PaymentOrderScreenWebState extends State<PaymentOrderScreenWeb> {
                           height: 14,
                         ),
                         DeliveryAddress(context),
-                        const SizedBox(
-                          height: 14,
-                        ),
-                        Checkout(
-                          title: 'Review Order',
-                          text: textProdDescr,
-                          isAccount: false,
-                          isSubmit: true,
-                          isProcessing: false,
-                        ),
+                        // const SizedBox(
+                        //   height: 14,
+                        // ),
+                        // Consumer<UserProvider>(builder: (context, value, child) => Checkout(
+                        //     title: 'Review Order',
+                        //     text: value.selectedAddress?.getFullAddress() ?? '',
+                        //     isAccount: false,
+                        //     isSubmit: true,
+                        //     isProcessing: false,
+                        //   ),
+                        // ),
                         const SizedBox(
                           height: 14,
                         ),

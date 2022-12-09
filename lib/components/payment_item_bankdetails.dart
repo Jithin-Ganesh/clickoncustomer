@@ -117,13 +117,13 @@ class _PaymentBankState extends State<PaymentBank> {
           ),
           widget.isPay
               ? ButtonElevated(
-                  onPressed: (){
+                  onPressed: ()async{
+                    await Provider.of<OrderProvider>(context,listen: false).addCod(products: widget.cart?.cartProducts);
                     placeOrder(
                         payOnline: [widget.cart?.cartProducts?[0].id],
                         cartId: widget.cart?.id,
                         billing: 1,
-                        shipping: 1,
-                        cod: [widget.cart?.cartProducts?[0].id]);
+                        shipping: 1);
                   },
                   buttonTitle: textPayNow,
                   isButtonEnable: true,
@@ -140,14 +140,13 @@ class _PaymentBankState extends State<PaymentBank> {
   }
 
   placeOrder(
-      {required List<int?> cod,
+      {
       required List<int?> payOnline,
       required int? shipping,
       required int? billing,
       required int? cartId}) {
     Provider.of<OrderProvider>(context, listen: false)
         .placeOrder(
-            cod: cod,
             shipping: shipping,
             billing: billing,
             cartId: cartId,

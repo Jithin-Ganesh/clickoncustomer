@@ -35,121 +35,109 @@ class _YourCartState extends State<YourCart> {
   String? selectedValue;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: elevatedDecoration,
-      width: MediaQuery.of(context).size.width * 0.622,
-      height: 166,
-      child: Padding(
-        padding: const EdgeInsets.only(right: 20, left: 0,top: 12),
-        child:
-            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-          Row(
-            children: [
-              SizedBox(
-                width: 24,
-              ),
-              ImgProvider(
-                url: widget.product?.image ?? '',
-                width: MediaQuery.of(context).size.width * 0.0572,
-                height: 110,
-              ),
-              SizedBox(
-                width: 32,
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    textInStock,
-                    style:
-                        medium.copyWith(color: inStockTitleColor, fontSize: 12),
-                  ),
-                  SizedBox(height: 6,),
-                  Text(
-                    widget.product?.name ?? '',
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: regular.copyWith(
-                        fontSize: 14, color: productSubTextColor),
-                  ),    SizedBox(height: 6,),
-                  Row(children: [
-                    Text(textRupees,style: regular.copyWith(fontSize: 16,color: mainTitleColor),),
-                    const SizedBox(
-                      width: 8.85,
-                    ),
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 15.0),
+      child: Container(
+        decoration: elevatedDecoration,
+        width: MediaQuery.of(context).size.width * 0.622,
+        height: 166,
+        child: Padding(
+          padding: const EdgeInsets.only(right: 20, left: 0,top: 12),
+          child:
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+            Row(
+              children: [
+                SizedBox(
+                  width: 24,
+                ),
+                ImgProvider(
+                  url: widget.product?.image ?? '',
+                  width: MediaQuery.of(context).size.width * 0.0572,
+                  height: 110,
+                ),
+                SizedBox(
+                  width: 32,
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
                     Text(
-                      widget.product?.amount.toString() ?? '',
-                      style: medium.copyWith(
-                          color: mainTitleColor, fontSize: 16),
+                      textInStock,
+                      style:
+                          medium.copyWith(color: inStockTitleColor, fontSize: 12),
                     ),
-                    const SizedBox(
-                      width: 18,
-                    ),
-                    Container(
-                      height: 16,
-                      width: MediaQuery.of(context).size.width * 0.0192,
-                      decoration: const BoxDecoration(
-                          color: discountBoxColor,
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(8),
-                              bottomRight: Radius.circular(8))),
-                      child: Center(
-                        child: Text(
-                          discount,
-                          textAlign: TextAlign.center,
-                          style: semiBold.copyWith(
-                              fontSize: 12, color: Colors.white),
+                    SizedBox(height: 6,),
+                    Text(
+                      widget.product?.name ?? '',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: regular.copyWith(
+                          fontSize: 14, color: productSubTextColor),
+                    ),    SizedBox(height: 6,),
+                    Row(children: [
+                      Text(textRupees),
+                      const SizedBox(
+                        width: 8.85,
+                      ),
+                      Text(
+                        widget.product?.amount.toString() ?? '',
+                        style: medium.copyWith(
+                            color: priceOffersSubtextColor, fontSize: 16),
+                      ),
+                      const SizedBox(
+                        width: 18,
+                      ),
+                      Container(
+                        height: 16,
+                        width: MediaQuery.of(context).size.width * 0.0192,
+                        decoration: const BoxDecoration(
+                            color: discountBoxColor,
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(8),
+                                bottomRight: Radius.circular(8))),
+                        child: Center(
+                          child: Text(
+                            discount,
+                            textAlign: TextAlign.center,
+                            style: regular.copyWith(
+                                fontSize: 12, color: defaultTextColor),
+                          ),
                         ),
                       ),
-                    ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        widget.product?.offer.toString() ?? '',
+                        style: medium.copyWith(
+                            fontSize: 12, color: priceOffersSubtextColor),
+                      )
+                    ]),
                     SizedBox(
-                      width: 10,
+                      height: 7.72,
                     ),
-                    Text(
-                      widget.product?.offer.toString() ?? '',
-                      style: medium.copyWith(
-                          fontSize: 12, color: mainTitleColor),
-                    )
-                  ]),
-                  SizedBox(
-                    height: 7.72,
-                  ),
-                  Row(
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(color: qtyButtonColor, width: 2),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(5)),
-                        ),
-                        height: 33,
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 11),
+                    Row(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            border: Border.all(color: qtyButtonColor, width: 2),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(5)),
+                          ),
+                          height: 28,
                           child: DropdownButtonHideUnderline(
-                            child: DropdownButton2(icon: Icon(Icons.keyboard_arrow_down_rounded,color: productAvailabilityColor,size: 18,),
-                                hint: Padding(
-                                  padding: const EdgeInsets.only(top: 4,bottom: 6,),
-                                  child: Row(
-                                    children: [
-                                      SizedBox(
-                                        width: 12,
-                                      ),
-                                      Text("Qty:",
-                                          style: regular.copyWith(
-                                              fontSize: 12,
-                                              color: productSubTextColor)),
-                                      const SizedBox(
-                                        width: 3,
-                                      ),
-                                      Text(
-                                        widget.product?.quantity.toString() ?? '',
+                            child: DropdownButton2(
+                                hint: Row(
+                                  children: [
+                                    SizedBox(
+                                      width: 12,
+                                    ),
+                                    Text(widget.product?.quantity.toString() ?? '',
                                         style: regular.copyWith(
-                                            fontSize: 14,
-                                            color: productSubTextColor),
-                                      )
-                                    ],
-                                  ),
+                                            fontSize: 12,
+                                            color: productSubTextColor)),
+                                  ],
                                 ),
                                 items: items
                                     .map((item) => DropdownMenuItem<String>(
@@ -168,101 +156,98 @@ class _YourCartState extends State<YourCart> {
                                 }),
                           ),
                         ),
-                      ),
-                      SizedBox(
-                        width: 16,
-                      ),
-                      Text(
-                        textYourCartSaveForLater,
-                        style: regular.copyWith(
-                            color: yourCartSubTextColor, fontSize: 12),
-                      ),
-                      SizedBox(
-                        width: 13,
-                      ),
-                      Text(
-                        textSeprator,
-                        style: thin.copyWith(
-                          fontSize: 14,
-                          color: yourCartSubTextColor,
+                        SizedBox(
+                          width: 16,
                         ),
-                      ),
-                      SizedBox(
-                        width: 12,
-                      ),
-                      TextButton(
-                       onPressed: () {
-                         showMyDialog(
-                           screenContext: context,
-                           buttonName: "Remove",
-                           title: "Alert!",
-                           contentText: "Do you really want to clear the cart?",
-                           onConfirm: () {
-                             Provider.of<CartProvider>(context, listen: false)
-                                 .deleteCart( cartId: widget.cartId)
-                                 .then((value) {
-                                   Provider.of<CartProvider>(context,listen: false).fetchCart();
-                               Navigator.pushNamed(context, CartScreenWeb.routeName);
-                             });
-                           },
-                         );
-                       },
-                       child: Text( textYourCartRemove,
-                         style:
-                         regular.copyWith(fontSize: 12, color: removeColor),)
-                      )
-                    ],
-                  )
-                ],
-              )
-            ],
-          ),
-          Row(
-            children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Row(
-                    children: [
-                      Text(
-                        yourCartDeliveryDate,
-                        style: regular.copyWith(
-                            fontSize: 12, color: productSubTextColor),
-                      ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      Text(
-                        textYourCartFree,
-                        style:
-                            medium.copyWith(color: primaryColor, fontSize: 12),
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 8.5,
-                  ),
-                  Row(
-                    children: [
-                      Text(
-                        textChangeDeliveryType,
-                        style: regular.copyWith(
-                            fontSize: 12, color: productSubTextColor),
-                      ),
-                      SizedBox(
-                        width: 7,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(color: qtyButtonColor, width: 2),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(5)),
+                        Text(
+                          textYourCartSaveForLater,
+                          style: regular.copyWith(
+                              color: yourCartSubTextColor, fontSize: 12),
                         ),
-                        height: 33,
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 14),
+                        SizedBox(
+                          width: 13,
+                        ),
+                        Text(
+                          textSeprator,
+                          style: thin.copyWith(
+                            fontSize: 14,
+                            color: yourCartSubTextColor,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 12,
+                        ),
+                        TextButton(
+                         onPressed: () {
+                           showMyDialog(
+                             screenContext: context,
+                             buttonName: "Remove",
+                             title: "Alert!",
+                             contentText: "Do you really want to clear the cart?",
+                             onConfirm: () {
+                               Provider.of<CartProvider>(context, listen: false)
+                                   .deleteCart( cartId: widget.cartId)
+                                   .then((value) {
+                                     Provider.of<CartProvider>(context,listen: false).fetchCart();
+                                 Navigator.pushNamed(context, CartScreenWeb.routeName);
+                               });
+                             },
+                           );
+                         },
+                         child: Text( textYourCartRemove,
+                           style:
+                           regular.copyWith(fontSize: 12, color: removeColor),)
+                        )
+                      ],
+                    )
+                  ],
+                )
+              ],
+            ),
+            Row(
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          yourCartDeliveryDate,
+                          style: regular.copyWith(
+                              fontSize: 12, color: productSubTextColor),
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Text(
+                          textYourCartFree,
+                          style:
+                              medium.copyWith(color: primaryColor, fontSize: 12),
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 8.5,
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          textChangeDeliveryType,
+                          style: regular.copyWith(
+                              fontSize: 12, color: productSubTextColor),
+                        ),
+                        SizedBox(
+                          width: 7,
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                            border: Border.all(color: qtyButtonColor, width: 2),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(5)),
+                          ),
+                          height: 33,
                           child: DropdownButtonHideUnderline(
-                            child: DropdownButton2(icon: Icon(Icons.keyboard_arrow_down,size: 18,color: productAvailabilityColor,),
+                            child: DropdownButton2(
                                 hint: Row(
                                   children: [
                                     SizedBox(
@@ -291,14 +276,14 @@ class _YourCartState extends State<YourCart> {
                                 }),
                           ),
                         ),
-                      ),
-                    ],
-                  )
-                ],
-              ),
-            ],
-          )
-        ]),
+                      ],
+                    )
+                  ],
+                ),
+              ],
+            )
+          ]),
+        ),
       ),
     );
   }
