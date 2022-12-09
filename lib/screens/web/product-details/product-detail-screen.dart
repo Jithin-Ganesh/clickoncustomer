@@ -39,13 +39,12 @@ class _ProductDetailScreenWebState extends State<ProductDetailScreenWeb> {
     // TODO: implement initState
     super.initState();
   }
+
   ProductDetailScreenWeb _args() {
     final args =
-    ModalRoute.of(context)!.settings.arguments as ProductDetailScreenWeb;
+        ModalRoute.of(context)!.settings.arguments as ProductDetailScreenWeb;
     return args;
   }
-
-
 
   Future<ProductDetailModel?> _future() async {
     return await Provider.of<ProductProvider>(context, listen: false)
@@ -55,16 +54,16 @@ class _ProductDetailScreenWebState extends State<ProductDetailScreenWeb> {
   @override
   Widget build(BuildContext context) {
     return Responsive(
-      tablet:  const Center(
+      tablet: const Center(
         child: ImgProvider(
-          url:  "assets/images/clickOn-logo.png",
+          url: "assets/images/clickOn-logo.png",
           height: 100,
           width: 200,
         ),
       ),
       mobile: const Center(
         child: ImgProvider(
-          url:  "assets/images/clickOn-logo.png",
+          url: "assets/images/clickOn-logo.png",
           height: 100,
           width: 200,
         ),
@@ -87,7 +86,9 @@ class _ProductDetailScreenWebState extends State<ProductDetailScreenWeb> {
               if (snapshot.hasData) {
                 log('received args product id ${_args().productId}');
                 final productDetails = snapshot.data as ProductDetailModel;
-                return ProductDetailComponent(product: productDetails,);
+                return ProductDetailComponent(
+                  product: productDetails,
+                );
               }
             }
             return Text(
@@ -95,16 +96,16 @@ class _ProductDetailScreenWebState extends State<ProductDetailScreenWeb> {
             );
           },
         ),
-        ),
-      );
-
+      ),
+    );
   }
 }
 
 class ProductDetailComponent extends StatefulWidget {
   final ProductDetailModel product;
   const ProductDetailComponent({
-    Key? key, required this.product,
+    Key? key,
+    required this.product,
   }) : super(key: key);
 
   @override
@@ -118,11 +119,19 @@ class _ProductDetailComponentState extends State<ProductDetailComponent> {
       child: Column(
         children: [
           ProductDetailTitle(productId: widget.product.product?.id),
-          const SizedBox(height: 80,),
+          const SizedBox(
+            height: 80,
+          ),
           Row(
-            children:  [
-              Flexible(flex: 1, child: ImageDetailsWeb(productModel: widget.product.product,)),
-              SizedBox(width: 80,),
+            children: [
+              Flexible(
+                  flex: 1,
+                  child: ImageDetailsWeb(
+                    productModel: widget.product.product,
+                  )),
+              SizedBox(
+                width: 80,
+              ),
               Flexible(flex: 1, child: ProductDetails())
             ],
           ),
@@ -131,22 +140,30 @@ class _ProductDetailComponentState extends State<ProductDetailComponent> {
           ),
           const BuyTogether(),
           Specifications(specs: specs),
-          const SizedBox(height: 54,),
+          const SizedBox(
+            height: 54,
+          ),
           const RatingsAndReviews(),
-          const SizedBox(height: 54,),
+          const SizedBox(
+            height: 54,
+          ),
           const QuestionsAndAnswers(),
-          const SizedBox(height: 54,),
+          const SizedBox(
+            height: 81,
+          ),
           Container(
             color: bgColor.withOpacity(0.3),
             child: Column(
               children: [
-                const SizedBox(height: 60,),
+                const SizedBox(
+                  height: 60,
+                ),
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 160.0),
-                  child: CustomTitleBarViewAll(title:   'Similar Products'),
+                  child: CustomTitleBarViewAll(title: 'Similar Products'),
                 ),
                 const SizedBox(
-                  height: 12,
+                  height: 31,
                 ),
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 160.0),
@@ -160,8 +177,17 @@ class _ProductDetailComponentState extends State<ProductDetailComponent> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('Recently Viewed Products',style: medium.copyWith(color: Colors.black,fontSize: 28),textAlign: TextAlign.left,),
-                      Text('View/Edit Browsing History',style: medium.copyWith(color: groupOrdersTitleTextColor),)
+                      Text(
+                        'Recently Viewed Products',
+                        style:
+                            medium.copyWith(color: Colors.black, fontSize: 28),
+                        textAlign: TextAlign.left,
+                      ),
+                      Text(
+                        'View/Edit Browsing History',
+                        style:
+                            medium.copyWith(color: groupOrdersTitleTextColor),
+                      )
                     ],
                   ),
                 ),

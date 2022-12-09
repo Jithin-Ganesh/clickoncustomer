@@ -74,14 +74,14 @@ class _YourCartState extends State<YourCart> {
                         fontSize: 14, color: productSubTextColor),
                   ),    SizedBox(height: 6,),
                   Row(children: [
-                    Text(textRupees),
+                    Text(textRupees,style: regular.copyWith(fontSize: 16,color: mainTitleColor),),
                     const SizedBox(
                       width: 8.85,
                     ),
                     Text(
                       widget.product?.amount.toString() ?? '',
                       style: medium.copyWith(
-                          color: priceOffersSubtextColor, fontSize: 16),
+                          color: mainTitleColor, fontSize: 16),
                     ),
                     const SizedBox(
                       width: 18,
@@ -98,8 +98,8 @@ class _YourCartState extends State<YourCart> {
                         child: Text(
                           discount,
                           textAlign: TextAlign.center,
-                          style: regular.copyWith(
-                              fontSize: 12, color: defaultTextColor),
+                          style: semiBold.copyWith(
+                              fontSize: 12, color: Colors.white),
                         ),
                       ),
                     ),
@@ -109,7 +109,7 @@ class _YourCartState extends State<YourCart> {
                     Text(
                       widget.product?.offer.toString() ?? '',
                       style: medium.copyWith(
-                          fontSize: 12, color: priceOffersSubtextColor),
+                          fontSize: 12, color: mainTitleColor),
                     )
                   ]),
                   SizedBox(
@@ -123,44 +123,50 @@ class _YourCartState extends State<YourCart> {
                           borderRadius:
                               const BorderRadius.all(Radius.circular(5)),
                         ),
-                        height: 28,
-                        child: DropdownButtonHideUnderline(
-                          child: DropdownButton2(
-                              hint: Row(
-                                children: [
-                                  SizedBox(
-                                    width: 12,
-                                  ),
-                                  Text(widget.product?.quantity.toString() ?? '',
-                                      style: regular.copyWith(
-                                          fontSize: 12,
-                                          color: productSubTextColor)),
-                                  const SizedBox(
-                                    width: 3,
-                                  ),
-                                  Text(
-                                    count,
-                                    style: regular.copyWith(
-                                        fontSize: 14,
-                                        color: productSubTextColor),
-                                  )
-                                ],
-                              ),
-                              items: items
-                                  .map((item) => DropdownMenuItem<String>(
-                                        value: item,
-                                        child: Text(
-                                          item,
-                                          style: const TextStyle(
+                        height: 33,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 11),
+                          child: DropdownButtonHideUnderline(
+                            child: DropdownButton2(icon: Icon(Icons.keyboard_arrow_down_rounded,color: productAvailabilityColor,size: 18,),
+                                hint: Padding(
+                                  padding: const EdgeInsets.only(top: 4,bottom: 6,),
+                                  child: Row(
+                                    children: [
+                                      SizedBox(
+                                        width: 12,
+                                      ),
+                                      Text("Qty:",
+                                          style: regular.copyWith(
+                                              fontSize: 12,
+                                              color: productSubTextColor)),
+                                      const SizedBox(
+                                        width: 3,
+                                      ),
+                                      Text(
+                                        widget.product?.quantity.toString() ?? '',
+                                        style: regular.copyWith(
                                             fontSize: 14,
+                                            color: productSubTextColor),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                items: items
+                                    .map((item) => DropdownMenuItem<String>(
+                                          value: item,
+                                          child: Text(
+                                            item,
+                                            style: const TextStyle(
+                                              fontSize: 14,
+                                            ),
                                           ),
-                                        ),
-                                      ))
-                                  .toList(),
-                              value: selectedValue,
-                              onChanged: (value) {
-                                selectedValue = value as String;
-                              }),
+                                        ))
+                                    .toList(),
+                                value: selectedValue,
+                                onChanged: (value) {
+                                  selectedValue = value as String;
+                                }),
+                          ),
                         ),
                       ),
                       SizedBox(
@@ -253,34 +259,37 @@ class _YourCartState extends State<YourCart> {
                               const BorderRadius.all(Radius.circular(5)),
                         ),
                         height: 33,
-                        child: DropdownButtonHideUnderline(
-                          child: DropdownButton2(
-                              hint: Row(
-                                children: [
-                                  SizedBox(
-                                    width: 15,
-                                  ),
-                                  Text(textYourCartCOD,
-                                      style: regular.copyWith(
-                                          fontSize: 14,
-                                          color: reviewSubTitleColor)),
-                                ],
-                              ),
-                              items: items
-                                  .map((item) => DropdownMenuItem<String>(
-                                        value: item,
-                                        child: Text(
-                                          item,
-                                          style: const TextStyle(
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 14),
+                          child: DropdownButtonHideUnderline(
+                            child: DropdownButton2(icon: Icon(Icons.keyboard_arrow_down,size: 18,color: productAvailabilityColor,),
+                                hint: Row(
+                                  children: [
+                                    SizedBox(
+                                      width: 15,
+                                    ),
+                                    Text(textYourCartCOD,
+                                        style: regular.copyWith(
                                             fontSize: 14,
+                                            color: reviewSubTitleColor)),
+                                  ],
+                                ),
+                                items: items
+                                    .map((item) => DropdownMenuItem<String>(
+                                          value: item,
+                                          child: Text(
+                                            item,
+                                            style: const TextStyle(
+                                              fontSize: 14,
+                                            ),
                                           ),
-                                        ),
-                                      ))
-                                  .toList(),
-                              value: selectedValue,
-                              onChanged: (value) {
-                                selectedValue = value as String;
-                              }),
+                                        ))
+                                    .toList(),
+                                value: selectedValue,
+                                onChanged: (value) {
+                                  selectedValue = value as String;
+                                }),
+                          ),
                         ),
                       ),
                     ],

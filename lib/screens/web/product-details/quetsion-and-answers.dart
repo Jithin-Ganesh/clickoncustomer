@@ -23,7 +23,7 @@ class CustomQuestions extends StatelessWidget {
     return Column(
       children: [
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
@@ -48,7 +48,7 @@ class CustomQuestions extends StatelessWidget {
                 ),
               ],
             ),
-            Row(
+            Row(crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   like,
@@ -73,7 +73,7 @@ class CustomQuestions extends StatelessWidget {
                 ),  SizedBox(width: 23,),
                 Icon(
                   Icons.keyboard_arrow_down_outlined,
-                  size: 18,
+                  size: 18,color:productAvailabilityColor ,
                 ),
               ],
             )
@@ -87,18 +87,18 @@ class CustomQuestions extends StatelessWidget {
               children: [
                 Text(
                   'A',
-                  style: regular.copyWith(color: mainTitleColor, fontSize: 16),
+                  style: regular.copyWith(color: mainTitleColor, fontSize: 14),
                 ),  SizedBox(width: 20,),
                 Text(
                   answer,
-                  style: regular.copyWith(color: mainTitleColor, fontSize: 16),
+                  style: regular.copyWith(color: mainTitleColor, fontSize: 14),
                 ),
               ],
             ),
             Text(
               ' On 17 March, 2022',
               style:
-                  thin.copyWith(color: groupOrdersTitleTextColor, fontSize: 14),
+                  thin.copyWith(color: discountPriceColor, fontSize: 14),
             ),
           ],
         )
@@ -133,14 +133,16 @@ class QuestionsAndAnswers extends StatelessWidget {
                   SizedBox(
                     width: 25,
                   ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                      primary: productDetailsScreenBoxColor,
-                    ),
-                    onPressed: () {},
-                    child: Text(
-                      'Post Your Question',
-                      style: medium.copyWith(color: mainTitleColor, fontSize: 16),
+                  SizedBox(width: 217,height: 40,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                        primary: productDetailsScreenBoxColor,
+                      ),
+                      onPressed: () {},
+                      child: Text(
+                        'Post Your Question',
+                        style: medium.copyWith(color: mainTitleColor, fontSize: 16),
+                      ),
                     ),
                   ),
                 ],

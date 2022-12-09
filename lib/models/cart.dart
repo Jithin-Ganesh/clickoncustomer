@@ -5,7 +5,7 @@ import 'package:clickoncustomer/models/cart-products.dart';
 class Cart {
   int? id;
   int? itemTotal;
-  int? offer;
+  double? offer;
   int? tax;
   int? netTotal;
   int? userId;

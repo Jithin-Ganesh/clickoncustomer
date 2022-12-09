@@ -1,12 +1,12 @@
 import 'package:clickoncustomer/utils/constants/images.dart';
 import 'package:clickoncustomer/utils/constants/strings.dart';
+import 'package:clickoncustomer/utils/img-provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import '../utils/constants/color.dart';
 import '../utils/constants/fontstyles.dart';
-
 
 class ReviewItem extends StatelessWidget {
   final String image;
@@ -26,7 +26,7 @@ class ReviewItem extends StatelessWidget {
         ),
         Positioned(
           //h
-          bottom: 40,
+          bottom: 16,left: 16,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -38,12 +38,16 @@ class ReviewItem extends StatelessWidget {
                 width: 30,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(50),
-                  color: primaryColor,
+                  color: userProfileBgColor,
                 ),
-                child: Icon(
-                  Icons.person_outline_rounded,
-                  size: 15,
-                  color: canvasColor,
+                child: Padding(
+                  padding: const EdgeInsets.all(7.0),
+                  child: ImgProvider(
+                    url: "assets/images/dummy/person.png",
+                    width: 15,
+                    height: 15,
+                    color: userProfileBgColor,
+                  ),
                 ),
               ),
               const SizedBox(
@@ -54,16 +58,16 @@ class ReviewItem extends StatelessWidget {
                 children: [
                   Text(
                     textCustomerNAme,
-                    style: regular.copyWith(
-                        fontSize: 14, color: Colors.white),
+                    style: regular.copyWith(fontSize: 14, color: Colors.white),
                   ),
                   RatingBar.builder(
                     direction: Axis.horizontal,
+                    unratedColor: Colors.white,
                     allowHalfRating: true,
                     itemSize: 12,
-                    itemCount: 5,initialRating: 5,
-                    itemPadding:
-                    const EdgeInsets.symmetric(horizontal: 1),
+                    itemCount: 5,
+                    initialRating: 5,
+                    itemPadding: const EdgeInsets.symmetric(horizontal: 1),
                     itemBuilder: (context, _) => const Icon(
                       Icons.star,
                       color: ratingColor,

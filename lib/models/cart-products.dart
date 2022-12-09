@@ -7,7 +7,7 @@ class CartProduct {
   int? quantity;
   String? description;
   int? amount;
-  int? offer;
+  double? offer;
   String? productCode;
   String? hSN;
   int? cGST;
