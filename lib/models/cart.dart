@@ -1,6 +1,4 @@
-
-
-import 'package:clickoncustomer/models/cart-products.dart';
+import 'cart-products.dart';
 
 class Cart {
   int? id;
@@ -8,6 +6,7 @@ class Cart {
   int? offer;
   int? tax;
   int? netTotal;
+  Null? deliveryCharges;
   int? userId;
   String? createdAt;
   String? updatedAt;
@@ -19,6 +18,7 @@ class Cart {
         this.offer,
         this.tax,
         this.netTotal,
+        this.deliveryCharges,
         this.userId,
         this.createdAt,
         this.updatedAt,
@@ -30,6 +30,7 @@ class Cart {
     offer = json['offer'];
     tax = json['tax'];
     netTotal = json['netTotal'];
+    deliveryCharges = json['deliveryCharges'];
     userId = json['userId'];
     createdAt = json['createdAt'];
     updatedAt = json['updatedAt'];
@@ -45,6 +46,4 @@ class Cart {
     }
     return data;
   }
-
-
 }

@@ -7,7 +7,7 @@ class CartProduct {
   int? quantity;
   String? description;
   int? amount;
-  int? offer;
+  double? offer;
   String? productCode;
   String? hSN;
   int? cGST;
@@ -60,7 +60,6 @@ class CartProduct {
     updatedAt = json['updatedAt'];
   }
 
-
   static List<CartProduct> convertToList(List<dynamic> list) {
     List<CartProduct> data = [];
     for (var element in list) {
@@ -68,6 +67,5 @@ class CartProduct {
     }
     return data;
   }
-
 }
 
