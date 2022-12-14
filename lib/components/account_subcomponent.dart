@@ -37,8 +37,8 @@ class AccountComponent extends StatelessWidget {
           children: [
             ImgProvider(
               url: icon,
-              width: 41,
-              height: 40,
+              width: 35,
+              height: 36,
               boxFit: BoxFit.fill,
               color: isSelected ? primaryColor : Colors.white,
             ),
