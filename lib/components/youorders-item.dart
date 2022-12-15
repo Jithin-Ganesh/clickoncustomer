@@ -13,18 +13,16 @@ import '../utils/constants/fontstyles.dart';
 class YourOrder extends StatelessWidget {
   YourOrder(
       {Key? key,
-      this.selectedValue,
-      this.order,
-      required this.description,
-      required this.title,
-      required this.firstIcon,
-      required this.isArriving,
-      required this.buttonStatus,
-      required this.buttonText1,
-      required this.buttonText2,
-      required this.itemImage,
-      required this.secondIcon,
-      this.onPressed})
+        this.selectedValue,
+        this.order,
+        required this.firstIcon,
+        required this.isArriving,
+        required this.buttonStatus,
+        required this.buttonText1,
+        required this.buttonText2,
+        required this.itemImage,
+        required this.secondIcon,
+        this.onPressed})
       : super(key: key);
 
   final List<String> items = [
@@ -40,8 +38,6 @@ class YourOrder extends StatelessWidget {
   final String buttonText2;
   final String firstIcon;
   final String secondIcon;
-  final String title;
-  final String description;
 
   final String itemImage;
 
@@ -66,7 +62,7 @@ class YourOrder extends StatelessWidget {
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start, //ndsfs
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -82,7 +78,7 @@ class YourOrder extends StatelessWidget {
                             width: 7,
                           ),
                           Text(
-                            title,
+                            'Ordered on ${order?.date}',
                             style: medium.copyWith(
                                 fontSize: 18,
                                 color: isArriving
@@ -106,7 +102,7 @@ class YourOrder extends StatelessWidget {
                             width: 10,
                           ),
                           Text(
-                            description,
+                            'Delivered on ${order?.date}',
                             style: regular.copyWith(
                                 fontSize: 14,
                                 color: isArriving
@@ -121,7 +117,7 @@ class YourOrder extends StatelessWidget {
                       Row(
                         children: [
                           ImgProvider(
-                            url: itemImage,
+                            url: order?.thumbnail ?? '',
                             width: 90,
                             height: 71,
                           ),
@@ -132,8 +128,8 @@ class YourOrder extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               SizedBox(
-                                width:
-                                    MediaQuery.of(context).size.width * 0.304,
+                                // width:
+                                //     MediaQuery.of(context).size.width * 0.304,
                                 child: Text(
                                   order?.productName ?? "",
                                   maxLines: 2,
@@ -166,8 +162,9 @@ class YourOrder extends StatelessWidget {
                       ),
                     ],
                   ),
+                  SizedBox(width: 8,),
                   Text(
-                    textOrder,
+                    'Order : ${order?.referenceNumber}',
                     style: regular.copyWith(
                         fontSize: 14, color: priceDetailsSubTextColor),
                   ),
@@ -208,6 +205,7 @@ class YourOrder extends StatelessWidget {
                     height: 18,
                     border: Border.all(color: vectorColor),
                   ),
+                  Spacer(),
                   Column(
                     children: [
                       Container(
@@ -219,9 +217,9 @@ class YourOrder extends StatelessWidget {
                           onPressed: () {
                             Navigator.of(context)
                                 .pushNamed(OrderDetailsScreenWeb.routeName,
-                                    arguments: OrderDetailsScreenWeb(
-                                      id: order?.id ?? 0,
-                                    ));
+                                arguments: OrderDetailsScreenWeb(
+                                  id: order?.id ?? 0,
+                                ));
                           },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,

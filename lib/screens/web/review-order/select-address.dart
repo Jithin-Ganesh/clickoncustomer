@@ -47,8 +47,8 @@ class AddressListAlertBox extends StatelessWidget {
                         );
                       });
                 },
-                height: 50,
-                width: MediaQuery.of(context).size.width * 0.1,
+                height: 30,
+                width: MediaQuery.of(context).size.width * 0.07,
               )
             ],
           ),

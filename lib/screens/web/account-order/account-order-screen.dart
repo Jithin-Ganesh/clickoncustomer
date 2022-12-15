@@ -223,15 +223,12 @@ class _OrderHistoryItemsState extends State<OrderHistoryItems> {
                 if (snapshot.hasData) {
                   final orderList = snapshot.data as List<OrderReviewModel>;
 
-                 return ListView.builder(
+                  return ListView.builder(
                     physics: NeverScrollableScrollPhysics(),
                     itemCount: orderList.length,
                     itemBuilder: (context, index) {
-                      final order = orderList[index];
                       return YourOrder(
-                          order: order,
-                          description: 'Return will closed on 31-Aug-2022',
-                          title: 'Delivered on 01-Sep-2022',
+                          order: orderList[index],
                           firstIcon: 'assets/images/icon-return.png',
                           isArriving: false,
                           buttonStatus: false,
