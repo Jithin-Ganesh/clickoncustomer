@@ -45,8 +45,28 @@ class OrderReviewModel {
 
   String get date {
     try {
-      if (updatedAt!.isEmpty) throw Error();
-      final date = DateTime.parse(updatedAt!).toLocal();
+      if (createdAt!.isEmpty) throw Error();
+      final date = DateTime.parse(createdAt!).toLocal();
+
+      final day = DF.formatDate(date, [DF.dd]);
+      final month = DF.formatDate(date, [DF.M]);
+
+      final year = DF.formatDate(date, [DF.yyyy]);
+      final hour = DF.formatDate(date, [DF.hh]);
+      final min = DF.formatDate(date, [DF.mm]);
+      final amPm = DF.formatDate(date, [DF.am]);
+
+      // log("date = $day/$month/$year");
+      return "$month $day, $year - $hour:$min $amPm"; // 06/DEC/2021
+    } catch (err) {
+      return "";
+    }
+  }
+
+  String get expectedDate {
+    try {
+      if (expectedDeliveryDate!.isEmpty) throw Error();
+      final date = DateTime.parse(expectedDeliveryDate!).toLocal();
 
       final day = DF.formatDate(date, [DF.dd]);
       final month = DF.formatDate(date, [DF.M]);

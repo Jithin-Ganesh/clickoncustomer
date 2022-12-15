@@ -102,7 +102,7 @@ class YourOrder extends StatelessWidget {
                             width: 10,
                           ),
                           Text(
-                            'Delivered on ${order?.date}',
+                            'Expected Delivery on ${order?.expectedDate}',
                             style: regular.copyWith(
                                 fontSize: 14,
                                 color: isArriving
