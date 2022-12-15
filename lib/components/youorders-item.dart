@@ -66,7 +66,7 @@ class YourOrder extends StatelessWidget {
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start, //n
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
