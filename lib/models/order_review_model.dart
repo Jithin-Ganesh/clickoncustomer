@@ -1,29 +1,47 @@
 import 'package:date_format/date_format.dart' as DF;
 class OrderReviewModel {
-  String? price;
-  int? status;
-  String? tax;
-  String? netTotal;
-  String? deliveryCharge;
   int? id;
   String? referenceNumber;
-  Null? cancellationReason;
   String? productName;
   String? thumbnail;
+  String? price;
+  int? status;
   int? quantity;
   String? productCode;
   int? paymentMode;
+  String? tax;
   int? offer;
-  Null? expectedDeliveryDate;
-  Null? trackingLink;
-  Null? productId;
-  Null? courierAgency;
+  String? netTotal;
+  int? deliveryCharge;
+  String? expectedDeliveryDate;
+  String? trackingLink;
+  String? courierAgency;
   int? userId;
   int? businessId;
-  Null? groupOrderId;
   String? createdAt;
   String? updatedAt;
 
+  OrderReviewModel(
+      {this.id,
+        this.referenceNumber,
+        this.productName,
+        this.thumbnail,
+        this.price,
+        this.status,
+        this.quantity,
+        this.productCode,
+        this.paymentMode,
+        this.tax,
+        this.offer,
+        this.netTotal,
+        this.deliveryCharge,
+        this.expectedDeliveryDate,
+        this.trackingLink,
+        this.courierAgency,
+        this.userId,
+        this.businessId,
+        this.createdAt,
+        this.updatedAt});
 
   String get date {
     try {
@@ -45,53 +63,25 @@ class OrderReviewModel {
     }
   }
 
-  OrderReviewModel(
-      {this.price,
-        this.status,
-        this.tax,
-        this.netTotal,
-        this.deliveryCharge,
-        this.id,
-        this.referenceNumber,
-        this.cancellationReason,
-        this.productName,
-        this.thumbnail,
-        this.quantity,
-        this.productCode,
-        this.paymentMode,
-        this.offer,
-        this.expectedDeliveryDate,
-        this.trackingLink,
-        this.productId,
-        this.courierAgency,
-        this.userId,
-        this.businessId,
-        this.groupOrderId,
-        this.createdAt,
-        this.updatedAt});
-
   OrderReviewModel.fromJson(Map<String, dynamic> json) {
-    price = json['price'];
-    status = json['status'];
-    tax = json['tax'];
-    netTotal = json['netTotal'];
-    deliveryCharge = json['deliveryCharge'];
     id = json['id'];
     referenceNumber = json['referenceNumber'];
-    cancellationReason = json['cancellationReason'];
     productName = json['productName'];
     thumbnail = json['thumbnail'];
+    price = json['price'];
+    status = json['status'];
     quantity = json['quantity'];
     productCode = json['product_code'];
     paymentMode = json['paymentMode'];
+    tax = json['tax'];
     offer = json['offer'];
+    netTotal = json['netTotal'];
+    deliveryCharge = json['deliveryCharge'];
     expectedDeliveryDate = json['expected_delivery_date'];
     trackingLink = json['tracking_link'];
-    productId = json['productId'];
     courierAgency = json['courier_agency'];
     userId = json['userId'];
     businessId = json['businessId'];
-    groupOrderId = json['groupOrderId'];
     createdAt = json['createdAt'];
     updatedAt = json['updatedAt'];
   }

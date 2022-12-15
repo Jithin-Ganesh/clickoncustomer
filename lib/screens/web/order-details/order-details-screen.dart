@@ -66,7 +66,7 @@ class _OrderDetailsScreenWebState extends State<OrderDetailsScreenWeb> {
                     final order = snapshot.data as OrderReviewModel;
                     return OrderDetailBody(
                       order: order,
-                      productId: order.productId,
+                      productId: order.id,
                     );
                   }
                 }
