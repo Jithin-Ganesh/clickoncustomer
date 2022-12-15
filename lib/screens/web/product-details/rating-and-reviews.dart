@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
+import '../../../components/elevated-buton.dart';
 import '../../../utils/constants/color.dart';
 import '../../../utils/constants/fontstyles.dart';
 
@@ -55,16 +56,13 @@ class Reviews extends StatelessWidget {
                   SizedBox(
                     width: 25,
                   ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: productDetailsScreenBoxColor,
-                    ),
-                    onPressed: () {},
-                    child: Text(
-                      'Review Product',
-                      style:
-                          medium.copyWith(color: mainTitleColor, fontSize: 16),
-                    ),
+                  ButtonElevated(
+                    width: 150,
+                    height: 50,
+                    color: productDetailsScreenBoxColor,
+                    onPressed: () {},textStyle: medium.copyWith(color: mainTitleColor, fontSize: 16),
+                    buttonTitle:
+                    'Review Product',
                   ),
                 ],
               )
