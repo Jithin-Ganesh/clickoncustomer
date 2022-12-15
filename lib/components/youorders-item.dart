@@ -90,6 +90,17 @@ class YourOrder extends StatelessWidget {
                       SizedBox(
                         height: 8,
                       ),
+                      Text(
+                        order?.status == 1 ?  'Ordered Pending' : order?.status == 2 ? 'Ordered Confirmed' : order?.status == 4 ? 'Ordered Dispatched' : 'Ordered Cancelled',
+                        style: medium.copyWith(
+                            fontSize: 18,
+                            color:order?.status == 1
+                                ? Colors.orangeAccent
+                                : checkedItemsColor),
+                      ),
+                      SizedBox(
+                        height: 8,
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
