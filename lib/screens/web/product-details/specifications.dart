@@ -21,7 +21,7 @@ class Specifications extends StatelessWidget {
           ),
           Text(
             'Specifications',
-            style: medium.copyWith(color: mainTitleColor, fontSize: 20),
+            style: medium.copyWith(color: mainTitleColor, fontSize: 24),
           ),
           SizedBox(
             height: 28,
@@ -35,7 +35,7 @@ class Specifications extends StatelessWidget {
             child: Center(
               child: Padding(
                 padding: const EdgeInsets.only(
-                    left: 40.0, top: 29, right: 40, bottom: 19),
+                    left: 36.0, top: 29, right: 42, bottom: 19),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -180,7 +180,7 @@ class Specifications extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                width: 40,
+                width: 30,
               ),
               Flexible(
                 flex: 1,

@@ -14,7 +14,8 @@ class AccountComponent extends StatelessWidget {
       required this.title,
       required this.description,
       required this.icon,
-      required this.isSelected, this.onPressed})
+      required this.isSelected,
+      this.onPressed})
       : super(key: key);
   final String icon;
   final String title;
@@ -35,10 +36,12 @@ class AccountComponent extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ImgProvider(
-                url: icon,
-                width: 41,
-                height: 40,boxFit: BoxFit.fill,
-               ),
+              url: icon,
+              width: 35,
+              height: 36,
+              boxFit: BoxFit.fill,
+              color: isSelected ? primaryColor : Colors.white,
+            ),
             SizedBox(
               width: 16,
             ),
@@ -54,7 +57,9 @@ class AccountComponent extends StatelessWidget {
                           ? Colors.white
                           : productDetailsScreenTextColor),
                 ),
-                SizedBox(height: 6,),
+                SizedBox(
+                  height: 6,
+                ),
                 Text(
                   description,
                   style: regular.copyWith(

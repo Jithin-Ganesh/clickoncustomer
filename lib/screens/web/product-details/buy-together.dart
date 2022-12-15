@@ -45,16 +45,19 @@ class BuyTogether extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: const [
                         BuyTogetherItem(
                             image: "assets/images/dummy/image-baby-detail.png",
                             description:
                                 'Pampers Pure Protection Baby Diapers, Medium Size... ',
                             price: "809.00"),
-                        Icon(
-                          Icons.add,
-                          size: 30,
+                        Padding(
+                          padding: EdgeInsets.only(top: 63),
+                          child: Icon(
+                            Icons.add,
+                            size: 20,
+                          ),
                         ),
                         BuyTogetherItem(
                             image: "assets/images/dummy/image-baby-detail.png",

@@ -41,7 +41,7 @@ class _ReviewOrderScreenWebState extends State<ReviewOrderScreenWeb> {
     // TODO: implement initState
     Provider.of<UserProvider>(context,listen: false).fetchAddressList(userID:widget.user?.id );
 
-    Provider.of<UserProvider>(context,listen: false).fetchUserProfile(id: null );
+    Provider.of<UserProvider>(context,listen: false).fetchUserProfile(id: widget.user?.id );
     super.initState();
   }
 

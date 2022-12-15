@@ -1,5 +1,6 @@
 import 'package:clickoncustomer/components/reviewItems.dart';
 import 'package:clickoncustomer/utils/constants/strings.dart';
+import 'package:clickoncustomer/utils/img-provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -7,7 +8,6 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 
 import '../../../utils/constants/color.dart';
 import '../../../utils/constants/fontstyles.dart';
-
 
 class RatingsAndReviews extends StatelessWidget {
   const RatingsAndReviews({Key? key}) : super(key: key);
@@ -57,7 +57,7 @@ class Reviews extends StatelessWidget {
                   ),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      primary: productDetailsScreenBoxColor,
+                      backgroundColor: productDetailsScreenBoxColor,
                     ),
                     onPressed: () {},
                     child: Text(
@@ -76,11 +76,14 @@ class Reviews extends StatelessWidget {
           Container(
             height: 260,
             width: MediaQuery.of(context).size.width * 0.6,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) =>
-                  ReviewItem(image: 'assets/images/dummy/image-review.png'),
-              itemCount: 3,
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) =>
+                    ReviewItem(image: 'assets/images/dummy/image-review.png'),
+                itemCount: 3,
+              ),
             ),
           ),
           SizedBox(
@@ -104,7 +107,10 @@ class Reviews extends StatelessWidget {
                     border: Border.all(color: circledLoveButtonColor)),
                 child: Padding(
                   padding: const EdgeInsets.only(
-                      top: 5, left: 14, bottom: 6,),
+                    top: 5,
+                    left: 14,
+                    bottom: 6,
+                  ),
                   child: Row(
                     children: [
                       Text(
@@ -116,7 +122,9 @@ class Reviews extends StatelessWidget {
                         width: 21,
                       ),
                       Icon(
-                        Icons.keyboard_arrow_down_sharp,size: 15,
+                        Icons.keyboard_arrow_down_sharp,
+                        size: 15,
+                        color: productAvailabilityColor,
                       )
                     ],
                   ),
@@ -175,18 +183,20 @@ class ReviewBox extends StatelessWidget {
                 Row(
                   children: [
                     Container(
-                      height: 37,
-                      width: 37,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        color: primaryColor,
-                      ),
-                      child: Icon(
-                        Icons.person_outline,
-                        size: 19,
-                        color: canvasColor,
-                      ),
-                    ),
+                        height: 37,
+                        width: 37,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                          color: userProfileBgColor,
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ImgProvider(color: userProfileBgColor,
+                            url: "assets/images/dummy/person.png",
+                            width: 19,
+                            height: 19,
+                          ),
+                        )),
                     SizedBox(
                       width: 12,
                     ),
@@ -214,7 +224,7 @@ class ReviewBox extends StatelessWidget {
                       width: 23,
                     ),
                     Icon(
-                      Icons.keyboard_arrow_down_outlined,
+                      Icons.keyboard_arrow_down_outlined,color:productAvailabilityColor ,
                       size: 15,
                     ),
                   ],
@@ -226,14 +236,14 @@ class ReviewBox extends StatelessWidget {
             ),
             Text(
               title,
-              style: medium.copyWith(color: mainTitleColor, fontSize: 16),
+              style: medium.copyWith(color: productDetailsScreenTotalColor, fontSize: 16),
             ),
             SizedBox(
               height: 3,
             ),
             Row(
               children: [
-                RatingBar.builder(
+                RatingBar.builder(unratedColor: Colors.white,
                   direction: Axis.horizontal,
                   allowHalfRating: true,
                   itemSize: 12,
@@ -305,7 +315,7 @@ class Ratings extends StatelessWidget {
       height: 510,
       width: MediaQuery.of(context).size.width * 0.193,
       decoration: BoxDecoration(
-        color: canvasColor,
+        color: Colors.white,
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
@@ -354,8 +364,7 @@ class Ratings extends StatelessWidget {
                   width: 24,
                 ),
                 Expanded(
-                  child:
-                  Text(
+                  child: Text(
                     '138 Ratings & 4 Reviews',
                     maxLines: 2,
                     style: regular.copyWith(
@@ -402,8 +411,11 @@ class RatingIndicator extends StatelessWidget {
         Text(
           stars,
           style:
-              regular.copyWith(color: productAvailabilityColor, fontSize: 14),
-        ),SizedBox(width: 11,),
+              regular.copyWith(color: productAvailabilityColor, fontSize: 16),
+        ),
+        SizedBox(
+          width: 11,
+        ),
         Icon(
           Icons.star,
           color: productAvailabilityColor,
@@ -417,12 +429,12 @@ class RatingIndicator extends StatelessWidget {
           percent: percent,
           linearStrokeCap: LinearStrokeCap.roundAll,
           barRadius: Radius.circular(10),
-          progressColor: ratingColor2,
+          progressColor: ratingColor,
         ),
         Text(
           value,
           style:
-              regular.copyWith(color: productAvailabilityColor, fontSize: 14),
+              regular.copyWith(color: productAvailabilityColor, fontSize: 16),
         )
       ],
     );

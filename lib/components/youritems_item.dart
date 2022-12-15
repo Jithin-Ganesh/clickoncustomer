@@ -28,7 +28,7 @@ class YourItems extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
-                  buyTogetherItemImage,
+                  "assets/images/placeholder.jpg",
                   height: 149,
                   width: 149,
                 ),
@@ -38,7 +38,7 @@ class YourItems extends StatelessWidget {
               height: 11.7,
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 15),
+              padding: const EdgeInsets.only(left: 15,right: 12),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
