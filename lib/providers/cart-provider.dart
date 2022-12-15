@@ -24,6 +24,8 @@ class CartProvider extends ChangeNotifier {
   // Add To Cart
   Future<void> addCart({required int? productId,}) async {
     await CartInterface.addCart(productId: productId, quantity: quantity);
+    fetchCart();
+    notifyListeners();
   }
 
 
@@ -32,6 +34,8 @@ class CartProvider extends ChangeNotifier {
     int? cartId,
   }) async {
     await CartInterface.deleteCart( cartId: cartId);
+    fetchCart();
+    notifyListeners();
   }
 
 

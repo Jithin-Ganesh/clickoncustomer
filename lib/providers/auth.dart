@@ -1,4 +1,6 @@
 import 'package:clickoncustomer/interfaces/auth-interface.dart';
+import 'package:clickoncustomer/utils/global-key.dart';
+import 'package:clickoncustomer/utils/toast-message.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../models/login.dart';
@@ -20,10 +22,9 @@ class AuthProvider with ChangeNotifier {
   }
 
   //Login
-  Future<bool> login({required String phone}) async {
+  Future<Login?> login({required String phone}) async {
      loginModel = await AuthInterface.login(phone: phone);
-
-    return loginModel != null;
+    return loginModel;
   }
 
   //Verify OTP

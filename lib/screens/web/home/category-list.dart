@@ -1,5 +1,6 @@
 import 'package:clickoncustomer/models/category.dart';
 import 'package:clickoncustomer/utils/constants/color.dart';
+import 'package:clickoncustomer/utils/img-provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -81,12 +82,12 @@ class HomeCategoryListItem extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: 30.0,
-            child: Image.asset(
-              category?.image ?? '',
+            backgroundColor: canvasColor,
+            child: ImgProvider(
+              url: category?.image ?? '',
               height: 60,
               width: 74,
             ),
-            backgroundColor: canvasColor,
           ),
           SizedBox(
             height: 5,
