@@ -77,6 +77,8 @@ class AddressCard extends StatelessWidget {
                       },
                       isButtonEnable: true,
                       buttonTitle: 'Deliver here',
+                color: Colors.greenAccent,
+                foregroundColor: Colors.greenAccent,
                       width: MediaQuery.of(context).size.width * 0.072,
                       height: 45,
                     )

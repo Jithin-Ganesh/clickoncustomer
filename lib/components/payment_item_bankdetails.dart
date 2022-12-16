@@ -116,7 +116,7 @@ class _PaymentBankState extends State<PaymentBank> {
             height: 14,
           ),
           widget.isPay
-              ? ButtonElevated(
+              ?  ButtonElevated(
                   onPressed: ()async{
                     await Provider.of<OrderProvider>(context,listen: false).addCod(products: widget.cart?.cartProducts);
                     placeOrder(

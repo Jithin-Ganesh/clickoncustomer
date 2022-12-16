@@ -21,6 +21,7 @@ import '../../../components/web/custom-titlebar-with-viewall.dart';
 import '../../../components/web/web-nav-bar.dart';
 import '../../../models/category.dart';
 
+import '../../../providers/cart-provider.dart';
 import '../../../providers/home_provider.dart';
 import 'best-selling.dart';
 import 'category-list.dart';
@@ -42,6 +43,7 @@ class _HomeScreenWebState extends State<HomeScreenWeb> {
   void initState() {
     Future.delayed(const Duration(seconds: 2), () {
       Provider.of<CategoryProvider>(context, listen: false).fetchCategory();
+      Provider.of<CartProvider>(context, listen: false).fetchCart();
     });
 
     // TODO: implement initState

@@ -1,9 +1,11 @@
+import 'package:clickoncustomer/providers/cart-provider.dart';
 import 'package:clickoncustomer/screens/web/cart/cart-screen.dart';
 import 'package:clickoncustomer/screens/web/home/home-screen-web.dart';
 import 'package:clickoncustomer/screens/web/your-account/your-account-web.dart';
 import 'package:clickoncustomer/utils/img-provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../utils/constants/color.dart';
 import '../../utils/constants/fontstyles.dart';
@@ -229,35 +231,49 @@ class WebNavBar2 extends StatelessWidget {
               SizedBox(
                 width: 36,
               ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    'assets/images/icon-heart-oulined.png',
-                    height: 20,
-                    width: 22,
-                  ),
-                  SizedBox(
-                    width: 25,
-                  ),
-                  IconButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, CartScreenWeb.routeName);
-                      },
-                      icon: ImgProvider(
-                         url: 'assets/images/icon-cart.png',
-                        height: 45,
-                        width: 48,
-                        boxFit: BoxFit.contain,
-                      )),
-                  SizedBox(
-                    width: 25,
-                  ),
-                  Text(
-                    'Cart',
-                    style: medium,
-                  ),
-                ],
+              Consumer<CartProvider>(builder: (context, value, child) => Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      'assets/images/icon-heart-oulined.png',
+                      height: 20,
+                      width: 22,
+                    ),
+                    SizedBox(
+                      width: 25,
+                    ),
+                    IconButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, CartScreenWeb.routeName);
+                        },
+                        icon: Stack(
+                          children: [
+                            ImgProvider(
+                               url: 'assets/images/icon-cart.png',
+                              height: 65,
+                              width: 68,
+                              boxFit: BoxFit.contain,
+                            ),
+                            Positioned(
+                              top: 0,
+                              right: 0,
+                              child: CircleAvatar(
+                                radius: 7,
+                                backgroundColor: primaryColor,
+                                child: Text('${value.cart?.cartProducts?.length}',style: medium.copyWith(color: Colors.white),),
+                              ),
+                            )
+                          ],
+                        )),
+                    SizedBox(
+                      width: 25,
+                    ),
+                    Text(
+                      'Cart',
+                      style: medium,
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

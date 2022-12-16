@@ -24,6 +24,7 @@ class CategoryProvider extends ChangeNotifier {
     fetchRecentlyAdded();
     fetchGroupOrders();
     fetchJustLaunched();
+    fetchTopPicks();
     notifyListeners();
     return categoriesList ?? [];
   }

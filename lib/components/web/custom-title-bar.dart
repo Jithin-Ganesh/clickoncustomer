@@ -1,3 +1,4 @@
+import 'package:clickoncustomer/screens/web/home/home-screen-web.dart';
 import 'package:clickoncustomer/utils/img-provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -27,12 +28,13 @@ class CustomTitleBar extends StatelessWidget {
         ),
         Spacer(),
         isShop
-            ? Text(
-                'Shop More',
-                style: medium.copyWith(
-                    color: productAvailabilityColor,
-                    decoration: TextDecoration.underline,
-                    fontSize: 16),
+            ? TextButton(onPressed: () { Navigator.pushNamed(context, HomeScreenWeb.routeName); },
+            child: Text( 'Shop More',
+          style: medium.copyWith(
+              color: productAvailabilityColor,
+              decoration: TextDecoration.underline,
+              fontSize: 16),),
+
               )
             : SizedBox(
                 width: 1,

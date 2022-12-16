@@ -115,7 +115,7 @@ class CartBody extends StatelessWidget {
                                 child: const CustomTitleBar(
                                     title: 'Your Cart', isShop: true),
                               ),
-                              SizedBox(height: 22,),
+                              SizedBox(height: 25,),
                               SizedBox(
                                 height: 650,
                                 child: ListView.builder(

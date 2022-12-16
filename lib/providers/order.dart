@@ -3,8 +3,6 @@ import 'package:flutter/cupertino.dart';
 
 import '../interfaces/order-interface.dart';
 import '../models/cart-products.dart';
-import '../models/message.dart';
-import '../models/order.dart';
 
 class OrderProvider extends ChangeNotifier {
   List<OrderReviewModel> orderList = [];

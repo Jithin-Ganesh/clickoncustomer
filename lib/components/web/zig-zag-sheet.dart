@@ -1,16 +1,13 @@
 import 'package:clickoncustomer/providers/cart-provider.dart';
 import 'package:clickoncustomer/utils/constants/decoration.dart';
 import 'package:dotted_line/dotted_line.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:provider/provider.dart';
 
 import '../../screens/web/review-order/review-order-screen.dart';
 import '../../utils/constants/color.dart';
 
 import '../../utils/constants/fontstyles.dart';
-import '../elevated-buton.dart';
 
 class ZigZagSheet extends StatefulWidget {
   final bool isCoupon;
@@ -49,7 +46,7 @@ class _ZigZagSheetState extends State<ZigZagSheet> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
                   Text(
@@ -58,26 +55,26 @@ class _ZigZagSheetState extends State<ZigZagSheet> {
                         medium.copyWith(color: mainTitleColor, fontSize: 20),
                     textAlign: TextAlign.left,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 19,
                   ),
                   DottedLine(lineLength: MediaQuery.of(context).size.width *  0.1604,dashColor: dividerColor4,),
-                  SizedBox(
+                  const SizedBox(
                     height: 22,
                   ),
                   PriceItem(title: 'Price (3 items)', value: value.cart?.itemTotal.toString() ?? ''),
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
-                  PriceItem(title: 'Shipping', value: 'Free'),
-                  SizedBox(
+                  const PriceItem(title: 'Shipping', value: 'Free'),
+                  const SizedBox(
                     height: 5,
                   ),
                   PriceItem(title: 'Discount', value: value.cart?.offer.toString() ?? ''),
-                  SizedBox(
+                  const SizedBox(
                     height: 52,
                   ),
-                  Divider(
+                  const Divider(
                     thickness: 1,
                     color: dividerColor4,
                   ),
@@ -85,24 +82,24 @@ class _ZigZagSheetState extends State<ZigZagSheet> {
                      visible: widget.isCoupon,
                      child: Column(
                       children: [
-                        SizedBox(height: 18,),
+                        const SizedBox(height: 18,),
                         Row(children: [
                           Text('I Have a ',  style: thin.copyWith(color: priceDetailsSubTextColor, fontSize: 14),),
                           Text('Coupon Code ',  style: regular.copyWith(color: couponCodeColor, fontSize: 14),),
-                          Icon(Icons.keyboard_arrow_up,size: 8,)
+                          const Icon(Icons.keyboard_arrow_up,size: 8,)
                         ],),
-                        SizedBox(height: 10,),
+                        const SizedBox(height: 10,),
                         Row(
                           children: [
-                            Container(
+                            SizedBox(
                               width: MediaQuery.of(context).size.width * 0.111,
                               height: 45,
                               child: TextField(
-                                decoration: new InputDecoration(
-                                  focusedBorder: OutlineInputBorder(
+                                decoration: InputDecoration(
+                                  focusedBorder: const OutlineInputBorder(
                                     borderSide: BorderSide(color:  borderColor2, width: 1.0),
                                   ),
-                                  enabledBorder: OutlineInputBorder(
+                                  enabledBorder: const OutlineInputBorder(
                                     borderSide: BorderSide(color: borderColor2, width: 1.0),
                                   ),
                                   hintText: 'Enter Code',
@@ -110,15 +107,15 @@ class _ZigZagSheetState extends State<ZigZagSheet> {
                                 ),
                               ),
                             ),
-                            SizedBox(width: 7,),
+                            const SizedBox(width: 7,),
                             SizedBox(
                                 height: 45,
                                 width: MediaQuery.of(context).size.width * 0.0463,
                                 child: OutlinedButton(onPressed: (){}, child: Text('Apply',style: medium.copyWith(color: hintColor),overflow: TextOverflow.ellipsis,maxLines: 1,)))
                           ],
                         ),
-                        SizedBox(height: 60,),
-                        Divider(
+                        const SizedBox(height: 60,),
+                        const Divider(
                           thickness: 1,
                           color: dividerColor4,
                         ),
@@ -133,7 +130,7 @@ class _ZigZagSheetState extends State<ZigZagSheet> {
                             color: mainTitleColor, fontSize: 16),
                         textAlign: TextAlign.left,
                       ),
-                     Spacer(),
+                     const Spacer(),
                       Text(
                         value.cart?.netTotal.toString() ?? '',maxLines: 1,overflow: TextOverflow.ellipsis,
                         style: regular.copyWith(
@@ -165,7 +162,7 @@ class PriceItem extends StatelessWidget {
           style: thin.copyWith(color: priceDetailsSubTextColor, fontSize: 14),
           textAlign: TextAlign.left,
         ),
-       Spacer(),
+       const Spacer(),
         Text(
           value,
           style: regular.copyWith(color: mainTitleColor, fontSize: 14),
