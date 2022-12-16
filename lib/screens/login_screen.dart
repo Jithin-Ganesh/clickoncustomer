@@ -1,3 +1,4 @@
+import 'package:clickoncustomer/components/sign-up.dart';
 import 'package:clickoncustomer/screens/otp-screen.dart';
 import 'package:clickoncustomer/utils/constants/color.dart';
 import 'package:clickoncustomer/utils/constants/fontstyles.dart';
@@ -13,6 +14,7 @@ import '../providers/auth.dart';
 import '../utils/toast-message.dart';
 
 class LoginScreen extends StatefulWidget {
+  static const routeName = "/login";
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
@@ -166,7 +168,6 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           SizedBox(
                             width: 350,
-                            height: 45,
                             child: TextFormField(
                               controller: phoneController,
                               decoration: InputDecoration(
@@ -269,7 +270,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             child: OutlinedButton(
                                 onPressed: () {
                                   Navigator.pushNamed(
-                                      context, OtpScreen.routeName);
+                                      context, SignUp.routeName);
                                 },
                                 child: Text(
                                   textCreateAccount,

@@ -13,16 +13,16 @@ import '../utils/constants/fontstyles.dart';
 class YourOrder extends StatelessWidget {
   YourOrder(
       {Key? key,
-        this.selectedValue,
-        this.order,
-        required this.firstIcon,
-        required this.isArriving,
-        required this.buttonStatus,
-        required this.buttonText1,
-        required this.buttonText2,
-        required this.itemImage,
-        required this.secondIcon,
-        this.onPressed})
+      this.selectedValue,
+      this.order,
+      required this.firstIcon,
+      required this.isArriving,
+      required this.buttonStatus,
+      required this.buttonText1,
+      required this.buttonText2,
+      required this.itemImage,
+      required this.secondIcon,
+      this.onPressed})
       : super(key: key);
 
   final List<String> items = [
@@ -91,10 +91,16 @@ class YourOrder extends StatelessWidget {
                         height: 8,
                       ),
                       Text(
-                        order?.status == 1 ?  'Ordered Pending' : order?.status == 2 ? 'Ordered Confirmed' : order?.status == 4 ? 'Ordered Dispatched' : 'Ordered Cancelled',
+                        order?.status == 1
+                            ? 'Ordered Pending'
+                            : order?.status == 2
+                                ? 'Ordered Confirmed'
+                                : order?.status == 4
+                                    ? 'Ordered Dispatched'
+                                    : 'Ordered Cancelled',
                         style: medium.copyWith(
                             fontSize: 18,
-                            color:order?.status == 1
+                            color: order?.status == 1
                                 ? Colors.orangeAccent
                                 : checkedItemsColor),
                       ),
@@ -173,7 +179,9 @@ class YourOrder extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(width: 8,),
+                  SizedBox(
+                    width: 8,
+                  ),
                   Text(
                     'Order : ${order?.referenceNumber}',
                     style: regular.copyWith(
@@ -228,9 +236,9 @@ class YourOrder extends StatelessWidget {
                           onPressed: () {
                             Navigator.of(context)
                                 .pushNamed(OrderDetailsScreenWeb.routeName,
-                                arguments: OrderDetailsScreenWeb(
-                                  id: order?.id ?? 0,
-                                ));
+                                    arguments: OrderDetailsScreenWeb(
+                                      id: order?.id ?? 0,
+                                    ));
                           },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
