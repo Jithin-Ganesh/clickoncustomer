@@ -13,7 +13,7 @@ class OrderReviewModel {
   String? tax;
   int? offer;
   String? netTotal;
-  String? deliveryCharge;
+  int? deliveryCharge;
   int? userId;
   int? businessId;
   String? createdAt;
