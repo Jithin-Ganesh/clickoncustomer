@@ -1,6 +1,7 @@
 import 'package:clickoncustomer/utils/constants/decoration.dart';
 import 'package:clickoncustomer/utils/img-provider.dart';
-import 'package:flutter/cupertino.dart';
+
+
 import 'package:flutter/material.dart';
 
 import '../../utils/constants/color.dart';import '../../utils/constants/fontstyles.dart';
@@ -19,7 +20,7 @@ class AccountTitleBar extends StatefulWidget {
 class _AccountTitleBarState extends State<AccountTitleBar> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 60,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -30,11 +31,11 @@ class _AccountTitleBarState extends State<AccountTitleBar> {
               Row(
                 children: [
                   Text('Your Account ›',style: accountPathTextStyle,),
-                  SizedBox(width: 12,),
+                  const SizedBox(width: 12,),
                   Text(widget.subTitle ?? '',style: accountPathTextStyle,),
                 ],
               ),
-              SizedBox(height: 7,),
+              const SizedBox(height: 7,),
               Text(
                 widget.title,
                 style: accountTitleStyle,
@@ -64,7 +65,7 @@ class _AccountTitleBarState extends State<AccountTitleBar> {
                         ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20),
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             width: 0,
                             style: BorderStyle.none,
                           ),
@@ -77,13 +78,13 @@ class _AccountTitleBarState extends State<AccountTitleBar> {
                   ),
                 ),
               ),
-              SizedBox(width: 8,),
+              const SizedBox(width: 8,),
               Container(
                 height: 50,
                 width: 50,
                 decoration: containerDecoration,
-                child: Padding(
-                  padding: const EdgeInsets.all(12.0),
+                child: const Padding(
+                  padding: EdgeInsets.all(12.0),
                   child: ImgProvider(
                     url: 'assets/images/icon-filter.png',
                     height: 20,
@@ -92,7 +93,8 @@ class _AccountTitleBarState extends State<AccountTitleBar> {
                 ),
               )
             ],
-          ) : SizedBox(),
+          ) : const SizedBox(width: 0,)
+
         ],
       ),
     );
