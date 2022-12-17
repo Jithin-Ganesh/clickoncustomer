@@ -55,117 +55,108 @@ class YourOrder extends StatelessWidget {
             borderRadius: BorderRadius.all(Radius.circular(10)),
             color: canvasColor),
         child: Padding(
-          padding: const EdgeInsets.only(right: 42, left: 24, top: 22),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+          padding: const EdgeInsets.only( left: 24, top: 22),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  Row(
                     children: [
-                      Row(
-                        children: [
-                          ImgProvider(
-                            url: firstIcon,
-                            width: 20,
-                            height: 20,
-                          ),
-                          SizedBox(
-                            width: 7,
-                          ),
-                          Text(
-                            'Ordered on ${order?.date}',
-                            style: medium.copyWith(
-                                fontSize: 18,
-                                color: isArriving
-                                    ? primaryColor
-                                    : checkedItemsColor),
-                          ),
-                        ],
+                      ImgProvider(
+                        url: firstIcon,
+                        width: 20,
+                        height: 20,
                       ),
                       SizedBox(
-                        height: 8,
+                        width: 7,
                       ),
                       Text(
-                        order?.status == 1 ?  'Ordered Pending' : order?.status == 2 ? 'Ordered Confirmed' : order?.status == 4 ? 'Ordered Dispatched' : 'Ordered Cancelled',
+                        'Ordered on ${order?.date}',
                         style: medium.copyWith(
                             fontSize: 18,
-                            color:order?.status == 1
-                                ? Colors.orangeAccent
+                            color: isArriving
+                                ? primaryColor
                                 : checkedItemsColor),
                       ),
-                      SizedBox(
-                        height: 8,
+                    ],
+                  ),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  Text(
+                    order?.status == 1 ?  'Ordered Pending' : order?.status == 2 ? 'Ordered Confirmed' : order?.status == 4 ? 'Ordered Dispatched' : 'Ordered Cancelled',
+                    style: medium.copyWith(
+                        fontSize: 18,
+                        color:order?.status == 1
+                            ? Colors.orangeAccent
+                            : checkedItemsColor),
+                  ),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      ImgProvider(
+                        url: secondIcon,
+                        width: 10,
+                        height: 10,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        'Expected Delivery on ${order?.expectedDate}',
+                        style: regular.copyWith(
+                            fontSize: 14,
+                            color: isArriving
+                                ? deliveryDateColor
+                                : priceDetailsSubTextColor),
+                      )
+                    ],
+                  ),
+                  SizedBox(
+                    height: 33,
+                  ),
+                  Row(
+                    children: [
+                      ImgProvider(
+                        url: order?.thumbnail ?? '',
+                        width: 90,
+                        height: 71,
+                      ),
+                      SizedBox(
+                        width: 24,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          ImgProvider(
-                            url: secondIcon,
-                            width: 10,
-                            height: 10,
+                          SizedBox(
+                            // width:
+                            //     MediaQuery.of(context).size.width * 0.304,
+                            child: Text(
+                              order?.productName ?? "",
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: regular.copyWith(
+                                  fontSize: 14,
+                                  color: orderPlacedTextColor),
+                            ),
                           ),
                           SizedBox(
-                            width: 10,
+                            height: 6,
                           ),
-                          Text(
-                            'Expected Delivery on ${order?.expectedDate}',
-                            style: regular.copyWith(
-                                fontSize: 14,
-                                color: isArriving
-                                    ? deliveryDateColor
-                                    : priceDetailsSubTextColor),
-                          )
-                        ],
-                      ),
-                      SizedBox(
-                        height: 33,
-                      ),
-                      Row(
-                        children: [
-                          ImgProvider(
-                            url: order?.thumbnail ?? '',
-                            width: 90,
-                            height: 71,
-                          ),
-                          SizedBox(
-                            width: 24,
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                          Row(
                             children: [
-                              SizedBox(
-                                // width:
-                                //     MediaQuery.of(context).size.width * 0.304,
-                                child: Text(
-                                  order?.productName ?? "",
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: regular.copyWith(
-                                      fontSize: 14,
-                                      color: orderPlacedTextColor),
-                                ),
-                              ),
-                              SizedBox(
-                                height: 6,
-                              ),
-                              Row(
-                                children: [
-                                  Text(textRupees),
-                                  SizedBox(
-                                    width: 5,
-                                  ),
-                                  Text(
-                                    order?.netTotal.toString() ?? "",
-                                    style: medium.copyWith(
-                                        fontSize: 17,
-                                        color: productDetailsScreenTextColor),
-                                  ),
-                                ],
+
+                              Text(
+                                order?.netTotal.toString() ?? "",
+                                style: medium.copyWith(
+                                    fontSize: 17,
+                                    color: productDetailsScreenTextColor),
                               ),
                             ],
                           ),
@@ -173,7 +164,11 @@ class YourOrder extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(width: 8,),
+                ],
+              ),
+
+              Row(crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
                   Text(
                     'Order : ${order?.referenceNumber}',
                     style: regular.copyWith(
@@ -216,7 +211,6 @@ class YourOrder extends StatelessWidget {
                     height: 18,
                     border: Border.all(color: vectorColor),
                   ),
-                  Spacer(),
                   Column(
                     children: [
                       Container(
@@ -297,6 +291,8 @@ class YourOrder extends StatelessWidget {
                   )
                 ],
               ),
+
+
             ],
           ),
         ),
