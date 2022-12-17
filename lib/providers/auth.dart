@@ -27,6 +27,27 @@ class AuthProvider with ChangeNotifier {
     return loginModel;
   }
 
+  // Sign Up
+  Future<Login?> signUp({
+    String? firstName,
+    String? email,
+    String? lastName,
+    String? phone,
+    String? password,
+  }) async {
+    final response = await AuthInterface.signUp(
+      firstName: firstName,
+      email: email,
+      lastName: lastName,
+      password: password,
+      phone: phone
+    );
+
+    notifyListeners();
+    return response;
+  }
+
+
   //Verify OTP
   Future<bool> verifyOTP({required String? phone,required String? otp}) async {
     final token = await AuthInterface.verifyOTP(phone: phone,otp: otp);

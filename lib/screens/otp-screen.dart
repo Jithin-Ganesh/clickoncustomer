@@ -47,7 +47,7 @@ class _OtpScreenState extends State<OtpScreen> {
         .then((value) async {
       // Provider.of<AuthProvider>(context, listen: false).disableLoading();
       if (PrefUtils().getToken() != null) {
-        //showMessage( message: "Otp Verified",);
+        showSnackBar( message: "Otp Verified", context: context);
         Navigator.pushNamedAndRemoveUntil(
             context, HomeScreenWeb.routeName, (route) => false);
       }

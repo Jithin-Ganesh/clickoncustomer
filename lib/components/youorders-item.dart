@@ -13,16 +13,16 @@ import '../utils/constants/fontstyles.dart';
 class YourOrder extends StatelessWidget {
   YourOrder(
       {Key? key,
-        this.selectedValue,
-        this.order,
-        required this.firstIcon,
-        required this.isArriving,
-        required this.buttonStatus,
-        required this.buttonText1,
-        required this.buttonText2,
-        required this.itemImage,
-        required this.secondIcon,
-        this.onPressed})
+      this.selectedValue,
+      this.order,
+      required this.firstIcon,
+      required this.isArriving,
+      required this.buttonStatus,
+      required this.buttonText1,
+      required this.buttonText2,
+      required this.itemImage,
+      required this.secondIcon,
+      this.onPressed})
       : super(key: key);
 
   final List<String> items = [
@@ -55,108 +55,123 @@ class YourOrder extends StatelessWidget {
             borderRadius: BorderRadius.all(Radius.circular(10)),
             color: canvasColor),
         child: Padding(
-          padding: const EdgeInsets.only( left: 24, top: 22),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          padding: const EdgeInsets.only(right: 42, left: 24, top: 22),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Column(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      ImgProvider(
-                        url: firstIcon,
-                        width: 20,
-                        height: 20,
+                      Row(
+                        children: [
+                          ImgProvider(
+                            url: firstIcon,
+                            width: 20,
+                            height: 20,
+                          ),
+                          SizedBox(
+                            width: 7,
+                          ),
+                          Text(
+                            'Ordered on ${order?.date}',
+                            style: medium.copyWith(
+                                fontSize: 18,
+                                color: isArriving
+                                    ? primaryColor
+                                    : checkedItemsColor),
+                          ),
+                        ],
                       ),
                       SizedBox(
-                        width: 7,
+                        height: 8,
                       ),
                       Text(
-                        'Ordered on ${order?.date}',
+                        order?.status == 1
+                            ? 'Ordered Pending'
+                            : order?.status == 2
+                                ? 'Ordered Confirmed'
+                                : order?.status == 4
+                                    ? 'Ordered Dispatched'
+                                    : 'Ordered Cancelled',
                         style: medium.copyWith(
                             fontSize: 18,
-                            color: isArriving
-                                ? primaryColor
+                            color: order?.status == 1
+                                ? Colors.orangeAccent
                                 : checkedItemsColor),
                       ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 8,
-                  ),
-                  Text(
-                    order?.status == 1 ?  'Ordered Pending' : order?.status == 2 ? 'Ordered Confirmed' : order?.status == 4 ? 'Ordered Dispatched' : 'Ordered Cancelled',
-                    style: medium.copyWith(
-                        fontSize: 18,
-                        color:order?.status == 1
-                            ? Colors.orangeAccent
-                            : checkedItemsColor),
-                  ),
-                  SizedBox(
-                    height: 8,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      ImgProvider(
-                        url: secondIcon,
-                        width: 10,
-                        height: 10,
-                      ),
                       SizedBox(
-                        width: 10,
+                        height: 8,
                       ),
-                      Text(
-                        'Expected Delivery on ${order?.expectedDate}',
-                        style: regular.copyWith(
-                            fontSize: 14,
-                            color: isArriving
-                                ? deliveryDateColor
-                                : priceDetailsSubTextColor),
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 33,
-                  ),
-                  Row(
-                    children: [
-                      ImgProvider(
-                        url: order?.thumbnail ?? '',
-                        width: 90,
-                        height: 71,
-                      ),
-                      SizedBox(
-                        width: 24,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          SizedBox(
-                            // width:
-                            //     MediaQuery.of(context).size.width * 0.304,
-                            child: Text(
-                              order?.productName ?? "",
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              style: regular.copyWith(
-                                  fontSize: 14,
-                                  color: orderPlacedTextColor),
-                            ),
+                          ImgProvider(
+                            url: secondIcon,
+                            width: 10,
+                            height: 10,
                           ),
                           SizedBox(
-                            height: 6,
+                            width: 10,
                           ),
-                          Row(
+                          Text(
+                            'Expected Delivery on ${order?.expectedDate}',
+                            style: regular.copyWith(
+                                fontSize: 14,
+                                color: isArriving
+                                    ? deliveryDateColor
+                                    : priceDetailsSubTextColor),
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 33,
+                      ),
+                      Row(
+                        children: [
+                          ImgProvider(
+                            url: order?.thumbnail ?? '',
+                            width: 90,
+                            height: 71,
+                          ),
+                          SizedBox(
+                            width: 24,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-
-                              Text(
-                                order?.netTotal.toString() ?? "",
-                                style: medium.copyWith(
-                                    fontSize: 17,
-                                    color: productDetailsScreenTextColor),
+                              SizedBox(
+                                // width:
+                                //     MediaQuery.of(context).size.width * 0.304,
+                                child: Text(
+                                  order?.productName ?? "",
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: regular.copyWith(
+                                      fontSize: 14,
+                                      color: orderPlacedTextColor),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 6,
+                              ),
+                              Row(
+                                children: [
+                                  Text(textRupees),
+                                  SizedBox(
+                                    width: 5,
+                                  ),
+                                  Text(
+                                    order?.netTotal.toString() ?? "",
+                                    style: medium.copyWith(
+                                        fontSize: 17,
+                                        color: productDetailsScreenTextColor),
+                                  ),
+                                ],
                               ),
                             ],
                           ),
@@ -164,11 +179,9 @@ class YourOrder extends StatelessWidget {
                       ),
                     ],
                   ),
-                ],
-              ),
-
-              Row(crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                  SizedBox(
+                    width: 8,
+                  ),
                   Text(
                     'Order : ${order?.referenceNumber}',
                     style: regular.copyWith(
@@ -211,6 +224,7 @@ class YourOrder extends StatelessWidget {
                     height: 18,
                     border: Border.all(color: vectorColor),
                   ),
+                  Spacer(),
                   Column(
                     children: [
                       Container(
@@ -222,9 +236,9 @@ class YourOrder extends StatelessWidget {
                           onPressed: () {
                             Navigator.of(context)
                                 .pushNamed(OrderDetailsScreenWeb.routeName,
-                                arguments: OrderDetailsScreenWeb(
-                                  id: order?.id ?? 0,
-                                ));
+                                    arguments: OrderDetailsScreenWeb(
+                                      id: order?.id ?? 0,
+                                    ));
                           },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -291,8 +305,6 @@ class YourOrder extends StatelessWidget {
                   )
                 ],
               ),
-
-
             ],
           ),
         ),

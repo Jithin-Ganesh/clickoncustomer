@@ -1,3 +1,5 @@
+import 'package:clickoncustomer/models/login.dart';
+import 'package:clickoncustomer/screens/login_screen.dart';
 import 'package:clickoncustomer/screens/web/account-order/account-order-screen.dart';
 import 'package:clickoncustomer/screens/web/cart/cart-screen.dart';
 import 'package:clickoncustomer/screens/web/home/home-screen-web.dart';
@@ -14,6 +16,7 @@ import 'package:clickoncustomer/screens/web/your-account/your-account-web.dart';
 import 'package:flutter/material.dart';
 
 import 'components/rate-your-experience-screen1.dart';
+import 'components/sign-up.dart';
 import 'screens/otp-screen.dart';
 
 class AppRoutes {
@@ -33,6 +36,8 @@ class AppRoutes {
       OtpScreen.routeName: (context) => const OtpScreen(),
       ProfileWebScreen.routeName: (context) => const ProfileWebScreen(),
       RateYourExperienceScreen.routeName:(context)=>const RateYourExperienceScreen(),
+      SignUp.routeName:(context)=>const SignUp(),
+      LoginScreen.routeName:(context)=>const LoginScreen(),
 
     };
   }
