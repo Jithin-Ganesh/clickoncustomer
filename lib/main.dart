@@ -1,5 +1,6 @@
 import 'package:clickoncustomer/routes.dart';
 import 'package:clickoncustomer/screens/login_screen.dart';
+import 'package:clickoncustomer/screens/web/splash.dart';
 import 'package:clickoncustomer/utils/custom-scroll.dart';
 import 'package:clickoncustomer/utils/pref_utils.dart';
 import 'package:clickoncustomer/utils/providers.dart';
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         scrollBehavior: MyCustomScrollBehavior(),
-        home: LoginScreen(),
+        home: Splashscreen(),
         routes: AppRoutes().get(context),
       ),
     );

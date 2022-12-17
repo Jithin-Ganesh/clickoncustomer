@@ -11,8 +11,10 @@ import 'package:provider/provider.dart';
 
 import '../providers/cart-provider.dart';
 
+import '../screens/login_screen.dart';
 import '../utils/constants/fontstyles.dart';
 import '../utils/global-key.dart';
+import '../utils/pref_utils.dart';
 
 class ProductDetailTitle extends StatelessWidget {
   ProductDetailTitle({Key? key, required this.productId,}) : super(key: key);
@@ -189,8 +191,13 @@ final int? productId;
                 height: 40,
                 child: OutlinedButton(
                   onPressed: () {
-                    Provider.of<CartProvider>(context, listen: false)
-                        .addCart(productId: productId,).then((value) => showSnackBar(message: 'Added to Cart', context: context));
+                    if(PrefUtils().getToken()!=null){
+                      Provider.of<CartProvider>(context, listen: false)
+                          .addCart(productId: productId,).then((value) => showSnackBar(message: 'Added to Cart', context: context));
+                    }else{
+                      Navigator.pushNamed(context, LoginScreen.routeName,);
+                    }
+
                   },
                   style: OutlinedButton.styleFrom(
                     shape: RoundedRectangleBorder(

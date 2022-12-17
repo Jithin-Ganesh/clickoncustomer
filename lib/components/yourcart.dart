@@ -13,6 +13,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../models/cart-products.dart';
+import '../screens/login_screen.dart';
+import '../utils/pref_utils.dart';
 
 
 class YourCart extends StatefulWidget {
@@ -188,8 +190,13 @@ class _YourCartState extends State<YourCart> {
                                Provider.of<CartProvider>(context, listen: false)
                                    .deleteCart( cartId: widget.cartId)
                                    .then((value) {
-                                     Provider.of<CartProvider>(context,listen: false).fetchCart();
-                                 Navigator.pushNamed(context, CartScreenWeb.routeName);
+                                 if(PrefUtils().getToken()!=null){
+                                   Provider.of<CartProvider>(context,listen: false).fetchCart();
+                                   Navigator.pushNamed(context, CartScreenWeb.routeName);
+                                 }else{
+                                   Navigator.pushNamed(context, LoginScreen.routeName,);
+                                 }
+
                                });
                              },
                            );
