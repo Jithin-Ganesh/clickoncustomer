@@ -14,9 +14,9 @@ class ProductsForYouList extends StatelessWidget {
     return Consumer<HomeProvider>(builder: (context, value, child) => Container(
         height: 320,
         child: ListView.builder(itemBuilder: (context, index) => Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(10.0),
           child: ProductCard(product: value.products?[index]),
-        ),itemCount: value.products?.length,scrollDirection: Axis.horizontal,),
+        ),itemCount: value.products?.length,scrollDirection: Axis.horizontal,itemExtent: 250,),
       ),
     );
   }

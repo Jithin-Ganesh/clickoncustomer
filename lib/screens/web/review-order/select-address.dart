@@ -2,6 +2,7 @@ import 'package:clickoncustomer/components/elevated-buton.dart';
 import 'package:clickoncustomer/providers/user-provider.dart';
 import 'package:clickoncustomer/screens/web/review-order/add-address.dart';
 import 'package:clickoncustomer/screens/web/review-order/address-list.dart';
+import 'package:clickoncustomer/utils/constants/fontstyles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -31,8 +32,8 @@ class AddressListAlertBox extends StatelessWidget {
           SizedBox(height: 10,),
           Row(
             children: [
-              const Text(
-                'Address List',
+             Text(
+                'Address List',style: bold,
               ),
               Spacer(),
               ButtonElevated(
@@ -56,7 +57,7 @@ class AddressListAlertBox extends StatelessWidget {
       ),
       titleTextStyle: Theme.of(context)
           .textTheme
-          .headline1
+          .headline2
           ?.copyWith(fontSize: 20),
       content: SizedBox(
         height: MediaQuery.of(context).size.height *

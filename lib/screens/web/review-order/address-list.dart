@@ -68,7 +68,7 @@ class AddressCard extends StatelessWidget {
               Text(
                 address?.getFullAddress() ?? '',
                 style:
-                    thin.copyWith(fontSize: 15, color: priceOffersSubtextColor),
+                    bold.copyWith(fontSize: 15, color: priceOffersSubtextColor),
               ),
               value.isAddressSelected(address?.id)
                   ? ButtonElevated(
@@ -98,7 +98,7 @@ class AddressCard extends StatelessWidget {
                           },
                           child: Text(
                             'Deliver Here',
-                            style: medium.copyWith(
+                            style: bold.copyWith(
                                 fontSize: 14,
                                 color: productDetailsScreenTextColor),
                           )),

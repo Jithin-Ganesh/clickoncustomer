@@ -56,7 +56,7 @@ class _ImageDetailsWebItemState extends State<ImageDetailsWebItem> {
               //     ),
               //   ),
               // ),
-              SizedBox(width: MediaQuery.of(context).size.width * 0.068,),
+              SizedBox(width: MediaQuery.of(context).size.width * 0.164,),
               Container(
                   height: 80,
                   width: 80,
@@ -68,67 +68,13 @@ class _ImageDetailsWebItemState extends State<ImageDetailsWebItem> {
                     child: ImgProvider(height: 50,width: 50,
                       url: widget.productModel?.images ?? '', ),
                   )),
-              SizedBox(width: MediaQuery.of(context).size.width * 0.068,),
-              // IconButton(
-              //   onPressed: () {
-              //     if(selectedIndex<(value.productDetails!.length -1)) {
-              //       setState(() {
-              //         selectedIndex++;
-              //       });
-              //     }else if(selectedIndex == (value.productDetails!.length -1)){
-              //       setState(() {
-              //         selectedIndex = 0;
-              //       });
-              //     }
-              //   },
-              //   icon: Container(
-              //     height: 23,
-              //     width: 23,
-              //     decoration: BoxDecoration(
-              //         shape: BoxShape.circle,
-              //         border: Border.all(color: mainTitleColor.withOpacity(0.5))),
-              //     child: const Center(
-              //       child: Icon(
-              //         Icons.keyboard_arrow_right,
-              //         color: mainTitleColor,
-              //       ),
-              //     ),
-              //   ),
-              // ),
+
             ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              // Visibility(
-              //   visible: selectedIndex > 0,
-              //   child: IconButton(
-              //     onPressed: () {
-              //       if(selectedIndex>0) {
-              //         setState(() {
-              //           selectedIndex--;
-              //         });
-              //       }else if(selectedIndex == 0){
-              //         setState(() {
-              //           selectedIndex = (value.productDetails!.length -1);
-              //         });
-              //       }
-              //
-              //     },
-              //     icon: Container(
-              //       height: 46,
-              //       width: MediaQuery.of(context).size.width *  0.0239,
-              //       decoration: BoxDecoration(
-              //           shape: BoxShape.circle,
-              //           color: mainTitleColor.withOpacity(0.5),
-              //          ),
-              //       child: Icon(
-              //         Icons.keyboard_arrow_left,
-              //         color: canvasColor,
-              //       ),
-              //     ),
-              //   ),
-              // ),
+            SizedBox(width: MediaQuery.of(context).size.width*0.172,),
               ImgProvider(
                 url: widget.productModel?.images ?? '',
                 height: 410,
