@@ -6,6 +6,12 @@ import 'fontstyles.dart';
 BoxDecoration containerDecoration =
     BoxDecoration(color: canvasColor, borderRadius: BorderRadius.circular(10));
 
+
+BoxDecoration splashDecoration = const BoxDecoration(
+    image: DecorationImage(
+        image: AssetImage('assets/images/splash.png'), fit: BoxFit.fill));
+
+
 BoxDecoration elevatedDecoration = BoxDecoration(
   borderRadius: BorderRadius.circular(5.0),
   color: canvasColor,

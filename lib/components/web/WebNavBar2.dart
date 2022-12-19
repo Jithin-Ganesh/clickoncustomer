@@ -7,8 +7,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../screens/login_screen.dart';
 import '../../utils/constants/color.dart';
 import '../../utils/constants/fontstyles.dart';
+import '../../utils/pref_utils.dart';
 
 
 class WebNavBar2 extends StatelessWidget {
@@ -244,7 +246,12 @@ class WebNavBar2 extends StatelessWidget {
                     ),
                     IconButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, CartScreenWeb.routeName);
+                          if(PrefUtils().getToken()!=null){
+                            Navigator.pushNamed(context, CartScreenWeb.routeName);
+                          }else{
+                            Navigator.pushNamed(context, LoginScreen.routeName,);
+                          }
+
                         },
                         icon: Stack(
                           children: [

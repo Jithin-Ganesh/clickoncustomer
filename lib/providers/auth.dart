@@ -11,6 +11,8 @@ class AuthProvider with ChangeNotifier {
   Login? loginModel;
   bool isLoading = false;
 
+  String? _token;
+
   enableLoading() {
     isLoading = true;
     notifyListeners();
@@ -20,6 +22,13 @@ class AuthProvider with ChangeNotifier {
     isLoading = false;
     notifyListeners();
   }
+
+
+  init() {
+    _token = PrefUtils().getToken();
+    notifyListeners();
+  }
+
 
   //Login
   Future<Login?> login({required String phone}) async {
