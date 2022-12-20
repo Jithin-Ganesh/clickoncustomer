@@ -57,7 +57,7 @@ class _SignUpState extends State<SignUp> {
         showSnackBar(message: 'OTP : ${value.code}', context: context);
         Navigator.of(context).pushNamed(OtpScreen.routeName,
             arguments: OtpScreen(
-              phoneNumber: phoneController.text,
+              phoneNumber: phoneController.text, isLoggedIn: false,
             ));
       }
     });
@@ -343,7 +343,7 @@ class _SignUpState extends State<SignUp> {
                               const SizedBox(
                                 width: 6,
                               ),
-                              TextButton(onPressed: () { Navigator.pushNamed(context, LoginScreen.routeName); },
+                              TextButton(onPressed: () { Navigator.pushNamed(context, LoginScreen.routeName,arguments: LoginScreen(isLoggedIn: false)); },
                               child: Text(  textSignIn,
                                 style: regular.copyWith(
                                     fontSize: 14, color: primaryColor),),

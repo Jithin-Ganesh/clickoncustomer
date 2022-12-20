@@ -194,7 +194,7 @@ class _YourCartState extends State<YourCart> {
                                    Provider.of<CartProvider>(context,listen: false).fetchCart();
                                    Navigator.pushNamed(context, CartScreenWeb.routeName);
                                  }else{
-                                   Navigator.pushNamed(context, LoginScreen.routeName,);
+                                   Navigator.pushNamed(context, LoginScreen.routeName,arguments: const LoginScreen(isLoggedIn: true));
                                  }
 
                                });

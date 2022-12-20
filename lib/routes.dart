@@ -33,11 +33,11 @@ class AppRoutes {
       OrderSellerFeedBackScreenWeb.routeName: (context) => const OrderSellerFeedBackScreenWeb(),
       OrderDeliveryFeedBackScreenWeb.routeName: (context) => const OrderDeliveryFeedBackScreenWeb(),
       OrderProductReviewScreenWeb.routeName: (context) => const OrderProductReviewScreenWeb(),
-      OtpScreen.routeName: (context) => const OtpScreen(),
+      OtpScreen.routeName: (context) => const OtpScreen(isLoggedIn: false,),
       ProfileWebScreen.routeName: (context) => const ProfileWebScreen(),
       RateYourExperienceScreen.routeName:(context)=>const RateYourExperienceScreen(),
       SignUp.routeName:(context)=>const SignUp(),
-      LoginScreen.routeName:(context)=>const LoginScreen(),
+      LoginScreen.routeName:(context)=> const LoginScreen(isLoggedIn: false,),
 
     };
   }

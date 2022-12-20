@@ -5,7 +5,6 @@ import 'package:clickoncustomer/utils/constants/fontstyles.dart';
 import 'package:clickoncustomer/utils/constants/images.dart';
 import 'package:clickoncustomer/utils/constants/strings.dart';
 import 'package:clickoncustomer/utils/img-provider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -14,14 +13,20 @@ import '../providers/auth.dart';
 import '../utils/toast-message.dart';
 
 class LoginScreen extends StatefulWidget {
+  final bool isLoggedIn;
   static const routeName = "/login";
-  const LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({Key? key, required this.isLoggedIn}) : super(key: key);
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  LoginScreen _args() {
+    final args = ModalRoute.of(context)!.settings.arguments as LoginScreen;
+    return args;
+  }
+
   late TextEditingController phoneController;
   final _formKey = GlobalKey<FormState>();
 
@@ -48,7 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
         showSnackBar(message: 'OTP : ${value.code}', context: context);
         Navigator.of(context).pushNamed(OtpScreen.routeName,
             arguments: OtpScreen(
-              phoneNumber: phoneController.text,
+              phoneNumber: phoneController.text, isLoggedIn: _args().isLoggedIn,
             ));
       }
     });

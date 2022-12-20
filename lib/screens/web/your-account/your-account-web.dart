@@ -15,6 +15,8 @@ import '../../../utils/constants/fontstyles.dart';
 import '../../../utils/constants/images.dart';
 import '../../../utils/constants/strings.dart';
 import '../../../utils/img-provider.dart';
+import '../../../utils/pref_utils.dart';
+import '../../login_screen.dart';
 import '../home/web-carousel-slider.dart';
 
 class YourAccountWeb extends StatefulWidget {
@@ -165,8 +167,13 @@ class _YourAccountWebState extends State<YourAccountWeb> {
                           children: <Widget>[
                             AccountComponent(
                                 onPressed: () {
-                                  Navigator.pushNamed(
-                                      context, AccountOrderScreenWeb.routeName);
+                                  if(PrefUtils().getToken()!=null){
+                                    Navigator.pushNamed(
+                                        context, AccountOrderScreenWeb.routeName);
+                                  }else{
+                                    Navigator.pushNamed(context, LoginScreen.routeName,arguments: const LoginScreen(isLoggedIn: true));
+                                  }
+
                                 },
                                 title: titleYourOrders,
                                 description: titleManageAllYourOrders,

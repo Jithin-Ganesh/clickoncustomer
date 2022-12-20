@@ -22,9 +22,10 @@ class OtpScreen extends StatefulWidget {
   static const routeName = "/otp";
   const OtpScreen({
     Key? key,
-    this.phoneNumber,
+    this.phoneNumber, required this.isLoggedIn,
   }) : super(key: key);
   final String? phoneNumber;
+  final bool isLoggedIn;
   @override
   State<OtpScreen> createState() => _OtpScreenState();
 }
@@ -38,7 +39,7 @@ class _OtpScreenState extends State<OtpScreen> {
     final args = ModalRoute.of(context)!.settings.arguments as OtpScreen;
     return args;
   }
-
+  int count = 0;
   otpVerification() {
     //Provider.of<AuthProvider>(context, listen: false).enableLoading();
 
@@ -48,6 +49,9 @@ class _OtpScreenState extends State<OtpScreen> {
       // Provider.of<AuthProvider>(context, listen: false).disableLoading();
       if (PrefUtils().getToken() != null) {
         showSnackBar( message: "Otp Verified", context: context);
+        _args().isLoggedIn
+            ? Navigator.of(context).popUntil((_) => count++ >= 2)
+            :
         Navigator.pushNamedAndRemoveUntil(
             context, HomeScreenWeb.routeName, (route) => false);
       }
