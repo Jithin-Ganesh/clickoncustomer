@@ -1,4 +1,5 @@
 import 'package:clickoncustomer/models/order_review_model.dart';
+import 'package:clickoncustomer/models/view_order_model.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../interfaces/order-interface.dart';
@@ -43,6 +44,11 @@ class OrderProvider extends ChangeNotifier {
 
   Future<OrderReviewModel?> getOrderId({required int? orderId}) async {
     order = (await OrderInterface.getOrderId(orderId: orderId));
+    notifyListeners();
+    return order;
+  }
+  Future<OrderReviewModel?> getOrderById({required int? orderId}) async {
+    order = (await OrderInterface.getOrderById(orderId: orderId));
     notifyListeners();
     return order;
   }

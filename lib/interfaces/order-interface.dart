@@ -4,6 +4,7 @@ import 'package:clickoncustomer/models/order_review_model.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../models/message.dart';
+import '../models/view_order_model.dart';
 import '../utils/api/api_exception.dart';
 import '../utils/api/api_methods.dart';
 import '../utils/api/api_request.dart';
@@ -60,6 +61,20 @@ class OrderInterface {
       return OrderReviewModel.fromJson(response);
     } catch (error) {
       log("get order id error: $error");
+      return OrderReviewModel();
+    }
+  }
+  static Future<OrderReviewModel> getOrderById({required int? orderId}) async {
+    try {
+      final response = await ApiRequest.send(
+        method: ApiMethod.GET,
+        body: {},
+        route: "order/user/$orderId",
+        queries: {},
+      );
+      return OrderReviewModel.fromJson(response);
+    } catch (error) {
+      log("get order by id error: $error");
       return OrderReviewModel();
     }
   }

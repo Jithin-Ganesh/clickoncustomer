@@ -1,5 +1,6 @@
 import 'package:clickoncustomer/models/order_review_model.dart';
 import 'package:clickoncustomer/models/product-model.dart';
+import 'package:clickoncustomer/models/view_order_model.dart';
 import 'package:clickoncustomer/screens/web/order-details/order-details-item-web.dart';
 import 'package:clickoncustomer/screens/web/order-details/order-timeline.dart';
 import 'package:clickoncustomer/utils/constants/responsive.dart';
@@ -120,9 +121,25 @@ class OrderDetailBody extends StatelessWidget {
                   const SizedBox(
                     height: 5,
                   ),
-                  OrderDetailsItemWeb(
-                    productId: productId,
-                  ),
+                  FutureBuilder(
+                      future: Provider.of<OrderProvider>(context, listen: false)
+                          .getOrderById(orderId:order.id??0 ),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return const Center(
+                              child: CircularProgressIndicator());
+                        } else {
+                          if (snapshot.hasData) {
+                            final order = snapshot.data as OrderReviewModel;
+                            return OrderDetailsItemWeb(order: order,
+                              productId: productId,
+                            );
+                          }
+                        } return Text(
+                          snapshot.error.toString(),
+                        );
+                      }),
                   const SizedBox(
                     height: 30,
                   ),

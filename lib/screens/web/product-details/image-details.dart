@@ -74,7 +74,7 @@ class _ImageDetailsWebItemState extends State<ImageDetailsWebItem> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-            SizedBox(width: MediaQuery.of(context).size.width*0.172,),
+            SizedBox(width: MediaQuery.of(context).size.width*0.152,),
               ImgProvider(
                 url: widget.productModel?.images ?? '',
                 height: 410,

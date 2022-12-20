@@ -19,41 +19,44 @@ class AddressListAlertBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Column(
-        children: [
-          Row(
-            children: [
-              Spacer(),
-              IconButton(onPressed: (){
-                Navigator.pop(context);
-              }, icon: Icon(Icons.close,size: 14,)),
-            ],
-          ),
-          SizedBox(height: 10,),
-          Row(
-            children: [
-             Text(
-                'Address List',style: bold,
-              ),
-              Spacer(),
-              ButtonElevated(
-                buttonTitle: 'Add New Address',
-                onPressed: (){
-                  showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 30.0),
-                          child: AddAddressWeb(isEdit: false,),
-                        );
-                      });
-                },
-                height: 30,
-                width: MediaQuery.of(context).size.width * 0.07,
-              )
-            ],
-          ),
-        ],
+      title: Padding(
+        padding: const EdgeInsets.only(left: 50,right: 50),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Spacer(),
+                IconButton(onPressed: (){
+                  Navigator.pop(context);
+                }, icon: Icon(Icons.close,size: 14,)),
+              ],
+            ),
+            SizedBox(height: 10,),
+            Row(
+              children: [
+               Text(
+                  'Address List',style: bold,
+                ),
+                Spacer(),
+                ButtonElevated(
+                  buttonTitle: 'Add New Address',
+                  onPressed: (){
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                            child: AddAddressWeb(isEdit: false,),
+                          );
+                        });
+                  },
+                  height: 30,
+                  width: MediaQuery.of(context).size.width * 0.07,
+                )
+              ],
+            ),
+          ],
+        ),
       ),
       titleTextStyle: Theme.of(context)
           .textTheme

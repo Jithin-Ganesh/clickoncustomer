@@ -1,4 +1,6 @@
 import 'package:clickoncustomer/components/rate-your-experience-screen1.dart';
+import 'package:clickoncustomer/models/order_review_model.dart';
+import 'package:clickoncustomer/models/view_order_model.dart';
 import 'package:clickoncustomer/screens/web/order-feedback/order-seller-feedback-screen-web.dart';
 import 'package:clickoncustomer/utils/constants/decoration.dart';
 
@@ -13,8 +15,8 @@ import '../../../utils/constants/images.dart';
 import '../../../utils/img-provider.dart';
 
 class OrderDetailsItemWeb extends StatefulWidget {
-  const OrderDetailsItemWeb({Key? key, this.productId}) : super(key: key);
-
+  const OrderDetailsItemWeb({Key? key, this.productId,required this.order}) : super(key: key);
+final OrderReviewModel order;
   final int? productId;
 
   @override
@@ -237,7 +239,7 @@ class _OrderDetailsItemWebState extends State<OrderDetailsItemWeb> {
                 children: [
                   Row(children: [
                     ImgProvider(
-                      url: "assets/images/img_35.png",
+                      url: widget.order.thumbnail??"",
                       width: 90,
                       height: 71,
                     ),
@@ -248,7 +250,7 @@ class _OrderDetailsItemWebState extends State<OrderDetailsItemWeb> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          textYouOrderItemName,
+                          widget.order.productName??"",
                           style: regular.copyWith(
                               fontSize: 14, color: orderPlacedTextColor),
                         ),
