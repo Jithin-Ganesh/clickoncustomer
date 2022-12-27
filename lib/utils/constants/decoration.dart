@@ -23,7 +23,17 @@ BoxDecoration elevatedDecoration = BoxDecoration(
     ),
   ],
 );
-
+BoxDecoration boxDecoration = BoxDecoration(
+  borderRadius: BorderRadius.circular(10.0),
+  color: canvasColor,
+  boxShadow: [
+    BoxShadow(
+      color: Colors.grey,
+      offset: Offset(0.0, 1.0), //(x,y)
+      blurRadius: 10.0,
+    ),
+  ],
+);
 
 BoxDecoration zigzagDecoration = BoxDecoration(
   color: canvasColor,

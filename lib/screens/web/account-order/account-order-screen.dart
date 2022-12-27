@@ -191,7 +191,29 @@ class TabBarItem extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            const OrderHistoryItems(),
+            FutureBuilder(future: context.read<OrderProvider>().getOrderList(),
+                builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return Container(
+                  height: MediaQuery.of(context).size.height * 0.80,
+                  width: MediaQuery.of(context).size.width,
+                  child: const Center(
+                    child: CupertinoActivityIndicator(
+                      animating: true,
+                      radius: 12,
+                    ),
+                  ),
+                );
+              } else {
+                if (snapshot.hasData) {
+                  final catList = snapshot.data as List<OrderReviewModel>?;
+                  return OrderHistoryItems();
+                }
+              }
+              return Text(
+                snapshot.error.toString(),
+              );
+            }),
           ],
         ),
       ),
@@ -207,43 +229,28 @@ class OrderHistoryItems extends StatefulWidget {
   @override
   State<OrderHistoryItems> createState() => _OrderHistoryItemsState();
 }
+
 //asada
 class _OrderHistoryItemsState extends State<OrderHistoryItems> {
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-        height: 1000,
-        child: FutureBuilder(
-            future: Provider.of<OrderProvider>(context, listen: false)
-                .getOrderList(),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Center(child: CircularProgressIndicator());
-              } else {
-                if (snapshot.hasData) {
-                  final orderList = snapshot.data as List<OrderReviewModel>;
-
-                  return ListView.builder(
-                    physics: NeverScrollableScrollPhysics(),
-                    itemCount: orderList.length,
-                    itemBuilder: (context, index) {
-                      return YourOrder(
-                          order: orderList[index],
-                          firstIcon: 'assets/images/icon-return.png',
-                          isArriving: false,
-                          buttonStatus: false,
-                          buttonText1: 'Return item',
-                          buttonText2: 'Cancel',
-                          itemImage:
-                              'assets/images/dummy/image-baby-detail.png',
-                          secondIcon: 'assets/images/icon-dispatch-yellow.png');
-                    },
-                  );
-                }
-              }
-              return Text(
-                snapshot.error.toString(),
-              );
-            }));
+    return Consumer<OrderProvider>(
+        builder: (context, value, child) => SizedBox(
+              height: 1000,
+              child: ListView.builder(
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: value.orderList.length,
+                  itemBuilder: (context, index) {
+                    return YourOrder(
+                        order: value.orderList?[index],
+                        firstIcon: 'assets/images/icon-return.png',
+                        isArriving: false,
+                        buttonStatus: false,
+                        buttonText1: 'Return item',
+                        buttonText2: 'Cancel',
+                        itemImage: 'assets/images/dummy/image-baby-detail.png',
+                        secondIcon: 'assets/images/icon-dispatch-yellow.png');
+                  }),
+            ));
   }
 }

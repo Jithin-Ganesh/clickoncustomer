@@ -40,7 +40,7 @@ class _YourCartState extends State<YourCart> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 15.0),
       child: Container(
-        decoration: elevatedDecoration,
+        decoration: boxDecoration,
         width: MediaQuery.of(context).size.width * 0.622,
         height: 166,
         child: Padding(

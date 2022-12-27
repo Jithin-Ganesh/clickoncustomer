@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import '../screens/web/order-details/order-details-screen.dart';
 import '../utils/constants/fontstyles.dart';
 
-class YourOrder extends StatelessWidget {
+class YourOrder extends StatefulWidget {
   YourOrder(
       {Key? key,
       this.selectedValue,
@@ -25,12 +25,6 @@ class YourOrder extends StatelessWidget {
       this.onPressed})
       : super(key: key);
 
-  final List<String> items = [
-    'Item1',
-    'Item2',
-    'Item3',
-    'Item4',
-  ];
   late final String? selectedValue;
   final OrderReviewModel? order;
   final bool buttonStatus;
@@ -43,6 +37,18 @@ class YourOrder extends StatelessWidget {
 
   final bool isArriving;
   final VoidCallback? onPressed;
+
+  @override
+  State<YourOrder> createState() => _YourOrderState();
+}
+
+class _YourOrderState extends State<YourOrder> {
+  final List<String> items = [
+    'Item1',
+    'Item2',
+    'Item3',
+    'Item4',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +76,7 @@ class YourOrder extends StatelessWidget {
                       Row(
                         children: [
                           ImgProvider(
-                            url: firstIcon,
+                            url: widget.firstIcon,
                             width: 20,
                             height: 20,
                           ),
@@ -78,10 +84,10 @@ class YourOrder extends StatelessWidget {
                             width: 7,
                           ),
                           Text(
-                            'Ordered on ${order?.date}',
+                            'Ordered on ${widget.order?.date}',
                             style: medium.copyWith(
                                 fontSize: 18,
-                                color: isArriving
+                                color: widget.isArriving
                                     ? primaryColor
                                     : checkedItemsColor),
                           ),
@@ -91,16 +97,16 @@ class YourOrder extends StatelessWidget {
                         height: 8,
                       ),
                       Text(
-                        order?.status == 1
+                        widget.order?.status == 1
                             ? 'Ordered Pending'
-                            : order?.status == 2
+                            : widget.order?.status == 2
                                 ? 'Ordered Confirmed'
-                                : order?.status == 4
+                                : widget.order?.status == 4
                                     ? 'Ordered Dispatched'
                                     : 'Ordered Cancelled',
                         style: medium.copyWith(
                             fontSize: 18,
-                            color: order?.status == 1
+                            color: widget.order?.status == 1
                                 ? Colors.orangeAccent
                                 : checkedItemsColor),
                       ),
@@ -111,7 +117,7 @@ class YourOrder extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           ImgProvider(
-                            url: secondIcon,
+                            url: widget.secondIcon,
                             width: 10,
                             height: 10,
                           ),
@@ -119,10 +125,10 @@ class YourOrder extends StatelessWidget {
                             width: 10,
                           ),
                           Text(
-                            'Expected Delivery on ${order?.expectedDate}',
+                            'Expected Delivery on ${widget.order?.expectedDate}',
                             style: regular.copyWith(
                                 fontSize: 14,
-                                color: isArriving
+                                color: widget.isArriving
                                     ? deliveryDateColor
                                     : priceDetailsSubTextColor),
                           )
@@ -134,7 +140,7 @@ class YourOrder extends StatelessWidget {
                       Row(
                         children: [
                           ImgProvider(
-                            url: order?.thumbnail ?? '',
+                            url: widget.order?.thumbnail ?? '',
                             width: 90,
                             height: 71,
                           ),
@@ -148,7 +154,7 @@ class YourOrder extends StatelessWidget {
                                 // width:
                                 //     MediaQuery.of(context).size.width * 0.304,
                                 child: Text(
-                                  order?.productName ?? "",
+                                  widget.order?.productName ?? "",
                                   maxLines: 2,
                                   overflow: TextOverflow.ellipsis,
                                   style: regular.copyWith(
@@ -166,7 +172,7 @@ class YourOrder extends StatelessWidget {
                                     width: 5,
                                   ),
                                   Text(
-                                    order?.netTotal.toString() ?? "",
+                                    widget.order?.netTotal.toString() ?? "",
                                     style: medium.copyWith(
                                         fontSize: 17,
                                         color: productDetailsScreenTextColor),
@@ -183,7 +189,7 @@ class YourOrder extends StatelessWidget {
                     width: 8,
                   ),
                   Text(
-                    'Order : ${order?.referenceNumber}',
+                    'Order : ${widget.order?.referenceNumber}',
                     style: regular.copyWith(
                         fontSize: 14, color: priceDetailsSubTextColor),
                   ),
@@ -237,7 +243,7 @@ class YourOrder extends StatelessWidget {
                             Navigator.of(context)
                                 .pushNamed(OrderDetailsScreenWeb.routeName,
                                     arguments: OrderDetailsScreenWeb(
-                                      id: order?.id ?? 0,
+                                      id: widget.order?.id ?? 0,
                                     ));
                           },
                           child: Row(
@@ -269,16 +275,16 @@ class YourOrder extends StatelessWidget {
                         width: MediaQuery.of(context).size.width * 0.111,
                         height: 38,
                         decoration: BoxDecoration(
-                            color: buttonStatus ? primaryColor : Colors.white,
+                            color: widget.buttonStatus ? primaryColor : Colors.white,
                             borderRadius: BorderRadius.all(Radius.circular(5))),
                         child: OutlinedButton(
                           onPressed: () {},
                           child: Text(
                             textAlign: TextAlign.center,
-                            buttonText1,
+                            widget.buttonText1,
                             style: medium.copyWith(
                                 fontSize: 14,
-                                color: buttonStatus ? Colors.white : passColor),
+                                color: widget.buttonStatus ? Colors.white : passColor),
                           ),
                         ),
                       ),
@@ -294,7 +300,7 @@ class YourOrder extends StatelessWidget {
                           onPressed: () {},
                           child: Text(
                             textAlign: TextAlign.center,
-                            buttonText2,
+                            widget.buttonText2,
                             style: medium.copyWith(
                                 fontSize: 14,
                                 color: productDetailsScreenTextColor),
