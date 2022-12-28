@@ -121,44 +121,44 @@ class _YourCartState extends State<YourCart> {
                     ),
                     Row(
                       children: [
-                        Consumer<CartProvider>(builder: (context, value, child) => Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(color: qtyButtonColor, width: 2),
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(5)),
-                            ),
-                            height: 28,
-                            child: DropdownButtonHideUnderline(
-                              child: DropdownButton2(
-                                  hint: Row(
-                                    children: [
-                                      SizedBox(
-                                        width: 12,
-                                      ),
-                                      Text(widget.product?.quantity.toString() ?? '',
-                                          style: regular.copyWith(
-                                              fontSize: 12,
-                                              color: productSubTextColor)),
-                                    ],
-                                  ),
-                                  items: items
-                                      .map((item) => DropdownMenuItem<String>(
-                                            value: item,
-                                            child: Text(
-                                              item,
-                                              style: const TextStyle(
-                                                fontSize: 14,
-                                              ),
-                                            ),
-                                          ))
-                                      .toList(),
-                                  value: selectedValue,
-                                  onChanged: (value) {
-                                    selectedValue = value as String;
-                                  }),
-                            ),
-                          ),
-                        ),
+                        // Consumer<CartProvider>(builder: (context, value, child) => Container(
+                        //     decoration: BoxDecoration(
+                        //       border: Border.all(color: qtyButtonColor, width: 2),
+                        //       borderRadius:
+                        //           const BorderRadius.all(Radius.circular(5)),
+                        //     ),
+                        //     height: 28,
+                        //     child: DropdownButtonHideUnderline(
+                        //       child: DropdownButton2(
+                        //           hint: Row(
+                        //             children: [
+                        //               SizedBox(
+                        //                 width: 12,
+                        //               ),
+                        //               Text(widget.product?.quantity.toString() ?? '',
+                        //                   style: regular.copyWith(
+                        //                       fontSize: 12,
+                        //                       color: productSubTextColor)),
+                        //             ],
+                        //           ),
+                        //           items: items
+                        //               .map((item) => DropdownMenuItem<String>(
+                        //                     value: item,
+                        //                     child: Text(
+                        //                       item,
+                        //                       style: const TextStyle(
+                        //                         fontSize: 14,
+                        //                       ),
+                        //                     ),
+                        //                   ))
+                        //               .toList(),
+                        //           value: selectedValue,
+                        //           onChanged: (value) {
+                        //             selectedValue = value as String;
+                        //           }),
+                        //     ),
+                        //   ),
+                        // ),
                         SizedBox(
                           width: 16,
                         ),

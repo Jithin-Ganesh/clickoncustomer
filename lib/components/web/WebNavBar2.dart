@@ -1,4 +1,5 @@
 import 'package:clickoncustomer/providers/cart-provider.dart';
+import 'package:clickoncustomer/providers/user-provider.dart';
 import 'package:clickoncustomer/screens/web/cart/cart-screen.dart';
 import 'package:clickoncustomer/screens/web/home/home-screen-web.dart';
 import 'package:clickoncustomer/screens/web/your-account/your-account-web.dart';
@@ -196,28 +197,32 @@ class WebNavBar2 extends StatelessWidget {
                   SizedBox(
                     width: 8,
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Hello,',
-                        style: thin.copyWith(color: productAvailabilityColor),
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            'sign-in',
-                            style: medium,
-                          ),
-                          Image.asset(
-                            'assets/images/icon-arrow-down-outlined.png',
-                            height: 5,
-                            width: 10,
-                          ),
-                        ],
-                      )
-                    ],
+                  Consumer<UserProvider>(builder: (context, value, child) => Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Hello,',
+                          style: thin.copyWith(color: productAvailabilityColor),
+                        ),
+                        Row(
+                          children: [
+                            value.user != null ?  Text(
+                              value.user?.firstName ?? 'sign-in',
+                              style: medium,
+                            ) : Text(
+                              'sign-in',
+                              style: medium,
+                            ),
+                            Image.asset(
+                              'assets/images/icon-arrow-down-outlined.png',
+                              height: 5,
+                              width: 10,
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 ],
               ),

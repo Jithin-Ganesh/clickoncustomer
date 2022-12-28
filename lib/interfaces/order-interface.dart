@@ -72,7 +72,7 @@ class OrderInterface {
         route: "order/user/$orderId",
         queries: {},
       );
-      return OrderReviewModel.fromJson(response);
+      return OrderReviewModel.fromJson(response['order']);
     } catch (error) {
       log("get order by id error: $error");
       return OrderReviewModel();

@@ -238,11 +238,11 @@ class _OrderHistoryItemsState extends State<OrderHistoryItems> {
         builder: (context, value, child) => SizedBox(
               height: 1000,
               child: ListView.builder(
-                  physics: NeverScrollableScrollPhysics(),
+                  //physics: NeverScrollableScrollPhysics(),
                   itemCount: value.orderList.length,
                   itemBuilder: (context, index) {
                     return YourOrder(
-                        order: value.orderList?[index],
+                        order: value.orderList[index],
                         firstIcon: 'assets/images/icon-return.png',
                         isArriving: false,
                         buttonStatus: false,

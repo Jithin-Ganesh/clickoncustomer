@@ -9,6 +9,7 @@ import 'package:provider/provider.dart';
 import '../../../components/account_subcomponent.dart';
 import '../../../components/web/WebNavBar2.dart';
 import '../../../components/web/bottom-web-bar-2.dart';
+import '../../../components/web/custom-alert-box.dart';
 import '../../../utils/constants/color.dart';
 
 import '../../../utils/constants/fontstyles.dart';
@@ -133,11 +134,16 @@ class _YourAccountWebState extends State<YourAccountWeb> {
                                       }),
                                     ),
                                     onPressed: () {
-                                      Navigator.pushNamed(
-                                          context, ProfileWebScreen.routeName,
-                                          arguments: ProfileWebScreen(
-                                            id: value.loginModel?.userId,
-                                          ));
+                                      showMyDialog(
+                                          screenContext: context,
+                                          buttonName: "confirm",
+                                          onConfirm: () {
+                                            Provider.of<AuthProvider>(context, listen: false)
+                                                .logOut(context);
+                                          },
+                                          title: "Logout!",
+                                          contentText: "Do you really want to logout");
+
                                     },
                                     child: Icon(
                                       Icons.power_settings_new_rounded,

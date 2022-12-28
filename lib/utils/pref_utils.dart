@@ -14,6 +14,7 @@ class PrefUtils {
   static final String APP_NAME = "SpareParts";
   static final String TOKEN = "TOKEN";
   static final String BRAND_ID = "BRAND_ID";
+  static final int USER_ID = 0;
   static final String VEHICLE_ID = "VEHICLE_ID";
   static final String BRAND_NAME = "BRAND_NAME";
   static final String VEHICLE_NAME = "VEHICLE_NAME";
@@ -33,6 +34,10 @@ class PrefUtils {
 
   setBrandId(String? brandId) async {
     getBox().put(BRAND_ID, brandId);
+  }
+
+  setUserId(int? userId) async {
+    getBox().put(USER_ID, userId);
   }
 
   setBrandName(String? brandName) async {
@@ -80,6 +85,11 @@ class PrefUtils {
   getBrandId() {
     final brandId = getBox().get(BRAND_ID);
     return brandId;
+  }
+
+  getUserId() {
+    final userId = getBox().get(USER_ID);
+    return userId;
   }
 
   getBrandName() {

@@ -14,6 +14,14 @@ class UserProvider with ChangeNotifier {
   User? user;
   List<ProductModel> wishList = [];
 
+
+  clearUserOnLogout() {
+    addressList?.clear();
+    wishList.clear();
+    user = null;
+    notifyListeners();
+  }
+
   selectAddress(Address? address) {
     selectedAddress = address;
     notifyListeners();

@@ -134,19 +134,10 @@ class _OrderDetailsItemWebState extends State<OrderDetailsItemWeb> {
                                   fontSize: 18),
                             ),
                             SizedBox(
-                              width: 7,
-                            ),
-                            Text(
-                              textRupees,
-                              style: regular.copyWith(
-                                  fontSize: 18,
-                                  color: priceDetailsSubTextColor),
-                            ),
-                            SizedBox(
                               width: 5,
                             ),
                             Text(
-                              textYourOrderAmount,
+                              widget.order.netTotal.toString(),
                               style: medium.copyWith(
                                   color: productDetailsScreenTotalColor,
                                   fontSize: 17),

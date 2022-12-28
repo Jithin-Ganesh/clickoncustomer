@@ -11,6 +11,7 @@ import 'package:clickoncustomer/utils/constants/decoration.dart';
 import 'package:clickoncustomer/utils/constants/fontstyles.dart';
 import 'package:clickoncustomer/utils/constants/responsive.dart';
 import 'package:clickoncustomer/utils/img-provider.dart';
+import 'package:clickoncustomer/utils/pref_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -23,6 +24,7 @@ import '../../../models/category.dart';
 
 import '../../../providers/cart-provider.dart';
 import '../../../providers/home_provider.dart';
+import '../../../providers/user-provider.dart';
 import 'best-selling.dart';
 import 'category-list.dart';
 import 'fashion-store.dart';
@@ -44,6 +46,8 @@ class _HomeScreenWebState extends State<HomeScreenWeb> {
     Future.delayed(const Duration(seconds: 2), () {
       Provider.of<CategoryProvider>(context, listen: false).fetchCategory();
       Provider.of<CartProvider>(context, listen: false).fetchCart();
+      Provider.of<UserProvider>(context, listen: false)
+          .fetchUserProfile(id: PrefUtils().getUserId());
     });
 
     // TODO: implement initState
