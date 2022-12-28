@@ -8,6 +8,7 @@ import 'package:clickoncustomer/utils/constants/strings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../../models/order-history-model.dart';
 import '../../../models/product-model.dart';
 import '../../../utils/constants/color.dart';
 import '../../../utils/constants/fontstyles.dart';
@@ -16,7 +17,7 @@ import '../../../utils/img-provider.dart';
 
 class OrderDetailsItemWeb extends StatefulWidget {
   const OrderDetailsItemWeb({Key? key, this.productId,required this.order}) : super(key: key);
-final OrderReviewModel order;
+final OrderHistoryModel? order;
   final int? productId;
 
   @override
@@ -95,7 +96,7 @@ class _OrderDetailsItemWebState extends State<OrderDetailsItemWeb> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          textShippingAddress,
+                          widget.order?.shippingAddress?.getFullAddress() ?? '',
                           style: medium.copyWith(
                               color: priceDetailsSubTextColor, fontSize: 14),
                         ),
@@ -103,7 +104,7 @@ class _OrderDetailsItemWebState extends State<OrderDetailsItemWeb> {
                           height: 18,
                         ),
                         Text(
-                          textcustomerDeatils,
+                          widget.order?.billingAddress?.getFullAddress() ?? '',
                           style: thin.copyWith(
                               fontSize: 14, color: productSubTextColor),
                         ),
@@ -137,7 +138,7 @@ class _OrderDetailsItemWebState extends State<OrderDetailsItemWeb> {
                               width: 5,
                             ),
                             Text(
-                              widget.order.netTotal.toString(),
+                              widget.order?.order?.netTotal.toString() ?? '',
                               style: medium.copyWith(
                                   color: productDetailsScreenTotalColor,
                                   fontSize: 17),
@@ -230,7 +231,7 @@ class _OrderDetailsItemWebState extends State<OrderDetailsItemWeb> {
                 children: [
                   Row(children: [
                     ImgProvider(
-                      url: widget.order.thumbnail??"",
+                      url: widget.order?.order?.thumbnail??"",
                       width: 90,
                       height: 71,
                     ),
@@ -241,7 +242,7 @@ class _OrderDetailsItemWebState extends State<OrderDetailsItemWeb> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          widget.order.productName??"",
+                          widget.order?.order?.productName??"",
                           style: regular.copyWith(
                               fontSize: 14, color: orderPlacedTextColor),
                         ),

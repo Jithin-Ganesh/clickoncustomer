@@ -12,6 +12,7 @@ import '../../../components/web/WebNavBar2.dart';
 import '../../../components/web/account-title-bar.dart';
 import '../../../components/web/bottom-web-bar-2.dart';
 import '../../../components/web/order-details-title-bar.dart';
+import '../../../models/order-history-model.dart';
 import '../../../providers/order.dart';
 import '../../../utils/constants/color.dart';
 import '../../../utils/img-provider.dart';
@@ -131,7 +132,7 @@ class OrderDetailBody extends StatelessWidget {
                               child: CircularProgressIndicator());
                         } else {
                           if (snapshot.hasData) {
-                            final order = snapshot.data as OrderReviewModel;
+                            final order = snapshot.data as OrderHistoryModel;
                             return OrderDetailsItemWeb(order: order,
                               productId: productId,
                             );

@@ -4,11 +4,13 @@ import 'package:flutter/cupertino.dart';
 
 import '../interfaces/order-interface.dart';
 import '../models/cart-products.dart';
+import '../models/order-history-model.dart';
 
 class OrderProvider extends ChangeNotifier {
   List<OrderReviewModel> orderList = [];
   OrderReviewModel? order;
   List<int?> cod= [];
+
 
   addCod({required List<CartProduct>? products}){
     products?.forEach((element) {
@@ -47,9 +49,13 @@ class OrderProvider extends ChangeNotifier {
     notifyListeners();
     return order;
   }
-  Future<OrderReviewModel?> getOrderById({required int? orderId}) async {
-    order = (await OrderInterface.getOrderById(orderId: orderId));
+
+
+  Future<OrderHistoryModel?> getOrderById({required int? orderId}) async {
+    final response = (await OrderInterface.getOrderById(orderId: orderId));
+    order = response?.order;
     notifyListeners();
-    return order;
+    return response;
   }
+
 }

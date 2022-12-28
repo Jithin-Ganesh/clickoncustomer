@@ -4,6 +4,7 @@ import 'package:clickoncustomer/models/order_review_model.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../models/message.dart';
+import '../models/order-history-model.dart';
 import '../models/view_order_model.dart';
 import '../utils/api/api_exception.dart';
 import '../utils/api/api_methods.dart';
@@ -64,7 +65,7 @@ class OrderInterface {
       return OrderReviewModel();
     }
   }
-  static Future<OrderReviewModel> getOrderById({required int? orderId}) async {
+  static Future<OrderHistoryModel?> getOrderById({required int? orderId}) async {
     try {
       final response = await ApiRequest.send(
         method: ApiMethod.GET,
@@ -72,10 +73,10 @@ class OrderInterface {
         route: "order/user/$orderId",
         queries: {},
       );
-      return OrderReviewModel.fromJson(response['order']);
+      return OrderHistoryModel.fromJson(response);
     } catch (error) {
       log("get order by id error: $error");
-      return OrderReviewModel();
+      return null;
     }
   }
 }
