@@ -16,7 +16,8 @@ class ProductModel {
   int? subCategoryId;
   int? quantity;
   String? productCode;
-  Null? ratings;
+  int? ratings;
+  int? groupOrderId;
   String? createdAt;
   String? updatedAt;
   String? sellingPrice;
@@ -41,6 +42,7 @@ class ProductModel {
         this.quantity,
         this.productCode,
         this.ratings,
+        this.groupOrderId,
         this.createdAt,
         this.updatedAt,
         this.sellingPrice,
@@ -65,6 +67,7 @@ class ProductModel {
     quantity = json['quantity'];
     productCode = json['product_code'];
     ratings = json['ratings'];
+    groupOrderId = json['groupOrderId'];
     createdAt = json['createdAt'];
     updatedAt = json['updatedAt'];
     sellingPrice = json['selling_price'];
@@ -72,15 +75,6 @@ class ProductModel {
   }
 
   static List<ProductModel> convertToList(List<dynamic> list) {
-    List<ProductModel> data = [];
-    for (var element in list) {
-      data.add(ProductModel.fromJson(element));
-    }
-    return data;
+    return list.map((e) => ProductModel.fromJson(e)).toList();
   }
 }
-
-
-
-
-

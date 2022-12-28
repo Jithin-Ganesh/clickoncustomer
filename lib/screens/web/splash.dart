@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:clickoncustomer/screens/web/home/home-screen-web.dart';
+import 'package:clickoncustomer/utils/img-provider.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -54,7 +55,14 @@ class _SplashscreenState extends State<Splashscreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: splashDecoration,
+        color: Colors.white,
+        child: Center(
+          child: const ImgProvider(
+            url: "assets/images/clickOn-logo.png",
+            width: 200,
+            height: 100,
+          ),
+        ),
       ),
     );
   }
