@@ -17,8 +17,9 @@ import '../utils/global-key.dart';
 import '../utils/pref_utils.dart';
 
 class ProductDetailTitle extends StatelessWidget {
-  ProductDetailTitle({Key? key, required this.productId,}) : super(key: key);
+  ProductDetailTitle({Key? key, required this.productId, this.name,}) : super(key: key);
 final int? productId;
+final String? name;
   final List<String> items = [
     '1','2','3','4'
   ];
@@ -57,7 +58,7 @@ final int? productId;
               width: 28,
             ),
             Text(
-              itemDescription,
+              name ?? '',
               style: medium.copyWith(fontSize: 24, color: Colors.white),
             ),
           ]),
@@ -113,53 +114,54 @@ final int? productId;
               const SizedBox(
                 width: 16,
               ),
-              Container(
-                height: 40,
-                child: OutlinedButton(
-                  style: OutlinedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                    side: const BorderSide(width: 1.0, color: defaultTextColor),
-                  ),
-                  onPressed: () {},
-                  child: DropdownButtonHideUnderline(
-                    child: DropdownButton2(
-                        icon: Icon(
-                          Icons.keyboard_arrow_down_outlined,
-                          color: Colors.white,
-                        ),
-                        hint: Row(
-                          children: [
-                            Text(quantityText,
+              Consumer<CartProvider>(builder: (context, cart, child) => Container(
+                  height: 40,
+                  child: OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      side: const BorderSide(width: 1.0, color: defaultTextColor),
+                    ),
+                    onPressed: () {},
+                    child: DropdownButtonHideUnderline(
+                      child: DropdownButton2(
+                          icon: Icon(
+                            Icons.keyboard_arrow_down_outlined,
+                            color: Colors.white,
+                          ),
+                          hint: Row(
+                            children: [
+                              Text(quantityText,
+                                  style: medium.copyWith(
+                                      fontSize: 14, color: defaultTextColor)),
+                              const SizedBox(
+                                width: 4,
+                              ),
+                              Text(
+                                cart.quantity.toString(),
                                 style: medium.copyWith(
-                                    fontSize: 14, color: defaultTextColor)),
-                            const SizedBox(
-                              width: 4,
-                            ),
-                            Text(
-                              selectedValue ?? '1',
-                              style: medium.copyWith(
-                                  fontSize: 16, color: defaultTextColor),
-                            )
-                          ],
-                        ),
-                        items: items
-                            .map((item) => DropdownMenuItem<String>(
+                                    fontSize: 16, color: defaultTextColor),
+                              )
+                            ],
+                          ),
+                          items: items
+                              .map((item) => DropdownMenuItem<String>(
 
-                                  value: item,
-                                  child: Text(
-                                    item,
-                                    style: const TextStyle(
-                                      fontSize: 10,
+                                    value: item,
+                                    child: Text(
+                                      item,
+                                      style: const TextStyle(
+                                        fontSize: 10,
+                                      ),
                                     ),
-                                  ),
-                                ))
-                            .toList(),
-                        value: selectedValue,
-                        onChanged: (value) {
-                          selectedValue = value as String;
-                          Provider.of<CartProvider>(context,listen: false).setQuantity(qty: int.parse(selectedValue ?? '0'));
-                        }),
+                                  ))
+                              .toList(),
+                          value: selectedValue,
+                          onChanged: (value) {
+                            selectedValue = value as String;
+                            Provider.of<CartProvider>(context,listen: false).setQuantity(qty: int.parse(selectedValue ?? '0'));
+                          }),
+                    ),
                   ),
                 ),
               ),

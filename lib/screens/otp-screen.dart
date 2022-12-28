@@ -174,7 +174,7 @@ class _OtpScreenState extends State<OtpScreen> {
                         height: 5,
                       ),
                       Text(
-                        textOtpSend,
+                        "OTP sent to ${_args().phoneNumber}",
                         style:
                             regular.copyWith(fontSize: 14, color: otpSubText),
                       ),
