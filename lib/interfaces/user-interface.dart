@@ -40,13 +40,12 @@ class UserInterface {
           route: isEdit ? "address/$addressId" : "address",
           queries: {});
       if (response["message"] != null) {
-        showSnackBar(
-            message: 'Address Added',
-            context: navigatorKey.currentState!.context);
+
       }
       return response;
     } catch (err) {
       print("error");
+
       throw ApiException(err.toString());
     }
   }
@@ -70,6 +69,7 @@ class UserInterface {
           queries: {});
       return response['success'];
     } catch (err) {
+
       throw ApiException(err.toString());
     }
   }
@@ -86,6 +86,7 @@ class UserInterface {
       return Address.convertToList(response);
     } catch (err) {
       print("fetching address error: $err");
+
       return [];
     }
   }
@@ -103,6 +104,7 @@ class UserInterface {
         queries: {},
       );
     } catch (error) {
+
       print("fetching cart error: $error");
     }
   }
@@ -116,6 +118,7 @@ class UserInterface {
       return User.fromJson(response);
     } catch (err) {
       print("fetching address error: $err");
+
       return null;
     }
   }
@@ -128,6 +131,7 @@ class UserInterface {
       return ProductModel.convertToList(response["wishlist"]);
     } catch (err) {
       print("fetching wishlist error: $err");
+
       return [];
     }
   }
@@ -143,6 +147,7 @@ class UserInterface {
       return response["wishlisted"];
     } catch (err) {
       print("adding wishlist error: $err");
+
       return false;
     }
   }
@@ -158,6 +163,7 @@ class UserInterface {
       return response["success"];
     } catch (err) {
       print("deleting wishlist error: $err");
+
       return false;
     }
   }
