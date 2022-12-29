@@ -135,86 +135,90 @@ class TabBarItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.only(top: 30.0),
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      '10 orders placed in',
-                      style: orderPlacedStyle,
-                    ),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    SizedBox(
-                      height: 38,
-                      width: 151,
-                      child: OutlinedButton(
-                          onPressed: () {},
-                          child: Row(
-                            children: [
-                              Text(
-                                'Last 3 months',
-                                style: orderPlacedStyle,
-                              ),
-                              const Icon(
-                                Icons.keyboard_arrow_down_outlined,
-                                size: 20,
-                              ),
-                            ],
-                          )),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    const Icon(
-                      Icons.archive_outlined,
-                      size: 18,
-                    ),
-                    const SizedBox(
-                      width: 7,
-                    ),
-                    Text(
-                      'Archived order',
-                      style: archiveStyle,
-                    )
-                  ],
-                )
-              ],
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            FutureBuilder(future: context.read<OrderProvider>().getOrderList(),
-                builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return Container(
-                  height: MediaQuery.of(context).size.height * 0.80,
-                  width: MediaQuery.of(context).size.width,
-                  child: const Center(
-                    child: CupertinoActivityIndicator(
-                      animating: true,
-                      radius: 12,
-                    ),
+      child: Container(
+        height: MediaQuery.of(context).size.height,
+        child: Padding(
+          padding: const EdgeInsets.only(top: 30.0),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Text(
+                        '10 orders placed in',
+                        style: orderPlacedStyle,
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      SizedBox(
+                        height: 38,
+                        width: 151,
+                        child: OutlinedButton(
+                            onPressed: () {},
+                            child: Row(
+                              children: [
+                                Text(
+                                  'Last 3 months',
+                                  style: orderPlacedStyle,
+                                ),
+                                const Icon(
+                                  Icons.keyboard_arrow_down_outlined,
+                                  size: 20,
+                                ),
+                              ],
+                            )),
+                      ),
+                    ],
                   ),
-                );
-              } else {
-                if (snapshot.hasData) {
-                  final catList = snapshot.data as List<OrderReviewModel>?;
-                  return OrderHistoryItems();
-                }
-              }
-              return Text(
-                snapshot.error.toString(),
-              );
-            }),
-          ],
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.archive_outlined,
+                        size: 18,
+                      ),
+                      const SizedBox(
+                        width: 7,
+                      ),
+                      Text(
+                        'Archived order',
+                        style: archiveStyle,
+                      )
+                    ],
+                  )
+                ],
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              FutureBuilder(
+                  future: context.read<OrderProvider>().getOrderList(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return Container(
+                        height: MediaQuery.of(context).size.height * 0.80,
+                        width: MediaQuery.of(context).size.width,
+                        child: const Center(
+                          child: CupertinoActivityIndicator(
+                            animating: true,
+                            radius: 12,
+                          ),
+                        ),
+                      );
+                    } else {
+                      if (snapshot.hasData) {
+                        final catList = snapshot.data as List<OrderReviewModel>?;
+                        return OrderHistoryItems();
+                      }
+                    }
+                    return Text(
+                      snapshot.error.toString(),
+                    );
+                  }),
+            ],
+          ),
         ),
       ),
     );
@@ -235,8 +239,7 @@ class _OrderHistoryItemsState extends State<OrderHistoryItems> {
   @override
   Widget build(BuildContext context) {
     return Consumer<OrderProvider>(
-        builder: (context, value, child) => SizedBox(
-              height: 1000,
+        builder: (context, value, child) => Expanded(
               child: ListView.builder(
                   //physics: NeverScrollableScrollPhysics(),
                   itemCount: value.orderList.length,

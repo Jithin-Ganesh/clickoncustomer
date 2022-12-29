@@ -17,12 +17,14 @@ import '../utils/global-key.dart';
 import '../utils/pref_utils.dart';
 
 class ProductDetailTitle extends StatelessWidget {
-  ProductDetailTitle({Key? key, required this.productId, this.name,}) : super(key: key);
-final int? productId;
-final String? name;
-  final List<String> items = [
-    '1','2','3','4'
-  ];
+  ProductDetailTitle({
+    Key? key,
+    required this.productId,
+    this.name,
+  }) : super(key: key);
+  final int? productId;
+  final String? name;
+  final List<String> items = ['Qty 1', 'Qty 2', 'Qty 3', 'Qty 4'];
   String? selectedValue;
 
   @override
@@ -48,7 +50,8 @@ final String? name;
                     border: Border.all(color: canvasColor.withOpacity(0.5))),
                 child: const Center(
                   child: Icon(
-                    Icons.keyboard_arrow_left,size: 23,
+                    Icons.keyboard_arrow_left,
+                    size: 23,
                     color: canvasColor,
                   ),
                 ),
@@ -79,13 +82,13 @@ final String? name;
                       ),
                       Text(
                         textRupees,
-                        style: regular.copyWith(
-                            color: Colors.white, fontSize: 22),
+                        style:
+                            regular.copyWith(color: Colors.white, fontSize: 22),
                       ),
                       Text(
                         textAmount,
-                        style: regular.copyWith(
-                            fontSize: 28, color: Colors.white),
+                        style:
+                            regular.copyWith(fontSize: 28, color: Colors.white),
                       ),
                     ],
                   ),
@@ -114,13 +117,15 @@ final String? name;
               const SizedBox(
                 width: 16,
               ),
-              Consumer<CartProvider>(builder: (context, cart, child) => Container(
+              Consumer<CartProvider>(
+                builder: (context, cart, child) => Container(
                   height: 40,
                   child: OutlinedButton(
                     style: OutlinedButton.styleFrom(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10)),
-                      side: const BorderSide(width: 1.0, color: defaultTextColor),
+                      side:
+                          const BorderSide(width: 1.0, color: defaultTextColor),
                     ),
                     onPressed: () {},
                     child: DropdownButtonHideUnderline(
@@ -146,7 +151,6 @@ final String? name;
                           ),
                           items: items
                               .map((item) => DropdownMenuItem<String>(
-
                                     value: item,
                                     child: Text(
                                       item,
@@ -159,7 +163,9 @@ final String? name;
                           value: selectedValue,
                           onChanged: (value) {
                             selectedValue = value as String;
-                            Provider.of<CartProvider>(context,listen: false).setQuantity(qty: int.parse(selectedValue ?? '0'));
+                            Provider.of<CartProvider>(context, listen: false)
+                                .setQuantity(
+                                    qty: int.parse(selectedValue?[selectedValue!.length - 1 ] ?? '0'));
                           }),
                     ),
                   ),
@@ -193,13 +199,17 @@ final String? name;
                 height: 40,
                 child: OutlinedButton(
                   onPressed: () {
-                    if(PrefUtils().getToken()!=null){
+                    if (PrefUtils().getToken() != null) {
                       Provider.of<CartProvider>(context, listen: false)
-                          .addCart(productId: productId,).then((value) => showSnackBar(message: 'Added to Cart', context: context));
-                    }else{
-                      Navigator.pushNamed(context, LoginScreen.routeName,arguments: LoginScreen(isLoggedIn: true));
+                          .addCart(
+                            productId: productId,
+                          )
+                          .then((value) => showSnackBar(
+                              message: 'Added to Cart', context: context));
+                    } else {
+                      Navigator.pushNamed(context, LoginScreen.routeName,
+                          arguments: LoginScreen(isLoggedIn: true));
                     }
-
                   },
                   style: OutlinedButton.styleFrom(
                     shape: RoundedRectangleBorder(

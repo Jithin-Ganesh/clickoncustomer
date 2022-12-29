@@ -51,11 +51,10 @@ class OrderProvider extends ChangeNotifier {
   }
 
 
-  Future<OrderHistoryModel?> getOrderById({required int? orderId}) async {
-    final response = (await OrderInterface.getOrderById(orderId: orderId));
-    order = response?.order;
+  Future<OrderReviewModel?> getOrderById({required int? orderId}) async {
+    order = (await OrderInterface.getOrderById(orderId: orderId));
     notifyListeners();
-    return response;
+    return order;
   }
 
 }

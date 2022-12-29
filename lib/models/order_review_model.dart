@@ -1,7 +1,10 @@
 import 'package:date_format/date_format.dart' as DF;
+
+
 class OrderReviewModel {
   int? id;
   String? referenceNumber;
+  String? cancellationReason;
   String? productName;
   String? thumbnail;
   String? price;
@@ -11,19 +14,24 @@ class OrderReviewModel {
   int? paymentMode;
   String? tax;
   int? offer;
+  String? billingAddress;
+  String? shippingAddress;
   String? netTotal;
-  int? deliveryCharge;
+  String? deliveryCharge;
   String? expectedDeliveryDate;
   String? trackingLink;
+  int? productId;
   String? courierAgency;
   int? userId;
   int? businessId;
+  int? groupOrderId;
   String? createdAt;
   String? updatedAt;
 
   OrderReviewModel(
       {this.id,
         this.referenceNumber,
+        this.cancellationReason,
         this.productName,
         this.thumbnail,
         this.price,
@@ -33,15 +41,20 @@ class OrderReviewModel {
         this.paymentMode,
         this.tax,
         this.offer,
+        this.billingAddress,
+        this.shippingAddress,
         this.netTotal,
         this.deliveryCharge,
         this.expectedDeliveryDate,
         this.trackingLink,
+        this.productId,
         this.courierAgency,
         this.userId,
         this.businessId,
+        this.groupOrderId,
         this.createdAt,
         this.updatedAt});
+
 
   String get date {
     try {
@@ -83,9 +96,11 @@ class OrderReviewModel {
     }
   }
 
+
   OrderReviewModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     referenceNumber = json['referenceNumber'];
+    cancellationReason = json['cancellationReason'];
     productName = json['productName'];
     thumbnail = json['thumbnail'];
     price = json['price'];
@@ -95,13 +110,17 @@ class OrderReviewModel {
     paymentMode = json['paymentMode'];
     tax = json['tax'];
     offer = json['offer'];
+    billingAddress = json['billing_address'];
+    shippingAddress = json['shipping_address'];
     netTotal = json['netTotal'];
     deliveryCharge = json['deliveryCharge'];
     expectedDeliveryDate = json['expected_delivery_date'];
     trackingLink = json['tracking_link'];
+    productId = json['productId'];
     courierAgency = json['courier_agency'];
     userId = json['userId'];
     businessId = json['businessId'];
+    groupOrderId = json['groupOrderId'];
     createdAt = json['createdAt'];
     updatedAt = json['updatedAt'];
   }

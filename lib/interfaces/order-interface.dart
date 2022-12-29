@@ -65,7 +65,7 @@ class OrderInterface {
       return OrderReviewModel();
     }
   }
-  static Future<OrderHistoryModel?> getOrderById({required int? orderId}) async {
+  static Future<OrderReviewModel?> getOrderById({required int? orderId}) async {
     try {
       final response = await ApiRequest.send(
         method: ApiMethod.GET,
@@ -73,7 +73,7 @@ class OrderInterface {
         route: "order/user/$orderId",
         queries: {},
       );
-      return OrderHistoryModel.fromJson(response);
+      return OrderReviewModel.fromJson(response);
     } catch (error) {
       log("get order by id error: $error");
       return null;

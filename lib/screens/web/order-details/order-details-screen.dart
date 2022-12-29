@@ -132,7 +132,7 @@ class OrderDetailBody extends StatelessWidget {
                               child: CircularProgressIndicator());
                         } else {
                           if (snapshot.hasData) {
-                            final order = snapshot.data as OrderHistoryModel;
+                            final order = snapshot.data as OrderReviewModel;
                             return OrderDetailsItemWeb(order: order,
                               productId: productId,
                             );

@@ -36,6 +36,7 @@ class AuthProvider with ChangeNotifier {
   //Login
   Future<Login?> login({required String phone}) async {
      loginModel = await AuthInterface.login(phone: phone);
+     //Provider.of<UserProvider>(navigatorKey.currentState!.context,listen: false).fetchUserProfile(id: loginModel?.userId);
      await PrefUtils().setUserId(loginModel?.userId ?? 0);
     return loginModel;
   }

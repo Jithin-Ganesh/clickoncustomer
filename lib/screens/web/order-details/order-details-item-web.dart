@@ -1,23 +1,20 @@
 import 'package:clickoncustomer/components/rate-your-experience-screen1.dart';
 import 'package:clickoncustomer/models/order_review_model.dart';
-import 'package:clickoncustomer/models/view_order_model.dart';
 import 'package:clickoncustomer/screens/web/order-feedback/order-seller-feedback-screen-web.dart';
 import 'package:clickoncustomer/utils/constants/decoration.dart';
 
 import 'package:clickoncustomer/utils/constants/strings.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../models/order-history-model.dart';
-import '../../../models/product-model.dart';
 import '../../../utils/constants/color.dart';
 import '../../../utils/constants/fontstyles.dart';
 import '../../../utils/constants/images.dart';
 import '../../../utils/img-provider.dart';
 
 class OrderDetailsItemWeb extends StatefulWidget {
-  const OrderDetailsItemWeb({Key? key, this.productId,required this.order}) : super(key: key);
-final OrderHistoryModel? order;
+  const OrderDetailsItemWeb({Key? key, this.productId, required this.order})
+      : super(key: key);
+  final OrderReviewModel? order;
   final int? productId;
 
   @override
@@ -46,7 +43,7 @@ class _OrderDetailsItemWebState extends State<OrderDetailsItemWeb> {
                             style: medium.copyWith(
                                 color: priceDetailsSubTextColor, fontSize: 14),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 23,
                           ),
                           Row(
@@ -56,7 +53,7 @@ class _OrderDetailsItemWebState extends State<OrderDetailsItemWeb> {
                                 width: 20,
                                 height: 20,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 7,
                               ),
                               Text(
@@ -66,17 +63,17 @@ class _OrderDetailsItemWebState extends State<OrderDetailsItemWeb> {
                               ),
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 4,
                           ),
                           Row(
                             children: [
-                              ImgProvider(
+                              const ImgProvider(
                                 url: "assets/images/img_33.png",
                                 width: 10,
                                 height: 10,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 10,
                               ),
                               Text(
@@ -87,30 +84,33 @@ class _OrderDetailsItemWebState extends State<OrderDetailsItemWeb> {
                             ],
                           )
                         ]),
-                    VerticalDivider(
+                    const VerticalDivider(
                       width: 90,
                       color: divColor,
                       thickness: 1,
                     ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          widget.order?.shippingAddress?.getFullAddress() ?? '',
-                          style: medium.copyWith(
-                              color: priceDetailsSubTextColor, fontSize: 14),
-                        ),
-                        SizedBox(
-                          height: 18,
-                        ),
-                        Text(
-                          widget.order?.billingAddress?.getFullAddress() ?? '',
-                          style: thin.copyWith(
-                              fontSize: 14, color: productSubTextColor),
-                        ),
-                      ],
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.15,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            widget.order?.shippingAddress ?? '',
+                            style: medium.copyWith(
+                                color: priceDetailsSubTextColor, fontSize: 14),
+                          ),
+                          const SizedBox(
+                            height: 18,
+                          ),
+                          Text(
+                            widget.order?.billingAddress ?? '',
+                            style: thin.copyWith(
+                                fontSize: 14, color: productSubTextColor),
+                          ),
+                        ],
+                      ),
                     ),
-                    VerticalDivider(
+                    const VerticalDivider(
                       width: 90,
                       color: divColor,
                       thickness: 1,
@@ -123,7 +123,7 @@ class _OrderDetailsItemWebState extends State<OrderDetailsItemWeb> {
                           style: medium.copyWith(
                               color: priceDetailsSubTextColor, fontSize: 14),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 15,
                         ),
                         Row(
@@ -134,11 +134,11 @@ class _OrderDetailsItemWebState extends State<OrderDetailsItemWeb> {
                                   color: productDetailsScreenTotalColor,
                                   fontSize: 18),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 5,
                             ),
                             Text(
-                              widget.order?.order?.netTotal.toString() ?? '',
+                              widget.order?.netTotal.toString() ?? '',
                               style: medium.copyWith(
                                   color: productDetailsScreenTotalColor,
                                   fontSize: 17),
@@ -160,7 +160,7 @@ class _OrderDetailsItemWebState extends State<OrderDetailsItemWeb> {
                       Container(
                         width: 215,
                         height: 38,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(5))),
                         child: OutlinedButton(
                           onPressed: () {
@@ -176,13 +176,13 @@ class _OrderDetailsItemWebState extends State<OrderDetailsItemWeb> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 8,
                       ),
                       Container(
                         width: 215,
                         height: 38,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(5))),
                         child: OutlinedButton(
                           onPressed: () {},
@@ -195,13 +195,13 @@ class _OrderDetailsItemWebState extends State<OrderDetailsItemWeb> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 8,
                       ),
                       Container(
                         width: 215,
                         height: 38,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(5))),
                         child: OutlinedButton(
                           onPressed: () {
@@ -223,7 +223,7 @@ class _OrderDetailsItemWebState extends State<OrderDetailsItemWeb> {
                   ],
                 )
               ]),
-              SizedBox(
+              const SizedBox(
                 height: 103,
               ),
               Row(
@@ -231,18 +231,18 @@ class _OrderDetailsItemWebState extends State<OrderDetailsItemWeb> {
                 children: [
                   Row(children: [
                     ImgProvider(
-                      url: widget.order?.order?.thumbnail??"",
+                      url: widget.order?.thumbnail ?? "",
                       width: 90,
                       height: 71,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 34,
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          widget.order?.order?.productName??"",
+                          widget.order?.productName ?? "",
                           style: regular.copyWith(
                               fontSize: 14, color: orderPlacedTextColor),
                         ),
@@ -266,7 +266,7 @@ class _OrderDetailsItemWebState extends State<OrderDetailsItemWeb> {
                                 ),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 10,
                             ),
                             Text(
@@ -284,7 +284,7 @@ class _OrderDetailsItemWebState extends State<OrderDetailsItemWeb> {
                       Container(
                         width: 215,
                         height: 38,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(5))),
                         child: OutlinedButton(
                           onPressed: () {},
