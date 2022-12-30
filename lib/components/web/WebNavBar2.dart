@@ -277,9 +277,6 @@ class WebNavBar2 extends StatelessWidget {
                             )
                           ],
                         )),
-                    SizedBox(
-                      width: 25,
-                    ),
                     Text(
                       'Cart',
                       style: medium,

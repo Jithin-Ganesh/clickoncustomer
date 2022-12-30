@@ -2,11 +2,11 @@ import 'cart-products.dart';
 
 class Cart {
   int? id;
-  int? itemTotal;
+  String? itemTotal;
   double? offer;
   int? tax;
-  int? netTotal;
-  Null? deliveryCharges;
+  String? netTotal;
+  String? deliveryCharges;
   int? userId;
   String? createdAt;
   String? updatedAt;

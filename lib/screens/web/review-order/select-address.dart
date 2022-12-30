@@ -38,20 +38,23 @@ class AddressListAlertBox extends StatelessWidget {
                   'Address List',style: bold,
                 ),
                 Spacer(),
-                ButtonElevated(
-                  buttonTitle: 'Add New Address',
-                  onPressed: (){
-                    showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 30.0),
-                            child: AddAddressWeb(isEdit: false,),
-                          );
-                        });
-                  },
+                SizedBox(
                   height: 30,
                   width: MediaQuery.of(context).size.width * 0.07,
+                  child: OutlinedButton(
+                    child: Text('Add New Address',style: bold.copyWith(fontSize: 12),),
+                    onPressed: (){
+                      showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                              child: AddAddressWeb(isEdit: false,),
+                            );
+                          });
+                    },
+
+                  ),
                 )
               ],
             ),

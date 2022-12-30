@@ -55,10 +55,8 @@ class _SignUpState extends State<SignUp> {
       if (value != null) {
         // Provider.of<AuthProvider>(context, listen: false).disableLoading();
         showSnackBar(message: 'OTP : ${value.code}', context: context);
-        Navigator.of(context).pushNamed(OtpScreen.routeName,
-            arguments: OtpScreen(
-              phoneNumber: phoneController.text, isLoggedIn: false,
-            ));
+        Navigator.of(context).pushNamed(LoginScreen.routeName,arguments: LoginScreen(isLoggedIn: false)
+            );
       }
     });
   }
