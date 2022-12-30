@@ -13,7 +13,7 @@ class OrderReviewModel {
   String? productCode;
   int? paymentMode;
   String? tax;
-  int? offer;
+  double? offer;
   String? billingAddress;
   String? shippingAddress;
   String? netTotal;
