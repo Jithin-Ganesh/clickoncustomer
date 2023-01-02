@@ -30,7 +30,7 @@ class OrderInterface {
           route: "cart/$cartId/checkout",
           queries: {});
 
-      return response != null;
+      return response['Success']??false;
     } catch (err) {
       throw ApiException(err.toString());
     }

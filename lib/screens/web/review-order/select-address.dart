@@ -70,11 +70,9 @@ class AddressListAlertBox extends StatelessWidget {
             0.7,
         width:
         MediaQuery.of(context).size.width * 0.6,
-        child: Expanded(
-          child: Consumer<UserProvider>(builder: (context, value, child) =>AddressListView(
-             addresses: value.addressList,
-           ),),
-        ),
+        child: Consumer<UserProvider>(builder: (context, value, child) =>AddressListView(
+           addresses: value.addressList,
+         ),),
       ),
     );
   }

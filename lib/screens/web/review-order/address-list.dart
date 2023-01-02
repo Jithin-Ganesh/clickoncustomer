@@ -22,14 +22,13 @@ class AddressListView extends StatelessWidget {
       itemBuilder: (context, index) {
         return Padding(
           padding: const EdgeInsets.only(bottom: 20),
-          child: Expanded(
-              child: SizedBox(
+          child: SizedBox(
             child: AddressCard(
-              address: addresses?[index],
-              index: index,
+          address: addresses?[index],
+          index: index,
             ),
             width: MediaQuery.of(context).size.width * 0.8,
-          )),
+          ),
         );
       },
     );

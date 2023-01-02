@@ -153,10 +153,10 @@ class _PaymentBankState extends State<PaymentBank> {
             payOnline: payOnline)
         .then((value) {
       if (value) {
-        Navigator.of(context).pushNamed(HomeScreenWeb.routeName);
+       Navigator.pushNamedAndRemoveUntil(context, HomeScreenWeb.routeName, (route) => false);
         showSnackBar(message: 'Order Placed', context: context);
       } else {
-        showSnackBar(message: 'Order Not Placed', context: context);
+        showSnackBar(message: 'Unable to place your order, please try after some time.', context: context);
       }
     });
   }

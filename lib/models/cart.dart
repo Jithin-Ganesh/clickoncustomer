@@ -3,7 +3,7 @@ import 'cart-products.dart';
 class Cart {
   int? id;
   String? itemTotal;
-  double? offer;
+  String? offer;
   int? tax;
   String? netTotal;
   String? deliveryCharges;
