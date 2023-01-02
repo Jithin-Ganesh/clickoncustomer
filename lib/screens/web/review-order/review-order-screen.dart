@@ -20,6 +20,7 @@ import '../../../utils/constants/decoration.dart';
 import '../../../utils/constants/fontstyles.dart';
 import '../../../utils/constants/strings.dart';
 import '../../../utils/img-provider.dart';
+import '../../../utils/pref_utils.dart';
 
 class ReviewOrderScreenWeb extends StatefulWidget {
   static const routeName = '/review-order-screen-web';
@@ -40,8 +41,9 @@ class _ReviewOrderScreenWebState extends State<ReviewOrderScreenWeb> {
   void initState() {
     // TODO: implement initState
     Provider.of<UserProvider>(context,listen: false).fetchAddressList(userID:widget.user?.id );
-
-    Provider.of<UserProvider>(context,listen: false).fetchUserProfile(id: widget.user?.id );
+    Provider.of<UserProvider>(context, listen: false)
+        .fetchUserProfile(id: PrefUtils().getUserId());
+    //Provider.of<UserProvider>(context,listen: false).fetchUserProfile(id: widget.user?.id );
     super.initState();
   }
 
@@ -80,9 +82,9 @@ class _ReviewOrderScreenWebState extends State<ReviewOrderScreenWeb> {
                   children: [
                     Consumer<UserProvider>(builder: (context, value, child) => Column(
                         children: [
-                          const Checkout(
+                        Checkout(
                               title: 'Account',
-                              text: 'ID: kvsanz',
+                              text: value.user?.firstName ?? '',email: value.user?.email,
                               isAccount: true,
                               isProcessing: false,
                               isSubmit: true),

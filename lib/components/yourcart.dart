@@ -1,4 +1,3 @@
-
 import 'package:clickoncustomer/components/web/custom-alert-box.dart';
 import 'package:clickoncustomer/providers/cart-provider.dart';
 import 'package:clickoncustomer/screens/web/cart/cart-screen.dart';
@@ -16,12 +15,14 @@ import '../models/cart-products.dart';
 import '../screens/login_screen.dart';
 import '../utils/pref_utils.dart';
 
-
 class YourCart extends StatefulWidget {
   final CartProduct? product;
   final int? cartId;
-  YourCart({Key? key,  required this.product, this.cartId, }) : super(key: key);
-
+  YourCart({
+    Key? key,
+    required this.product,
+    this.cartId,
+  }) : super(key: key);
 
   @override
   State<YourCart> createState() => _YourCartState();
@@ -29,10 +30,8 @@ class YourCart extends StatefulWidget {
 
 class _YourCartState extends State<YourCart> {
   final List<String> items = [
-    '1',
-    '2',
-    '3',
-    '4',
+    'COD',
+    'Pay Online'
   ];
   String? selectedValue;
   @override
@@ -44,7 +43,7 @@ class _YourCartState extends State<YourCart> {
         width: MediaQuery.of(context).size.width * 0.622,
         height: 166,
         child: Padding(
-          padding: const EdgeInsets.only(right: 20, left: 0,top: 12),
+          padding: const EdgeInsets.only(right: 20, left: 0, top: 12),
           child:
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
             Row(
@@ -66,17 +65,22 @@ class _YourCartState extends State<YourCart> {
                   children: [
                     Text(
                       textInStock,
-                      style:
-                          medium.copyWith(color: inStockTitleColor, fontSize: 12),
+                      style: medium.copyWith(
+                          color: inStockTitleColor, fontSize: 12),
                     ),
-                    SizedBox(height: 6,),
+                    SizedBox(
+                      height: 6,
+                    ),
                     Text(
                       widget.product?.name ?? '',
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: regular.copyWith(
                           fontSize: 14, color: productSubTextColor),
-                    ),    SizedBox(height: 6,),
+                    ),
+                    SizedBox(
+                      height: 6,
+                    ),
                     Row(children: [
                       Text(textRupees),
                       const SizedBox(
@@ -111,7 +115,7 @@ class _YourCartState extends State<YourCart> {
                         width: 10,
                       ),
                       Text(
-                        widget.product?.offer.toString() ?? '',
+                        '1 Offer Applied',
                         style: medium.copyWith(
                             fontSize: 12, color: priceOffersSubtextColor),
                       )
@@ -181,31 +185,39 @@ class _YourCartState extends State<YourCart> {
                           width: 12,
                         ),
                         TextButton(
-                         onPressed: () {
-                           showMyDialog(
-                             screenContext: context,
-                             buttonName: "Remove",
-                             title: "Alert!",
-                             contentText: "Do you really want to clear the cart?",
-                             onConfirm: () {
-                               Provider.of<CartProvider>(context, listen: false)
-                                   .deleteCart( cartId: widget.cartId)
-                                   .then((value) {
-                                 if(PrefUtils().getToken()!=null){
-                                   Provider.of<CartProvider>(context,listen: false).fetchCart();
-                                   Navigator.pushNamed(context, CartScreenWeb.routeName);
-                                 }else{
-                                   Navigator.pushNamed(context, LoginScreen.routeName,arguments: const LoginScreen(isLoggedIn: true));
-                                 }
-
-                               });
-                             },
-                           );
-                         },
-                         child: Text( textYourCartRemove,
-                           style:
-                           regular.copyWith(fontSize: 12, color: removeColor),)
-                        )
+                            onPressed: () {
+                              showMyDialog(
+                                screenContext: context,
+                                buttonName: "Remove",
+                                title: "Alert!",
+                                contentText:
+                                    "Do you really want to clear the cart?",
+                                onConfirm: () {
+                                  Provider.of<CartProvider>(context,
+                                          listen: false)
+                                      .deleteCart(cartId: widget.cartId)
+                                      .then((value) {
+                                    if (PrefUtils().getToken() != null) {
+                                      Provider.of<CartProvider>(context,
+                                              listen: false)
+                                          .fetchCart();
+                                      Navigator.pushNamed(
+                                          context, CartScreenWeb.routeName);
+                                    } else {
+                                      Navigator.pushNamed(
+                                          context, LoginScreen.routeName,
+                                          arguments: const LoginScreen(
+                                              isLoggedIn: true));
+                                    }
+                                  });
+                                },
+                              );
+                            },
+                            child: Text(
+                              textYourCartRemove,
+                              style: regular.copyWith(
+                                  fontSize: 12, color: removeColor),
+                            ))
                       ],
                     )
                   ],
@@ -229,8 +241,8 @@ class _YourCartState extends State<YourCart> {
                         ),
                         Text(
                           textYourCartFree,
-                          style:
-                              medium.copyWith(color: primaryColor, fontSize: 12),
+                          style: medium.copyWith(
+                              color: primaryColor, fontSize: 12),
                         )
                       ],
                     ),

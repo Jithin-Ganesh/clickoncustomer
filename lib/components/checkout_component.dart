@@ -12,11 +12,12 @@ class Checkout extends StatelessWidget {
     required this.isAccount,
     this.isSubmit = true,
     this.isProcessing = false,
-    this.slNumber, this.onPressed,
+    this.slNumber, this.onPressed, this.email,
   }) : super(key: key);
 
   final String title;
   final String text;
+  final String? email;
   final bool isAccount;
   final VoidCallback? onPressed;
   final bool isSubmit;
@@ -61,7 +62,7 @@ class Checkout extends StatelessWidget {
                           width: 71,
                         ),
                         Text(
-                          textIDKvsanz,
+                          text,
                           style: medium.copyWith(
                               fontSize: 16,
                               color: productDetailsScreenTotalColor),
@@ -70,7 +71,7 @@ class Checkout extends StatelessWidget {
                           width: 42,
                         ),
                         Text(
-                          textGmail,
+                          email ?? 'email',
                           style:
                               regular.copyWith(fontSize: 16, color: gmailColor),
                         )

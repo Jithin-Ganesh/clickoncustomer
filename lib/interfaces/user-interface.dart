@@ -115,7 +115,7 @@ class UserInterface {
     try {
       final response = await ApiRequest.send(
           method: ApiMethod.GET, body: {}, route: "user/$id", queries: {});
-      return User.fromJson(response);
+      return User.fromJson(response['data']);
     } catch (err) {
       print("fetching address error: $err");
 

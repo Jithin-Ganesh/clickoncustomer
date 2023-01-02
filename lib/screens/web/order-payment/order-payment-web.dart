@@ -18,23 +18,22 @@ import '../../../utils/constants/fontstyles.dart';
 import '../../../utils/constants/images.dart';
 import '../../../utils/constants/strings.dart';
 import '../../../utils/img-provider.dart';
+import '../../../utils/pref_utils.dart';
 import '../review-order/add-address.dart';
 import '../review-order/select-address.dart';
 
 class PaymentOrderScreenWeb extends StatefulWidget {
   static const routeName = '/payment-order-screen-web';
 
-  const PaymentOrderScreenWeb({Key? key,}) : super(key: key);
-
-
+  const PaymentOrderScreenWeb({
+    Key? key,
+  }) : super(key: key);
 
   @override
   _PaymentOrderScreenWebState createState() => _PaymentOrderScreenWebState();
 }
 
 class _PaymentOrderScreenWebState extends State<PaymentOrderScreenWeb> {
-
-
   final List<String> items = [
     'Address 1',
     'Address 2',
@@ -42,8 +41,13 @@ class _PaymentOrderScreenWebState extends State<PaymentOrderScreenWeb> {
   ];
 
   String selectedValue = 'Address 1';
-
-
+@override
+  void initState() {
+    // TODO: implement initState
+  Provider.of<UserProvider>(context, listen: false)
+      .fetchUserProfile(id: PrefUtils().getUserId());
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Responsive(
@@ -77,12 +81,15 @@ class _PaymentOrderScreenWebState extends State<PaymentOrderScreenWeb> {
                   children: [
                     Column(
                       children: [
-                        const Checkout(
-                            title: 'Account',
-                            text: 'ID: kvsanz',
-                            isAccount: true,
-                            isProcessing: false,
-                            isSubmit: true),
+                        Consumer<UserProvider>(
+                          builder: (context, value, child) => Checkout(
+                              title: 'Account',
+                              text: value.user?.firstName ?? 'asd',
+                              email: value.user?.email,
+                              isAccount: true,
+                              isProcessing: false,
+                              isSubmit: true),
+                        ),
                         const SizedBox(
                           height: 14,
                         ),
@@ -196,8 +203,7 @@ class _PaymentOrderScreenWebState extends State<PaymentOrderScreenWeb> {
                             context: context,
                             builder: (BuildContext context) {
                               return const Padding(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 30.0),
+                                padding: EdgeInsets.symmetric(horizontal: 30.0),
                                 child: AddressListAlertBox(),
                               );
                             });

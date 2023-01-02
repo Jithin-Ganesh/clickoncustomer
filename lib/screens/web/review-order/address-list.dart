@@ -95,6 +95,7 @@ class AddressCard extends StatelessWidget {
                           ),
                           onPressed: () {
                             value.selectAddress(address);
+                            Navigator.pop(context);
                           },
                           child: Text(
                             'Deliver Here',
