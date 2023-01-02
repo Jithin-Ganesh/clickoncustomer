@@ -15,6 +15,7 @@ import '../utils/toast-message.dart';
 
 class SignUp extends StatefulWidget {
   static const routeName = "/signup";
+
   const SignUp({Key? key}) : super(key: key);
 
   @override
@@ -50,16 +51,22 @@ class _SignUpState extends State<SignUp> {
   void signUp() {
     // Provider.of<AuthProvider>(context, listen: false).enableLoading();
     Provider.of<AuthProvider>(context, listen: false)
-        .signUp(phone: phoneController.text,password: passwordController.text,email: emailController.text,firstName: firstNameController.text,lastName: '')
+        .signUp(
+            phone: phoneController.text,
+            password: passwordController.text,
+            email: emailController.text,
+            firstName: firstNameController.text,
+            lastName: '')
         .then((value) {
       if (value != null) {
         // Provider.of<AuthProvider>(context, listen: false).disableLoading();
         showSnackBar(message: 'OTP : ${value.code}', context: context);
-        Navigator.of(context).pushNamed(LoginScreen.routeName,arguments: LoginScreen(isLoggedIn: false)
-            );
+        Navigator.of(context).pushNamed(LoginScreen.routeName,
+            arguments: LoginScreen(isLoggedIn: false));
       }
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -91,7 +98,8 @@ class _SignUpState extends State<SignUp> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Padding(
-                              padding: const EdgeInsets.only(top: 48.91, left: 44.17),
+                              padding: const EdgeInsets.only(
+                                  top: 48.91, left: 44.17),
                               child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -113,7 +121,8 @@ class _SignUpState extends State<SignUp> {
                             height: 97,
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(left: 24.58, right: 36.83),
+                            padding: const EdgeInsets.only(
+                                left: 24.58, right: 36.83),
                             child: Column(
                               children: [
                                 ImgProvider(
@@ -165,19 +174,21 @@ class _SignUpState extends State<SignUp> {
                             height: 47,
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(left: 91,right: 91),
-                            child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+                            padding: const EdgeInsets.only(left: 91, right: 91),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 SizedBox(
                                   width: 350,
                                   child: TextFormField(
                                     autofocus: true,
-                                    controller: firstNameController,validator: (value) {
-                                    if (value?.isEmpty ?? false) {
-                                      return 'Please enter the First name.';
-                                    }
-                                    return null;
-                                  },
+                                    controller: firstNameController,
+                                    validator: (value) {
+                                      if (value?.isEmpty ?? false) {
+                                        return 'Please enter the First name.';
+                                      }
+                                      return null;
+                                    },
                                     decoration: InputDecoration(
                                         labelText: textYourName,
                                         labelStyle: regular.copyWith(
@@ -186,7 +197,8 @@ class _SignUpState extends State<SignUp> {
                                         border: OutlineInputBorder(
                                             borderSide: const BorderSide(
                                                 color: primaryColor, width: 2),
-                                            borderRadius: BorderRadius.circular(10))),
+                                            borderRadius:
+                                                BorderRadius.circular(10))),
                                   ),
                                 ),
                                 const SizedBox(
@@ -198,14 +210,16 @@ class _SignUpState extends State<SignUp> {
                                       width: 50,
                                       child: TextFormField(
                                         decoration: InputDecoration(
-                                          hintText: "+91",enabled: false,
+                                          hintText: "+91",
+                                          enabled: false,
                                           hintStyle: regular.copyWith(
                                               fontSize: 14, color: numberColor),
                                           border: const OutlineInputBorder(
-                                            borderRadius:
-                                                BorderRadius.all(Radius.circular(10.0)),
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(10.0)),
                                             borderSide: BorderSide(
-                                                color: textFormFieldBorderColor),
+                                                color:
+                                                    textFormFieldBorderColor),
                                           ),
                                         ),
                                       ),
@@ -217,26 +231,29 @@ class _SignUpState extends State<SignUp> {
                                       width: 268,
                                       child: TextFormField(
                                         textAlign: TextAlign.start,
-                                        controller: phoneController,validator: (value) {
-                                        if (value?.isEmpty ?? false) {
-                                          return 'Please enter the Phone Number.';
-                                        }
-                                        return null;
-                                      },
+                                        controller: phoneController,
+                                        validator: (value) {
+                                          if (value?.isEmpty ?? false) {
+                                            return 'Please enter the Phone Number.';
+                                          }
+                                          return null;
+                                        },
                                         decoration: InputDecoration(
                                           hintText: textMobileNumber,
                                           hintStyle: thin.copyWith(
                                               fontSize: 14, color: numberColor),
                                           border: const OutlineInputBorder(
-                                            borderRadius:
-                                                BorderRadius.all(Radius.circular(10.0)),
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(10.0)),
                                             borderSide: BorderSide(
-                                                color: textFormFieldBorderColor),
+                                                color:
+                                                    textFormFieldBorderColor),
                                           ),
                                         ),
                                         keyboardType: TextInputType.number,
                                         inputFormatters: <TextInputFormatter>[
-                                          FilteringTextInputFormatter.digitsOnly,
+                                          FilteringTextInputFormatter
+                                              .digitsOnly,
                                           LengthLimitingTextInputFormatter(10),
                                         ],
                                         style: regular.copyWith(
@@ -253,23 +270,24 @@ class _SignUpState extends State<SignUp> {
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10)),
                                   child: TextFormField(
-                                    controller: emailController,validator: (value) {
-                                    if (value?.isEmpty ?? false) {
-                                      return 'Please enter the Email.';
-                                    }
-                                    return null;
-                                  },
+                                      controller: emailController,
+                                      validator: (value) {
+                                        if (value?.isEmpty ?? false) {
+                                          return 'Please enter the Email.';
+                                        }
+                                        return null;
+                                      },
                                       decoration: InputDecoration(
-                                    hintText: textEmailLogin,
-                                    hintStyle:
-                                        thin.copyWith(fontSize: 14, color: numberColor),
-                                    border: const OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(10.0)),
-                                      borderSide:
-                                          BorderSide(color: textFormFieldBorderColor),
-                                    ),
-                                  )),
+                                        hintText: textEmailLogin,
+                                        hintStyle: thin.copyWith(
+                                            fontSize: 14, color: numberColor),
+                                        border: const OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10.0)),
+                                          borderSide: BorderSide(
+                                              color: textFormFieldBorderColor),
+                                        ),
+                                      )),
                                 ),
                                 const SizedBox(
                                   height: 14,
@@ -279,24 +297,25 @@ class _SignUpState extends State<SignUp> {
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10)),
                                   child: TextFormField(
-                                    controller: passwordController,
+                                      controller: passwordController,
                                       validator: (value) {
-                                        if (value?.isEmpty ?? value!.length < 6 ) {
+                                        if (value?.isEmpty ??
+                                            value!.length < 6) {
                                           return 'Please enter a valid Password.';
                                         }
                                         return null;
                                       },
                                       decoration: InputDecoration(
-                                    hintText: textPassword,
-                                    hintStyle:
-                                        thin.copyWith(fontSize: 14, color: numberColor),
-                                    border: const OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(10.0)),
-                                      borderSide:
-                                          BorderSide(color: textFormFieldBorderColor),
-                                    ),
-                                  )),
+                                        hintText: textPassword,
+                                        hintStyle: thin.copyWith(
+                                            fontSize: 14, color: numberColor),
+                                        border: const OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10.0)),
+                                          borderSide: BorderSide(
+                                              color: textFormFieldBorderColor),
+                                        ),
+                                      )),
                                 ),
                                 const SizedBox(
                                   height: 7,
@@ -315,7 +334,7 @@ class _SignUpState extends State<SignUp> {
                                       borderRadius: BorderRadius.circular(10)),
                                   child: ElevatedButton(
                                       onPressed: () {
-                                        if(_formKey.currentState!.validate()){
+                                        if (_formKey.currentState!.validate()) {
                                           signUp();
                                         }
                                       },
@@ -329,7 +348,9 @@ class _SignUpState extends State<SignUp> {
                               ],
                             ),
                           ),
-                          const SizedBox(height: 20,),
+                          const SizedBox(
+                            height: 20,
+                          ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -341,11 +362,18 @@ class _SignUpState extends State<SignUp> {
                               const SizedBox(
                                 width: 6,
                               ),
-                              TextButton(onPressed: () { Navigator.pushNamed(context, LoginScreen.routeName,arguments: LoginScreen(isLoggedIn: false)); },
-                              child: Text(  textSignIn,
-                                style: regular.copyWith(
-                                    fontSize: 14, color: primaryColor),),
-
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.pushNamed(
+                                      context, LoginScreen.routeName,
+                                      arguments:
+                                          LoginScreen(isLoggedIn: false));
+                                },
+                                child: Text(
+                                  textSignIn,
+                                  style: regular.copyWith(
+                                      fontSize: 14, color: primaryColor),
+                                ),
                               ),
                             ],
                           )

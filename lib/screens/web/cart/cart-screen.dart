@@ -116,13 +116,12 @@ class CartBody extends StatelessWidget {
                                     title: 'Your Cart', isShop: true),
                               ),
                               SizedBox(height: 25,),
-                              SizedBox(
-                                height: 650,
-                                child: ListView.builder(
-                                  itemBuilder: (context, index) => YourCart(
-                                      product: value.cart?.cartProducts?[index],cartId: value.cart?.id,),
-                                  itemCount: value.cart?.cartProducts?.length,
-                                ),
+                              ListView.builder(
+                                shrinkWrap: true,
+                                physics: NeverScrollableScrollPhysics(),
+                                itemBuilder: (context, index) => YourCart(
+                                    product: value.cart?.cartProducts?[index],cartId: value.cart?.id,),
+                                itemCount: value.cart?.cartProducts?.length,
                               )
                             ],
                           ),
@@ -135,7 +134,7 @@ class CartBody extends StatelessWidget {
                     ],
                   ),),
                   const SizedBox(
-                    height: 118,
+                    height: 20,
                   ),
                   const CustomTitleBar(
                     title: 'Your Items',

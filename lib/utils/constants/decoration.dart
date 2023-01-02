@@ -37,9 +37,10 @@ BoxDecoration boxDecoration = BoxDecoration(
 
 BoxDecoration zigzagDecoration = BoxDecoration(
   color: canvasColor,
-  image: DecorationImage(
-    image: AssetImage('assets/images/image-zigzag-bg.png')
-  ),
+  // image: DecorationImage(
+  //   fit: BoxFit.fill,
+  //   image: Image.asset('assets/images/image-zigzag-bg.png',   fit: BoxFit.fill,).image,
+  // ),
   boxShadow: [
     BoxShadow(
       color: Colors.grey,
