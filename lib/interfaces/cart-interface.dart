@@ -15,7 +15,7 @@ class CartInterface {
         queries: {},
       );
       if (response != null) {
-        return Cart.convertToList(response)[0];
+        return Cart.convertToList(response["data"])[0];
       } else {
         return null;
       }

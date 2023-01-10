@@ -30,7 +30,7 @@ class AccountComponent extends StatelessWidget {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(10)),
             color: isSelected ? primaryColor : Colors.white),
-        width: 380,
+
         height: 130,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

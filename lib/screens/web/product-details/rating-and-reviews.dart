@@ -9,6 +9,7 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 import '../../../components/elevated-buton.dart';
 import '../../../utils/constants/color.dart';
 import '../../../utils/constants/fontstyles.dart';
+import '../../../utils/constants/themes.dart';
 
 class RatingsAndReviews extends StatelessWidget {
   const RatingsAndReviews({Key? key}) : super(key: key);
@@ -17,7 +18,7 @@ class RatingsAndReviews extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: MediaQuery.of(context).size.width * 0.083,
+        horizontal: MediaQuery.of(context).size.width * 0.059,
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,7 +35,7 @@ class Reviews extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width * 0.6,
+      width: MediaQuery.of(context).size.width * 0.629,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -56,13 +57,23 @@ class Reviews extends StatelessWidget {
                   SizedBox(
                     width: 25,
                   ),
-                  ButtonElevated(
-                    width: 150,
-                    height: 50,
-                    color: productDetailsScreenBoxColor,
-                    onPressed: () {},textStyle: medium.copyWith(color: mainTitleColor, fontSize: 16),
-                    buttonTitle:
-                    'Review Product',
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.11,
+                    height: 40,
+                    child: OutlinedButton(
+                      style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(
+                              productDetailsScreenBoxColor),
+                          side: MaterialStateProperty.all(
+                              BorderSide(color: productDetailsScreenBoxColor))),
+                      onPressed: () {},
+                      child: Text(
+                        maxLines: 1,
+                        'Review Product',
+                        style: medium.copyWith(
+                            color: mainTitleColor, fontSize: 16),
+                      ),
+                    ),
                   ),
                 ],
               )
@@ -189,7 +200,8 @@ class ReviewBox extends StatelessWidget {
                         ),
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: ImgProvider(color: userProfileBgColor,
+                          child: ImgProvider(
+                            color: userProfileBgColor,
                             url: "assets/images/dummy/person.png",
                             width: 19,
                             height: 19,
@@ -222,7 +234,8 @@ class ReviewBox extends StatelessWidget {
                       width: 23,
                     ),
                     Icon(
-                      Icons.keyboard_arrow_down_outlined,color:productAvailabilityColor ,
+                      Icons.keyboard_arrow_down_outlined,
+                      color: productAvailabilityColor,
                       size: 15,
                     ),
                   ],
@@ -234,14 +247,16 @@ class ReviewBox extends StatelessWidget {
             ),
             Text(
               title,
-              style: medium.copyWith(color: productDetailsScreenTotalColor, fontSize: 16),
+              style: medium.copyWith(
+                  color: productDetailsScreenTotalColor, fontSize: 16),
             ),
             SizedBox(
               height: 3,
             ),
             Row(
               children: [
-                RatingBar.builder(unratedColor: Colors.white,
+                RatingBar.builder(
+                  unratedColor: Colors.white,
                   direction: Axis.horizontal,
                   allowHalfRating: true,
                   itemSize: 12,
@@ -311,7 +326,7 @@ class Ratings extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 510,
-      width: MediaQuery.of(context).size.width * 0.193,
+      width: MediaQuery.of(context).size.width * 0.23,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),

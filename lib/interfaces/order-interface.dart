@@ -35,6 +35,22 @@ class OrderInterface {
       throw ApiException(err.toString());
     }
   }
+  static Future<bool> orderCancel(
+      {required orderId,required String? cancellationReason,}) async {
+    try {
+      final response = await ApiRequest.send(
+          method: ApiMethod.POST,
+          body: {
+            "cancellationReason": cancellationReason
+          },
+          route: "order/$orderId/cancel",
+          queries: {});
+
+      return response['success']??false;
+    } catch (err) {
+      throw ApiException(err.toString());
+    }
+  }
 
   static Future<List<OrderReviewModel>> getOrderList() async {
     try {
@@ -44,7 +60,7 @@ class OrderInterface {
         route: "order",
         queries: {},
       );
-      return OrderReviewModel.convertToList(response);
+      return OrderReviewModel.convertToList(response["data"]);
     } catch (error) {
       log("order error: $error");
       return [];

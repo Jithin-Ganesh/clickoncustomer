@@ -1,14 +1,74 @@
 import 'package:date_format/date_format.dart' as DF;
+class Status {
+  int? id;
+  String? value;
 
+  Status({this.id, this.value});
+
+  Status.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    value = json['value'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['value'] = this.value;
+    return data;
+  }
+}
+
+class Customer {
+  int? id;
+  String? firstName;
+  String? lastName;
+  String? email;
+  int? availableBalance;
+  String? phone;
+  String? password;
+  bool? isActive;
+  String? roles;
+  String? createdAt;
+  String? updatedAt;
+  Null? cartId;
+
+  Customer({this.id,
+    this.firstName,
+    this.lastName,
+    this.email,
+    this.availableBalance,
+    this.phone,
+    this.password,
+    this.isActive,
+    this.roles,
+    this.createdAt,
+    this.updatedAt,
+    this.cartId});
+
+  Customer.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    firstName = json['firstName'];
+    lastName = json['lastName'];
+    email = json['email'];
+    availableBalance = json['available_balance'];
+    phone = json['phone'];
+    password = json['password'];
+    isActive = json['isActive'];
+    roles = json['roles'];
+    createdAt = json['createdAt'];
+    updatedAt = json['updatedAt'];
+    cartId = json['cartId'];
+  }
+}
 
 class OrderReviewModel {
+  Status? status;
   int? id;
   String? referenceNumber;
   String? cancellationReason;
   String? productName;
   String? thumbnail;
   String? price;
-  int? status;
   int? quantity;
   String? productCode;
   int? paymentMode;
@@ -18,24 +78,26 @@ class OrderReviewModel {
   String? shippingAddress;
   String? netTotal;
   String? deliveryCharge;
-  String? expectedDeliveryDate;
-  String? trackingLink;
+  Null? expectedDeliveryDate;
+  Null? trackingLink;
+  String? description;
   int? productId;
-  String? courierAgency;
+  Null? courierAgency;
   int? userId;
   int? businessId;
-  int? groupOrderId;
+  Null? groupOrderId;
   String? createdAt;
   String? updatedAt;
+  Customer? customer;
 
   OrderReviewModel(
-      {this.id,
+      {this.status,
+        this.id,
         this.referenceNumber,
         this.cancellationReason,
         this.productName,
         this.thumbnail,
         this.price,
-        this.status,
         this.quantity,
         this.productCode,
         this.paymentMode,
@@ -47,13 +109,15 @@ class OrderReviewModel {
         this.deliveryCharge,
         this.expectedDeliveryDate,
         this.trackingLink,
+        this.description,
         this.productId,
         this.courierAgency,
         this.userId,
         this.businessId,
         this.groupOrderId,
         this.createdAt,
-        this.updatedAt});
+        this.updatedAt,
+        this.customer});
 
 
   String get date {
@@ -98,13 +162,14 @@ class OrderReviewModel {
 
 
   OrderReviewModel.fromJson(Map<String, dynamic> json) {
+    status =
+   Status.fromJson(json['status']) ;
     id = json['id'];
     referenceNumber = json['referenceNumber'];
     cancellationReason = json['cancellationReason'];
     productName = json['productName'];
     thumbnail = json['thumbnail'];
     price = json['price'];
-    status = json['status'];
     quantity = json['quantity'];
     productCode = json['product_code'];
     paymentMode = json['paymentMode'];
@@ -116,6 +181,7 @@ class OrderReviewModel {
     deliveryCharge = json['deliveryCharge'];
     expectedDeliveryDate = json['expected_delivery_date'];
     trackingLink = json['tracking_link'];
+    description = json['description'];
     productId = json['productId'];
     courierAgency = json['courier_agency'];
     userId = json['userId'];
@@ -123,8 +189,10 @@ class OrderReviewModel {
     groupOrderId = json['groupOrderId'];
     createdAt = json['createdAt'];
     updatedAt = json['updatedAt'];
+    customer = json['customer'] != null
+        ? new Customer.fromJson(json['customer'])
+        : null;
   }
-
   static List<OrderReviewModel> convertToList(List<dynamic> list) {
     if (list == null) return [];
 
@@ -136,3 +204,4 @@ class OrderReviewModel {
     return data;
   }
 }
+

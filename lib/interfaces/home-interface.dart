@@ -13,7 +13,7 @@ class HomeInterface {
         queries: {},
       );
 
-      return ProductModel.convertToList(response);
+      return ProductModel.convertToList(response["data"]);
     } catch (error) {
       print("fetching home error: $error");
       return null;

@@ -32,7 +32,7 @@ class _YourAccountWebState extends State<YourAccountWeb> {
   @override
   Widget build(BuildContext context) {
     const double itemHeight = 130;
-    final double itemWidth = MediaQuery.of(context).size.width * 0.198;
+    final double itemWidth = MediaQuery.of(context).size.width * 0.1989;
     return Responsive(
       tablet: const Center(
         child: ImgProvider(
@@ -64,10 +64,10 @@ class _YourAccountWebState extends State<YourAccountWeb> {
               ])),
           child: SingleChildScrollView(
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 160),
+              padding: EdgeInsets.symmetric(horizontal: 50),
               child: Column(children: [
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 198),
+                  padding: EdgeInsets.symmetric(horizontal: 50),
                   child: Column(
                     children: [
                       SizedBox(
@@ -161,9 +161,10 @@ class _YourAccountWebState extends State<YourAccountWeb> {
                         height: 88,
                       ),
                       SizedBox(
-                        height: 350,
+                        height: 450,
                         child: GridView.count(
                           childAspectRatio: (itemWidth / itemHeight),
+                          padding: EdgeInsets.zero,
                           physics: const NeverScrollableScrollPhysics(),
                           primary: false,
                           crossAxisSpacing: 30,

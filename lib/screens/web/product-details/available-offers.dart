@@ -11,8 +11,8 @@ class AvailableOffers extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(right: 157.0,bottom: 15),
-      child: Container(
+      padding: const EdgeInsets.only(bottom: 15),
+      child: Container(width: MediaQuery.of(context).size.width*0.3920,
         height: 88,
         decoration: BoxDecoration(
           border:  Border.all(color: groupOrdersTitleTextColor),

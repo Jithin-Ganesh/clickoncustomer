@@ -35,9 +35,9 @@ class _ProductsState extends State<Products> {
             width: MediaQuery.of(context).size.width * 0.096,
           ),
           const SizedBox(
-            height: 9.7,
+            height: 8.7,
           ),
-          Text(
+          Text(maxLines:1,
             widget.title,
             style: medium.copyWith(fontSize: 16,color: categoriesTextColor),
           )

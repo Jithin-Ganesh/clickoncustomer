@@ -63,7 +63,7 @@ class _AccountOrderScreenWebState extends State<AccountOrderScreenWeb> {
                 children: [
                   Padding(
                     padding: EdgeInsets.symmetric(
-                        horizontal: MediaQuery.of(context).size.width * 0.187),
+                        horizontal: 200),
                     child: Column(
                       children: const [
                         SizedBox(

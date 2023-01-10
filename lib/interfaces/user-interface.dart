@@ -83,7 +83,7 @@ class UserInterface {
           body: {"userId": userId},
           route: "address",
           queries: {});
-      return Address.convertToList(response);
+      return Address.convertToList(response['data']);
     } catch (err) {
       print("fetching address error: $err");
 
