@@ -30,7 +30,7 @@ class AccountComponent extends StatelessWidget {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(10)),
             color: isSelected ? primaryColor : Colors.white),
-        width: 380,
+        //width: 380,
         height: 130,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -49,22 +49,26 @@ class AccountComponent extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  title,
-                  style: medium.copyWith(
-                      fontSize: 20,
-                      color: isSelected
-                          ? Colors.white
-                          : productDetailsScreenTextColor),
+                Flexible(
+                  child: Text(
+                    title,maxLines: 1,
+                    style: medium.copyWith(
+                        fontSize: 20, overflow: TextOverflow.ellipsis,
+                        color: isSelected
+                            ? Colors.white
+                            : productDetailsScreenTextColor),
+                  ),
                 ),
                 SizedBox(
                   height: 6,
                 ),
-                Text(
-                  description,
-                  style: regular.copyWith(
-                      fontSize: 14,
-                      color: isSelected ? Colors.white : discountPriceColor),
+                Flexible(
+                  child: Text(
+                    description,maxLines: 2,
+                    style: regular.copyWith(
+                        fontSize: 14, overflow: TextOverflow.ellipsis,
+                        color: isSelected ? Colors.white : discountPriceColor),
+                  ),
                 ),
               ],
             )
