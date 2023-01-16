@@ -78,14 +78,14 @@ class OrderReviewModel {
   String? shippingAddress;
   String? netTotal;
   String? deliveryCharge;
-  Null? expectedDeliveryDate;
-  Null? trackingLink;
+  String? expectedDeliveryDate;
+  String? trackingLink;
   String? description;
   int? productId;
-  Null? courierAgency;
+  String? courierAgency;
   int? userId;
   int? businessId;
-  Null? groupOrderId;
+  int? groupOrderId;
   String? createdAt;
   String? updatedAt;
   Customer? customer;

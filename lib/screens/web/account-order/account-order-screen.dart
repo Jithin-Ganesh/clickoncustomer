@@ -96,8 +96,10 @@ class _AccountOrderScreenWebState extends State<AccountOrderScreenWeb> {
 
 class OrderHistoryTabBar extends StatelessWidget {
   const OrderHistoryTabBar({
-    Key? key,
+    Key? key, this.filterId,
   }) : super(key: key);
+
+ final int? filterId;
 
   @override
   Widget build(BuildContext context) {
@@ -118,10 +120,10 @@ class OrderHistoryTabBar extends StatelessWidget {
             labelStyle: medium,
             unselectedLabelColor: productAvailabilityColor,
             alignment: TabBarAlignment.start),
-        views: const [
-          TabBarItem(),
-          TabBarItem(),
-          TabBarItem(),
+        views:  [
+          TabBarItem(filterId: 1,),
+          TabBarItem(filterId: 3,),
+          TabBarItem(filterId: 0,),
         ],
         onChange: (index) => print(index),
       ),
@@ -129,9 +131,15 @@ class OrderHistoryTabBar extends StatelessWidget {
   }
 }
 
-class TabBarItem extends StatelessWidget {
-  const TabBarItem({Key? key}) : super(key: key);
+class TabBarItem extends StatefulWidget {
+  final int? filterId;
+  const TabBarItem({Key? key, this.filterId}) : super(key: key);
 
+  @override
+  State<TabBarItem> createState() => _TabBarItemState();
+}
+
+class _TabBarItemState extends State<TabBarItem> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -194,7 +202,7 @@ class TabBarItem extends StatelessWidget {
                 height: 30,
               ),
               FutureBuilder(
-                  future: context.read<OrderProvider>().getOrderList(),
+                  future: context.read<OrderProvider>().getOrderList(isConfirm: true, page: 1, limit: 100,filterId:widget.filterId ),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return Container(

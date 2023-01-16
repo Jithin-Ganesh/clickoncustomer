@@ -46,8 +46,13 @@ class OrderProvider extends ChangeNotifier {
     return response;
   }
 
-  Future<List<OrderReviewModel>> getOrderList() async {
-    orderList = (await OrderInterface.getOrderList());
+  Future<List<OrderReviewModel>> getOrderList(
+      {required bool isConfirm,
+      int? filterId,
+      required int? page,
+      required int? limit}) async {
+    orderList = (await OrderInterface.getOrderList(
+        filterId: filterId, page: page, limit: limit, isFilter: isConfirm));
     notifyListeners();
     return orderList;
   }
