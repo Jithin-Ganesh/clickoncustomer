@@ -232,7 +232,7 @@ class About extends StatelessWidget {
         height: 371,
         color: bgColor.withOpacity(0.3),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 160.0),
+          padding: const EdgeInsets.symmetric(horizontal: 130.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -321,7 +321,7 @@ class About extends StatelessWidget {
                               style: thin.copyWith(fontSize: 14, color: Colors.black),
                             ),
                           ),
-                          const ImgProvider(url: 'assets/images/image-app-store.png',width: 246,height: 40,)
+                           ImgProvider(url: 'assets/images/image-app-store.png',width: 246,height: 40,)
 
                         ],
                       ),

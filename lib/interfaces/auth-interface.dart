@@ -14,11 +14,11 @@ class AuthInterface {
           route: "auth/customer/authenticate",
           body: {"username": phone},
           queries: {});
-      if(response['code'] != null){
-        return Login.fromJson(response);
+      if(response['success']){
+        return Login.fromJson(response['data']);
       }else{
-        print("Authentication error: ${response['message']}");
-        showSnackBar(message: response['message'], context: navigatorKey.currentContext!,isSuccess: false);
+        print("Authentication error: ${response}");
+        showSnackBar(message: response['data'], context: navigatorKey.currentContext!,isSuccess: false);  //xz
       }
 
     } catch (err) {
@@ -62,7 +62,7 @@ class AuthInterface {
           route: "auth/customer/verify",
           body: {"username": phone, 'otp': otp},
           queries: {});
-      return response['token'];
+      return response['data']?['token'];
     } catch (err) {
       print("Verifying OTP error: $err");
       return null;

@@ -1,4 +1,6 @@
+import 'package:clickoncustomer/components/web/custom-alert-box.dart';
 import 'package:clickoncustomer/models/order_review_model.dart';
+import 'package:clickoncustomer/providers/order.dart';
 import 'package:clickoncustomer/utils/constants/color.dart';
 
 import 'package:clickoncustomer/utils/constants/strings.dart';
@@ -6,7 +8,9 @@ import 'package:clickoncustomer/utils/img-provider.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../screens/web/account-order/account-order-screen.dart';
 import '../screens/web/order-details/order-details-screen.dart';
 import '../utils/constants/fontstyles.dart';
 
@@ -55,7 +59,7 @@ class _YourOrderState extends State<YourOrder> {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 15.0),
       child: Container(
-        width: MediaQuery.of(context).size.width * .62604,
+
         height: 217,
         decoration: const BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -97,13 +101,7 @@ class _YourOrderState extends State<YourOrder> {
                         height: 8,
                       ),
                       Text(
-                        widget.order?.status == 1
-                            ? 'Ordered Pending'
-                            : widget.order?.status == 2
-                                ? 'Ordered Confirmed'
-                                : widget.order?.status == 4
-                                    ? 'Ordered Dispatched'
-                                    : 'Ordered Cancelled',
+                      widget.order?.status?.value ?? "",
                         style: medium.copyWith(
                             fontSize: 18,
                             color: widget.order?.status == 1
@@ -234,7 +232,7 @@ class _YourOrderState extends State<YourOrder> {
                   Column(
                     children: [
                       Container(
-                        width: MediaQuery.of(context).size.width * 0.111,
+                        width:215,
                         height: 38,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(5))),
@@ -272,7 +270,7 @@ class _YourOrderState extends State<YourOrder> {
                         height: 12,
                       ),
                       Container(
-                        width: MediaQuery.of(context).size.width * 0.111,
+                        width: 215,
                         height: 38,
                         decoration: BoxDecoration(
                             color: widget.buttonStatus ? primaryColor : Colors.white,
@@ -292,12 +290,22 @@ class _YourOrderState extends State<YourOrder> {
                         height: 12,
                       ),
                       Container(
-                        width: MediaQuery.of(context).size.width * 0.111,
+                        width: 215,
                         height: 38,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(5))),
                         child: OutlinedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            showMyDialog(
+                                screenContext: context,
+                                buttonName: "Yes",
+                                onConfirm: () {
+                                  Provider.of<OrderProvider>(context, listen: false).orderCancel(cancellationReason: "", orderId: widget.order?.id).then((value) => Navigator.pushNamed(context, AccountOrderScreenWeb.routeName));
+                                },
+                                title: "Cancel!",
+                                contentText: "Do you really want to cancel");
+
+                          },
                           child: Text(
                             textAlign: TextAlign.center,
                             widget.buttonText2,

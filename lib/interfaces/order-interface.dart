@@ -30,21 +30,44 @@ class OrderInterface {
           route: "cart/$cartId/checkout",
           queries: {});
 
-      return response['Success']??false;
+      return response['Success'] ?? false;
     } catch (err) {
       throw ApiException(err.toString());
     }
   }
 
-  static Future<List<OrderReviewModel>> getOrderList() async {
+  static Future<bool> orderCancel({
+    required orderId,
+    required String? cancellationReason,
+  }) async {
+    try {
+      final response = await ApiRequest.send(
+          method: ApiMethod.POST,
+          body: {"cancellationReason": cancellationReason},
+          route: "order/$orderId/cancel",
+          queries: {});
+
+      return response['success'] ?? false;
+    } catch (err) {
+      throw ApiException(err.toString());
+    }
+  }
+
+  static Future<List<OrderReviewModel>> getOrderList(
+      {required int? filterId,
+      required int? page,
+      required int? limit,
+      required bool isFilter}) async {
     try {
       final response = await ApiRequest.send(
         method: ApiMethod.GET,
         body: {},
-        route: "order",
+        route: isFilter
+            ? 'order?status=$filterId&page=$page&limit=$limit'
+            : "order",
         queries: {},
       );
-      return OrderReviewModel.convertToList(response);
+      return OrderReviewModel.convertToList(response["data"]);
     } catch (error) {
       log("order error: $error");
       return [];
@@ -65,6 +88,7 @@ class OrderInterface {
       return OrderReviewModel();
     }
   }
+
   static Future<OrderReviewModel?> getOrderById({required int? orderId}) async {
     try {
       final response = await ApiRequest.send(

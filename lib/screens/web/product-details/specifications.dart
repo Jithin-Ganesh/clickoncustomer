@@ -182,118 +182,115 @@ class Specifications extends StatelessWidget {
               SizedBox(
                 width: 30,
               ),
-              Flexible(
-                flex: 1,
-                child: Container(
-                  height: 357,
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                    color: canvasColor,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 5,
-                        blurRadius: 7,
-                        offset: Offset(0, 3), // changes position of shadow
-                      ),
-                    ],
-                  ),
-                  child: Padding(
-                    padding:  EdgeInsets.symmetric(
-                        horizontal:  MediaQuery.of(context).size.width * 0.0203, vertical: 33),
-                    child: Row(
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(
-                              'General',
-                              style: regular.copyWith(
-                                  fontSize: 20,
-                                  color: productAvailabilityColor),
-                            ),
-                            Text(
-                              'Model Number',
-                              style: thin.copyWith(
-                                  fontSize: 14,
-                                  color: priceDetailsSubTextColor),
-                            ),
-                            Text(
-                              'Target gender',
-                              style: thin.copyWith(
-                                  fontSize: 14,
-                                  color: priceDetailsSubTextColor),
-                            ),
-                            Text(
-                              'Minimum Weight Recommendation',
-                              style: thin.copyWith(
-                                  fontSize: 14,
-                                  color: priceDetailsSubTextColor),
-                            ),
-                            Text(
-                              'Material',
-                              style: thin.copyWith(
-                                  fontSize: 14,
-                                  color: priceDetailsSubTextColor),
-                            ),
-                            Text(
-                              'Style	',
-                              style: thin.copyWith(
-                                  fontSize: 14,
-                                  color: priceDetailsSubTextColor),
-                            ),
-                            Text(
-                              'Product Dimensions	',
-                              style: thin.copyWith(
-                                  fontSize: 14,
-                                  color: priceDetailsSubTextColor),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width *  0.0286,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            SizedBox(),
-                            Text(
-                              '80336834',
-                              style: regular.copyWith(
-                                  fontSize: 14, color: mainTitleColor),
-                            ),
-                            Text(
-                              'Unisex',
-                              style: regular.copyWith(
-                                  fontSize: 14, color: mainTitleColor),
-                            ),
-                            Text(
-                              '1 Kilograms',
-                              style: regular.copyWith(
-                                  fontSize: 14, color: mainTitleColor),
-                            ),
-                            Text(
-                              'Cotton',
-                              style: regular.copyWith(
-                                  fontSize: 14, color: mainTitleColor),
-                            ),
-                            Text(
-                              'Medium',
-                              style: regular.copyWith(
-                                  fontSize: 14, color: mainTitleColor),
-                            ),
-                            Text(
-                              '11.4 x 23.6 x 21.7 cm',
-                              style: regular.copyWith(
-                                  fontSize: 14, color: mainTitleColor),
-                            ),
-                          ],
-                        )
-                      ],
+              Container(
+                height: 357,
+                width: MediaQuery.of(context).size.width*0.409,
+                decoration: BoxDecoration(
+                  color: canvasColor,
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 5,
+                      blurRadius: 7,
+                      offset: Offset(0, 3), // changes position of shadow
                     ),
+                  ],
+                ),
+                child: Padding(
+                  padding:  EdgeInsets.symmetric(
+                      horizontal:  MediaQuery.of(context).size.width * 0.0203, vertical: 33),
+                  child: Row(
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text(
+                            'General',
+                            style: regular.copyWith(
+                                fontSize: 20,
+                                color: productAvailabilityColor),
+                          ),
+                          Text(
+                            'Model Number',
+                            style: thin.copyWith(
+                                fontSize: 14,
+                                color: priceDetailsSubTextColor),
+                          ),
+                          Text(
+                            'Target gender',
+                            style: thin.copyWith(
+                                fontSize: 14,
+                                color: priceDetailsSubTextColor),
+                          ),
+                          Text(
+                            'Minimum Weight Recommendation',
+                            style: thin.copyWith(
+                                fontSize: 14,
+                                color: priceDetailsSubTextColor),
+                          ),
+                          Text(
+                            'Material',
+                            style: thin.copyWith(
+                                fontSize: 14,
+                                color: priceDetailsSubTextColor),
+                          ),
+                          Text(
+                            'Style	',
+                            style: thin.copyWith(
+                                fontSize: 14,
+                                color: priceDetailsSubTextColor),
+                          ),
+                          Text(
+                            'Product Dimensions	',
+                            style: thin.copyWith(
+                                fontSize: 14,
+                                color: priceDetailsSubTextColor),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width *  0.0286,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          SizedBox(),
+                          Text(
+                            '80336834',
+                            style: regular.copyWith(
+                                fontSize: 14, color: mainTitleColor),
+                          ),
+                          Text(
+                            'Unisex',
+                            style: regular.copyWith(
+                                fontSize: 14, color: mainTitleColor),
+                          ),
+                          Text(
+                            '1 Kilograms',
+                            style: regular.copyWith(
+                                fontSize: 14, color: mainTitleColor),
+                          ),
+                          Text(
+                            'Cotton',
+                            style: regular.copyWith(
+                                fontSize: 14, color: mainTitleColor),
+                          ),
+                          Text(
+                            'Medium',
+                            style: regular.copyWith(
+                                fontSize: 14, color: mainTitleColor),
+                          ),
+                          Text(
+                            '11.4 x 23.6 x 21.7 cm',
+                            style: regular.copyWith(
+                                fontSize: 14, color: mainTitleColor),
+                          ),
+                        ],
+                      )
+                    ],
                   ),
                 ),
               ),

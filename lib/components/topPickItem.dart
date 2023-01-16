@@ -32,23 +32,23 @@ class _TopPickItemState extends State<TopPickItem> {
       child: Stack(
         children: [
           Consumer<CategoryProvider>(
-            builder: (context, value, child) =>
-                SizedBox(
-                  height: 250,
-                  width: MediaQuery.of(context).size.width * 0.578,
-                  child: ListView.builder(
-                    itemCount: value.topPicks?.length,
-                    scrollDirection: Axis.horizontal,
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) {
-                      return Products(
-                        height: 242,
-                        image: value.topPicks?[index].image??"",
-                        title: value.topPicks?[index].name??"",
-                      );
-                    },
-                  ),
-                ),
+            builder: (context, value, child) => SizedBox(
+              height: 250,
+              width: MediaQuery.of(context).size.width * 0.578,
+              child: ListView.builder(
+                itemExtent: 140,
+                itemCount: value.topPicks?.length,
+                scrollDirection: Axis.horizontal,
+                shrinkWrap: true,
+                itemBuilder: (context, index) {
+                  return Products(
+                    height: 242,
+                    image: value.topPicks?[index].image ?? "",
+                    title: value.topPicks?[index].name ?? "",
+                  );
+                },
+              ),
+            ),
           ),
           // Consumer<CategoryProvider>(
           //   builder: (context, value, child) =>
@@ -76,16 +76,13 @@ class _TopPickItemState extends State<TopPickItem> {
               top: 88,
               right: 0,
               child: InkWell(
-                onTap: () {
-
-                },
+                onTap: () {},
                 child: Container(
                   height: 37,
                   width: 37,
                   child: Icon(Icons.keyboard_arrow_right_outlined),
                   decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: canvasColor
+                      shape: BoxShape.circle, color: canvasColor
                       // boxShadow: [
                       //   BoxShadow(
                       //     color: Colors.grey.withOpacity(0.5),
@@ -101,15 +98,13 @@ class _TopPickItemState extends State<TopPickItem> {
               top: 88,
               left: 0,
               child: InkWell(
-                onTap: () {
-
-                },
+                onTap: () {},
                 child: Container(
                   height: 37,
-                  width: 37, child: Icon(Icons.keyboard_arrow_left_outlined),
+                  width: 37,
+                  child: Icon(Icons.keyboard_arrow_left_outlined),
                   decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: canvasColor
+                      shape: BoxShape.circle, color: canvasColor
                       // boxShadow: [
                       //   BoxShadow(
                       //     color: Colors.grey.withOpacity(0.5),
@@ -118,7 +113,7 @@ class _TopPickItemState extends State<TopPickItem> {
                       //     offset: Offset(0, 3), // changes position of shadow
                       //   ),
                       // ],
-                    ),
+                      ),
                 ),
               )),
         ],

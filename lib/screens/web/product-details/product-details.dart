@@ -27,7 +27,7 @@ class ProductDetails extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   SizedBox(
-                    width: 378,
+                    width: 300,
                     child: Text(
                       value.productDetails?.product?.name ?? '',
                       maxLines: 2,

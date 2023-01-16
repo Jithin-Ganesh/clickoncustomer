@@ -9,17 +9,14 @@ import '../models/order-history-model.dart';
 class OrderProvider extends ChangeNotifier {
   List<OrderReviewModel> orderList = [];
   OrderReviewModel? order;
-  List<int?> cod= [];
+  List<int?> cod = [];
 
-
-  addCod({required List<CartProduct>? products}){
+  addCod({required List<CartProduct>? products}) {
     products?.forEach((element) {
       cod.add(element.id);
     });
     notifyListeners();
   }
-
-
 
   Future<bool> placeOrder({
     required List<int?> payOnline,
@@ -38,8 +35,24 @@ class OrderProvider extends ChangeNotifier {
     return response;
   }
 
-  Future<List<OrderReviewModel>> getOrderList() async {
-    orderList = (await OrderInterface.getOrderList());
+  Future<bool> orderCancel({
+    required String? cancellationReason,
+    required int? orderId,
+  }) async {
+    final response = await OrderInterface.orderCancel(
+        orderId: orderId, cancellationReason: cancellationReason);
+
+    notifyListeners();
+    return response;
+  }
+
+  Future<List<OrderReviewModel>> getOrderList(
+      {required bool isConfirm,
+      int? filterId,
+      required int? page,
+      required int? limit}) async {
+    orderList = (await OrderInterface.getOrderList(
+        filterId: filterId, page: page, limit: limit, isFilter: isConfirm));
     notifyListeners();
     return orderList;
   }
@@ -50,11 +63,9 @@ class OrderProvider extends ChangeNotifier {
     return order;
   }
 
-
   Future<OrderReviewModel?> getOrderById({required int? orderId}) async {
     order = (await OrderInterface.getOrderById(orderId: orderId));
     notifyListeners();
     return order;
   }
-
 }
