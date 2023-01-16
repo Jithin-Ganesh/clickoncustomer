@@ -17,7 +17,7 @@ class AuthInterface {
       if(response['success']){
         return Login.fromJson(response['data']);
       }else{
-        print("Authentication error: ${response['data']}");
+        print("Authentication error: ${response}");
         showSnackBar(message: response['data'], context: navigatorKey.currentContext!,isSuccess: false);
       }
 
