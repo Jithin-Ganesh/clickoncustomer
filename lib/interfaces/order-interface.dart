@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:clickoncustomer/models/order_review_model.dart';
+import 'package:clickoncustomer/utils/global-key.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../models/message.dart';
@@ -9,6 +10,7 @@ import '../models/view_order_model.dart';
 import '../utils/api/api_exception.dart';
 import '../utils/api/api_methods.dart';
 import '../utils/api/api_request.dart';
+import '../utils/toast-message.dart';
 
 class OrderInterface {
   //  placeOrder
@@ -29,7 +31,11 @@ class OrderInterface {
           },
           route: "cart/$cartId/checkout",
           queries: {});
-
+      if(response['Success']){
+        showSnackBar(message: 'Order Placed', context: navigatorKey.currentState!.context);
+      }else{
+        showSnackBar(message: 'Unable to place your order, please try after some time.', context: navigatorKey.currentState!.context);
+      }
       return response['Success'] ?? false;
     } catch (err) {
       throw ApiException(err.toString());
