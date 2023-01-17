@@ -83,7 +83,7 @@ class UserInterface {
           body: {"userId": userId},
           route: "address",
           queries: {});
-      return Address.convertToList(response['data']);
+      return Address.convertToList(response);
     } catch (err) {
       print("fetching address error: $err");
 
@@ -115,7 +115,7 @@ class UserInterface {
     try {
       final response = await ApiRequest.send(
           method: ApiMethod.GET, body: {}, route: "user/$id", queries: {});
-      return User.fromJson(response['data']);
+      return User.fromJson(response);
     } catch (err) {
       print("fetching address error: $err");
 
