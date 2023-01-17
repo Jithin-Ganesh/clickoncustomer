@@ -156,9 +156,7 @@ class _PaymentBankState extends State<PaymentBank> {
         .then((value) {
       if (value) {
        Navigator.pushNamedAndRemoveUntil(context, HomeScreenWeb.routeName, (route) => false);
-        showSnackBar(message: 'Order Placed', context: context);
-      } else {
-        showSnackBar(message: 'Unable to place your order, please try after some time.', context: context);
+
       }
     });
   }

@@ -203,9 +203,7 @@ class ProductDetailTitle extends StatelessWidget {
                       Provider.of<CartProvider>(context, listen: false)
                           .addCart(
                             productId: productId,
-                          )
-                          .then((value) => showSnackBar(
-                              message: 'Added to Cart', context: context));
+                          );
                     } else {
                       Navigator.pushNamed(context, LoginScreen.routeName,
                           arguments: LoginScreen(isLoggedIn: true));
