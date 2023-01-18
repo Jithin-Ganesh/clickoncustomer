@@ -73,7 +73,7 @@ class OrderInterface {
             : "order",
         queries: {},
       );
-      return OrderReviewModel.convertToList(response["data"]);
+      return OrderReviewModel.convertToList(response);
     } catch (error) {
       log("order error: $error");
       return [];

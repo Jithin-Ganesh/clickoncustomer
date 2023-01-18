@@ -20,7 +20,7 @@ class ProductInterface {
       );
 
 
-      return ProductDetailModel.fromJson(response["data"]);
+      return ProductDetailModel.fromJson(response);
     } catch (error) {
       print("fetching product details error: $error");
       throw ApiException(error.toString());
@@ -41,7 +41,7 @@ class ProductInterface {
         queries: {},
       );
 
-      return ProductModel.convertToList(response["data"]);
+      return ProductModel.convertToList(response);
     } catch (error) {
       print("fetching products error: $error");
       return [];
