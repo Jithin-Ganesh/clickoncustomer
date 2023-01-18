@@ -6,7 +6,9 @@ import 'dart:typed_data';
 import 'package:http/http.dart';
 import 'package:http_parser/http_parser.dart';
 
+import '../global-key.dart';
 import '../pref_utils.dart';
+import '../toast-message.dart';
 import 'api_client.dart';
 import 'api_exception.dart';
 import 'api_methods.dart';
@@ -92,6 +94,7 @@ class ApiRequest {
             Map responseData = jsonDecode(responseString);
 
             bool isSuccess = responseData["success"] ?? false;
+            log('Api Request Checking Success: $isSuccess');
 
             if (isSuccess) return responseData["data"];
 
@@ -99,6 +102,7 @@ class ApiRequest {
                 responseData["message"] ?? "Unknown error has occurred";
 
             //showMessage(message)
+            //showSnackBar(message: message, context: navigatorKey.currentContext!,isSuccess: false);
 
             return null;
           }

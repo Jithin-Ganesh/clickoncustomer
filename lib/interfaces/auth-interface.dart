@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import '../models/login.dart';
 import '../utils/api/api_exception.dart';
 import '../utils/api/api_methods.dart';
@@ -15,9 +17,10 @@ class AuthInterface {
           body: {"username": phone},
           queries: {});
       if(response!= null){
+        log('Printing Response : ${response['code']}');
         return Login.fromJson(response);
       }else{
-        print("Authentication error: ${response}");
+        //print("Authentication error: ${response}");
         showSnackBar(message: response, context: navigatorKey.currentContext!,isSuccess: false);  //xz
       }
 
