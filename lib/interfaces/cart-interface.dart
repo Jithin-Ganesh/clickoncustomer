@@ -1,4 +1,6 @@
 
+import 'dart:math';
+
 import 'package:clickoncustomer/utils/global-key.dart';
 
 import '../models/cart.dart';
@@ -40,10 +42,12 @@ class CartInterface {
         queries: {},
       );
       if(response['Success']){
+
         showSnackBar(
             message: 'Added to Cart', context: navigatorKey.currentState!.context);
       }
     } catch (error) {
+
       print("adding cart error: $error");
     }
   }
