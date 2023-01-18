@@ -20,8 +20,8 @@ class ApiRequest {
         throw UnauthorisedException();
       case 402:
         throw UnauthorisedException();
-    // case 404:
-    //   throw new FetchDataException();
+      // case 404:
+      //   throw new FetchDataException();
     }
   }
 
@@ -76,7 +76,7 @@ class ApiRequest {
                     contentType: MediaType('image', fileExtension)));
               } else {
                 request.fields[body.keys.toList()[i]] =
-                body[body.keys.toList()[i]] as String;
+                    body[body.keys.toList()[i]] as String;
               }
             }
 
@@ -89,7 +89,18 @@ class ApiRequest {
 
             log("<== Response POST: ${request.url}\n $responseString");
 
-            return jsonDecode(responseString);
+            Map responseData = jsonDecode(responseString);
+
+            bool isSuccess = responseData["success"] ?? false;
+
+            if (isSuccess) return responseData["data"];
+
+            String message =
+                responseData["message"] ?? "Unknown error has occurred";
+
+            //showMessage(message)
+
+            return null;
           }
 
           return {};
