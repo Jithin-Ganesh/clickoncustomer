@@ -78,7 +78,9 @@ class _ProductCardState extends State<ProductCard> {
                                 : value.addToWishList(productId: widget.product?.id);
                           });
                         },
-                        icon: ImgProvider(height: 28,width: 28,
+                        icon: value.isWishListed(widget.product?.id)?ImgProvider(height: 28,width: 28,
+                          url: "assets/images/love.png",
+                        ):ImgProvider(height: 28,width: 28,
                           url: "assets/images/icon-fav.png",
                         )),
                   )
