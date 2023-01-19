@@ -93,18 +93,7 @@ class ApiRequest {
 
             Map responseData = jsonDecode(responseString);
 
-            bool isSuccess = responseData["success"] ?? false;
-            log('Api Request Checking Success: $isSuccess');
 
-            if (isSuccess) return responseData["data"];
-
-            String message =
-                responseData["message"] ?? "Unknown error has occurred";
-
-            //showMessage(message)
-            //showSnackBar(message: message, context: navigatorKey.currentContext!,isSuccess: false);
-
-            return null;
           }
 
           return {};
@@ -117,6 +106,19 @@ class ApiRequest {
       }
 
       final responseBody = json.decode(response?.body ?? "{}");
+
+      bool isSuccess = responseBody["success"] ?? false;
+      log('Api Request Checking Success: $isSuccess');
+
+      if (isSuccess) return responseBody["data"];
+
+      String message =
+          responseBody["data"]?["message"] ?? "Unknown error has occurred";
+
+      //showMessage(message)
+      showSnackBar(message: message, context: navigatorKey.currentContext!,isSuccess: false);
+
+      return null;
 
       return responseBody;
     } on SocketException {

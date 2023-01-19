@@ -15,7 +15,8 @@ class AuthInterface {
           method: ApiMethod.POST,
           route: "auth/customer/authenticate",
           body: {"username": phone},
-          queries: {});
+          queries: {}
+          );
       if(response!= null){
         log('Printing Response : ${response['code']}');
         return Login.fromJson(response);

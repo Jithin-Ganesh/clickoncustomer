@@ -31,12 +31,7 @@ class OrderInterface {
           },
           route: "cart/$cartId/checkout",
           queries: {});
-      if(response['Success']){
-        showSnackBar(message: 'Order Placed', context: navigatorKey.currentState!.context);
-      }else{
-        showSnackBar(message: 'Unable to place your order, please try after some time.', context: navigatorKey.currentState!.context);
-      }
-      return response['Success'] ?? false;
+      return response['success'] ?? false;
     } catch (err) {
       throw ApiException(err.toString());
     }

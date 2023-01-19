@@ -41,11 +41,11 @@ class CartInterface {
         route: "cart",
         queries: {},
       );
-      if(response['Success']){
-
-        showSnackBar(
-            message: 'Added to Cart', context: navigatorKey.currentState!.context);
-      }
+      // if(response['Success']){
+      //
+      //   showSnackBar(
+      //       message: 'Added to Cart', context: navigatorKey.currentState!.context);
+      // }
     } catch (error) {
 
       print("adding cart error: $error");
