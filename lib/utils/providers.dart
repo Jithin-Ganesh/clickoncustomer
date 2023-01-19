@@ -10,6 +10,7 @@ import '../providers/cart-provider.dart';
 
 import '../providers/home_provider.dart';
 import '../providers/order.dart';
+import '../providers/payment.dart';
 
 class ProviderTree {
   List<SingleChildWidget> get(BuildContext context) {
@@ -21,6 +22,7 @@ class ProviderTree {
       ChangeNotifierProvider.value(value: CartProvider()),
       ChangeNotifierProvider.value(value: UserProvider()),
       ChangeNotifierProvider.value(value: OrderProvider()),
+      ChangeNotifierProvider.value(value: PaymentProvider()),
     ];
   }
 }

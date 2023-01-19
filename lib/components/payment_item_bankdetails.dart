@@ -1,17 +1,19 @@
+import 'dart:developer';
+
 import 'package:clickoncustomer/components/elevated-buton.dart';
 import 'package:clickoncustomer/providers/cart-provider.dart';
 import 'package:clickoncustomer/providers/user-provider.dart';
 import 'package:clickoncustomer/screens/web/home/home-screen-web.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:razorpay_flutter/razorpay_flutter.dart';
 
 import '../models/cart.dart';
 import '../providers/order.dart';
+import '../providers/payment.dart';
 import '../utils/constants/color.dart';
 import '../utils/constants/fontstyles.dart';
 import '../utils/constants/strings.dart';
-import '../utils/global-key.dart';
 import '../utils/img-provider.dart';
 import '../utils/toast-message.dart';
 
@@ -28,6 +30,63 @@ class PaymentBank extends StatefulWidget {
 }
 
 class _PaymentBankState extends State<PaymentBank> {
+
+
+  late Razorpay _razorpay;
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _razorpay = Razorpay();
+    _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
+    _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
+    _razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _razorpay.clear();
+  }
+
+
+  void _handlePaymentSuccess(PaymentSuccessResponse response) {
+    print('Success Response: $response');
+    AutofillHints.organizationName;
+    final order =
+    Provider.of<CartProvider>(context, listen: false).getOnlineOrder();
+    Navigator.pushNamedAndRemoveUntil(context, HomeScreenWeb.routeName, (route) => false);
+    // Navigator.of(context).pushNamedAndRemoveUntil(
+    //     PaymentSuccessMobile.routeName, (route) => false,
+    //     arguments: PaymentSuccessMobile(
+    //       response: response,
+    //       cartId: _args?.cartId,
+    //     ));
+    showSnackBar(message: "Order Placed", context: context, );
+    /*Fluttertoast.showToast(
+        msg: "SUCCESS: " + response.paymentId!,
+        toastLength: Toast.LENGTH_SHORT); */
+  }
+
+  void _handlePaymentError(PaymentFailureResponse response) {
+    log('Error Response: $response');
+    Navigator.pushNamedAndRemoveUntil(context, HomeScreenWeb.routeName, (route) => false);
+    showSnackBar(message: "Order Not Placed", context: context, );
+    /* Fluttertoast.showToast(
+        msg: "ERROR: " + response.code.toString() + " - " + response.message!,
+        toastLength: Toast.LENGTH_SHORT); */
+  }
+
+  void _handleExternalWallet(ExternalWalletResponse response) {
+    log('External SDK Response: $response');
+    /* Fluttertoast.showToast(
+        msg: "EXTERNAL_WALLET: " + response.walletName!,
+        toastLength: Toast.LENGTH_SHORT); */
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     return Consumer<UserProvider>(builder: (context, value, child) => Column(
@@ -72,15 +131,15 @@ class _PaymentBankState extends State<PaymentBank> {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 11,
                     ),
-                    ImgProvider(
+                    const ImgProvider(
                       url: "assets/images/icon-visa.png",
                       width: 29,
                       height: 18,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 25,
                     ),
                     widget.isCvv
@@ -89,7 +148,7 @@ class _PaymentBankState extends State<PaymentBank> {
                             height: 40,
                             decoration: BoxDecoration(
                               color: Colors.white,
-                              boxShadow: [
+                              boxShadow: const [
                                 BoxShadow(
                                   color: shadowColor2,
                                 )
@@ -106,14 +165,14 @@ class _PaymentBankState extends State<PaymentBank> {
                               ),
                             ),
                           )
-                        : SizedBox(
+                        : const SizedBox(
                             width: 0,
                           ),
                   ],
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 14,
             ),
             widget.isPay
@@ -134,7 +193,7 @@ class _PaymentBankState extends State<PaymentBank> {
                     textStyle: medium.copyWith(fontSize: 16, color: Colors.white),
                     color: primaryColor,
                   )
-                : SizedBox(
+                : const SizedBox(
                     width: 0,
                   ),
           ]),
@@ -147,17 +206,34 @@ class _PaymentBankState extends State<PaymentBank> {
       required int? shipping,
       required int? billing,
       required int? cartId}) {
-    Provider.of<OrderProvider>(context, listen: false)
-        .placeOrder(
-            shipping: shipping,
-            billing: billing,
-            cartId: cartId,
-            payOnline: payOnline)
-        .then((value) {
-      if (value) {
-       Navigator.pushNamedAndRemoveUntil(context, HomeScreenWeb.routeName, (route) => false);
 
-      }
-    });
+
+    log('pressed');
+
+      log('web checkout....................');
+      Provider.of<PaymentProvider>(context, listen: false)
+          .startPaymentForWeb(routeType: 'cart',
+          context: context,
+          id: cartId, shipping: shipping, billing: billing,  payOnline: payOnline);
+
+
+    _razorpay.on(
+        Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
+    _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
+    _razorpay.on(
+        Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
+
+    // Provider.of<OrderProvider>(context, listen: false)
+    //     .placeOrder(
+    //         shipping: shipping,
+    //         billing: billing,
+    //         cartId: cartId,
+    //         payOnline: payOnline)
+    //     .then((value) {
+    //   if (value) {
+    //    Navigator.pushNamedAndRemoveUntil(context, HomeScreenWeb.routeName, (route) => false);
+    //
+    //   }
+    // });
   }
 }

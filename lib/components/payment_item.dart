@@ -53,109 +53,109 @@ class PaymentItem extends StatelessWidget {
                   left: 70.0, right: 56, bottom: 64, top: 32),
               child: Column(
                 children: [
-                  // Container(
-                  //   decoration: BoxDecoration(
-                  //       borderRadius: BorderRadius.circular(10),
-                  //       border: Border.all(color: paymentBorderColor, width: 1)),
-                  //   width: 1068,
-                  //   height: 97,
-                  //   child: Padding(
-                  //     padding: const EdgeInsets.only(left: 19, right: 19),
-                  //     child: Row(
-                  //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  //       children: [
-                  //         // Row(
-                  //         //   children: [
-                  //         //     Container(
-                  //         //       decoration: BoxDecoration(
-                  //         //           borderRadius: BorderRadius.circular(5)),
-                  //         //       width: 20,
-                  //         //       height: 20,
-                  //         //       child: Checkbox(
-                  //         //         value: true,
-                  //         //         onChanged: (bool? value) {},
-                  //         //       ),
-                  //         //     ),
-                  //         //     const SizedBox(
-                  //         //       width: 28,
-                  //         //     ),
-                  //         //     const ImgProvider(
-                  //         //       url: "assets/images/icon-wallet.png",
-                  //         //       width: 35,
-                  //         //       height: 34,
-                  //         //     ),
-                  //         //     const SizedBox(
-                  //         //       width: 13,
-                  //         //     ),
-                  //         //     Column(
-                  //         //       mainAxisAlignment: MainAxisAlignment.center,
-                  //         //       crossAxisAlignment: CrossAxisAlignment.start,
-                  //         //       children: [
-                  //         //         Text(
-                  //         //           textClickOnWallet,
-                  //         //           style: medium.copyWith(
-                  //         //               fontSize: 16,
-                  //         //               color: productDetailsScreenTextColor),
-                  //         //         ),
-                  //         //         Row(
-                  //         //           children: [
-                  //         //             Text(
-                  //         //               textRemainingBalance,
-                  //         //               style: regular.copyWith(
-                  //         //                   fontSize: 16, color: gmailColor),
-                  //         //             ),
-                  //         //             const SizedBox(
-                  //         //               width: 8,
-                  //         //             ),
-                  //         //             Text(
-                  //         //               textZero,
-                  //         //               style: regular.copyWith(
-                  //         //                   fontSize: 16, color: gmailColor),
-                  //         //             ),
-                  //         //           ],
-                  //         //         ),
-                  //         //       ],
-                  //         //     ),
-                  //         //   ],
-                  //         // ),
-                  //         Row(
-                  //           children: [
-                  //             Column(
-                  //               mainAxisAlignment: MainAxisAlignment.center,
-                  //               children: [
-                  //                 Text(
-                  //                   textUsed,
-                  //                   style: regular.copyWith(
-                  //                       fontSize: 16, color: gmailColor),
-                  //                 ),
-                  //                 Row(
-                  //                   children: [
-                  //                     Text(
-                  //                       textRupees,
-                  //                       style: regular.copyWith(
-                  //                           fontSize: 22, color: primaryColor),
-                  //                     ),
-                  //                     const SizedBox(
-                  //                       width: 2,
-                  //                     ),
-                  //                     Text(
-                  //                       textBalanceWallet,
-                  //                       style: regular.copyWith(
-                  //                           fontSize: 22, color: primaryColor),
-                  //                     ),
-                  //                   ],
-                  //                 ),
-                  //               ],
-                  //             ),
-                  //           ],
-                  //         )
-                  //       ],
-                  //     ),
-                  //   ),
-                  // ),
-                  // const SizedBox(
-                  //   height: 22,
-                  // ),
+                  Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(color: paymentBorderColor, width: 1)),
+                    width: 1068,
+                    height: 97,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 19, right: 19),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(5)),
+                                width: 20,
+                                height: 20,
+                                child: Checkbox(
+                                  value: true,
+                                  onChanged: (bool? value) {},
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 28,
+                              ),
+                              const ImgProvider(
+                                url: "assets/images/icon-wallet.png",
+                                width: 35,
+                                height: 34,
+                              ),
+                              const SizedBox(
+                                width: 13,
+                              ),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    textClickOnWallet,
+                                    style: medium.copyWith(
+                                        fontSize: 16,
+                                        color: productDetailsScreenTextColor),
+                                  ),
+                                  Row(
+                                    children: [
+                                      Text(
+                                        textRemainingBalance,
+                                        style: regular.copyWith(
+                                            fontSize: 16, color: gmailColor),
+                                      ),
+                                      const SizedBox(
+                                        width: 8,
+                                      ),
+                                      Text(
+                                        textZero,
+                                        style: regular.copyWith(
+                                            fontSize: 16, color: gmailColor),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    textUsed,
+                                    style: regular.copyWith(
+                                        fontSize: 16, color: gmailColor),
+                                  ),
+                                  Row(
+                                    children: [
+                                      Text(
+                                        textRupees,
+                                        style: regular.copyWith(
+                                            fontSize: 22, color: primaryColor),
+                                      ),
+                                      const SizedBox(
+                                        width: 2,
+                                      ),
+                                      Text(
+                                        textBalanceWallet,
+                                        style: regular.copyWith(
+                                            fontSize: 22, color: primaryColor),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 22,
+                  ),
                   Container(
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),

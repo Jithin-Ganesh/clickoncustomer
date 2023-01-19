@@ -1,12 +1,14 @@
 
-import 'dart:math';
 
-import 'package:clickoncustomer/utils/global-key.dart';
+
+import 'package:razorpay_flutter/razorpay_flutter.dart';
 
 import '../models/cart.dart';
+import '../models/checkout-model.dart';
+import '../models/payment-result.dart';
+import '../utils/api/api_exception.dart';
 import '../utils/api/api_methods.dart';
 import '../utils/api/api_request.dart';
-import '../utils/toast-message.dart';
 
 class CartInterface {
 
@@ -70,5 +72,48 @@ class CartInterface {
     }
   }
 
+  //checkout
+  static Future<CheckoutModel?> checkOutOrder(
+      {required String routeType, required int? id, required Map<String, dynamic> body}) async {
+    try {
+      final response = await ApiRequest.send(
+          method: ApiMethod.POST,
+          route: "$routeType/$id/checkout",
+          body: body,
+          queries: {});
+
+      return CheckoutModel.fromJson(response);
+    } catch (err) {
+      throw ApiException(err.toString());
+    }
+  }
+
+
+
+  static Future<PaymentResult?> paymentResult({
+    required PaymentSuccessResponse? payment,
+    required int? id,
+    required String routeType,
+  }) async {
+    try {
+      final response = await ApiRequest.send(
+          method: ApiMethod.POST,
+          body: {
+            "paymentId": payment?.paymentId,
+            "razorPayOrderId": payment?.orderId,
+            "signature": payment?.signature,
+          },
+          route: "$routeType/$id/payment-result",
+          queries: {});
+      if (response != null) {
+        return PaymentResult.fromJson(response);
+      } else {
+        return null;
+      }
+    } catch (err) {
+      return null;
+      // throw ApiException(err.toString());
+    }
+  }
 
 }
