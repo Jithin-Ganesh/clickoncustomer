@@ -172,11 +172,15 @@ class _WebNavBar2State extends State<WebNavBar2> {
                                                 color:
                                                     productDetailsScreenTotalColor),
                                           ),
-                                          const Icon(
+                                          IconButton(
+                                            onPressed: (){
+                                              Navigator.pop(context);
+                                            },icon: const Icon(
                                             Icons.close,
                                             size: 15,
                                             color:
-                                                productDetailsScreenTotalColor,
+                                            productDetailsScreenTotalColor,
+                                          ),
                                           )
                                         ],
                                       ),
@@ -348,7 +352,7 @@ class _WebNavBar2State extends State<WebNavBar2> {
                                                   );
                                                 },
                                               ),
-                                              SizedBox(
+                                              const SizedBox(
                                                 width: 27,
                                               ),
                                               Text(
@@ -390,10 +394,10 @@ class _WebNavBar2State extends State<WebNavBar2> {
                                                                     .circular(
                                                                         10)))),
                                             onPressed: () {},
-                                            child: Text("START LOOKING")),
+                                            child: const Text("START LOOKING")),
                                       ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 43,
                                     ),
                                     Padding(
