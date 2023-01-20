@@ -38,7 +38,7 @@ class OrderInterface {
   }
 
   static Future<bool> orderCancel({
-    required orderId,
+    required int? orderId,
     required String? cancellationReason,
   }) async {
     try {
@@ -48,7 +48,7 @@ class OrderInterface {
           route: "order/$orderId/cancel",
           queries: {});
 
-      return response['success'] ?? false;
+      return response== 1;
     } catch (err) {
       throw ApiException(err.toString());
     }

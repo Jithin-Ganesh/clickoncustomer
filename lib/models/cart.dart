@@ -1,3 +1,5 @@
+import 'package:clickoncustomer/models/product-model.dart';
+
 import 'cart-products.dart';
 
 class Cart {
@@ -14,15 +16,15 @@ class Cart {
 
   Cart(
       {this.id,
-        this.itemTotal,
-        this.offer,
-        this.tax,
-        this.netTotal,
-        this.deliveryCharges,
-        this.userId,
-        this.createdAt,
-        this.updatedAt,
-        this.cartProducts});
+      this.itemTotal,
+      this.offer,
+      this.tax,
+      this.netTotal,
+      this.deliveryCharges,
+      this.userId,
+      this.createdAt,
+      this.updatedAt,
+      this.cartProducts});
 
   Cart.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -43,6 +45,40 @@ class Cart {
     List<Cart> data = [];
     for (var element in list) {
       data.add(Cart.fromJson(element));
+    }
+    return data;
+  }
+}
+
+class GetWishList {
+  int? id;
+  bool? wishlisted;
+  int? userId;
+  int? productId;
+  String? createdAt;
+  String? updatedAt;
+  ProductModel? productModel;
+  GetWishList(
+      {this.id,
+      this.userId,
+      this.productId,
+      this.wishlisted,
+      this.createdAt,
+      this.updatedAt,
+      this.productModel});
+  GetWishList.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    userId = json['userId'];
+    productId = json['productId'];
+    wishlisted = json['wishlisted'];
+    createdAt = json['createdAt'];
+    updatedAt = json['updatedAt'];
+  }
+
+  static List<GetWishList> convertToList(List<dynamic> list) {
+    List<GetWishList> data = [];
+    for (var element in list) {
+      data.add(GetWishList.fromJson(element));
     }
     return data;
   }

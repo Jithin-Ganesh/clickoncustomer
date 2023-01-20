@@ -1,4 +1,6 @@
 
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import '../interfaces/user-interface.dart';
 import '../models/address.dart';
@@ -145,8 +147,11 @@ class UserProvider with ChangeNotifier {
   bool isWishListed(int? productId) {
     if (wishList.isNotEmpty) {
       final index = wishList.indexWhere((element) => element.id == productId);
+      log("true");
       return index > -1;
+
     } else {
+      log("false");
       return false;
     }
   }
