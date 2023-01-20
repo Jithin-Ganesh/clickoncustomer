@@ -122,5 +122,6 @@ const Color starColor=Color(0xffE2E2E2);
 const Color commentColor=Color(0xff818181);
 const Color dotColor=Color(0xffBDBDBD);
 const Color textFieldColor=Color(0xffDEDEDE);
-
+const Color elevatedColor=Color(0xff3FB3FF);
 const Color dropArrowColor=Color(0xff3D3D3E);
+const Color locationColor=Color(0xffD1D9E4);

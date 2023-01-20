@@ -1,4 +1,5 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:clickoncustomer/components/elevated-buton.dart';
 import 'package:clickoncustomer/providers/cart-provider.dart';
 import 'package:clickoncustomer/providers/user-provider.dart';
 import 'package:clickoncustomer/screens/web/cart/cart-screen.dart';
@@ -14,8 +15,15 @@ import '../../utils/constants/color.dart';
 import '../../utils/constants/fontstyles.dart';
 import '../../utils/pref_utils.dart';
 
-class WebNavBar2 extends StatelessWidget {
+class WebNavBar2 extends StatefulWidget {
   const WebNavBar2({Key? key}) : super(key: key);
+
+  @override
+  State<WebNavBar2> createState() => _WebNavBar2State();
+}
+
+class _WebNavBar2State extends State<WebNavBar2> {
+  double currentSliderValue = 10;
 
   @override
   Widget build(BuildContext context) {
@@ -129,19 +137,278 @@ class WebNavBar2 extends StatelessWidget {
                       borderRadius: BorderRadius.circular(50),
                       color: primaryColor,
                     ),
-                    child:  Padding(
+                    child: Padding(
                       padding: const EdgeInsets.all(0),
                       child: IconButton(
-                          onPressed:() {
+                          onPressed: () {
                             AwesomeDialog(
+                              headerAnimationLoop: true,
+                              width: MediaQuery.of(context).size.width * 0.621,
+                              dismissOnTouchOutside: true,
+                              btnOk: const SizedBox(
+                                width: 0,
+                              ),
                               context: context,
                               animType: AnimType.scale,
-                              dialogType: DialogType.info,
-                              body: Center(child: Text(
-                                'If the body is specified, then title and description will be ignored, this allows to 											further customize the dialogue.',
-                                style: TextStyle(fontStyle: FontStyle.italic),
-                              ),),
-
+                              dialogType: DialogType.noHeader,
+                              dialogBorderRadius: BorderRadius.circular(10.0),
+                              body: Container(
+                                width: MediaQuery.of(context).size.width * 0.56,
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 44, right: 42, top: 29),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            "Search Offers Nearby",
+                                            style: medium.copyWith(
+                                                fontSize: 22,
+                                                color:
+                                                    productDetailsScreenTotalColor),
+                                          ),
+                                          const Icon(
+                                            Icons.close,
+                                            size: 15,
+                                            color:
+                                                productDetailsScreenTotalColor,
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 49,
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 120),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.36,
+                                            height: 56,
+                                            decoration: BoxDecoration(
+                                                border: Border.all(
+                                                    color: contactTitleColor),
+                                                borderRadius:
+                                                    BorderRadius.circular(8)),
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 22,
+                                                  top: 14,
+                                                  bottom: 14),
+                                              child: TextFormField(
+                                                decoration: InputDecoration(
+                                                    border: InputBorder.none,
+                                                    hintText: "search",
+                                                    hintStyle: thin.copyWith(
+                                                        fontSize: 18,
+                                                        color:
+                                                            clickOnOffersTitleColor)),
+                                              ),
+                                            ),
+                                          ),
+                                          const SizedBox(
+                                            height: 19,
+                                          ),
+                                          Row(
+                                            children: [
+                                              Container(
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.263,
+                                                height: 56,
+                                                decoration: BoxDecoration(
+                                                    border: Border.all(
+                                                        color: locationColor),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8)),
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 22,
+                                                          top: 14,
+                                                          bottom: 14),
+                                                  child: TextFormField(
+                                                    decoration: InputDecoration(
+                                                        border:
+                                                            InputBorder.none,
+                                                        hintText:
+                                                            "Edappally, Kochi, Kerala",
+                                                        hintStyle: thin.copyWith(
+                                                            fontSize: 18,
+                                                            color:
+                                                                clickOnOffersTitleColor)),
+                                                  ),
+                                                ),
+                                              ),
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              Container(
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.098,
+                                                height: 56,
+                                                decoration: BoxDecoration(
+                                                    border: Border.all(
+                                                        color: locationColor),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8)),
+                                                child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            left: 5),
+                                                    child: Row(
+                                                      children: [
+                                                        const Icon(
+                                                          Icons
+                                                              .my_location_sharp,
+                                                          size: 20,
+                                                          color:
+                                                              contactTitleColor,
+                                                        ),
+                                                        const SizedBox(
+                                                          width: 7,
+                                                        ),
+                                                        Expanded(
+                                                          flex: 10,
+                                                          child: Text(
+                                                            "Location me",
+                                                            style: medium.copyWith(
+                                                                fontSize: 18,
+                                                                color:
+                                                                    contactTitleColor),
+                                                          ),
+                                                        )
+                                                      ],
+                                                    )),
+                                              ),
+                                            ],
+                                          ),
+                                          const SizedBox(
+                                            height: 38,
+                                          ),
+                                          Row(
+                                            children: [
+                                              Text(
+                                                textAlign: TextAlign.center,
+                                                "Locate Within",
+                                                style: medium.copyWith(
+                                                    fontSize: 18,
+                                                    color:
+                                                        productDetailsScreenTotalColor),
+                                              ),
+                                              const SizedBox(
+                                                width: 18,
+                                              ),
+                                              StatefulBuilder(
+                                                builder: (context, state) {
+                                                  return SizedBox(
+                                                    width:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width *
+                                                            0.228,
+                                                    child: Slider(
+                                                        divisions: 10,
+                                                        min: 0,
+                                                        label:
+                                                            currentSliderValue
+                                                                .round()
+                                                                .toString(),
+                                                        activeColor:
+                                                            contactTitleColor,
+                                                        thumbColor:
+                                                            contactTitleColor,
+                                                        value:
+                                                            currentSliderValue,
+                                                        max: 100,
+                                                        onChanged:
+                                                            (double value) {
+                                                          state(() {
+                                                            currentSliderValue =
+                                                                value;
+                                                          });
+                                                        }),
+                                                  );
+                                                },
+                                              ),
+                                              SizedBox(
+                                                width: 27,
+                                              ),
+                                              Text(
+                                                currentSliderValue.toString() +
+                                                    "km",
+                                                style: medium.copyWith(
+                                                    fontSize: 18,
+                                                    color:
+                                                        productDetailsScreenTotalColor),
+                                              )
+                                            ],
+                                          ),
+                                          const SizedBox(
+                                            height: 48,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Center(
+                                      child: Container(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.171,
+                                        height: 45,
+                                        decoration: BoxDecoration(
+                                            color: elevatedColor,
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        child: ElevatedButton(
+                                            style: ButtonStyle(
+                                                backgroundColor:
+                                                    MaterialStateProperty.all(
+                                                        elevatedColor),
+                                                shape:
+                                                    MaterialStateProperty.all(
+                                                        RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        10)))),
+                                            onPressed: () {},
+                                            child: Text("START LOOKING")),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 43,
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8),
+                                      child: ImgProvider(
+                                        url: "assets/images/dummy/map.png",
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.55,
+                                        height: 227,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
                               btnOkOnPress: () {},
                             ).show();
                           },
@@ -365,7 +632,8 @@ class WebNavBar2 extends StatelessWidget {
                       height: 38,
                       width: 197,
                       decoration: const BoxDecoration(
-                          borderRadius: const BorderRadius.all(const Radius.circular(8)),
+                          borderRadius:
+                              const BorderRadius.all(const Radius.circular(8)),
                           color: priceDetailsSubTextColor,
                           boxShadow: [
                             const BoxShadow(
