@@ -1,3 +1,4 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:clickoncustomer/providers/cart-provider.dart';
 import 'package:clickoncustomer/providers/user-provider.dart';
 import 'package:clickoncustomer/screens/web/cart/cart-screen.dart';
@@ -13,7 +14,6 @@ import '../../utils/constants/color.dart';
 import '../../utils/constants/fontstyles.dart';
 import '../../utils/pref_utils.dart';
 
-
 class WebNavBar2 extends StatelessWidget {
   const WebNavBar2({Key? key}) : super(key: key);
 
@@ -27,11 +27,13 @@ class WebNavBar2 extends StatelessWidget {
       automaticallyImplyLeading: false,
       centerTitle: false,
       title: Padding(
-        padding:  EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.078,),
+        padding: EdgeInsets.only(
+          left: MediaQuery.of(context).size.width * 0.078,
+        ),
         child: Row(
           children: [
             InkWell(
-              onTap: (){
+              onTap: () {
                 Navigator.pushNamed(context, HomeScreenWeb.routeName);
               },
               child: Column(
@@ -43,16 +45,19 @@ class WebNavBar2 extends StatelessWidget {
                   ),
                   Text(
                     'Click On Offers',
-                    style: medium.copyWith(fontSize: 12, color: webNavTitleColor),
+                    style:
+                        medium.copyWith(fontSize: 12, color: webNavTitleColor),
                   )
                 ],
               ),
             ),
-            SizedBox(width: 10,),
+            const SizedBox(
+              width: 10,
+            ),
             Flexible(
               child: SizedBox(
                 height: 50,
-                width: MediaQuery.of(context).size.width *  0.404,
+                width: MediaQuery.of(context).size.width * 0.404,
                 child: Material(
                   elevation: 3.0,
                   shadowColor: shadowColor2,
@@ -71,7 +76,7 @@ class WebNavBar2 extends StatelessWidget {
                         ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20),
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             width: 0,
                             style: BorderStyle.none,
                           ),
@@ -90,7 +95,7 @@ class WebNavBar2 extends StatelessWidget {
                                 'All',
                                 style: medium,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 20,
                               ),
                               Image.asset(
@@ -124,16 +129,30 @@ class WebNavBar2 extends StatelessWidget {
                       borderRadius: BorderRadius.circular(50),
                       color: primaryColor,
                     ),
-                    child: const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Icon(
-                        Icons.add_location_alt_outlined,
-                        size: 22,
-                        color: canvasColor,
-                      ),
+                    child:  Padding(
+                      padding: const EdgeInsets.all(0),
+                      child: IconButton(
+                          onPressed:() {
+                            AwesomeDialog(
+                              context: context,
+                              animType: AnimType.scale,
+                              dialogType: DialogType.info,
+                              body: Center(child: Text(
+                                'If the body is specified, then title and description will be ignored, this allows to 											further customize the dialogue.',
+                                style: TextStyle(fontStyle: FontStyle.italic),
+                              ),),
+
+                              btnOkOnPress: () {},
+                            ).show();
+                          },
+                          icon: const Icon(
+                            Icons.add_location_alt_outlined,
+                            size: 22,
+                            color: canvasColor,
+                          )),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Column(
@@ -162,22 +181,22 @@ class WebNavBar2 extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 width: 43,
               ),
-              VerticalDivider(
+              const VerticalDivider(
                 thickness: 1,
                 indent: 5,
                 endIndent: 5,
                 color: verticalDividerColor,
               ),
-              SizedBox(
+              const SizedBox(
                 width: 49,
               ),
               Row(
                 children: [
                   InkWell(
-                    onTap: (){
+                    onTap: () {
                       Navigator.pushNamed(context, YourAccountWeb.routeName);
                     },
                     child: Container(
@@ -187,17 +206,18 @@ class WebNavBar2 extends StatelessWidget {
                         borderRadius: BorderRadius.circular(50),
                         color: primaryColor,
                       ),
-                      child: Icon(
+                      child: const Icon(
                         Icons.person_outline,
                         size: 22,
                         color: canvasColor,
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 8,
                   ),
-                  Consumer<UserProvider>(builder: (context, value, child) => Column(
+                  Consumer<UserProvider>(
+                    builder: (context, value, child) => Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -207,13 +227,15 @@ class WebNavBar2 extends StatelessWidget {
                         ),
                         Row(
                           children: [
-                            value.user != null ?  Text(
-                              value.user?.firstName ?? 'sign-in',
-                              style: medium,
-                            ) : Text(
-                              'sign-in',
-                              style: medium,
-                            ),
+                            value.user != null
+                                ? Text(
+                                    value.user?.firstName ?? 'sign-in',
+                                    style: medium,
+                                  )
+                                : Text(
+                                    'sign-in',
+                                    style: medium,
+                                  ),
                             Image.asset(
                               'assets/images/icon-arrow-down-outlined.png',
                               height: 5,
@@ -226,19 +248,20 @@ class WebNavBar2 extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 width: 23,
               ),
-              VerticalDivider(
+              const VerticalDivider(
                 thickness: 1,
                 indent: 5,
                 endIndent: 5,
                 color: verticalDividerColor,
               ),
-              SizedBox(
+              const SizedBox(
                 width: 36,
               ),
-              Consumer<CartProvider>(builder: (context, value, child) => Row(
+              Consumer<CartProvider>(
+                builder: (context, value, child) => Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Image.asset(
@@ -246,22 +269,23 @@ class WebNavBar2 extends StatelessWidget {
                       height: 20,
                       width: 22,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 25,
                     ),
                     IconButton(
                         onPressed: () {
-                          if(PrefUtils().getToken()!=null){
-                            Navigator.pushNamed(context, CartScreenWeb.routeName);
-                          }else{
-                            Navigator.pushNamed(context, LoginScreen.routeName,arguments: const LoginScreen(isLoggedIn: true));
+                          if (PrefUtils().getToken() != null) {
+                            Navigator.pushNamed(
+                                context, CartScreenWeb.routeName);
+                          } else {
+                            Navigator.pushNamed(context, LoginScreen.routeName,
+                                arguments: const LoginScreen(isLoggedIn: true));
                           }
-
                         },
                         icon: Stack(
                           children: [
-                            ImgProvider(
-                               url: 'assets/images/icon-cart.png',
+                            const ImgProvider(
+                              url: 'assets/images/icon-cart.png',
                               height: 65,
                               width: 68,
                               boxFit: BoxFit.contain,
@@ -272,7 +296,10 @@ class WebNavBar2 extends StatelessWidget {
                               child: CircleAvatar(
                                 radius: 7,
                                 backgroundColor: primaryColor,
-                                child: Text('${value.cart?.cartProducts?.length}',style: medium.copyWith(color: Colors.white),),
+                                child: Text(
+                                  '${value.cart?.cartProducts?.length}',
+                                  style: medium.copyWith(color: Colors.white),
+                                ),
                               ),
                             )
                           ],
@@ -289,16 +316,16 @@ class WebNavBar2 extends StatelessWidget {
         )
       ],
       bottom: PreferredSize(
-        preferredSize: Size.fromHeight(50),
+        preferredSize: const Size.fromHeight(50),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 160.0),
           child: Column(
             children: [
-              Divider(
+              const Divider(
                 color: horizontalDividerColor,
                 thickness: 1,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               Row(
@@ -337,11 +364,11 @@ class WebNavBar2 extends StatelessWidget {
                     child: Container(
                       height: 38,
                       width: 197,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(8)),
+                      decoration: const BoxDecoration(
+                          borderRadius: const BorderRadius.all(const Radius.circular(8)),
                           color: priceDetailsSubTextColor,
                           boxShadow: [
-                            BoxShadow(
+                            const BoxShadow(
                               color: Colors.grey,
                               blurRadius: 5.0,
                             ),
@@ -354,7 +381,7 @@ class WebNavBar2 extends StatelessWidget {
                             height: 19,
                             width: 19,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 5,
                           ),
                           Text(
@@ -368,7 +395,7 @@ class WebNavBar2 extends StatelessWidget {
                   )
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
             ],
