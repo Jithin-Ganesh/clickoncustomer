@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:clickoncustomer/components/elevated-buton.dart';
 import 'package:clickoncustomer/providers/cart-provider.dart';
@@ -8,6 +10,8 @@ import 'package:clickoncustomer/screens/web/your-account/your-account-web.dart';
 import 'package:clickoncustomer/utils/img-provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:geocoding/geocoding.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:provider/provider.dart';
 
 import '../../screens/login_screen.dart';
@@ -24,6 +28,69 @@ class WebNavBar2 extends StatefulWidget {
 
 class _WebNavBar2State extends State<WebNavBar2> {
   double currentSliderValue = 10;
+
+  Future<Position> _determinePosition() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+
+    // Test if location services are enabled.
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      // Location services are not enabled don't continue
+      // accessing the position and request users of the
+      // App to enable the location services.
+      return Future.error('Location services are disabled.');
+    }
+
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        // Permissions are denied, next time you could try
+        // requesting permissions again (this is also where
+        // Android's shouldShowRequestPermissionRationale
+        // returned true. According to Android guidelines
+        // your App should show an explanatory UI now.
+        return Future.error('Location permissions are denied');
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      // Permissions are denied forever, handle appropriately.
+      return Future.error(
+          'Location permissions are permanently denied, we cannot request permissions.');
+    }
+
+    // When we reach here, permissions are granted and we can
+    // continue accessing the position of the device.
+    return await Geolocator.getCurrentPosition();
+  }
+
+  void getCurrentLocation() async {
+    Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high); setState(() => _currentPosition = position);
+    _getAddressFromLatLng(_currentPosition!);
+    print(position);
+  }
+  Position? _currentPosition;
+  String? _currentAddress;
+
+  Future<List<Placemark>> placemarks =
+      placemarkFromCoordinates(52.2165157, 6.9437819);
+
+  Future<void> _getAddressFromLatLng(Position position) async {
+    await placemarkFromCoordinates(
+        _currentPosition!.latitude, _currentPosition!.longitude)
+        .then((List<Placemark> placemarks) {
+      Placemark place = placemarks[0];
+      setState(() {
+        _currentAddress = '${place.street}, ${place.subLocality},${place.subAdministrativeArea}, ${place.postalCode}';
+      });
+    }).catchError((e) {
+      debugPrint(e);
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -173,14 +240,15 @@ class _WebNavBar2State extends State<WebNavBar2> {
                                                     productDetailsScreenTotalColor),
                                           ),
                                           IconButton(
-                                            onPressed: (){
+                                            onPressed: () {
                                               Navigator.pop(context);
-                                            },icon: const Icon(
-                                            Icons.close,
-                                            size: 15,
-                                            color:
-                                            productDetailsScreenTotalColor,
-                                          ),
+                                            },
+                                            icon: const Icon(
+                                              Icons.close,
+                                              size: 15,
+                                              color:
+                                                  productDetailsScreenTotalColor,
+                                            ),
                                           )
                                         ],
                                       ),
@@ -245,12 +313,10 @@ class _WebNavBar2State extends State<WebNavBar2> {
                                                           left: 22,
                                                           top: 14,
                                                           bottom: 14),
-                                                  child: TextFormField(
+                                                  child: TextFormField(initialValue: _currentAddress,
                                                     decoration: InputDecoration(
                                                         border:
                                                             InputBorder.none,
-                                                        hintText:
-                                                            "Edappally, Kochi, Kerala",
                                                         hintStyle: thin.copyWith(
                                                             fontSize: 18,
                                                             color:
@@ -261,46 +327,51 @@ class _WebNavBar2State extends State<WebNavBar2> {
                                               const SizedBox(
                                                 width: 10,
                                               ),
-                                              Container(
-                                                width: MediaQuery.of(context)
-                                                        .size
-                                                        .width *
-                                                    0.098,
-                                                height: 56,
-                                                decoration: BoxDecoration(
-                                                    border: Border.all(
-                                                        color: locationColor),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8)),
-                                                child: Padding(
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                            left: 5),
-                                                    child: Row(
-                                                      children: [
-                                                        const Icon(
-                                                          Icons
-                                                              .my_location_sharp,
-                                                          size: 20,
-                                                          color:
-                                                              contactTitleColor,
-                                                        ),
-                                                        const SizedBox(
-                                                          width: 7,
-                                                        ),
-                                                        Expanded(
-                                                          flex: 10,
-                                                          child: Text(
-                                                            "Location me",
-                                                            style: medium.copyWith(
-                                                                fontSize: 18,
-                                                                color:
-                                                                    contactTitleColor),
+                                              InkWell(
+                                                onTap: getCurrentLocation,
+                                                child: Container(
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width *
+                                                      0.098,
+                                                  height: 56,
+                                                  decoration: BoxDecoration(
+                                                      border: Border.all(
+                                                          color: locationColor),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8)),
+                                                  child: Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              left: 5),
+                                                      child: Row(
+                                                        children: [
+                                                          const Icon(
+                                                            Icons
+                                                                .my_location_sharp,
+                                                            size: 20,
+                                                            color:
+                                                                contactTitleColor,
                                                           ),
-                                                        )
-                                                      ],
-                                                    )),
+                                                          const SizedBox(
+                                                            width: 7,
+                                                          ),
+                                                          Expanded(
+                                                            flex: 10,
+                                                            child: Text(
+                                                              "Location me",
+                                                              style: medium
+                                                                  .copyWith(
+                                                                      fontSize:
+                                                                          18,
+                                                                      color:
+                                                                          contactTitleColor),
+                                                            ),
+                                                          )
+                                                        ],
+                                                      )),
+                                                ),
                                               ),
                                             ],
                                           ),
