@@ -26,78 +26,6 @@ class WebNavBar2 extends StatefulWidget {
 }
 
 class _WebNavBar2State extends State<WebNavBar2> {
-  double currentSliderValue = 10;
-
-  Future<Position> _determinePosition() async {
-    bool serviceEnabled;
-    LocationPermission permission;
-
-    // Test if location services are enabled.
-    serviceEnabled = await Geolocator.isLocationServiceEnabled();
-    if (!serviceEnabled) {
-      // Location services are not enabled don't continue
-      // accessing the position and request users of the
-      // App to enable the location services.
-      return Future.error('Location services are disabled.');
-    }
-
-    permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-      if (permission == LocationPermission.denied) {
-        // Permissions are denied, next time you could try
-        // requesting permissions again (this is also where
-        // Android's shouldShowRequestPermissionRationale
-        // returned true. According to Android guidelines
-        // your App should show an explanatory UI now.
-        return Future.error('Location permissions are denied');
-      }
-    }
-
-    if (permission == LocationPermission.deniedForever) {
-      // Permissions are denied forever, handle appropriately.
-      return Future.error(
-          'Location permissions are permanently denied, we cannot request permissions.');
-    }
-
-    // When we reach here, permissions are granted and we can
-    // continue accessing the position of the device.
-    return await Geolocator.getCurrentPosition();
-  }
-
-  void getCurrentLocation() async {
-    Position position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high);
-    setState(() => _currentPosition = position);
-    _getAddressFromLatLng();
-    print(position);
-  }
-
-  Position? _currentPosition;
-  String? _currentAddress;
-
-
-  Future<void> _getAddressFromLatLng() async {
-    if (_currentPosition != null) {
-      _currentAddress = null;
-      log('fetching address....');
-      try {
-        List<Placemark> placeMarks = await placemarkFromCoordinates(
-            _currentPosition!.latitude, _currentPosition!.longitude);
-
-        Placemark place = placeMarks[0];
-
-        setState(() {
-          _currentAddress =
-              "${place.locality}, ${place.street ?? place.name}, ${place.postalCode}, ${place.country}";
-          log('address $_currentAddress');
-        });
-      } catch (e) {
-        print(e);
-      }
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -146,257 +74,8 @@ class _WebNavBar2State extends State<WebNavBar2> {
                   child: TextFormField(
                     readOnly: true,
                     onTap: () {
-                      AwesomeDialog(
-                        headerAnimationLoop: true,
-                        width: MediaQuery.of(context).size.width * 0.621,
-                        dismissOnTouchOutside: true,
-                        btnOk: const SizedBox(
-                          width: 0,
-                        ),
-                        context: context,
-                        animType: AnimType.scale,
-                        dialogType: DialogType.noHeader,
-                        dialogBorderRadius: BorderRadius.circular(10.0),
-                        body: Container(
-                          width: MediaQuery.of(context).size.width * 0.56,
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 44, right: 42, top: 29),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      "Search Offers Nearby",
-                                      style: medium.copyWith(
-                                          fontSize: 22,
-                                          color:
-                                              productDetailsScreenTotalColor),
-                                    ),
-                                    IconButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                      icon: const Icon(
-                                        Icons.close,
-                                        size: 15,
-                                        color: productDetailsScreenTotalColor,
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 49,
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 120),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Container(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.36,
-                                      height: 56,
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              color: contactTitleColor),
-                                          borderRadius:
-                                              BorderRadius.circular(8)),
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(
-                                            left: 22, top: 14, bottom: 14),
-                                        child: TextFormField(
-                                          decoration: InputDecoration(
-                                              border: InputBorder.none,
-                                              hintText: "search",
-                                              hintStyle: thin.copyWith(
-                                                  fontSize: 18,
-                                                  color:
-                                                      clickOnOffersTitleColor)),
-                                        ),
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 19,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Container(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.263,
-                                          height: 56,
-                                          decoration: BoxDecoration(
-                                              border: Border.all(
-                                                  color: locationColor),
-                                              borderRadius:
-                                                  BorderRadius.circular(8)),
-                                          child: Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 22, top: 14, bottom: 14),
-                                            child: TextFormField(
-                                              initialValue: _currentAddress,
-                                              decoration: InputDecoration(
-                                                  border: InputBorder.none,
-                                                  hintStyle: thin.copyWith(
-                                                      fontSize: 18,
-                                                      color:
-                                                          clickOnOffersTitleColor)),
-                                            ),
-                                          ),
-                                        ),
-                                        const SizedBox(
-                                          width: 10,
-                                        ),
-                                        InkWell(
-                                          onTap: getCurrentLocation,
-                                          child: Container(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.098,
-                                            height: 56,
-                                            decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    color: locationColor),
-                                                borderRadius:
-                                                    BorderRadius.circular(8)),
-                                            child: Padding(
-                                                padding: const EdgeInsets.only(
-                                                    left: 5),
-                                                child: Row(
-                                                  children: [
-                                                    const Icon(
-                                                      Icons.my_location_sharp,
-                                                      size: 20,
-                                                      color: contactTitleColor,
-                                                    ),
-                                                    const SizedBox(
-                                                      width: 7,
-                                                    ),
-                                                    Expanded(
-                                                      flex: 10,
-                                                      child: Text(
-                                                        "Location me",
-                                                        style: medium.copyWith(
-                                                            fontSize: 18,
-                                                            color:
-                                                                contactTitleColor),
-                                                      ),
-                                                    )
-                                                  ],
-                                                )),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    const SizedBox(
-                                      height: 38,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          textAlign: TextAlign.center,
-                                          "Locate Within",
-                                          style: medium.copyWith(
-                                              fontSize: 18,
-                                              color:
-                                                  productDetailsScreenTotalColor),
-                                        ),
-                                        const SizedBox(
-                                          width: 18,
-                                        ),
-                                        StatefulBuilder(
-                                          builder: (context, state) {
-                                            return SizedBox(
-                                              width: MediaQuery.of(context)
-                                                      .size
-                                                      .width *
-                                                  0.228,
-                                              child: Slider(
-                                                  divisions: 10,
-                                                  min: 0,
-                                                  label: currentSliderValue
-                                                      .round()
-                                                      .toString(),
-                                                  activeColor:
-                                                      contactTitleColor,
-                                                  thumbColor: contactTitleColor,
-                                                  value: currentSliderValue,
-                                                  max: 100,
-                                                  onChanged: (double value) {
-                                                    state(() {
-                                                      currentSliderValue =
-                                                          value;
-                                                    });
-                                                  }),
-                                            );
-                                          },
-                                        ),
-                                        const SizedBox(
-                                          width: 27,
-                                        ),
-                                        Text(
-                                          currentSliderValue.toString() + "km",
-                                          style: medium.copyWith(
-                                              fontSize: 18,
-                                              color:
-                                                  productDetailsScreenTotalColor),
-                                        )
-                                      ],
-                                    ),
-                                    const SizedBox(
-                                      height: 48,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Center(
-                                child: Container(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.171,
-                                  height: 45,
-                                  decoration: BoxDecoration(
-                                      color: elevatedColor,
-                                      borderRadius: BorderRadius.circular(10)),
-                                  child: ElevatedButton(
-                                      style: ButtonStyle(
-                                          backgroundColor:
-                                              MaterialStateProperty.all(
-                                                  elevatedColor),
-                                          shape: MaterialStateProperty.all(
-                                              RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          10)))),
-                                      onPressed: () {},
-                                      child: const Text("START LOOKING")),
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 43,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8),
-                                child: ImgProvider(
-                                  url: "assets/images/dummy/map.png",
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.55,
-                                  height: 227,
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                        btnOkOnPress: () {},
-                      ).show();
+
+                      buildAwesomeDialog(context);
                     },
                     decoration: InputDecoration(
                         // prefixIconConstraints:
@@ -725,6 +404,305 @@ class _WebNavBar2State extends State<WebNavBar2> {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+AwesomeDialog buildAwesomeDialog(BuildContext context) {
+  return AwesomeDialog(
+    headerAnimationLoop: true,
+    width: MediaQuery.of(context).size.width * 0.621,
+    dismissOnTouchOutside: true,
+    btnOk: const SizedBox(
+      width: 0,
+    ),
+    context: context,
+    animType: AnimType.scale,
+    dialogType: DialogType.noHeader,
+    dialogBorderRadius: BorderRadius.circular(10.0),
+    body: const LocationSearch(),
+    btnOkOnPress: () {},
+  )..show();
+}
+
+class LocationSearch extends StatefulWidget {
+  const LocationSearch({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  State<LocationSearch> createState() => _LocationSearchState();
+}
+
+class _LocationSearchState extends State<LocationSearch> {
+  double currentSliderValue = 10;
+
+  Future<Position> _determinePosition() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+
+    // Test if location services are enabled.
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      // Location services are not enabled don't continue
+      // accessing the position and request users of the
+      // App to enable the location services.
+      return Future.error('Location services are disabled.');
+    }
+
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        // Permissions are denied, next time you could try
+        // requesting permissions again (this is also where
+        // Android's shouldShowRequestPermissionRationale
+        // returned true. According to Android guidelines
+        // your App should show an explanatory UI now.
+        return Future.error('Location permissions are denied');
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      // Permissions are denied forever, handle appropriately.
+      return Future.error(
+          'Location permissions are permanently denied, we cannot request permissions.');
+    }
+
+    // When we reach here, permissions are granted and we can
+    // continue accessing the position of the device.
+    return await Geolocator.getCurrentPosition();
+  }
+
+  void getCurrentLocation() async {
+    Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
+    setState(() => _currentPosition = position);
+    _getAddressFromLatLng();
+    print(position);
+  }
+
+  Position? _currentPosition;
+  String? _currentAddress;
+
+  Future<void> _getAddressFromLatLng() async {
+    if (_currentPosition != null) {
+      _currentAddress = null;
+      log('fetching address....');
+      try {
+        List<Placemark> placeMarks = await placemarkFromCoordinates(
+            _currentPosition!.latitude, _currentPosition!.longitude);
+
+        Placemark place = placeMarks[0];
+
+        setState(() {
+          _currentAddress =
+              "${place.locality}, ${place.street ?? place.name}, ${place.postalCode}, ${place.country}";
+          log('address $_currentAddress');
+        });
+      } catch (e) {
+        print(e);
+      }
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width * 0.56,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 44, right: 42, top: 29),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Search Offers Nearby",
+                  style: medium.copyWith(
+                      fontSize: 22, color: productDetailsScreenTotalColor),
+                ),
+                IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: const Icon(
+                    Icons.close,
+                    size: 15,
+                    color: productDetailsScreenTotalColor,
+                  ),
+                )
+              ],
+            ),
+          ),
+          const SizedBox(
+            height: 49,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 120),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.36,
+                  height: 56,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: contactTitleColor),
+                      borderRadius: BorderRadius.circular(8)),
+                  child: Padding(
+                    padding:
+                        const EdgeInsets.only(left: 22, top: 14, bottom: 14),
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: "search",
+                          hintStyle: thin.copyWith(
+                              fontSize: 18, color: clickOnOffersTitleColor)),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 19,
+                ),
+                Row(
+                  children: [
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.263,
+                      height: 56,
+                      decoration: BoxDecoration(
+                          border: Border.all(color: locationColor),
+                          borderRadius: BorderRadius.circular(8)),
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            left: 22, top: 14, bottom: 14),
+                        child: TextFormField(
+                          initialValue: _currentAddress,
+                          decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintStyle: thin.copyWith(
+                                  fontSize: 18,
+                                  color: clickOnOffersTitleColor)),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    InkWell(
+                      onTap: getCurrentLocation,
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.098,
+                        height: 56,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: locationColor),
+                            borderRadius: BorderRadius.circular(8)),
+                        child: Padding(
+                            padding: const EdgeInsets.only(left: 5),
+                            child: Row(
+                              children: [
+                                const Icon(
+                                  Icons.my_location_sharp,
+                                  size: 20,
+                                  color: contactTitleColor,
+                                ),
+                                const SizedBox(
+                                  width: 7,
+                                ),
+                                Expanded(
+                                  flex: 10,
+                                  child: Text(
+                                    "Location me",
+                                    style: medium.copyWith(
+                                        fontSize: 18, color: contactTitleColor),
+                                  ),
+                                )
+                              ],
+                            )),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 38,
+                ),
+                Row(
+                  children: [
+                    Text(
+                      textAlign: TextAlign.center,
+                      "Locate Within",
+                      style: medium.copyWith(
+                          fontSize: 18, color: productDetailsScreenTotalColor),
+                    ),
+                    const SizedBox(
+                      width: 18,
+                    ),
+                    StatefulBuilder(
+                      builder: (context, state) {
+                        return SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.228,
+                          child: Slider(
+                              divisions: 10,
+                              min: 0,
+                              label: currentSliderValue.round().toString(),
+                              activeColor: contactTitleColor,
+                              thumbColor: contactTitleColor,
+                              value: currentSliderValue,
+                              max: 100,
+                              onChanged: (double value) {
+                                state(() {
+                                  currentSliderValue = value;
+                                });
+                              }),
+                        );
+                      },
+                    ),
+                    const SizedBox(
+                      width: 27,
+                    ),
+                    Text(
+                      currentSliderValue.toString() + "km",
+                      style: medium.copyWith(
+                          fontSize: 18, color: productDetailsScreenTotalColor),
+                    )
+                  ],
+                ),
+                const SizedBox(
+                  height: 48,
+                ),
+              ],
+            ),
+          ),
+          Center(
+            child: Container(
+              width: MediaQuery.of(context).size.width * 0.171,
+              height: 45,
+              decoration: BoxDecoration(
+                  color: elevatedColor,
+                  borderRadius: BorderRadius.circular(10)),
+              child: ElevatedButton(
+                  style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(elevatedColor),
+                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)))),
+                  onPressed: () {},
+                  child: const Text("START LOOKING")),
+            ),
+          ),
+          const SizedBox(
+            height: 43,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8),
+            child: ImgProvider(
+              url: "assets/images/dummy/map.png",
+              width: MediaQuery.of(context).size.width * 0.55,
+              height: 227,
+            ),
+          )
+        ],
       ),
     );
   }
