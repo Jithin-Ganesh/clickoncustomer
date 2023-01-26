@@ -11,8 +11,7 @@ import 'package:http_interceptor/http/intercepted_client.dart';
 import '../api/api_interceptor.dart';
 
 class ApiClient {
-
-  String baseUrl = 'http://54.236.247.28:3000/';  // Development
+  String baseUrl = 'http://34.230.73.43:3000/'; // Development
   //String baseUrl = 'https://api.behica.com/v1/api/'; //Production
 
   http.Client client() {
