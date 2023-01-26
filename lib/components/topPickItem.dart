@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:clickoncustomer/models/top-picks.dart';
 import 'package:clickoncustomer/providers/category-provider.dart';
 import 'package:clickoncustomer/utils/constants/color.dart';
 import 'package:clickoncustomer/utils/img-provider.dart';
@@ -17,6 +18,7 @@ class TopPickItem extends StatefulWidget {
 
 class _TopPickItemState extends State<TopPickItem> {
   late ScrollController _scrollController;
+
 
   @override
   void initState() {

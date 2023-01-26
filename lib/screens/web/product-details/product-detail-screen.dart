@@ -35,7 +35,7 @@ class ProductDetailScreenWeb extends StatefulWidget {
 class _ProductDetailScreenWebState extends State<ProductDetailScreenWeb> {
   @override
   void initState() {
-    Provider.of<CategoryProvider>(context, listen: false).fetchCategory();
+
     // TODO: implement initState
     super.initState();
   }
