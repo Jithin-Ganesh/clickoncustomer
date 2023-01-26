@@ -16,7 +16,7 @@ class CategoryProvider extends ChangeNotifier {
   List<ProductModel>? latestProducts = [];
 
   Future<List<ProductModel>?> fetchLatestProducts() async {
-    latestProducts = await SampleInterface.fetchLatestProduct();
+    latestProducts = await CategoryInterface.fetchLatestProduct();
     notifyListeners();
     return latestProducts;
   }
@@ -34,12 +34,10 @@ class CategoryProvider extends ChangeNotifier {
   }
 
   Future<List<TopPickModel>?> fetchTopPicks() async {
-    topPicks = await SampleInterface.fetchTopPicks();
-  Future<List<TopPicks>?> fetchTopPicks() async {
     topPicks = await CategoryInterface.fetchTopPicks();
-    notifyListeners();
     return topPicks;
   }
+
 
   Future<List<Categories>?> fetchGroupOrders() async {
     groupOrders = await CategoryInterface.fetchGroupOrders();

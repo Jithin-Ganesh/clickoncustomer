@@ -45,7 +45,8 @@ class _TopPicksState extends State<TopPicks> {
           height: 29,
         ),
         FutureBuilder(
-            future: context.read<CategoryProvider>().fetchTopPicks(),
+            future: Provider.of<CategoryProvider>(context, listen: false)
+                .fetchTopPicks(),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Container(
