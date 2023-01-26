@@ -3,10 +3,10 @@ import 'package:clickoncustomer/utils/constants/color.dart';
 import 'package:clickoncustomer/utils/img-provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../../providers/category-provider.dart';
 import '../../../utils/constants/fontstyles.dart';
-
-
 
 class HomeCategoryList extends StatelessWidget {
   final List<Categories>? categories;
@@ -24,18 +24,21 @@ class HomeCategoryList extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Flexible(
-              child: SizedBox(
-                  height: 100,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) => Padding(
-                      padding: EdgeInsets.only(
-                          right: categories?.length == index + 1 ? 0 : 59.0),
-                      child: HomeCategoryListItem(category: categories?[index]),
-                    ),
-                    itemCount: categories?.length,
-                  )),
+              child: Consumer<CategoryProvider>(
+                builder: (context, value, child) => SizedBox(
+                    height: 100,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) => Padding(
+                          padding: EdgeInsets.only(
+                              right:
+                                  categories?.length == index + 1 ? 0 : 59.0),
+                          child: HomeCategoryListItem(
+                              category: categories?[index])),
+                      itemCount: categories?.length,
+                    )),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.only(left: 61),
