@@ -17,15 +17,12 @@ class HomeCategoryList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 100.0),
-      child: Container(
-        height: 120,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Flexible(
-              child: Consumer<CategoryProvider>(
-                builder: (context, value, child) => SizedBox(
+        padding: const EdgeInsets.symmetric(horizontal: 100.0),
+        child: Container(
+            height: 120,
+            child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+              Flexible(
+                child: SizedBox(
                     height: 100,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
@@ -39,35 +36,31 @@ class HomeCategoryList extends StatelessWidget {
                       itemCount: categories?.length,
                     )),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 61),
-              child: Column(
-                children: [
-                  CircleAvatar(
-                    radius: 35,
-                    child: Center(
-                        child: Image.asset(
-                      "assets/images/icon-arrow-right.png",
-                      width: 16,
-                      height: 15,
-                    )),
-                    backgroundColor: textOnClickColor,
-                  ),
-                  SizedBox(
-                    height: 4,
-                  ),
-                  Text(
-                    'More',
-                    style: thin.copyWith(fontSize: 14, color: Colors.black),
-                  )
-                ],
+              Padding(
+                padding: const EdgeInsets.only(left: 61),
+                child: Column(
+                  children: [
+                    CircleAvatar(
+                      radius: 35,
+                      child: Center(
+                          child: Image.asset(
+                        "assets/images/icon-arrow-right.png",
+                        width: 16,
+                        height: 15,
+                      )),
+                      backgroundColor: textOnClickColor,
+                    ),
+                    SizedBox(
+                      height: 4,
+                    ),
+                    Text(
+                      'More',
+                      style: thin.copyWith(fontSize: 14, color: Colors.black),
+                    )
+                  ],
+                ),
               ),
-            ),
-          ],
-        ),
-      ),
-    );
+            ])));
   }
 }
 

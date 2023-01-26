@@ -44,7 +44,6 @@ class _HomeScreenWebState extends State<HomeScreenWeb> {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 2), () {
-      Provider.of<CategoryProvider>(context, listen: false).fetchCategory();
       Provider.of<CartProvider>(context, listen: false).fetchCart();
       Provider.of<UserProvider>(context, listen: false)
           .fetchUserProfile(id: PrefUtils().getUserId());
@@ -130,9 +129,34 @@ class WebHomeScreen extends StatelessWidget {
                   const SizedBox(
                     height: 44,
                   ),
-                  HomeCategoryList(
-                    categories: value.categoriesList,
-                  ),
+                  FutureBuilder(
+                      future: context.read<CategoryProvider>().fetchCategory(),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return Container(
+                            height: MediaQuery.of(context).size.height * 0.80,
+                            width: MediaQuery.of(context).size.width,
+                            child: const Center(
+                              child: CupertinoActivityIndicator(
+                                animating: true,
+                                radius: 12,
+                              ),
+                            ),
+                          );
+                        } else {
+                          if (snapshot.hasData) {
+                            final categoryList =
+                                snapshot.data as List<Categories>?;
+                            return HomeCategoryList(
+                              categories: categoryList,
+                            );
+                          }
+                        }
+                        return Text(
+                          snapshot.error.toString(),
+                        );
+                      }),
                   const SizedBox(
                     height: 50,
                   ),
@@ -183,7 +207,30 @@ class WebHomeScreen extends StatelessWidget {
                   const SizedBox(
                     height: 31,
                   ),
-                  const ProductsForYouList(),
+                  FutureBuilder(
+                      future: context.read<CategoryProvider>().fetchProducts(),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return Container(
+                            height: MediaQuery.of(context).size.height * 0.80,
+                            width: MediaQuery.of(context).size.width,
+                            child: const Center(
+                              child: CupertinoActivityIndicator(
+                                animating: true,
+                                radius: 12,
+                              ),
+                            ),
+                          );
+                        } else {
+                          if (snapshot.hasData) {
+                            return const ProductsForYouList();
+                          }
+                        }
+                        return Text(
+                          snapshot.error.toString(),
+                        );
+                      }),
                   const SizedBox(
                     height: 60,
                   ),
@@ -271,28 +318,29 @@ class ExlusiveOffer extends StatelessWidget {
       child: Column(
         children: [
           Container(
+            height: 230,
+            width: MediaQuery.of(context).size.width * 0.259,
+            decoration: BoxDecoration(
+              color: groupOrdersAmountTextColor,
+              borderRadius: BorderRadius.circular(10),
+              // image: const DecorationImage(
+              //     image: AssetImage(
+              //         "assets/images/dummy/image-exclusive.png"))
+            ),
+            child: ImgProvider(
+              url: "assets/images/dummy/image-exclusive.png",
               height: 230,
-              width: MediaQuery.of(context).size.width * 0.259,
-              decoration: BoxDecoration(
-                color: groupOrdersAmountTextColor,
-                borderRadius: BorderRadius.circular(10),
-                // image: const DecorationImage(
-                //     image: AssetImage(
-                //         "assets/images/dummy/image-exclusive.png"))
-              ),
-              child:  ImgProvider(
-                url: "assets/images/dummy/image-exclusive.png",
-                height: 230,
-                width: MediaQuery.of(context).size.width * 0.239,
-                boxFit: BoxFit.fill,
-              ),),
+              width: MediaQuery.of(context).size.width * 0.239,
+              boxFit: BoxFit.fill,
+            ),
+          ),
           Container(
             height: 135,
             width: MediaQuery.of(context).size.width * 0.239,
             decoration: BoxDecoration(
                 color: canvasColor, borderRadius: BorderRadius.circular(10)),
             child: Padding(
-              padding: const EdgeInsets.only(left: 26,right: 42),
+              padding: const EdgeInsets.only(left: 26, right: 42),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
@@ -307,14 +355,18 @@ class ExlusiveOffer extends StatelessWidget {
                     width: 21,
                   ),
                   Expanded(
-                    child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
                           'Enjoy Fast, Simple hassle free Shopping',
                           style: regular.copyWith(
                               color: exclusiveOfferSubtextColor, fontSize: 16),
-                        ),SizedBox(height: 2,),
+                        ),
+                        SizedBox(
+                          height: 2,
+                        ),
                         Text(
                           'Scan to Download the app',
                           style: thin.copyWith(

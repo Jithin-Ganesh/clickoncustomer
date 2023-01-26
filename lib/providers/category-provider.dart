@@ -3,54 +3,55 @@ import 'package:clickoncustomer/models/top-picks.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../models/category.dart';
+import '../models/product-model.dart';
 
 class CategoryProvider extends ChangeNotifier {
   List<Categories>? categoriesList;
   List<TopPicks>? topPicks;
   List<Categories>? groupOrders;
-  List<Categories>? products;
+  List<ProductModel>? products;
   List<Categories>? justLaunched;
   List<Categories>? recentlyAdded;
   List<Categories>? productDetails;
 
   Future<List<Categories>?> fetchProductImages() async {
-    productDetails = await SampleInterface.fetchProductImages();
+    productDetails = await CategoryInterface.fetchProductImages();
     notifyListeners();
     return productDetails ?? [];
   }
 
 
   Future<List<Categories>?> fetchCategory() async {
-    categoriesList = await SampleInterface.fetchCategory();
+    categoriesList = await CategoryInterface.fetchCategory();
     return categoriesList ?? [];
   }
 
   Future<List<TopPicks>?> fetchTopPicks() async {
-    topPicks = await SampleInterface.fetchTopPicks();
+    topPicks = await CategoryInterface.fetchTopPicks();
     notifyListeners();
     return topPicks ?? [];
   }
 
   Future<List<Categories>?> fetchGroupOrders() async {
-    groupOrders = await SampleInterface.fetchGroupOrders();
+    groupOrders = await CategoryInterface.fetchGroupOrders();
     notifyListeners();
     return groupOrders ?? [];
   }
 
-  Future<List<Categories>?> fetchProducts() async {
-    products = await SampleInterface.fetchProducts();
+  Future<List<ProductModel>?> fetchProducts() async {
+    products = await CategoryInterface.fetchProducts();
     notifyListeners();
     return products ?? [];
   }
 
   Future<List<Categories>?> fetchJustLaunched() async {
-    justLaunched = await SampleInterface.fetchJustLaunched();
+    justLaunched = await CategoryInterface.fetchJustLaunched();
     notifyListeners();
     return justLaunched ?? [];
   }
 
   Future<List<Categories>?> fetchRecentlyAdded() async {
-    recentlyAdded = await SampleInterface.fetchRecently();
+    recentlyAdded = await CategoryInterface.fetchRecently();
     notifyListeners();
     return recentlyAdded ?? [];
   }
