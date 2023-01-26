@@ -44,7 +44,7 @@ class _HomeScreenWebState extends State<HomeScreenWeb> {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 2), () {
-      // Provider.of<CategoryProvider>(context, listen: false).fetchCategory();
+      Provider.of<CategoryProvider>(context, listen: false).fetchCategory();
       Provider.of<CartProvider>(context, listen: false).fetchCart();
       Provider.of<UserProvider>(context, listen: false)
           .fetchUserProfile(id: PrefUtils().getUserId());
@@ -301,9 +301,34 @@ class _WebHomeScreenState extends State<WebHomeScreen> {
                   const SizedBox(
                     height: 44,
                   ),
-                  HomeCategoryList(
-                    categories: value.categoriesList,
-                  ),
+                  FutureBuilder(
+                      future: context.read<CategoryProvider>().fetchCategory(),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return Container(
+                            height: MediaQuery.of(context).size.height * 0.80,
+                            width: MediaQuery.of(context).size.width,
+                            child: const Center(
+                              child: CupertinoActivityIndicator(
+                                animating: true,
+                                radius: 12,
+                              ),
+                            ),
+                          );
+                        } else {
+                          if (snapshot.hasData) {
+                            final categoryList =
+                                snapshot.data as List<Categories>?;
+                            return HomeCategoryList(
+                              categories: categoryList,
+                            );
+                          }
+                        }
+                        return Text(
+                          snapshot.error.toString(),
+                        );
+                      }),
                   const SizedBox(
                     height: 50,
                   ),
@@ -354,7 +379,30 @@ class _WebHomeScreenState extends State<WebHomeScreen> {
                   const SizedBox(
                     height: 31,
                   ),
-                  const ProductsForYouList(),
+                  FutureBuilder(
+                      future: context.read<CategoryProvider>().fetchProducts(),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return Container(
+                            height: MediaQuery.of(context).size.height * 0.80,
+                            width: MediaQuery.of(context).size.width,
+                            child: const Center(
+                              child: CupertinoActivityIndicator(
+                                animating: true,
+                                radius: 12,
+                              ),
+                            ),
+                          );
+                        } else {
+                          if (snapshot.hasData) {
+                            return const ProductsForYouList();
+                          }
+                        }
+                        return Text(
+                          snapshot.error.toString(),
+                        );
+                      }),
                   const SizedBox(
                     height: 60,
                   ),

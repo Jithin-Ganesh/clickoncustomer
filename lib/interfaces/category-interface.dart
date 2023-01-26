@@ -5,7 +5,7 @@ import '../models/product-model.dart';
 import '../utils/api/api_methods.dart';
 import '../utils/api/api_request.dart';
 
-class SampleInterface {
+class CategoryInterface {
   static Future<List<Categories>?> fetchCategory() async {
     try {
       final response = await ApiRequest.send(
@@ -72,18 +72,18 @@ class SampleInterface {
     }
   }
 
-  static Future<List<Categories>?> fetchProducts() async {
+  static Future<List<ProductModel>?> fetchProducts() async {
     try {
-      // final response = await ApiRequest.send(
-      //   method: ApiMethod.GET,
-      //   body: {},
-      //   route: "category",
-      //   queries: {},
-      // );
+      final response = await ApiRequest.send(
+        method: ApiMethod.GET,
+        body: {},
+        route: "home/products-for-you",
+        queries: {},
+      );
 
-      return Categories.convertToList(products["product"]);
+      return ProductModel.convertToList(response);
     } catch (error) {
-      print("fetching categories error: $error");
+      print("fetching products for u error: $error");
       return [];
     }
   }
