@@ -10,8 +10,15 @@ import 'package:provider/provider.dart';
 import '../../../components/TopPickItem.dart';
 import '../../../utils/constants/fontstyles.dart';
 
-class TopPicks extends StatelessWidget {
+class TopPicks extends StatefulWidget {
   const TopPicks({Key? key}) : super(key: key);
+
+  @override
+  State<TopPicks> createState() => _TopPicksState();
+}
+
+class _TopPicksState extends State<TopPicks> {
+
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +60,7 @@ class TopPicks extends StatelessWidget {
                 );
               } else {
                 if (snapshot.hasData) {
-                  final catList = snapshot.data as List<TopPicks>;
+                  final catList = snapshot.data as List<TopPickModel>;
                   return const TopPickItem();
                 }
               }

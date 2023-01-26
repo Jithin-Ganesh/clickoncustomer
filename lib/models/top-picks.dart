@@ -1,4 +1,4 @@
-class TopPicks {
+class TopPickModel {
   String? image;
   int? id;
   String? name;
@@ -8,7 +8,7 @@ class TopPicks {
   String? createdAt;
   String? updatedAt;
 
-  TopPicks({this.image,
+  TopPickModel({this.image,
     this.id,
     this.name,
     this.commission,
@@ -17,7 +17,7 @@ class TopPicks {
     this.createdAt,
     this.updatedAt});
 
-  TopPicks.fromJson(Map<String, dynamic> json) {
+  TopPickModel.fromJson(Map<String, dynamic> json) {
     image = json['image'];
     id = json['id'];
     name = json['name'];
@@ -28,10 +28,10 @@ class TopPicks {
     updatedAt = json['updatedAt'];
   }
 
-  static List<TopPicks> convertToList(List<dynamic> list) {
-    List<TopPicks> data = [];
+  static List<TopPickModel> convertToList(List<dynamic> list) {
+    List<TopPickModel> data = [];
     for (var element in list) {
-      data.add(TopPicks.fromJson(element));
+      data.add(TopPickModel.fromJson(element));
     }
     return data;
   }

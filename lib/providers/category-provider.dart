@@ -3,15 +3,23 @@ import 'package:clickoncustomer/models/top-picks.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../models/category.dart';
+import '../models/product-model.dart';
 
 class CategoryProvider extends ChangeNotifier {
   List<Categories>? categoriesList;
-  List<TopPicks>? topPicks;
+  List<TopPickModel>? topPicks;
   List<Categories>? groupOrders;
   List<Categories>? products;
   List<Categories>? justLaunched;
   List<Categories>? recentlyAdded;
   List<Categories>? productDetails;
+  List<ProductModel>? latestProducts = [];
+
+  Future<List<ProductModel>?> fetchLatestProducts() async {
+    latestProducts = await SampleInterface.fetchLatestProduct();
+    notifyListeners();
+    return latestProducts;
+  }
 
   Future<List<Categories>?> fetchProductImages() async {
     productDetails = await SampleInterface.fetchProductImages();
@@ -19,16 +27,15 @@ class CategoryProvider extends ChangeNotifier {
     return productDetails ?? [];
   }
 
-
   Future<List<Categories>?> fetchCategory() async {
     categoriesList = await SampleInterface.fetchCategory();
     return categoriesList ?? [];
   }
 
-  Future<List<TopPicks>?> fetchTopPicks() async {
+  Future<List<TopPickModel>?> fetchTopPicks() async {
     topPicks = await SampleInterface.fetchTopPicks();
     notifyListeners();
-    return topPicks ?? [];
+    return topPicks;
   }
 
   Future<List<Categories>?> fetchGroupOrders() async {
@@ -54,7 +61,4 @@ class CategoryProvider extends ChangeNotifier {
     notifyListeners();
     return recentlyAdded ?? [];
   }
-
-
-
 }

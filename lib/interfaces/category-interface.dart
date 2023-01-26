@@ -1,6 +1,7 @@
 import 'package:clickoncustomer/models/top-picks.dart';
 
 import '../models/category.dart';
+import '../models/product-model.dart';
 import '../utils/api/api_methods.dart';
 import '../utils/api/api_request.dart';
 
@@ -21,7 +22,25 @@ class SampleInterface {
     }
   }
 
-  static Future<List<TopPicks>?> fetchTopPicks() async {
+
+  static Future<List<ProductModel>?> fetchLatestProduct() async {
+    try {
+      final response = await ApiRequest.send(
+        method: ApiMethod.GET,
+        body: {},
+        route: "home/latest-product",
+        queries: {},
+      );
+
+      return ProductModel.convertToList(response);
+    } catch (error) {
+      print("fetching home error: $error");
+      return null;
+    }
+  }
+
+
+  static Future<List<TopPickModel>?> fetchTopPicks() async {
     try {
       final response = await ApiRequest.send(
         method: ApiMethod.GET,
@@ -30,7 +49,7 @@ class SampleInterface {
         queries: {},
       );
 
-      return TopPicks.convertToList(response);
+      return TopPickModel.convertToList(response);
     } catch (error) {
       print("fetching top picks error: $error");
       return [];

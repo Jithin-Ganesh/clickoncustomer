@@ -37,7 +37,7 @@ class HomeInterface {
     }
   }
 
-  static Future<List<TopPicks>?> fetchTopPicks() async {
+  static Future<List<TopPickModel>?> fetchTopPicks() async {
     try {
       final response = await ApiRequest.send(
         method: ApiMethod.GET,
@@ -46,7 +46,7 @@ class HomeInterface {
         queries: {},
       );
 
-      return TopPicks.convertToList(response);
+      return TopPickModel.convertToList(response);
     } catch (error) {
       print("fetching top picks error: $error");
       return [];

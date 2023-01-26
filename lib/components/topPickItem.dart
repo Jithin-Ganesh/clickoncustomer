@@ -19,7 +19,6 @@ class TopPickItem extends StatefulWidget {
 class _TopPickItemState extends State<TopPickItem> {
   late ScrollController _scrollController;
 
-
   @override
   void initState() {
     // TODO: implement initState
@@ -43,10 +42,13 @@ class _TopPickItemState extends State<TopPickItem> {
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
                 itemBuilder: (context, index) {
-                  return Products(
-                    height: 242,
-                    image: value.topPicks?[index].image ?? "",
-                    title: value.topPicks?[index].name ?? "",
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    child: Products(
+                      height: 242,
+                      image: value.topPicks?[index].image ?? "",
+                      title: value.topPicks?[index].name ?? "",
+                    ),
                   );
                 },
               ),
@@ -82,8 +84,7 @@ class _TopPickItemState extends State<TopPickItem> {
                 child: Container(
                   height: 37,
                   width: 37,
-                  child: Icon(Icons.keyboard_arrow_right_outlined),
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       shape: BoxShape.circle, color: canvasColor
                       // boxShadow: [
                       //   BoxShadow(
@@ -94,6 +95,7 @@ class _TopPickItemState extends State<TopPickItem> {
                       //   ),
                       // ],
                       ),
+                  child: const Icon(Icons.keyboard_arrow_right_outlined),
                 ),
               )),
           Positioned(
@@ -104,8 +106,8 @@ class _TopPickItemState extends State<TopPickItem> {
                 child: Container(
                   height: 37,
                   width: 37,
-                  child: Icon(Icons.keyboard_arrow_left_outlined),
-                  decoration: BoxDecoration(
+                  child: const Icon(Icons.keyboard_arrow_left_outlined),
+                  decoration: const BoxDecoration(
                       shape: BoxShape.circle, color: canvasColor
                       // boxShadow: [
                       //   BoxShadow(
