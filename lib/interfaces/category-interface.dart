@@ -1,37 +1,57 @@
-
+import 'package:clickoncustomer/models/top-picks.dart';
 
 import '../models/category.dart';
+import '../models/product-model.dart';
+import '../utils/api/api_methods.dart';
+import '../utils/api/api_request.dart';
 
-class SampleInterface {
-
+class CategoryInterface {
   static Future<List<Categories>?> fetchCategory() async {
     try {
-      // final response = await ApiRequest.send(
-      //   method: ApiMethod.GET,
-      //   body: {},
-      //   route: "category",
-      //   queries: {},
-      // );
+      final response = await ApiRequest.send(
+        method: ApiMethod.GET,
+        body: {},
+        route: "home/home-categorie",
+        queries: {},
+      );
 
-      return Categories.convertToList(testCategories ["category"]);
+      return Categories.convertToList(response);
     } catch (error) {
-      print("fetching categories error: $error");
+      print("fetching  home categories error: $error");
       return [];
     }
   }
 
-  static Future<List<Categories>?> fetchTopPicks() async {
-    try {
-      // final response = await ApiRequest.send(
-      //   method: ApiMethod.GET,
-      //   body: {},
-      //   route: "category",
-      //   queries: {},
-      // );
 
-      return Categories.convertToList(testTopPicks["topPick"]);
+  static Future<List<ProductModel>?> fetchLatestProduct() async {
+    try {
+      final response = await ApiRequest.send(
+        method: ApiMethod.GET,
+        body: {},
+        route: "home/latest-product",
+        queries: {},
+      );
+
+      return ProductModel.convertToList(response);
     } catch (error) {
-      print("fetching categories error: $error");
+      print("fetching home error: $error");
+      return null;
+    }
+  }
+
+
+  static Future<List<TopPickModel>?> fetchTopPicks() async {
+    try {
+      final response = await ApiRequest.send(
+        method: ApiMethod.GET,
+        body: {},
+        route: "home/top-picks",
+        queries: {},
+      );
+
+      return TopPickModel.convertToList(response);
+    } catch (error) {
+      print("fetching top picks error: $error");
       return [];
     }
   }
@@ -52,22 +72,38 @@ class SampleInterface {
     }
   }
 
-  static Future<List<Categories>?> fetchProducts() async {
+  static Future<List<ProductModel>?> fetchProductsForYou() async {
     try {
-      // final response = await ApiRequest.send(
-      //   method: ApiMethod.GET,
-      //   body: {},
-      //   route: "category",
-      //   queries: {},
-      // );
+      final response = await ApiRequest.send(
+        method: ApiMethod.GET,
+        body: {},
+        route: "home/products-for-you",
+        queries: {},
+      );
 
-      return Categories.convertToList(products["product"]);
+      return ProductModel.convertToList(response);
     } catch (error) {
-      print("fetching categories error: $error");
+      print("fetching products for u error: $error");
       return [];
     }
   }
 
+
+  static Future<List<ProductModel>?> fetchRecentProducts() async {
+    try {
+      final response = await ApiRequest.send(
+        method: ApiMethod.GET,
+        body: {},
+        route: "home/recently-viewed-product",
+        queries: {},
+      );
+
+      return ProductModel.convertToList(response);
+    } catch (error) {
+      print("fetching products for u error: $error");
+      return [];
+    }
+  }
 
   static Future<List<Categories>?> fetchJustLaunched() async {
     try {
@@ -101,7 +137,6 @@ class SampleInterface {
     }
   }
 
-
   static Future<List<Categories>?> fetchProductImages() async {
     try {
       // final response = await ApiRequest.send(
@@ -118,55 +153,53 @@ class SampleInterface {
     }
   }
 
-
-
   static Map<String, dynamic> testCategories = {
     "success": true,
     "category": [
       {
         "id": 1,
         "name": "Top Offers",
-        "image":   "assets/images/dummy/image-cat-1.png",
+        "image": "assets/images/dummy/image-cat-1.png",
       },
       {
         "id": 2,
         "name": "New Arrivals",
-        "image":   "assets/images/dummy/image-cat-2.png",
+        "image": "assets/images/dummy/image-cat-2.png",
       },
       {
         "id": 3,
         "name": "Electronics",
-        "image":   "assets/images/dummy/image-cat-3.png",
+        "image": "assets/images/dummy/image-cat-3.png",
       },
       {
         "id": 4,
         "name": "Fashion",
-        "image":   "assets/images/dummy/image-cat-4.png",
+        "image": "assets/images/dummy/image-cat-4.png",
       },
       {
         "id": 5,
         "name": "TV & Appliances",
-        "image":   "assets/images/dummy/image-cat-1.png",
+        "image": "assets/images/dummy/image-cat-1.png",
       },
       {
         "id": 6,
         "name": "Mobile",
-        "image":   "assets/images/dummy/image-cat-2.png",
+        "image": "assets/images/dummy/image-cat-2.png",
       },
       {
         "id": 7,
         "name": "Sports",
-        "image":   "assets/images/dummy/image-cat-3.png",
+        "image": "assets/images/dummy/image-cat-3.png",
       },
       {
         "id": 8,
         "name": "Kitchen & Dining",
-        "image":   "assets/images/dummy/image-cat-4.png",
+        "image": "assets/images/dummy/image-cat-4.png",
       },
       {
         "id": 9,
         "name": "Furniture",
-        "image":   "assets/images/dummy/image-cat-1.png",
+        "image": "assets/images/dummy/image-cat-1.png",
       },
     ]
   };
@@ -177,37 +210,37 @@ class SampleInterface {
       {
         "id": 1,
         "name": "Watches",
-        "image":   "assets/images/dummy/image-watch.png",
+        "image": "assets/images/dummy/image-watch.png",
       },
       {
         "id": 2,
         "name": "Footwear",
-        "image":   "assets/images/dummy/image-top-pick-2.png",
+        "image": "assets/images/dummy/image-top-pick-2.png",
       },
       {
         "id": 3,
         "name": "Bags & Luggage",
-        "image":   "assets/images/dummy/image-top-pick-3.png",
+        "image": "assets/images/dummy/image-top-pick-3.png",
       },
       {
         "id": 4,
         "name": "Clothing",
-        "image":   "assets/images/dummy/image-top-pick-4.png",
+        "image": "assets/images/dummy/image-top-pick-4.png",
       },
       {
         "id": 5,
         "name": "Smartphones",
-        "image":   "assets/images/dummy/image-top-pick-5.png",
+        "image": "assets/images/dummy/image-top-pick-5.png",
       },
       {
         "id": 6,
         "name": "Watches",
-        "image":   "assets/images/dummy/image-watch.png",
+        "image": "assets/images/dummy/image-watch.png",
       },
       {
         "id": 7,
         "name": "Footwear",
-        "image":   "assets/images/dummy/image-top-pick-2.png",
+        "image": "assets/images/dummy/image-top-pick-2.png",
       },
     ]
   };
@@ -218,32 +251,32 @@ class SampleInterface {
       {
         "id": 1,
         "name": "Watches",
-        "image":   "assets/images/dummy/group-order-1.png",
+        "image": "assets/images/dummy/group-order-1.png",
       },
       {
         "id": 2,
         "name": "Footwear",
-        "image":   "assets/images/dummy/group-order-2.png",
+        "image": "assets/images/dummy/group-order-2.png",
       },
       {
         "id": 3,
         "name": "Bags & Luggage",
-        "image":   "assets/images/dummy/group-order-3.png",
+        "image": "assets/images/dummy/group-order-3.png",
       },
       {
         "id": 4,
         "name": "Clothing",
-        "image":   "assets/images/dummy/group-order-4.png",
+        "image": "assets/images/dummy/group-order-4.png",
       },
       {
         "id": 5,
         "name": "Clothing",
-        "image":   "assets/images/dummy/image-xbox-1.png",
+        "image": "assets/images/dummy/image-xbox-1.png",
       },
       {
         "id": 6,
         "name": "Smartphones",
-        "image":   "assets/images/dummy/group-order-5.png",
+        "image": "assets/images/dummy/group-order-5.png",
       },
     ]
   };
@@ -254,37 +287,37 @@ class SampleInterface {
       {
         "id": 1,
         "name": "Watches",
-        "image":   "assets/images/dummy/product-1.png",
+        "image": "assets/images/dummy/product-1.png",
       },
       {
         "id": 2,
         "name": "Footwear",
-        "image":   "assets/images/dummy/product-2.png",
+        "image": "assets/images/dummy/product-2.png",
       },
       {
         "id": 3,
         "name": "Bags & Luggage",
-        "image":   "assets/images/dummy/product-3.png",
+        "image": "assets/images/dummy/product-3.png",
       },
       {
         "id": 4,
         "name": "Clothing",
-        "image":   "assets/images/dummy/product-4.png",
+        "image": "assets/images/dummy/product-4.png",
       },
       {
         "id": 5,
         "name": "Clothing",
-        "image":   "assets/images/dummy/product-5.png",
+        "image": "assets/images/dummy/product-5.png",
       },
       {
         "id": 6,
         "name": "Smartphones",
-        "image":   "assets/images/dummy/product-6.png",
+        "image": "assets/images/dummy/product-6.png",
       },
       {
         "id": 7,
         "name": "Smartphones",
-        "image":   "assets/images/dummy/product-4.png",
+        "image": "assets/images/dummy/product-4.png",
       },
     ]
   };
@@ -295,27 +328,27 @@ class SampleInterface {
       {
         "id": 1,
         "name": "Watches",
-        "image":   "assets/images/dummy/just-1.png",
+        "image": "assets/images/dummy/just-1.png",
       },
       {
         "id": 2,
         "name": "Footwear",
-        "image":   "assets/images/dummy/just-2.png",
+        "image": "assets/images/dummy/just-2.png",
       },
       {
         "id": 3,
         "name": "Bags & Luggage",
-        "image":   "assets/images/dummy/just-3.png",
+        "image": "assets/images/dummy/just-3.png",
       },
       {
         "id": 4,
         "name": "Clothing",
-        "image":   "assets/images/dummy/just-4.png",
+        "image": "assets/images/dummy/just-4.png",
       },
       {
         "id": 5,
         "name": "Smartphones",
-        "image":   "assets/images/dummy/just-5.png",
+        "image": "assets/images/dummy/just-5.png",
       },
     ]
   };
@@ -326,37 +359,37 @@ class SampleInterface {
       {
         "id": 1,
         "name": "Watches",
-        "image":   "assets/images/dummy/recently-1.png",
+        "image": "assets/images/dummy/recently-1.png",
       },
       {
         "id": 2,
         "name": "Footwear",
-        "image":   "assets/images/dummy/recently-2.png",
+        "image": "assets/images/dummy/recently-2.png",
       },
       {
         "id": 3,
         "name": "Bags & Luggage",
-        "image":   "assets/images/dummy/recently-3.png",
+        "image": "assets/images/dummy/recently-3.png",
       },
       {
         "id": 4,
         "name": "Clothing",
-        "image":   "assets/images/dummy/recently-4.png",
+        "image": "assets/images/dummy/recently-4.png",
       },
       {
         "id": 5,
         "name": "Smartphones",
-        "image":   "assets/images/dummy/recently-5.png",
+        "image": "assets/images/dummy/recently-5.png",
       },
       {
         "id": 6,
         "name": "Smartphones",
-        "image":   "assets/images/dummy/recently-6.png",
+        "image": "assets/images/dummy/recently-6.png",
       },
       {
         "id": 7,
         "name": "Smartphones",
-        "image":   "assets/images/dummy/recently-7.png",
+        "image": "assets/images/dummy/recently-7.png",
       },
     ]
   };
@@ -367,29 +400,28 @@ class SampleInterface {
       {
         "id": 1,
         "name": "Watches",
-        "image":   "assets/images/dummy/image-baby-detail.png",
+        "image": "assets/images/dummy/image-baby-detail.png",
       },
       {
         "id": 2,
         "name": "Footwear",
-        "image":   "assets/images/dummy/image-baby-2.png",
+        "image": "assets/images/dummy/image-baby-2.png",
       },
       {
         "id": 3,
         "name": "Bags & Luggage",
-        "image":   "assets/images/dummy/image-baby-3.png",
+        "image": "assets/images/dummy/image-baby-3.png",
       },
       {
         "id": 4,
         "name": "Clothing",
-        "image":   "assets/images/dummy/image-baby-4.png",
+        "image": "assets/images/dummy/image-baby-4.png",
       },
       {
         "id": 5,
         "name": "Smartphones",
-        "image":   "assets/images/dummy/image-baby-2.png",
+        "image": "assets/images/dummy/image-baby-2.png",
       },
     ]
   };
-
 }

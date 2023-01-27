@@ -1,5 +1,7 @@
 import 'package:clickoncustomer/models/product-model.dart';
 
+import '../models/category.dart';
+import '../models/top-picks.dart';
 import '../utils/api/api_methods.dart';
 import '../utils/api/api_request.dart';
 
@@ -17,6 +19,37 @@ class HomeInterface {
     } catch (error) {
       print("fetching home error: $error");
       return null;
+    }
+  }
+  static Future<List<Categories>?> fetchCategory() async {
+    try {
+      final response = await ApiRequest.send(
+        method: ApiMethod.GET,
+        body: {},
+        route: "home/home-categorie",
+        queries: {},
+      );
+
+      return Categories.convertToList(response);
+    } catch (error) {
+      print("fetching  home categories error: $error");
+      return [];
+    }
+  }
+
+  static Future<List<TopPickModel>?> fetchTopPicks() async {
+    try {
+      final response = await ApiRequest.send(
+        method: ApiMethod.GET,
+        body: {},
+        route: "home/top-picks",
+        queries: {},
+      );
+
+      return TopPickModel.convertToList(response);
+    } catch (error) {
+      print("fetching top picks error: $error");
+      return [];
     }
   }
 }

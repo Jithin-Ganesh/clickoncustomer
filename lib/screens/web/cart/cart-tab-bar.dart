@@ -8,6 +8,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../models/cart.dart';
+import '../../../models/product-model.dart';
 import '../../../utils/constants/fontstyles.dart';
 import 'buy-it-again.dart';
 
@@ -34,6 +36,7 @@ class MoveFromWishList extends StatelessWidget {
               );
             } else {
               if (snapshot.hasData) {
+                final items = snapshot.data as List<GetWishList>;
                 return Container(
                   child: GridView.builder(
                     physics: NeverScrollableScrollPhysics(),
@@ -43,9 +46,9 @@ class MoveFromWishList extends StatelessWidget {
                         crossAxisSpacing: 14,
                         mainAxisSpacing: 14,
                         mainAxisExtent: 446),
-                    itemCount: 10,
+                    itemCount: items.length,
                     itemBuilder: (context, index) {
-                      return YourItems();
+                      return YourItems(product: items[index].productModel,);
                     },
                   ),
                 );

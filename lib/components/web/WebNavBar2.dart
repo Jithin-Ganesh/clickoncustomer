@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:clickoncustomer/components/elevated-buton.dart';
 import 'package:clickoncustomer/providers/cart-provider.dart';
 import 'package:clickoncustomer/providers/user-provider.dart';
 import 'package:clickoncustomer/screens/web/cart/cart-screen.dart';
@@ -76,7 +77,6 @@ class _WebNavBar2State extends State<WebNavBar2> {
                   child: TextFormField(
                     readOnly: true,
                     onTap: () {
-
                       buildAwesomeDialog(context);
                     },
                     decoration: InputDecoration(
@@ -514,10 +514,10 @@ class _LocationSearchState extends State<LocationSearch> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width * 0.56,
+      width: MediaQuery.of(context).size.width * 0.6,
       child: Column(
         mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Padding(
             padding: const EdgeInsets.only(left: 44, right: 42, top: 29),
@@ -548,10 +548,10 @@ class _LocationSearchState extends State<LocationSearch> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 120),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
-                  width: MediaQuery.of(context).size.width * 0.36,
+                  width: MediaQuery.of(context).size.width * 0.365,
                   height: 56,
                   decoration: BoxDecoration(
                       border: Border.all(color: contactTitleColor),
@@ -562,7 +562,7 @@ class _LocationSearchState extends State<LocationSearch> {
                     child: TextFormField(
                       decoration: InputDecoration(
                           border: InputBorder.none,
-                          hintText: "search",
+                          hintText: "Search",
                           hintStyle: thin.copyWith(
                               fontSize: 18, color: clickOnOffersTitleColor)),
                     ),
@@ -572,6 +572,7 @@ class _LocationSearchState extends State<LocationSearch> {
                   height: 19,
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
                       width: MediaQuery.of(context).size.width * 0.263,
@@ -604,7 +605,9 @@ class _LocationSearchState extends State<LocationSearch> {
                             border: Border.all(color: locationColor),
                             borderRadius: BorderRadius.circular(8)),
                         child: Padding(
-                            padding: const EdgeInsets.only(left: 5),
+                            padding: EdgeInsets.only(
+                                left:
+                                    MediaQuery.of(context).size.width * 0.016),
                             child: Row(
                               children: [
                                 const Icon(
@@ -618,7 +621,7 @@ class _LocationSearchState extends State<LocationSearch> {
                                 Expanded(
                                   flex: 10,
                                   child: Text(
-                                    "Location me",
+                                    "Locate me",
                                     style: medium.copyWith(
                                         fontSize: 18, color: contactTitleColor),
                                   ),
@@ -633,6 +636,7 @@ class _LocationSearchState extends State<LocationSearch> {
                   height: 38,
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
                       textAlign: TextAlign.center,
@@ -680,31 +684,21 @@ class _LocationSearchState extends State<LocationSearch> {
             ),
           ),
           Center(
-            child: Container(
-              width: MediaQuery.of(context).size.width * 0.171,
-              height: 45,
-              decoration: BoxDecoration(
-                  color: elevatedColor,
-                  borderRadius: BorderRadius.circular(10)),
-              child: ElevatedButton(
-                  style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(elevatedColor),
-                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10)))),
-                  onPressed: () {},
-                  child: const Text("START LOOKING")),
-            ),
+            child: ButtonElevated(
+                color: elevatedColor,
+                radius: 10,
+                height: 45,
+                onPressed: () {},
+                width: MediaQuery.of(context).size.width * 0.18,
+                buttonTitle: "START LOOKING"),
           ),
           const SizedBox(
             height: 43,
           ),
-          Padding(
-            padding: const EdgeInsets.all(8),
-            child: ImgProvider(
-              url: "assets/images/dummy/map.png",
-              width: MediaQuery.of(context).size.width * 0.55,
-              height: 227,
-            ),
+          ImgProvider(
+            url: "assets/images/dummy/map.png",
+            width: MediaQuery.of(context).size.width * 0.6,
+            height: 227,
           )
         ],
       ),

@@ -25,6 +25,9 @@ import '../../../models/category.dart';
 import '../../../providers/cart-provider.dart';
 import '../../../providers/home_provider.dart';
 import '../../../providers/user-provider.dart';
+import '../shimmer-component/circle-list-item.dart';
+import '../shimmer-component/products-box-shimmer-list.dart';
+import '../shimmer-component/shimmer-loading.dart';
 import 'best-selling.dart';
 import 'category-list.dart';
 import 'fashion-store.dart';
@@ -44,8 +47,8 @@ class _HomeScreenWebState extends State<HomeScreenWeb> {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 2), () {
-      Provider.of<CategoryProvider>(context, listen: false).fetchCategory();
       Provider.of<CartProvider>(context, listen: false).fetchCart();
+      Provider.of<HomeProvider>(context, listen: false).fetchHome();
       Provider.of<UserProvider>(context, listen: false)
           .fetchUserProfile(id: PrefUtils().getUserId());
     });
@@ -68,7 +71,7 @@ class _HomeScreenWebState extends State<HomeScreenWeb> {
       ),
       mobile: Container(
         child: const Center(
-          child: const ImgProvider(
+          child: ImgProvider(
             url: "assets/images/clickOn-logo.png",
             height: 100,
             width: 200,
@@ -79,178 +82,242 @@ class _HomeScreenWebState extends State<HomeScreenWeb> {
         backgroundColor: bgColor.withOpacity(0.3),
         appBar: const PreferredSize(
             preferredSize: Size.fromHeight(175), child: WebNavBar2()),
-        body: FutureBuilder(
-          future: context.read<HomeProvider>().fetchHome(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return Container(
-                height: MediaQuery.of(context).size.height * 0.80,
-                width: MediaQuery.of(context).size.width,
-                child: const Center(
-                  child: CupertinoActivityIndicator(
-                    animating: true,
-                    radius: 12,
-                  ),
-                ),
-              );
-            } else {
-              if (snapshot.hasData) {
-                final catList = snapshot.data as List<ProductModel>?;
-                return WebHomeScreen();
-              }
-            }
-            return Text(
-              snapshot.error.toString(),
-            );
-          },
-        ),
+        body: const WebHomeScreen(),
       ),
     );
   }
 }
 
-class WebHomeScreen extends StatelessWidget {
+class WebHomeScreen extends StatefulWidget {
   const WebHomeScreen({
     Key? key,
   }) : super(key: key);
 
   @override
+  State<WebHomeScreen> createState() => _WebHomeScreenState();
+}
+
+class _WebHomeScreenState extends State<WebHomeScreen> {
+  // Future<List<ProductModel>?> _future() async {
+  //   return await Provider.of<CategoryProvider>(context, listen: false)
+  //       .fetchLatestProducts();
+  // }
+
+  @override
   Widget build(BuildContext context) {
-    return Consumer<CategoryProvider>(
-      builder: (context, value, child) => SingleChildScrollView(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(
-                  left: 150.0, right: 150, top: 42, bottom: 60),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const HomeBannerCarousel(),
-                  const SizedBox(
-                    height: 44,
-                  ),
-                  HomeCategoryList(
-                    categories: value.categoriesList,
-                  ),
-                  const SizedBox(
-                    height: 50,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(
+                left: 150.0, right: 150, top: 42, bottom: 60),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const HomeBannerCarousel(),
+                const SizedBox(
+                  height: 44,
+                ),
+                FutureBuilder(
+                    future: context.read<CategoryProvider>().fetchCategory(),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const ShimmerLoading(
+                          isLoading: true,
+                          child: CircleListItem(),
+                        );
+                      } else {
+                        if (snapshot.hasData) {
+                          final categoryList =
+                              snapshot.data as List<Categories>?;
+                          return HomeCategoryList(
+                            categories: categoryList,
+                          );
+                        }
+                      }
+                      return Text(
+                        snapshot.error.toString(),
+                      );
+                    }),
+                const SizedBox(
+                  height: 50,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Flexible(
+                      child: Container(
+                        decoration: containerDecoration,
+                        // constraints: BoxConstraints(
+                        //   minWidth: MediaQuery.of(context).size.width * 0.20,
+                        //   maxWidth: MediaQuery.of(context).size.width * 0.50,
+                        // ),
+                        child: const TopPicks(),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    const ExlusiveOffer()
+                  ],
+                ),
+                const SizedBox(
+                  height: 61,
+                ),
+                const GroupOrders(),
+                const SizedBox(
+                  height: 45,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Best Selling Products',
+                      style: medium.copyWith(color: Colors.black, fontSize: 28),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 12,
+                ),
+                const CustomTabBarView(),
+                const SizedBox(
+                  height: 55,
+                ),
+                Visibility(
+                  visible: PrefUtils().getToken() != null,
+                  child: Column(
                     children: [
-                      Flexible(
-                        child: Container(
-                          decoration: containerDecoration,
-                          // constraints: BoxConstraints(
-                          //   minWidth: MediaQuery.of(context).size.width * 0.20,
-                          //   maxWidth: MediaQuery.of(context).size.width * 0.50,
-                          // ),
-                          child: const TopPicks(),
-                        ),
+                      const CustomTitleBarViewAll(title: 'Products For You'),
+                      const SizedBox(
+                        height: 31,
                       ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      ExlusiveOffer()
+                      FutureBuilder(
+                          future: Provider.of<CategoryProvider>(context,
+                                  listen: false)
+                              .fetchProductsForYou(),
+                          builder: (context, snapshot) {
+                            if (snapshot.connectionState ==
+                                ConnectionState.waiting) {
+                              return const ShimmerLoading(
+                                isLoading: true,
+                                child: ProductsShimmerList(),
+                              );
+                            } else {
+                              if (snapshot.hasData) {
+                                return const ProductsForYouList();
+                              }
+                            }
+                            return Text(
+                              snapshot.error.toString(),
+                            );
+                          }),
                     ],
                   ),
-                  const SizedBox(
-                    height: 61,
-                  ),
-                  const GroupOrders(),
-                  const SizedBox(
-                    height: 45,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Best Selling Products',
-                        style:
-                            medium.copyWith(color: Colors.black, fontSize: 28),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 12,
-                  ),
-                  const CustomTabBarView(),
-                  const SizedBox(
-                    height: 55,
-                  ),
-                  const CustomTitleBarViewAll(title: 'Products For You'),
-                  const SizedBox(
-                    height: 31,
-                  ),
-                  const ProductsForYouList(),
-                  const SizedBox(
-                    height: 60,
-                  ),
-                  const Divider(
-                    color: horizontalDividerColor,
-                    height: 1,
-                  ),
-                  const SizedBox(
-                    height: 60,
-                  ),
-                  const CustomTitleBarViewAll(title: 'Just Launched'),
-                  const SizedBox(
-                    height: 12,
-                  ),
-                  JustLaunchedList(justLaunched: value.justLaunched ?? []),
-                  const SizedBox(
-                    height: 55,
-                  ),
-                  const CustomTitleBarViewAll(title: 'Best Selling'),
-                  const SizedBox(
-                    height: 26,
-                  ),
-                  BestSelling(),
-                  const SizedBox(
-                    height: 64,
-                  ),
-                  const Divider(
-                    color: horizontalDividerColor,
-                    height: 1,
-                  ),
-                  const SizedBox(
-                    height: 52,
-                  ),
-                  const CustomTitleBarViewAll(title: 'Fashion Store'),
-                  const SizedBox(
-                    height: 25,
-                  ),
-                  FashionStore(),
-                  const SizedBox(
-                    height: 55,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Recently Viewed Products',
-                        style:
-                            medium.copyWith(color: Colors.black, fontSize: 28),
-                        textAlign: TextAlign.left,
-                      ),
-                      Text(
-                        'View/Edit Browsing History',
-                        style:
-                            medium.copyWith(color: groupOrdersTitleTextColor),
-                      )
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 26,
-                  ),
-                  RecentlyViewedProducts(recently: value.recentlyAdded ?? []),
-                ],
-              ),
+                ),
+                const SizedBox(
+                  height: 60,
+                ),
+                const Divider(
+                  color: horizontalDividerColor,
+                  height: 1,
+                ),
+                const SizedBox(
+                  height: 60,
+                ),
+                const CustomTitleBarViewAll(title: 'Just Launched'),
+                const SizedBox(
+                  height: 12,
+                ),
+                FutureBuilder(
+                  future: Provider.of<CategoryProvider>(context, listen: false)
+                      .fetchLatestProducts(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const ShimmerLoading(
+                        isLoading: true,
+                        child: ProductsShimmerList(),
+                      );
+                    } else {
+                      if (snapshot.hasData) {
+                        final products = snapshot.data as List<ProductModel>?;
+                        return JustLaunchedList(
+                          productList: products,
+                        );
+                      }
+                    }
+                    return Text(
+                      snapshot.error.toString(),
+                    );
+                  },
+                ),
+                const SizedBox(
+                  height: 55,
+                ),
+                const CustomTitleBarViewAll(title: 'Best Selling'),
+                const SizedBox(
+                  height: 26,
+                ),
+                BestSelling(),
+                const SizedBox(
+                  height: 64,
+                ),
+                const Divider(
+                  color: horizontalDividerColor,
+                  height: 1,
+                ),
+                const SizedBox(
+                  height: 52,
+                ),
+                const CustomTitleBarViewAll(title: 'Fashion Store'),
+                const SizedBox(
+                  height: 25,
+                ),
+                FashionStore(),
+                const SizedBox(
+                  height: 55,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Recently Viewed Products',
+                      style: medium.copyWith(color: Colors.black, fontSize: 28),
+                      textAlign: TextAlign.left,
+                    ),
+                    Text(
+                      'View/Edit Browsing History',
+                      style: medium.copyWith(color: groupOrdersTitleTextColor),
+                    )
+                  ],
+                ),
+                const SizedBox(
+                  height: 26,
+                ),
+                FutureBuilder(
+                    future:
+                        Provider.of<CategoryProvider>(context, listen: false)
+                            .fetchRecentProducts(),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const ShimmerLoading(
+                          isLoading: true,
+                          child: ProductsShimmerList(),
+                        );
+                      } else {
+                        if (snapshot.hasData) {
+                          return const RecentlyViewedProducts();
+                        }
+                      }
+                      return Text(
+                        snapshot.error.toString(),
+                      );
+                    }),
+              ],
             ),
-            const BottomWebBar()
-          ],
-        ),
+          ),
+          const BottomWebBar()
+        ],
       ),
     );
   }
@@ -271,28 +338,29 @@ class ExlusiveOffer extends StatelessWidget {
       child: Column(
         children: [
           Container(
+            height: 230,
+            width: MediaQuery.of(context).size.width * 0.259,
+            decoration: BoxDecoration(
+              color: groupOrdersAmountTextColor,
+              borderRadius: BorderRadius.circular(10),
+              // image: const DecorationImage(
+              //     image: AssetImage(
+              //         "assets/images/dummy/image-exclusive.png"))
+            ),
+            child: ImgProvider(
+              url: "assets/images/dummy/image-exclusive.png",
               height: 230,
-              width: MediaQuery.of(context).size.width * 0.259,
-              decoration: BoxDecoration(
-                color: groupOrdersAmountTextColor,
-                borderRadius: BorderRadius.circular(10),
-                // image: const DecorationImage(
-                //     image: AssetImage(
-                //         "assets/images/dummy/image-exclusive.png"))
-              ),
-              child:  ImgProvider(
-                url: "assets/images/dummy/image-exclusive.png",
-                height: 230,
-                width: MediaQuery.of(context).size.width * 0.239,
-                boxFit: BoxFit.fill,
-              ),),
+              width: MediaQuery.of(context).size.width * 0.239,
+              boxFit: BoxFit.fill,
+            ),
+          ),
           Container(
             height: 135,
             width: MediaQuery.of(context).size.width * 0.239,
             decoration: BoxDecoration(
                 color: canvasColor, borderRadius: BorderRadius.circular(10)),
             child: Padding(
-              padding: const EdgeInsets.only(left: 26,right: 42),
+              padding: const EdgeInsets.only(left: 26, right: 42),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
@@ -303,18 +371,22 @@ class ExlusiveOffer extends StatelessWidget {
                     height: 74,
                     width: 74,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 21,
                   ),
                   Expanded(
-                    child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
                           'Enjoy Fast, Simple hassle free Shopping',
                           style: regular.copyWith(
                               color: exclusiveOfferSubtextColor, fontSize: 16),
-                        ),SizedBox(height: 2,),
+                        ),
+                        const SizedBox(
+                          height: 2,
+                        ),
                         Text(
                           'Scan to Download the app',
                           style: thin.copyWith(
