@@ -35,20 +35,17 @@ class _TopPickItemState extends State<TopPickItem> {
           Consumer<CategoryProvider>(
             builder: (context, value, child) => SizedBox(
               height: 250,
-              width: MediaQuery.of(context).size.width * 0.578,
+              width: MediaQuery.of(context).size.width * 0.59,
               child: ListView.builder(
-                itemExtent: 140,
+                itemExtent: 185,
                 itemCount: value.topPicks?.length,
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
                 itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                    child: Products(
-                      height: 242,
-                      image: value.topPicks?[index].image ?? "",
-                      title: value.topPicks?[index].name ?? "",
-                    ),
+                  return Products(
+                    height: 242,
+                    image: value.topPicks?[index].image ?? "",
+                    title: value.topPicks?[index].name ?? "",
                   );
                 },
               ),

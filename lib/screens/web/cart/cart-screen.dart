@@ -90,106 +90,128 @@ class CartBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<CategoryProvider>(
-      builder: (context, value, child) => SingleChildScrollView(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 160.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  const SizedBox(
-                    height: 91,
-                  ),
-              Consumer<CartProvider>(builder: (context, value, child) => Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child:  Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Padding(
-                                padding: EdgeInsets.only(right: 38.0),
-                                child: const CustomTitleBar(
-                                    title: 'Your Cart', isShop: true),
-                              ),
-                              SizedBox(height: 25,),
-                              ListView.builder(
-                                shrinkWrap: true,
-                                physics: NeverScrollableScrollPhysics(),
-                                itemBuilder: (context, index) => YourCart(
-                                    product: value.cart?.cartProducts?[index],cartId: value.cart?.id,),
-                                itemCount: value.cart?.cartProducts?.length,
-                              )
-                            ],
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 160.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(
+                  height: 91,
+                ),
+                Consumer<CartProvider>(builder: (context, value, child) => Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child:  Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Padding(
+                            padding: EdgeInsets.only(right: 38.0),
+                            child: const CustomTitleBar(
+                                title: 'Your Cart', isShop: true),
                           ),
+                          SizedBox(height: 25,),
+                          ListView.builder(
+                            shrinkWrap: true,
+                            physics: NeverScrollableScrollPhysics(),
+                            itemBuilder: (context, index) => YourCart(
+                              product: value.cart?.cartProducts?[index],cartId: value.cart?.id,),
+                            itemCount: value.cart?.cartProducts?.length,
+                          )
+                        ],
+                      ),
 
-                      ),
-                       SizedBox(width: 30,),
-                       ZigZagSheet(
+                    ),
+                    SizedBox(width: 30,),
+                    ZigZagSheet(
                         isCoupon: false
-                      ),
-                    ],
-                  ),),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  const CustomTitleBar(
-                    title: 'Your Items',
-                  ),
-                  const SizedBox(
-                    height: 32,
-                  ),
-                  const CartTabBar(),
-                  const SizedBox(
-                    height: 91,
-                  ),
-                  const CustomTitleBarViewAll(title: 'Explore more items'),
-                  const SizedBox(
-                    height: 31,
-                  ),
-                  const ProductsForYouList(),
-                  const SizedBox(
-                    height: 60,
-                  ),
-                  const Divider(
-                    color: horizontalDividerColor,
-                    height: 1,
-                  ),
-                  const SizedBox(
-                    height: 75,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Recently Viewed Products',
-                        style:
-                            medium.copyWith(color: Colors.black, fontSize: 28),
-                        textAlign: TextAlign.left,
-                      ),
-                      Text(
-                        'View/Edit Browsing History',
-                        style:
-                            medium.copyWith(color: groupOrdersTitleTextColor),
-                      )
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 12,
-                  ),
-                  RecentlyViewedProducts(recently: value.recentlyAdded ?? []),
-                  const SizedBox(
-                    height: 106,
-                  )
-                ],
-              ),
+                    ),
+                  ],
+                ),),
+                const SizedBox(
+                  height: 20,
+                ),
+                const CustomTitleBar(
+                  title: 'Your Items',
+                ),
+                const SizedBox(
+                  height: 32,
+                ),
+                const CartTabBar(),
+                const SizedBox(
+                  height: 91,
+                ),
+                const CustomTitleBarViewAll(title: 'Explore more items'),
+                const SizedBox(
+                  height: 31,
+                ),
+                const ProductsForYouList(),
+                const SizedBox(
+                  height: 60,
+                ),
+                const Divider(
+                  color: horizontalDividerColor,
+                  height: 1,
+                ),
+                const SizedBox(
+                  height: 75,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Recently Viewed Products',
+                      style:
+                      medium.copyWith(color: Colors.black, fontSize: 28),
+                      textAlign: TextAlign.left,
+                    ),
+                    Text(
+                      'View/Edit Browsing History',
+                      style:
+                      medium.copyWith(color: groupOrdersTitleTextColor),
+                    )
+                  ],
+                ),
+                const SizedBox(
+                  height: 12,
+                ),
+                FutureBuilder(
+                    future:
+                    Provider.of<CategoryProvider>(context, listen: false)
+                        .fetchRecentProducts(),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return Container(
+                          height: MediaQuery.of(context).size.height * 0.80,
+                          width: MediaQuery.of(context).size.width,
+                          child: const Center(
+                            child: CupertinoActivityIndicator(
+                              animating: true,
+                              radius: 12,
+                            ),
+                          ),
+                        );
+                      } else {
+                        if (snapshot.hasData) {
+                          return const RecentlyViewedProducts();
+                        }
+                      }
+                      return Text(
+                        snapshot.error.toString(),
+                      );
+                    }),
+                const SizedBox(
+                  height: 106,
+                )
+              ],
             ),
-            const BottomWebBar()
-          ],
-        ),
+          ),
+          const BottomWebBar()
+        ],
       ),
     );
   }

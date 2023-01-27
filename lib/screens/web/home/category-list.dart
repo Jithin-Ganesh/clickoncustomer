@@ -81,8 +81,8 @@ class HomeCategoryListItem extends StatelessWidget {
             backgroundColor: canvasColor,
             child: ImgProvider(
               url: category?.image ?? '',
-              height: 60,
-              width: 74,
+              height: 70,
+              width: 70,
             ),
           ),
           SizedBox(

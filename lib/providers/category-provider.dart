@@ -9,7 +9,8 @@ class CategoryProvider extends ChangeNotifier {
   List<Categories>? categoriesList;
   List<TopPickModel>? topPicks;
   List<Categories>? groupOrders;
-  List<ProductModel>? products;
+  List<ProductModel>? productsForYou;
+  List<ProductModel>? recentProducts;
   List<Categories>? justLaunched;
   List<Categories>? recentlyAdded;
   List<Categories>? productDetails;
@@ -45,10 +46,16 @@ class CategoryProvider extends ChangeNotifier {
     return groupOrders ?? [];
   }
 
-  Future<List<ProductModel>?> fetchProducts() async {
-    products = await CategoryInterface.fetchProducts();
+  Future<List<ProductModel>?> fetchProductsForYou() async {
+    productsForYou = await CategoryInterface.fetchProductsForYou();
     notifyListeners();
-    return products ?? [];
+    return productsForYou ?? [];
+  }
+
+  Future<List<ProductModel>?> fetchRecentProducts() async {
+    recentProducts = await CategoryInterface.fetchRecentProducts();
+    notifyListeners();
+    return recentProducts;
   }
 
   Future<List<Categories>?> fetchJustLaunched() async {
@@ -57,11 +64,6 @@ class CategoryProvider extends ChangeNotifier {
     return justLaunched ?? [];
   }
 
-  Future<List<Categories>?> fetchRecentlyAdded() async {
-    recentlyAdded = await CategoryInterface.fetchRecently();
-    notifyListeners();
-    return recentlyAdded ?? [];
-  }
 
 
 

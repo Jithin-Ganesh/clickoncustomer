@@ -72,12 +72,29 @@ class CategoryInterface {
     }
   }
 
-  static Future<List<ProductModel>?> fetchProducts() async {
+  static Future<List<ProductModel>?> fetchProductsForYou() async {
     try {
       final response = await ApiRequest.send(
         method: ApiMethod.GET,
         body: {},
         route: "home/products-for-you",
+        queries: {},
+      );
+
+      return ProductModel.convertToList(response);
+    } catch (error) {
+      print("fetching products for u error: $error");
+      return [];
+    }
+  }
+
+
+  static Future<List<ProductModel>?> fetchRecentProducts() async {
+    try {
+      final response = await ApiRequest.send(
+        method: ApiMethod.GET,
+        body: {},
+        route: "home/recently-viewed-product",
         queries: {},
       );
 

@@ -44,7 +44,6 @@ class _HomeScreenWebState extends State<HomeScreenWeb> {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 2), () {
-      Provider.of<CategoryProvider>(context, listen: false).fetchCategory();
       Provider.of<CartProvider>(context, listen: false).fetchCart();
       Provider.of<HomeProvider>(context, listen: false).fetchHome();
       Provider.of<UserProvider>(context, listen: false)
@@ -188,33 +187,42 @@ class _WebHomeScreenState extends State<WebHomeScreen> {
                 const SizedBox(
                   height: 55,
                 ),
-                const CustomTitleBarViewAll(title: 'Products For You'),
-                const SizedBox(
-                  height: 31,
+                Visibility(
+                  visible: PrefUtils().getToken() != null,
+                  child: Column(
+                    children: [
+                      const CustomTitleBarViewAll(title: 'Products For You'),
+                      const SizedBox(
+                        height: 31,
+                      ),
+                      FutureBuilder(
+                          future:
+                              Provider.of<CategoryProvider>(context, listen: false)
+                                  .fetchProductsForYou(),
+                          builder: (context, snapshot) {
+                            if (snapshot.connectionState == ConnectionState.waiting) {
+                              return Container(
+                                height: MediaQuery.of(context).size.height * 0.80,
+                                width: MediaQuery.of(context).size.width,
+                                child: const Center(
+                                  child: CupertinoActivityIndicator(
+                                    animating: true,
+                                    radius: 12,
+                                  ),
+                                ),
+                              );
+                            } else {
+                              if (snapshot.hasData) {
+                                return const ProductsForYouList();
+                              }
+                            }
+                            return Text(
+                              snapshot.error.toString(),
+                            );
+                          }),
+                    ],
+                  ),
                 ),
-                FutureBuilder(
-                    future: context.read<CategoryProvider>().fetchProducts(),
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return Container(
-                          height: MediaQuery.of(context).size.height * 0.80,
-                          width: MediaQuery.of(context).size.width,
-                          child: const Center(
-                            child: CupertinoActivityIndicator(
-                              animating: true,
-                              radius: 12,
-                            ),
-                          ),
-                        );
-                      } else {
-                        if (snapshot.hasData) {
-                          return const ProductsForYouList();
-                        }
-                      }
-                      return Text(
-                        snapshot.error.toString(),
-                      );
-                    }),
                 const SizedBox(
                   height: 60,
                 ),
@@ -294,7 +302,32 @@ class _WebHomeScreenState extends State<WebHomeScreen> {
                 const SizedBox(
                   height: 26,
                 ),
-                // RecentlyViewedProducts(recently: value.recentlyAdded ?? []),
+                FutureBuilder(
+                    future:
+                    Provider.of<CategoryProvider>(context, listen: false)
+                        .fetchRecentProducts(),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return Container(
+                          height: MediaQuery.of(context).size.height * 0.80,
+                          width: MediaQuery.of(context).size.width,
+                          child: const Center(
+                            child: CupertinoActivityIndicator(
+                              animating: true,
+                              radius: 12,
+                            ),
+                          ),
+                        );
+                      } else {
+                        if (snapshot.hasData) {
+                          return const RecentlyViewedProducts();
+                        }
+                      }
+                      return Text(
+                        snapshot.error.toString(),
+                      );
+                    }),
+
               ],
             ),
           ),
