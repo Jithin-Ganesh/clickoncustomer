@@ -25,6 +25,8 @@ import '../../../models/category.dart';
 import '../../../providers/cart-provider.dart';
 import '../../../providers/home_provider.dart';
 import '../../../providers/user-provider.dart';
+import '../shimmer-component/circle-list-item.dart';
+import '../shimmer-component/shimmer-loading.dart';
 import 'best-selling.dart';
 import 'category-list.dart';
 import 'fashion-store.dart';
@@ -79,7 +81,7 @@ class _HomeScreenWebState extends State<HomeScreenWeb> {
         backgroundColor: bgColor.withOpacity(0.3),
         appBar: const PreferredSize(
             preferredSize: Size.fromHeight(175), child: WebNavBar2()),
-        body: WebHomeScreen(),
+        body: const WebHomeScreen(),
       ),
     );
   }
@@ -119,15 +121,9 @@ class _WebHomeScreenState extends State<WebHomeScreen> {
                     future: context.read<CategoryProvider>().fetchCategory(),
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
-                        return Container(
-                          height: MediaQuery.of(context).size.height * 0.80,
-                          width: MediaQuery.of(context).size.width,
-                          child: const Center(
-                            child: CupertinoActivityIndicator(
-                              animating: true,
-                              radius: 12,
-                            ),
-                          ),
+                        return const ShimmerLoading(
+                          isLoading: true,
+                          child: CircleListItem(),
                         );
                       } else {
                         if (snapshot.hasData) {
@@ -158,10 +154,10 @@ class _WebHomeScreenState extends State<WebHomeScreen> {
                         child: const TopPicks(),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 20,
                     ),
-                    ExlusiveOffer()
+                    const ExlusiveOffer()
                   ],
                 ),
                 const SizedBox(
@@ -389,7 +385,7 @@ class ExlusiveOffer extends StatelessWidget {
                     height: 74,
                     width: 74,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 21,
                   ),
                   Expanded(
@@ -402,7 +398,7 @@ class ExlusiveOffer extends StatelessWidget {
                           style: regular.copyWith(
                               color: exclusiveOfferSubtextColor, fontSize: 16),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 2,
                         ),
                         Text(
