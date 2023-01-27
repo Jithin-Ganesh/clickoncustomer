@@ -17,9 +17,9 @@ class ProductsForYouList extends StatelessWidget {
         child: ListView.builder(
           itemBuilder: (context, index) => Padding(
             padding: const EdgeInsets.all(10.0),
-            child: ProductCard(product: value.products?[index]),
+            child: ProductCard(product: value.productsForYou?[index]),
           ),
-          itemCount: value.products?.length,
+          itemCount: value.productsForYou?.length,
           scrollDirection: Axis.horizontal,
           itemExtent: 250,
         ),

@@ -7,16 +7,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'products.dart';
 
-class TopPickItem extends StatefulWidget {
-  const TopPickItem({super.key});
+
+class ProductsShimmerList extends StatefulWidget {
+  const ProductsShimmerList({super.key});
 
   @override
-  State<TopPickItem> createState() => _TopPickItemState();
+  State<ProductsShimmerList> createState() => _ProductsShimmerListState();
 }
 
-class _TopPickItemState extends State<TopPickItem> {
+class _ProductsShimmerListState extends State<ProductsShimmerList> {
   late ScrollController _scrollController;
 
   @override
@@ -42,10 +42,26 @@ class _TopPickItemState extends State<TopPickItem> {
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
                 itemBuilder: (context, index) {
-                  return Products(
-                    height: 242,
-                    image: value.topPicks?[index].image ?? "",
-                    title: value.topPicks?[index].name ?? "",
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: AspectRatio(
+                      aspectRatio: 16 / 9,
+                      child: Container(
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color: Colors.black,
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(16),
+                          child: Image.network(
+                            'https://flutter'
+                                '.dev/docs/cookbook/img-files/effects/split-check/Food1.jpg',
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    ),
                   );
                 },
               ),
@@ -83,15 +99,15 @@ class _TopPickItemState extends State<TopPickItem> {
                   width: 37,
                   decoration: const BoxDecoration(
                       shape: BoxShape.circle, color: canvasColor
-                      // boxShadow: [
-                      //   BoxShadow(
-                      //     color: Colors.grey.withOpacity(0.5),
-                      //     spreadRadius: 3,
-                      //     blurRadius: 5,
-                      //     offset: Offset(0, 3), // changes position of shadow
-                      //   ),
-                      // ],
-                      ),
+                    // boxShadow: [
+                    //   BoxShadow(
+                    //     color: Colors.grey.withOpacity(0.5),
+                    //     spreadRadius: 3,
+                    //     blurRadius: 5,
+                    //     offset: Offset(0, 3), // changes position of shadow
+                    //   ),
+                    // ],
+                  ),
                   child: const Icon(Icons.keyboard_arrow_right_outlined),
                 ),
               )),
@@ -106,15 +122,15 @@ class _TopPickItemState extends State<TopPickItem> {
                   child: const Icon(Icons.keyboard_arrow_left_outlined),
                   decoration: const BoxDecoration(
                       shape: BoxShape.circle, color: canvasColor
-                      // boxShadow: [
-                      //   BoxShadow(
-                      //     color: Colors.grey.withOpacity(0.5),
-                      //     spreadRadius: 3,
-                      //     blurRadius: 5,
-                      //     offset: Offset(0, 3), // changes position of shadow
-                      //   ),
-                      // ],
-                      ),
+                    // boxShadow: [
+                    //   BoxShadow(
+                    //     color: Colors.grey.withOpacity(0.5),
+                    //     spreadRadius: 3,
+                    //     blurRadius: 5,
+                    //     offset: Offset(0, 3), // changes position of shadow
+                    //   ),
+                    // ],
+                  ),
                 ),
               )),
         ],

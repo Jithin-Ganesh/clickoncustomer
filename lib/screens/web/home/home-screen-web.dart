@@ -25,6 +25,8 @@ import '../../../models/category.dart';
 import '../../../providers/cart-provider.dart';
 import '../../../providers/home_provider.dart';
 import '../../../providers/user-provider.dart';
+import '../shimmer-component/circle-list-item.dart';
+import '../shimmer-component/shimmer-loading.dart';
 import 'best-selling.dart';
 import 'category-list.dart';
 import 'fashion-store.dart';
@@ -44,7 +46,6 @@ class _HomeScreenWebState extends State<HomeScreenWeb> {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 2), () {
-      Provider.of<CategoryProvider>(context, listen: false).fetchCategory();
       Provider.of<CartProvider>(context, listen: false).fetchCart();
       Provider.of<HomeProvider>(context, listen: false).fetchHome();
       Provider.of<UserProvider>(context, listen: false)
@@ -80,7 +81,7 @@ class _HomeScreenWebState extends State<HomeScreenWeb> {
         backgroundColor: bgColor.withOpacity(0.3),
         appBar: const PreferredSize(
             preferredSize: Size.fromHeight(175), child: WebNavBar2()),
-        body: WebHomeScreen(),
+        body: const WebHomeScreen(),
       ),
     );
   }
@@ -120,15 +121,9 @@ class _WebHomeScreenState extends State<WebHomeScreen> {
                     future: context.read<CategoryProvider>().fetchCategory(),
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
-                        return Container(
-                          height: MediaQuery.of(context).size.height * 0.80,
-                          width: MediaQuery.of(context).size.width,
-                          child: const Center(
-                            child: CupertinoActivityIndicator(
-                              animating: true,
-                              radius: 12,
-                            ),
-                          ),
+                        return const ShimmerLoading(
+                          isLoading: true,
+                          child: CircleListItem(),
                         );
                       } else {
                         if (snapshot.hasData) {
@@ -159,10 +154,10 @@ class _WebHomeScreenState extends State<WebHomeScreen> {
                         child: const TopPicks(),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 20,
                     ),
-                    ExlusiveOffer()
+                    const ExlusiveOffer()
                   ],
                 ),
                 const SizedBox(
@@ -188,33 +183,44 @@ class _WebHomeScreenState extends State<WebHomeScreen> {
                 const SizedBox(
                   height: 55,
                 ),
-                const CustomTitleBarViewAll(title: 'Products For You'),
-                const SizedBox(
-                  height: 31,
+                Visibility(
+                  visible: PrefUtils().getToken() != null,
+                  child: Column(
+                    children: [
+                      const CustomTitleBarViewAll(title: 'Products For You'),
+                      const SizedBox(
+                        height: 31,
+                      ),
+                      FutureBuilder(
+                          future: Provider.of<CategoryProvider>(context,
+                                  listen: false)
+                              .fetchProductsForYou(),
+                          builder: (context, snapshot) {
+                            if (snapshot.connectionState ==
+                                ConnectionState.waiting) {
+                              return Container(
+                                height:
+                                    MediaQuery.of(context).size.height * 0.80,
+                                width: MediaQuery.of(context).size.width,
+                                child: const Center(
+                                  child: CupertinoActivityIndicator(
+                                    animating: true,
+                                    radius: 12,
+                                  ),
+                                ),
+                              );
+                            } else {
+                              if (snapshot.hasData) {
+                                return const ProductsForYouList();
+                              }
+                            }
+                            return Text(
+                              snapshot.error.toString(),
+                            );
+                          }),
+                    ],
+                  ),
                 ),
-                FutureBuilder(
-                    future: context.read<CategoryProvider>().fetchProducts(),
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return Container(
-                          height: MediaQuery.of(context).size.height * 0.80,
-                          width: MediaQuery.of(context).size.width,
-                          child: const Center(
-                            child: CupertinoActivityIndicator(
-                              animating: true,
-                              radius: 12,
-                            ),
-                          ),
-                        );
-                      } else {
-                        if (snapshot.hasData) {
-                          return const ProductsForYouList();
-                        }
-                      }
-                      return Text(
-                        snapshot.error.toString(),
-                      );
-                    }),
                 const SizedBox(
                   height: 60,
                 ),
@@ -296,7 +302,31 @@ class _WebHomeScreenState extends State<WebHomeScreen> {
                 const SizedBox(
                   height: 26,
                 ),
-                // RecentlyViewedProducts(recently: value.recentlyAdded ?? []),
+                FutureBuilder(
+                    future:
+                        Provider.of<CategoryProvider>(context, listen: false)
+                            .fetchRecentProducts(),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return Container(
+                          height: MediaQuery.of(context).size.height * 0.80,
+                          width: MediaQuery.of(context).size.width,
+                          child: const Center(
+                            child: CupertinoActivityIndicator(
+                              animating: true,
+                              radius: 12,
+                            ),
+                          ),
+                        );
+                      } else {
+                        if (snapshot.hasData) {
+                          return const RecentlyViewedProducts();
+                        }
+                      }
+                      return Text(
+                        snapshot.error.toString(),
+                      );
+                    }),
               ],
             ),
           ),
@@ -355,7 +385,7 @@ class ExlusiveOffer extends StatelessWidget {
                     height: 74,
                     width: 74,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 21,
                   ),
                   Expanded(
@@ -368,7 +398,7 @@ class ExlusiveOffer extends StatelessWidget {
                           style: regular.copyWith(
                               color: exclusiveOfferSubtextColor, fontSize: 16),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 2,
                         ),
                         Text(

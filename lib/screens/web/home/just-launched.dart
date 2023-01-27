@@ -9,10 +9,9 @@ import 'package:provider/provider.dart';
 import 'just-launched-item.dart';
 
 class JustLaunchedList extends StatelessWidget {
-  const JustLaunchedList({Key? key, this.product, this.productList})
+  const JustLaunchedList({Key? key, this.productList})
       : super(key: key);
   final List<ProductModel>? productList;
-  final ProductModel? product;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +22,7 @@ class JustLaunchedList extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 15),
           child: JustLaunchedItem(
             height: 306,
-            width: MediaQuery.of(context).size.width * 0.154,
+            width: MediaQuery.of(context).size.width * 0.154,product: productList?[index],
           ),
         ),
         scrollDirection: Axis.horizontal,
