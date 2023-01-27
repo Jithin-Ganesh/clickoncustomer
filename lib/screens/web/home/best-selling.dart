@@ -17,9 +17,9 @@ class BestSelling extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(right: 50.0),
-              child: const HomeProductBox(width: 610, height: 325, image: "assets/images/dummy/image-5.png"),
+            const Padding(
+              padding: EdgeInsets.only(right: 50.0),
+              child: HomeProductBox(width: 610, height: 325, image: "assets/images/dummy/image-5.png"),
             ),
               Expanded(
                 child: SizedBox(

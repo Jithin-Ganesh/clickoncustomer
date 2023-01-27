@@ -6,27 +6,29 @@ import 'package:clickoncustomer/utils/img-provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 
+import 'just-launched-item.dart';
+
 class JustLaunchedList extends StatelessWidget {
-  const JustLaunchedList({Key? key})
+  const JustLaunchedList({Key? key, this.product, this.productList})
       : super(key: key);
+  final List<ProductModel>? productList;
+  final ProductModel? product;
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<CategoryProvider>(builder: (context, value, child) => Container(
-        height: 306,
-        child: ListView.builder(
-          itemBuilder: (context, index) => Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: HomeProductBox(
-              height: 306,
-              width: MediaQuery.of(context).size.width * 0.154,
-              image: value.latestProducts?[index].images ??"",
-            ),
+    return Container(
+      height: 306,
+      child: ListView.builder(
+        itemBuilder: (context, index) => Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15),
+          child: JustLaunchedItem(
+            height: 306,
+            width: MediaQuery.of(context).size.width * 0.154,
           ),
-          scrollDirection: Axis.horizontal,
-          padding: EdgeInsets.symmetric(horizontal: 15),
-          itemCount: value.latestProducts?.length,
         ),
+        scrollDirection: Axis.horizontal,
+        padding: EdgeInsets.symmetric(horizontal: 15),
+        itemCount: productList?.length,
       ),
     );
   }
