@@ -29,9 +29,11 @@ class JustLaunchedItem extends StatelessWidget {
         children: [
           ImgProvider(
             url: product?.thumbnail ?? "",
+            radius: 10,
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 180, left: 29, bottom: 21),
+          Positioned(
+            bottom: 21,
+            left: 23,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
