@@ -83,9 +83,7 @@ class HomeCategoryListItem extends StatelessWidget {
                   )),
               Padding(
                 padding: const EdgeInsets.all(5.0),
-                child: CircleAvatar(
-                  radius: 30.0,
-                  backgroundColor: canvasColor,
+                child: ClipRRect(borderRadius: BorderRadius.circular(50),
                   child: ImgProvider(
                     url: category?.image ?? '',
                     height: 70,
