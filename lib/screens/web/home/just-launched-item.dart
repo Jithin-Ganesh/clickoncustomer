@@ -28,10 +28,10 @@ class JustLaunchedItem extends StatelessWidget {
       child: Stack(
         children: [
           ImgProvider(
-            url: product?.images ?? "",
+            url: product?.thumbnail ?? "",
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 160, left: 29, bottom: 21),
+            padding: const EdgeInsets.only(top: 180, left: 29, bottom: 21),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

@@ -37,7 +37,7 @@ class HomeCategoryList extends StatelessWidget {
                     )),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 61),
+                padding: const EdgeInsets.only(left: 61, top: 10),
                 child: Column(
                   children: [
                     CircleAvatar(
@@ -76,14 +76,28 @@ class HomeCategoryListItem extends StatelessWidget {
       height: 100,
       child: Column(
         children: [
-          CircleAvatar(
-            radius: 30.0,
-            backgroundColor: canvasColor,
-            child: ImgProvider(
-              url: category?.image ?? '',
-              height: 70,
-              width: 70,
-            ),
+          Stack(
+            children: [
+              ClipRRect(
+                  borderRadius: BorderRadius.circular(50),
+                  child: ImgProvider(
+                    url: "assets/images/dummy/circle.png",
+                    width: 70,
+                    height: 70,
+                  )),
+              Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: CircleAvatar(
+                  radius: 30.0,
+                  backgroundColor: canvasColor,
+                  child: ImgProvider(
+                    url: category?.image ?? '',
+                    height: 70,
+                    width: 70,
+                  ),
+                ),
+              ),
+            ],
           ),
           SizedBox(
             height: 5,
