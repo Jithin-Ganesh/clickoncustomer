@@ -40,17 +40,10 @@ class _ProductCardState extends State<ProductCard> {
             children: [
               Stack(
                 children: [
-                  Container(
-                    height: 257,
-                    width: 198,
-                    decoration: BoxDecoration(
-                        color: canvasColor,
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Center(
-                      child: ImgProvider(
-                        url: widget.product?.thumbnail ?? '',
-                        boxFit: BoxFit.fill,
-                      ),
+                  Center(
+                    child: ImgProvider(radius: 10,
+                      url: widget.product?.thumbnail ?? '',
+                      boxFit: BoxFit.fill,  height: 257,
                     ),
                   ),
                   Positioned(
