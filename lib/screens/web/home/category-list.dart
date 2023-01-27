@@ -1,11 +1,7 @@
 import 'package:clickoncustomer/models/category.dart';
 import 'package:clickoncustomer/utils/constants/color.dart';
 import 'package:clickoncustomer/utils/img-provider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
-import '../../../providers/category-provider.dart';
 import '../../../utils/constants/fontstyles.dart';
 
 class HomeCategoryList extends StatelessWidget {
@@ -18,7 +14,7 @@ class HomeCategoryList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 100.0),
-        child: Container(
+        child: SizedBox(
             height: 120,
             child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
               Flexible(
@@ -42,15 +38,15 @@ class HomeCategoryList extends StatelessWidget {
                   children: [
                     CircleAvatar(
                       radius: 35,
+                      backgroundColor: textOnClickColor,
                       child: Center(
                           child: Image.asset(
                         "assets/images/icon-arrow-right.png",
                         width: 16,
                         height: 15,
                       )),
-                      backgroundColor: textOnClickColor,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 4,
                     ),
                     Text(
@@ -72,7 +68,7 @@ class HomeCategoryListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 100,
       child: Column(
         children: [
@@ -80,7 +76,7 @@ class HomeCategoryListItem extends StatelessWidget {
             children: [
               ClipRRect(
                   borderRadius: BorderRadius.circular(50),
-                  child: ImgProvider(
+                  child: const ImgProvider(
                     url: "assets/images/dummy/circle.png",
                     width: 70,
                     height: 70,
@@ -99,7 +95,7 @@ class HomeCategoryListItem extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 5,
           ),
           Text(
