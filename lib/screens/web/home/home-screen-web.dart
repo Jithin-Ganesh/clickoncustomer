@@ -196,13 +196,15 @@ class _WebHomeScreenState extends State<WebHomeScreen> {
                         height: 31,
                       ),
                       FutureBuilder(
-                          future:
-                              Provider.of<CategoryProvider>(context, listen: false)
-                                  .fetchProductsForYou(),
+                          future: Provider.of<CategoryProvider>(context,
+                                  listen: false)
+                              .fetchProductsForYou(),
                           builder: (context, snapshot) {
-                            if (snapshot.connectionState == ConnectionState.waiting) {
+                            if (snapshot.connectionState ==
+                                ConnectionState.waiting) {
                               return Container(
-                                height: MediaQuery.of(context).size.height * 0.80,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.80,
                                 width: MediaQuery.of(context).size.width,
                                 child: const Center(
                                   child: CupertinoActivityIndicator(
@@ -306,8 +308,8 @@ class _WebHomeScreenState extends State<WebHomeScreen> {
                 ),
                 FutureBuilder(
                     future:
-                    Provider.of<CategoryProvider>(context, listen: false)
-                        .fetchRecentProducts(),
+                        Provider.of<CategoryProvider>(context, listen: false)
+                            .fetchRecentProducts(),
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return Container(
@@ -329,7 +331,6 @@ class _WebHomeScreenState extends State<WebHomeScreen> {
                         snapshot.error.toString(),
                       );
                     }),
-
               ],
             ),
           ),
