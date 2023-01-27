@@ -9,13 +9,15 @@ import 'package:clickoncustomer/screens/web/your-account/your-account-web.dart';
 import 'package:clickoncustomer/utils/img-provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:geocoding/geocoding.dart';
+
 import 'package:geolocator/geolocator.dart';
 import 'package:provider/provider.dart';
+import 'package:yandex_geocoder/yandex_geocoder.dart';
 
 import '../../screens/login_screen.dart';
 import '../../utils/constants/color.dart';
 import '../../utils/constants/fontstyles.dart';
+import '../../utils/constants/map-key.dart';
 import '../../utils/pref_utils.dart';
 
 class WebNavBar2 extends StatefulWidget {
@@ -491,14 +493,16 @@ class _LocationSearchState extends State<LocationSearch> {
       _currentAddress = null;
       log('fetching address....');
       try {
-        List<Placemark> placeMarks = await placemarkFromCoordinates(
-            _currentPosition!.latitude, _currentPosition!.longitude);
+        final YandexGeocoder geocoder = YandexGeocoder(apiKey: "AIzaSyDDFUaNGnX0xIKx6oSOnWaEnUs9QotNzRg",);
 
-        Placemark place = placeMarks[0];
+        final GeocodeResponse geocodeFromPoint = await geocoder.getGeocode(GeocodeRequest(
+          geocode: PointGeocode(latitude: 55.771899, longitude: 37.597576),
+          lang: Lang.enEn,
+        ));
 
         setState(() {
           _currentAddress =
-              "${place.locality}, ${place.street ?? place.name}, ${place.postalCode}, ${place.country}";
+              "${geocodeFromPoint.firstFullAddress}";
           log('address $_currentAddress');
         });
       } catch (e) {
