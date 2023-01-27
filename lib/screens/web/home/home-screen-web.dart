@@ -26,6 +26,7 @@ import '../../../providers/cart-provider.dart';
 import '../../../providers/home_provider.dart';
 import '../../../providers/user-provider.dart';
 import '../shimmer-component/circle-list-item.dart';
+import '../shimmer-component/products-box-shimmer-list.dart';
 import '../shimmer-component/shimmer-loading.dart';
 import 'best-selling.dart';
 import 'category-list.dart';
@@ -70,7 +71,7 @@ class _HomeScreenWebState extends State<HomeScreenWeb> {
       ),
       mobile: Container(
         child: const Center(
-          child: const ImgProvider(
+          child: ImgProvider(
             url: "assets/images/clickOn-logo.png",
             height: 100,
             width: 200,
@@ -198,16 +199,9 @@ class _WebHomeScreenState extends State<WebHomeScreen> {
                           builder: (context, snapshot) {
                             if (snapshot.connectionState ==
                                 ConnectionState.waiting) {
-                              return Container(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.80,
-                                width: MediaQuery.of(context).size.width,
-                                child: const Center(
-                                  child: CupertinoActivityIndicator(
-                                    animating: true,
-                                    radius: 12,
-                                  ),
-                                ),
+                              return const ShimmerLoading(
+                                isLoading: true,
+                                child: ProductsShimmerList(),
                               );
                             } else {
                               if (snapshot.hasData) {
@@ -308,15 +302,9 @@ class _WebHomeScreenState extends State<WebHomeScreen> {
                             .fetchRecentProducts(),
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
-                        return Container(
-                          height: MediaQuery.of(context).size.height * 0.80,
-                          width: MediaQuery.of(context).size.width,
-                          child: const Center(
-                            child: CupertinoActivityIndicator(
-                              animating: true,
-                              radius: 12,
-                            ),
-                          ),
+                        return const ShimmerLoading(
+                          isLoading: true,
+                          child: ProductsShimmerList(),
                         );
                       } else {
                         if (snapshot.hasData) {

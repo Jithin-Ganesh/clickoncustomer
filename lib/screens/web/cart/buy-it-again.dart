@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 
 import '../../../components/youritems_item.dart';
+import '../../../models/product-model.dart';
 import '../../../providers/cart-provider.dart';
 
 class BuyItAgain extends StatelessWidget {
@@ -27,6 +28,7 @@ class BuyItAgain extends StatelessWidget {
               );
             } else {
               if (snapshot.hasData) {
+                final items = snapshot.data as List<ProductModel>;
                 return Container(
                   child: GridView.builder(
                     physics: NeverScrollableScrollPhysics(),
@@ -36,9 +38,9 @@ class BuyItAgain extends StatelessWidget {
                         crossAxisSpacing: 14,
                         mainAxisSpacing: 14,
                         mainAxisExtent: 446),
-                    itemCount: 10,
+                    itemCount: items.length,
                     itemBuilder: (context, index) {
-                      return YourItems();
+                      return YourItems(product: items[index],);
                     },
                   ),
                 );

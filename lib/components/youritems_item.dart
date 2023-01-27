@@ -1,16 +1,24 @@
+import 'package:clickoncustomer/models/product-model.dart';
 import 'package:clickoncustomer/utils/constants/color.dart';
 import 'package:clickoncustomer/utils/constants/decoration.dart';
 
 import 'package:clickoncustomer/utils/constants/strings.dart';
+import 'package:clickoncustomer/utils/img-provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../utils/constants/fontstyles.dart';
 import '../utils/constants/images.dart';
 
-class YourItems extends StatelessWidget {
-  const YourItems({Key? key}) : super(key: key);
+class YourItems extends StatefulWidget {
+  final ProductModel? product;
+  const YourItems({Key? key, required this.product}) : super(key: key);
 
+  @override
+  State<YourItems> createState() => _YourItemsState();
+}
+
+class _YourItemsState extends State<YourItems> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,8 +35,8 @@ class YourItems extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset(
-                  "assets/images/placeholder.jpg",
+                ImgProvider(
+                  url: widget.product?.thumbnail ?? '',
                   height: 149,
                   width: 149,
                 ),
@@ -38,12 +46,12 @@ class YourItems extends StatelessWidget {
               height: 11.7,
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 15,right: 12),
+              padding: const EdgeInsets.only(left: 15, right: 12),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    itemDescription,
+                    widget.product?.name ?? '',
                     textAlign: TextAlign.start,
                     style: regular.copyWith(
                         fontSize: 14, color: productSubTextColor),
@@ -55,12 +63,12 @@ class YourItems extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        textYourItemsPrice,
+                        widget.product?.sellingPrice ?? '',
                         style: regular.copyWith(
                             fontSize: 17, color: contactTitleColor),
                       ),
                       Text(
-                        textYourItemsOfferPrice,
+                        widget.product?.mrpPrice ?? '',
                         style: thin.copyWith(
                             fontSize: 17,
                             color: discountPriceColor,
