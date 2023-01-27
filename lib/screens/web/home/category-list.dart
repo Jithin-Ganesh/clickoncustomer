@@ -76,14 +76,24 @@ class HomeCategoryListItem extends StatelessWidget {
       height: 100,
       child: Column(
         children: [
-          CircleAvatar(
-            radius: 30.0,
-            backgroundColor: canvasColor,
-            child: ImgProvider(
-              url: category?.image ?? '',
-              height: 60,
-              width: 74,
-            ),
+          Stack(
+            children: [
+              ClipRRect(borderRadius: BorderRadius.circular(50),
+                child: ImgProvider(
+                  url: "assets/images/dummy/circle.png",
+                  width: 70,
+                  height: 70,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 6,bottom: 7,left: 4,right: 2),
+                child: ImgProvider(
+                  url: category?.image ?? '',
+                  height: 60,
+                  width: 74,
+                ),
+              ),
+            ],
           ),
           SizedBox(
             height: 5,

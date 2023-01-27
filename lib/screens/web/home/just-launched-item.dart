@@ -28,7 +28,7 @@ class JustLaunchedItem extends StatelessWidget {
       child: Stack(
         children: [
           ImgProvider(
-            url: product?.images ?? "",
+            url: product?.thumbnail ?? "",
           ),
           Padding(
             padding: const EdgeInsets.only(top: 160, left: 29, bottom: 21),
