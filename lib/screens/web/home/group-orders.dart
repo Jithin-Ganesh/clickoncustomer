@@ -173,7 +173,7 @@ class GroupOrderItem extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ImgProvider(
-                    url: product?.images ?? '',
+                    url: product?.thumbnail ?? '',
                     height: 254,
                     width: 225,
                   ),

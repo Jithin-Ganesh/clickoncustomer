@@ -234,11 +234,9 @@ class _WebHomeScreenState extends State<WebHomeScreen> {
                       .fetchLatestProducts(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const Center(
-                        child: CupertinoActivityIndicator(
-                          animating: true,
-                          radius: 15,
-                        ),
+                      return const ShimmerLoading(
+                        isLoading: true,
+                        child: ProductsShimmerList(),
                       );
                     } else {
                       if (snapshot.hasData) {

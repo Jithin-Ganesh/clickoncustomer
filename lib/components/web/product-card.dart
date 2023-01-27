@@ -12,7 +12,7 @@ import '../../utils/constants/fontstyles.dart';
 import '../../utils/image-provider.dart';
 
 class ProductCard extends StatefulWidget {
- final ProductModel? product;
+  final ProductModel? product;
 
   const ProductCard({Key? key, required this.product}) : super(key: key);
 
@@ -24,14 +24,19 @@ class _ProductCardState extends State<ProductCard> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){
-        Navigator.pushNamed(context, ProductDetailScreenWeb.routeName,arguments: ProductDetailScreenWeb(productId: widget.product?.id,));
+      onTap: () {
+        Navigator.pushNamed(context, ProductDetailScreenWeb.routeName,
+            arguments: ProductDetailScreenWeb(
+              productId: widget.product?.id,
+            ));
       },
-      child: Consumer<UserProvider>(builder: (context, value, child) => Container(
+      child: Consumer<UserProvider>(
+        builder: (context, value, child) => Container(
           height: 360,
           width: 198,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Stack(
                 children: [
@@ -43,7 +48,7 @@ class _ProductCardState extends State<ProductCard> {
                         borderRadius: BorderRadius.circular(10)),
                     child: Center(
                       child: ImgProvider(
-                        url:  widget.product?.images ?? '',
+                        url: widget.product?.thumbnail ?? '',
                         boxFit: BoxFit.fill,
                       ),
                     ),
@@ -62,7 +67,11 @@ class _ProductCardState extends State<ProductCard> {
                       child: Center(
                         child: Text(
                           'On Sale',
-                          style: medium.copyWith(fontSize: 12, color: bottomAppColor,),textAlign: TextAlign.center,
+                          style: medium.copyWith(
+                            fontSize: 12,
+                            color: bottomAppColor,
+                          ),
+                          textAlign: TextAlign.center,
                         ),
                       ),
                     ),
@@ -74,25 +83,36 @@ class _ProductCardState extends State<ProductCard> {
                         onPressed: () {
                           setState(() {
                             value.isWishListed(widget.product?.id)
-                                ? value.deleteWishList(productId: widget.product?.id)
-                                : value.addToWishList(productId: widget.product?.id);
+                                ? value.deleteWishList(
+                                    productId: widget.product?.id)
+                                : value.addToWishList(
+                                    productId: widget.product?.id);
                           });
                         },
-                        icon: value.isWishListed(widget.product?.id)?ImgProvider(height: 28,width: 28,
-                          url: "assets/images/love.png",
-                        ):ImgProvider(height: 28,width: 28,
-                          url: "assets/images/icon-fav.png",
-                        )),
+                        icon: value.isWishListed(widget.product?.id)
+                            ? ImgProvider(
+                                height: 28,
+                                width: 28,
+                                url: "assets/images/love.png",
+                              )
+                            : ImgProvider(
+                                height: 28,
+                                width: 28,
+                                url: "assets/images/icon-fav.png",
+                              )),
                   )
                 ],
               ),
-              SizedBox(height: 12,),
+              SizedBox(
+                height: 12,
+              ),
               Expanded(
                 child: Text(
-                  '${widget.product?.description}',
+                  '${widget.product?.name}',
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
-                  style: thin.copyWith(fontSize: 12, color: productSubTextColor),
+                  style:
+                      thin.copyWith(fontSize: 12, color: productSubTextColor),
                 ),
               ),
               Row(
@@ -101,10 +121,15 @@ class _ProductCardState extends State<ProductCard> {
                     '${widget.product?.sellingPrice}',
                     style: regular.copyWith(fontSize: 17, color: primaryColor),
                   ),
-                  SizedBox(width: 8,),
+                  SizedBox(
+                    width: 8,
+                  ),
                   Text(
                     '${widget.product?.mrpPrice}',
-                    style: thin.copyWith(fontSize: 17, color: ogPriceColor,decoration: TextDecoration.lineThrough),
+                    style: thin.copyWith(
+                        fontSize: 17,
+                        color: ogPriceColor,
+                        decoration: TextDecoration.lineThrough),
                   ),
                 ],
               )

@@ -32,7 +32,7 @@ class RecentlyViewedProducts extends StatelessWidget {
                 itemBuilder: (context, index) =>
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 30.0),
-                      child: RecentProductCard(image: value.recentProducts?[index].images ?? ''),
+                      child: RecentProductCard(image: value.recentProducts?[index].thumbnail ?? ''),
                     ),
                 itemCount: value.recentProducts?.length,
                 scrollDirection: Axis.horizontal,
