@@ -96,10 +96,10 @@ class WebHomeScreen extends StatefulWidget {
 }
 
 class _WebHomeScreenState extends State<WebHomeScreen> {
-  Future<List<ProductModel>?> _future() async {
-    return await Provider.of<CategoryProvider>(context, listen: false)
-        .fetchLatestProducts();
-  }
+  // Future<List<ProductModel>?> _future() async {
+  //   return await Provider.of<CategoryProvider>(context, listen: false)
+  //       .fetchLatestProducts();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -242,8 +242,10 @@ class _WebHomeScreenState extends State<WebHomeScreen> {
                       );
                     } else {
                       if (snapshot.hasData) {
-                        final products = snapshot.data as List<ProductModel>;
-                        return JustLaunchedList();
+                        final products = snapshot.data as List<ProductModel>?;
+                        return JustLaunchedList(
+                          productList: products,
+                        );
                       }
                     }
                     return Text(
