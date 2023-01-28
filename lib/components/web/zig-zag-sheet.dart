@@ -25,16 +25,17 @@ class _ZigZagSheetState extends State<ZigZagSheet> {
       width: MediaQuery.of(context).size.width * 0.193,
       child: Consumer<CartProvider>(
         builder: (context, value, child) => Container(
-          width: MediaQuery.of(context).size.width*0.193,
+          width: MediaQuery.of(context).size.width * 0.193,
           alignment: Alignment.center,
           decoration: zigzagDecoration,
           child: Padding(
-            padding: const EdgeInsets.only(left: 27,right: 29,top: 28,bottom: 51),
+            padding:
+                const EdgeInsets.only(left: 27, right: 29, top: 28, bottom: 51),
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               SizedBox(
                 height: 40,
-                width: MediaQuery.of(context).size.width*0.161,
+                width: MediaQuery.of(context).size.width * 0.161,
                 child: ElevatedButton(
                   onPressed: () {
                     Navigator.pushNamed(
@@ -111,7 +112,8 @@ class _ZigZagSheetState extends State<ZigZagSheet> {
                     const SizedBox(
                       height: 10,
                     ),
-                    Row(crossAxisAlignment: CrossAxisAlignment.start,
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(
                           width: MediaQuery.of(context).size.width * 0.111,
@@ -136,7 +138,7 @@ class _ZigZagSheetState extends State<ZigZagSheet> {
                         ),
                         SizedBox(
                             height: 45,
-                            width: MediaQuery.of(context).size.width*0.048,
+                            width: MediaQuery.of(context).size.width * 0.048,
                             child: OutlinedButton(
                                 onPressed: () {},
                                 child: Text(

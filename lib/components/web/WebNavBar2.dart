@@ -292,15 +292,18 @@ class _WebNavBar2State extends State<WebNavBar2> {
                               width: 68,
                               boxFit: BoxFit.contain,
                             ),
-                            Positioned(
-                              top: 0,
-                              right: 0,
-                              child: CircleAvatar(
-                                radius: 7,
-                                backgroundColor: primaryColor,
-                                child: Text(
-                                  '${value.cart?.cartProducts?.length}',
-                                  style: medium.copyWith(color: Colors.white),
+                            Visibility(
+                              visible: value.cart?.cartProducts?.isNotEmpty ?? false,
+                              child: Positioned(
+                                top: 0,
+                                right: 0,
+                                child: CircleAvatar(
+                                  radius: 7,
+                                  backgroundColor: primaryColor,
+                                  child: Text(
+                                    '${value.cart?.cartProducts?.length}',
+                                    style: medium.copyWith(color: Colors.white),
+                                  ),
                                 ),
                               ),
                             )

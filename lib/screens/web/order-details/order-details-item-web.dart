@@ -57,9 +57,11 @@ class _OrderDetailsItemWebState extends State<OrderDetailsItemWeb> {
                                 width: 7,
                               ),
                               Text(
-                                textArrivingFriday,
+                                widget.order?.status?.value ?? '',
                                 style: medium.copyWith(
-                                    fontSize: 18, color: primaryColor),
+                                    fontSize: 18,  color: widget.order?.status == 1
+                                    ? Colors.orangeAccent
+                                    : checkedItemsColor),
                               ),
                             ],
                           ),
@@ -67,9 +69,10 @@ class _OrderDetailsItemWebState extends State<OrderDetailsItemWeb> {
                             height: 4,
                           ),
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               const ImgProvider(
-                                url: "assets/images/img_33.png",
+                                url: 'assets/images/icon-dispatch-yellow.png',
                                 width: 10,
                                 height: 10,
                               ),
@@ -77,12 +80,33 @@ class _OrderDetailsItemWebState extends State<OrderDetailsItemWeb> {
                                 width: 10,
                               ),
                               Text(
-                                textPreparingForDispatch,
+                                'Expected Delivery on ${widget.order?.expectedDate}',
                                 style: regular.copyWith(
-                                    fontSize: 14, color: deliveryDateColor),
+                                    fontSize: 14,
+                                    color: priceDetailsSubTextColor),
                               )
                             ],
-                          )
+                          ),
+                          // Visibility(
+                          //   visible: widget.order?.status?.id != 1,
+                          //   child: Row(
+                          //     children: [
+                          //       const ImgProvider(
+                          //         url: "assets/images/img_33.png",
+                          //         width: 10,
+                          //         height: 10,
+                          //       ),
+                          //       const SizedBox(
+                          //         width: 10,
+                          //       ),
+                          //       Text(
+                          //         textPreparingForDispatch,
+                          //         style: regular.copyWith(
+                          //             fontSize: 14, color: deliveryDateColor),
+                          //       )
+                          //     ],
+                          //   ),
+                          // )
                         ]),
                     const VerticalDivider(
                       width: 90,

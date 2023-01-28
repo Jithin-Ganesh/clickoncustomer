@@ -227,7 +227,7 @@ class _WebHomeScreenState extends State<WebHomeScreen> {
                 ),
                 const CustomTitleBarViewAll(title: 'Just Launched'),
                 const SizedBox(
-                  height: 12,
+                  height: 31,
                 ),
                 FutureBuilder(
                   future: Provider.of<CategoryProvider>(context, listen: false)
@@ -256,7 +256,7 @@ class _WebHomeScreenState extends State<WebHomeScreen> {
                 ),
                 const CustomTitleBarViewAll(title: 'Best Selling'),
                 const SizedBox(
-                  height: 26,
+                  height: 31,
                 ),
                 BestSelling(),
                 const SizedBox(
@@ -271,7 +271,7 @@ class _WebHomeScreenState extends State<WebHomeScreen> {
                 ),
                 const CustomTitleBarViewAll(title: 'Fashion Store'),
                 const SizedBox(
-                  height: 25,
+                  height: 31,
                 ),
                 FashionStore(),
                 const SizedBox(
@@ -292,7 +292,7 @@ class _WebHomeScreenState extends State<WebHomeScreen> {
                   ],
                 ),
                 const SizedBox(
-                  height: 26,
+                  height: 31,
                 ),
                 FutureBuilder(
                     future:

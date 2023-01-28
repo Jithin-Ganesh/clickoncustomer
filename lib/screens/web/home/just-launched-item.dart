@@ -29,7 +29,9 @@ class JustLaunchedItem extends StatelessWidget {
         children: [
           ImgProvider(
             url: product?.thumbnail ?? "",
-            radius: 10,
+            radius: 10, height: 306,
+            width: MediaQuery.of(context).size.width * 0.154,
+            boxFit: BoxFit.fill,
           ),
           Positioned(
             bottom: 21,
