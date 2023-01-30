@@ -9,6 +9,7 @@ import 'package:provider/single_child_widget.dart';
 import '../providers/cart-provider.dart';
 
 import '../providers/home_provider.dart';
+import '../providers/location.dart';
 import '../providers/order.dart';
 import '../providers/payment.dart';
 
@@ -23,6 +24,7 @@ class ProviderTree {
       ChangeNotifierProvider.value(value: UserProvider()),
       ChangeNotifierProvider.value(value: OrderProvider()),
       ChangeNotifierProvider.value(value: PaymentProvider()),
+      ChangeNotifierProvider.value(value: LocationProvider()),
     ];
   }
 }

@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:clickoncustomer/components/elevated-buton.dart';
 import 'package:clickoncustomer/providers/cart-provider.dart';
+import 'package:clickoncustomer/providers/location.dart';
 import 'package:clickoncustomer/providers/user-provider.dart';
 import 'package:clickoncustomer/screens/web/cart/cart-screen.dart';
 import 'package:clickoncustomer/screens/web/home/home-screen-web.dart';
@@ -20,6 +21,7 @@ import '../../utils/constants/color.dart';
 import '../../utils/constants/fontstyles.dart';
 import '../../utils/constants/map-key.dart';
 import '../../utils/pref_utils.dart';
+import 'map.dart';
 
 class WebNavBar2 extends StatefulWidget {
   const WebNavBar2({Key? key}) : super(key: key);
@@ -439,6 +441,7 @@ class LocationSearch extends StatefulWidget {
 
 class _LocationSearchState extends State<LocationSearch> {
   double currentSliderValue = 10;
+  late TextEditingController locationController;
 
   Future<Position> _determinePosition() async {
     bool serviceEnabled;
@@ -493,22 +496,43 @@ class _LocationSearchState extends State<LocationSearch> {
       _currentAddress = null;
       log('fetching address....');
       try {
-        final YandexGeocoder geocoder = YandexGeocoder(apiKey: "AIzaSyDDFUaNGnX0xIKx6oSOnWaEnUs9QotNzRg",);
-
-        final GeocodeResponse geocodeFromPoint = await geocoder.getGeocode(GeocodeRequest(
-          geocode: PointGeocode(latitude: 55.771899, longitude: 37.597576),
-          lang: Lang.enEn,
-        ));
-
-        setState(() {
-          _currentAddress =
-              "${geocodeFromPoint.firstFullAddress}";
-          log('address $_currentAddress');
+        await context
+            .read<LocationProvider>()
+            .fetchLocationDetails()
+            .then((value) {
+          setState(() {
+            locationController.text = value;
+          });
         });
+
+        // final YandexGeocoder geocoder = YandexGeocoder(apiKey: "AIzaSyDDFUaNGnX0xIKx6oSOnWaEnUs9QotNzRg",);
+        //
+        // final GeocodeResponse geocodeFromPoint = await geocoder.getGeocode(GeocodeRequest(
+        //   geocode: PointGeocode(latitude: 55.771899, longitude: 37.597576),
+        //   lang: Lang.enEn,
+        // ));
+        //
+        // setState(() {
+        //   _currentAddress =
+        //       "${geocodeFromPoint.firstFullAddress}";
+        //   log('address $_currentAddress');
+        // });
       } catch (e) {
         print(e);
       }
     }
+  }
+
+  @override
+  void initState() {
+    locationController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    locationController.dispose();
+    super.dispose();
   }
 
   @override
@@ -580,17 +604,13 @@ class _LocationSearchState extends State<LocationSearch> {
                       decoration: BoxDecoration(
                           border: Border.all(color: locationColor),
                           borderRadius: BorderRadius.circular(8)),
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                            left: 22, top: 14, bottom: 14),
-                        child: TextFormField(
-                          initialValue: _currentAddress,
-                          decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintStyle: thin.copyWith(
-                                  fontSize: 18,
-                                  color: clickOnOffersTitleColor)),
-                        ),
+                      child: TextFormField(
+                        controller: locationController,
+                        decoration: InputDecoration(
+                            contentPadding: EdgeInsets.symmetric(horizontal: 8),
+                            border: InputBorder.none,
+                            hintStyle: thin.copyWith(
+                                fontSize: 18, color: clickOnOffersTitleColor)),
                       ),
                     ),
                     const SizedBox(
@@ -695,11 +715,16 @@ class _LocationSearchState extends State<LocationSearch> {
           const SizedBox(
             height: 43,
           ),
-          ImgProvider(
-            url: "assets/images/dummy/map.png",
-            width: MediaQuery.of(context).size.width * 0.6,
-            height: 227,
-          )
+          SizedBox(
+            height: 300,
+            width: 300,
+            child: getMap(),
+          ),
+          // ImgProvider(
+          //   url: "assets/images/dummy/map.png",
+          //   width: MediaQuery.of(context).size.width * 0.6,
+          //   height: 227,
+          // )
         ],
       ),
     );
