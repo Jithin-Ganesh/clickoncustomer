@@ -200,40 +200,62 @@ class _PaymentBankState extends State<PaymentBank> {
     );
   }
 
+
   placeOrder(
       {
-      required List<int?> payOnline,
-      required int? shipping,
-      required int? billing,
-      required int? cartId}) {
+        required List<int?> payOnline,
+        required int? shipping,
+        required int? billing,
+        required int? cartId}) {
+    Provider.of<OrderProvider>(context, listen: false)
+        .placeOrder(
+        shipping: shipping,
+        billing: billing,
+        cartId: cartId,
+        payOnline: payOnline)
+        .then((value) {
+      if (value) {
+        Navigator.pushNamedAndRemoveUntil(context, HomeScreenWeb.routeName, (route) => false);
 
-
-    log('pressed');
-
-      log('web checkout....................');
-      Provider.of<PaymentProvider>(context, listen: false)
-          .startPaymentForWeb(routeType: 'cart',
-          context: context,
-          id: cartId, shipping: shipping, billing: billing,  payOnline: payOnline);
-
-
-    _razorpay.on(
-        Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
-    _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
-    _razorpay.on(
-        Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
-
-    // Provider.of<OrderProvider>(context, listen: false)
-    //     .placeOrder(
-    //         shipping: shipping,
-    //         billing: billing,
-    //         cartId: cartId,
-    //         payOnline: payOnline)
-    //     .then((value) {
-    //   if (value) {
-    //    Navigator.pushNamedAndRemoveUntil(context, HomeScreenWeb.routeName, (route) => false);
-    //
-    //   }
-    // });
+      }
+    });
   }
+
+
+  // placeOrder(
+  //     {
+  //     required List<int?> payOnline,
+  //     required int? shipping,
+  //     required int? billing,
+  //     required int? cartId}) {
+  //
+  //
+  //   log('pressed');
+  //
+  //     log('web checkout....................');
+  //     Provider.of<PaymentProvider>(context, listen: false)
+  //         .startPaymentForWeb(routeType: 'cart',
+  //         context: context,
+  //         id: cartId, shipping: shipping, billing: billing,  payOnline: payOnline);
+  //
+  //
+  //   _razorpay.on(
+  //       Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
+  //   _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
+  //   _razorpay.on(
+  //       Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
+  //
+  //   // Provider.of<OrderProvider>(context, listen: false)
+  //   //     .placeOrder(
+  //   //         shipping: shipping,
+  //   //         billing: billing,
+  //   //         cartId: cartId,
+  //   //         payOnline: payOnline)
+  //   //     .then((value) {
+  //   //   if (value) {
+  //   //    Navigator.pushNamedAndRemoveUntil(context, HomeScreenWeb.routeName, (route) => false);
+  //   //
+  //   //   }
+  //   // });
+  // }
 }

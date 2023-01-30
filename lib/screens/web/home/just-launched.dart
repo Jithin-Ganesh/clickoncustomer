@@ -15,11 +15,11 @@ class JustLaunchedList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 306,
       child: ListView.builder(
         itemBuilder: (context, index) => Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
+          padding: const EdgeInsets.all(10.0),
           child: JustLaunchedItem(
             height: 306,
             width: MediaQuery.of(context).size.width * 0.154,product: productList?[index],

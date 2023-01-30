@@ -73,7 +73,7 @@ class GetWishList {
     wishlisted = json['wishlisted'];
     createdAt = json['createdAt'];
     updatedAt = json['updatedAt'];
-    productModel = ProductModel.fromJson(json['products']);
+    productModel = ProductModel.fromJson(json['product']);
   }
 
   static List<GetWishList> convertToList(List<dynamic> list) {
