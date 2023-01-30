@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps/google_maps.dart';
 import 'dart:ui' as ui;
 
+
 Widget getMap() {
   String htmlId = "7";
 
