@@ -83,11 +83,6 @@ class ProductDetailTitle extends StatelessWidget {
                         width: 13,
                       ),
                       Text(
-                        textRupees,
-                        style:
-                            regular.copyWith(color: Colors.white, fontSize: 22),
-                      ),
-                      Text(
                         product?.sellingPrice ?? '',
                         style:
                             regular.copyWith(fontSize: 28, color: Colors.white),

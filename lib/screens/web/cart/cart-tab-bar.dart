@@ -39,16 +39,18 @@ class MoveFromWishList extends StatelessWidget {
                 final items = snapshot.data as List<GetWishList>;
                 return Container(
                   child: GridView.builder(
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 5,
                         crossAxisSpacing: 14,
                         mainAxisSpacing: 14,
                         mainAxisExtent: 446),
                     itemCount: items.length,
                     itemBuilder: (context, index) {
-                      return YourItems(product: items[index].productModel,);
+                      return YourItems(
+                        product: items[index].productModel,
+                      );
                     },
                   ),
                 );
@@ -73,18 +75,22 @@ class CartTabBar extends StatelessWidget {
       child: Container(
         height: 1000,
         child: ContainedTabBarView(
-          tabs: [
-            Text('Saved for later'),
-            Text('Buy it again'),
-            Text('Move from wishlist'),
+          tabs:  [
+            const Text('Saved for later'),
+            Consumer<CartProvider>(
+                builder: (context, value, child) =>
+                    Visibility(
+                        visible: value.buy.isNotEmpty,
+                        child: const Text('Buy It Again'))),
+            const Text('Move from wishlist'),
           ],
           tabBarProperties: TabBarProperties(
             height: 32.0,
             isScrollable: true,
             indicatorColor: primaryColor,
             indicatorWeight: 3.0,
-            labelPadding: EdgeInsets.only(right: 37),
-            indicatorPadding: EdgeInsets.only(
+            labelPadding: const EdgeInsets.only(right: 37),
+            indicatorPadding: const EdgeInsets.only(
               top: 15,
               right: 37,
             ),
@@ -92,10 +98,14 @@ class CartTabBar extends StatelessWidget {
             labelStyle: regular.copyWith(color: primaryColor),
             unselectedLabelColor: Colors.black,
           ),
-          views: const [
-            SaveLater(),
-            BuyItAgain(),
-            MoveFromWishList(),
+          views: [
+            const SaveLater(),
+            Consumer<CartProvider>(
+                builder: (context, value, child) =>
+                    Visibility(
+                        visible: value.buy.isNotEmpty,
+                        child: const BuyItAgain())),
+            const MoveFromWishList(),
           ],
           onChange: (index) => print(index),
         ),

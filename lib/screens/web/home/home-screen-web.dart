@@ -218,8 +218,10 @@ class _WebHomeScreenState extends State<WebHomeScreen> {
                         );
                       } else {
                         if (snapshot.hasData) {
+                          final products = snapshot.data as List<ProductModel>;
                           return Visibility(
-                            visible: PrefUtils().getToken() != null,
+                            //visible: false,
+                            visible: PrefUtils().getToken() != null && products.isNotEmpty,
                             child: Column(
                               children: const [
                                 CustomTitleBarViewAll(title: 'Products For You'),
