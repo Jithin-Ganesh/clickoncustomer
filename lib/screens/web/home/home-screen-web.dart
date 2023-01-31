@@ -205,37 +205,37 @@ class _WebHomeScreenState extends State<WebHomeScreen> {
                 const SizedBox(
                   height: 55,
                 ),
-                Visibility(
-                  visible: PrefUtils().getToken() != null,
-                  child: Column(
-                    children: [
-                      const CustomTitleBarViewAll(title: 'Products For You'),
-                      const SizedBox(
-                        height: 31,
-                      ),
-                      FutureBuilder(
-                          future: Provider.of<CategoryProvider>(context,
-                                  listen: false)
-                              .fetchProductsForYou(),
-                          builder: (context, snapshot) {
-                            if (snapshot.connectionState ==
-                                ConnectionState.waiting) {
-                              return const ShimmerLoading(
-                                isLoading: true,
-                                child: ProductsShimmerList(),
-                              );
-                            } else {
-                              if (snapshot.hasData) {
-                                return const ProductsForYouList();
-                              }
-                            }
-                            return Text(
-                              snapshot.error.toString(),
-                            );
-                          }),
-                    ],
-                  ),
-                ),
+                FutureBuilder(
+                    future: Provider.of<CategoryProvider>(context,
+                            listen: false)
+                        .fetchProductsForYou(),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState ==
+                          ConnectionState.waiting) {
+                        return const ShimmerLoading(
+                          isLoading: true,
+                          child: ProductsShimmerList(),
+                        );
+                      } else {
+                        if (snapshot.hasData) {
+                          return Visibility(
+                            visible: PrefUtils().getToken() != null,
+                            child: Column(
+                              children: const [
+                                CustomTitleBarViewAll(title: 'Products For You'),
+                                SizedBox(
+                                  height: 31,
+                                ),
+                                ProductsForYouList(),
+                              ],
+                            ),
+                          );
+                        }
+                      }
+                      return Text(
+                        snapshot.error.toString(),
+                      );
+                    }),
                 const SizedBox(
                   height: 60,
                 ),
