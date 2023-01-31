@@ -130,16 +130,16 @@ class GroupOrders extends StatelessWidget {
             const SizedBox(
               height: 26,
             ),
-            Consumer<HomeProvider>(
+            Consumer<CategoryProvider>(
               builder: (context, value, child) => SizedBox(
                 height: 420,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: value.products?.length,
+                  itemCount: value.latestProducts?.length,
                   itemBuilder: (context, index) => Padding(
                     padding: const EdgeInsets.all(13.0),
                     child: GroupOrderItem(
-                      product: value.products?[index],
+                      product: value.latestProducts?[index],
                     ),
                   ),
                 ),

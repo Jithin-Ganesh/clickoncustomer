@@ -56,7 +56,7 @@ class _ImageDetailsWebItemState extends State<ImageDetailsWebItem> {
               //     ),
               //   ),
               // ),
-              SizedBox(width: MediaQuery.of(context).size.width * 0.164,),
+              SizedBox(width: MediaQuery.of(context).size.width * 0.0564,),
               Container(
                   height: 80,
                   width: 80,
@@ -66,7 +66,7 @@ class _ImageDetailsWebItemState extends State<ImageDetailsWebItem> {
                   child: Padding(
                     padding: const EdgeInsets.all(14),
                     child: ImgProvider(height: 50,width: 50,
-                      url: widget.productModel?.images ?? '', ),
+                      url: widget.productModel?.thumbnail ?? '', ),
                   )),
 
             ],
@@ -74,9 +74,9 @@ class _ImageDetailsWebItemState extends State<ImageDetailsWebItem> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-            SizedBox(width: MediaQuery.of(context).size.width*0.1,),
+            SizedBox(width: MediaQuery.of(context).size.width*0.05,),
               ImgProvider(
-                url: widget.productModel?.images ?? '',
+                url: widget.productModel?.thumbnail ?? '',
                 height: 410,
                 width: MediaQuery.of(context).size.width *0.213,
                 boxFit: BoxFit.fill,
@@ -126,7 +126,7 @@ class ImageDetailsWeb extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(left: 160.0),
-      child: Container(
+      child: SizedBox(
         height: 620,
         child: ContainedTabBarView(
           tabs: [

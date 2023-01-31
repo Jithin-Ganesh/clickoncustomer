@@ -1,4 +1,6 @@
 import 'package:clickoncustomer/interfaces/category-interface.dart';
+import 'package:clickoncustomer/models/banner.dart';
+import 'package:clickoncustomer/models/recent-product-moddel.dart';
 import 'package:clickoncustomer/models/top-picks.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -10,11 +12,12 @@ class CategoryProvider extends ChangeNotifier {
   List<TopPickModel>? topPicks;
   List<Categories>? groupOrders;
   List<ProductModel>? productsForYou;
-  List<ProductModel>? recentProducts;
+  List<RecentProductModel>? recentProducts;
   List<Categories>? justLaunched;
   List<Categories>? recentlyAdded;
   List<Categories>? productDetails;
   List<ProductModel>? latestProducts = [];
+  List<BannerModel>? homeBanners = [];
 
   Future<List<ProductModel>?> fetchLatestProducts() async {
     latestProducts = await CategoryInterface.fetchLatestProduct();
@@ -22,10 +25,10 @@ class CategoryProvider extends ChangeNotifier {
     return latestProducts;
   }
 
-  Future<List<Categories>?> fetchProductImages() async {
-    productDetails = await CategoryInterface.fetchProductImages();
+  Future<List<BannerModel>?> fetchHomeBanners() async {
+    homeBanners = await CategoryInterface.fetchHomeBanners();
     notifyListeners();
-    return productDetails ?? [];
+    return homeBanners;
   }
 
 
@@ -52,17 +55,12 @@ class CategoryProvider extends ChangeNotifier {
     return productsForYou ?? [];
   }
 
-  Future<List<ProductModel>?> fetchRecentProducts() async {
+  Future<List<RecentProductModel>?> fetchRecentProducts() async {
     recentProducts = await CategoryInterface.fetchRecentProducts();
     notifyListeners();
     return recentProducts;
   }
 
-  Future<List<Categories>?> fetchJustLaunched() async {
-    justLaunched = await CategoryInterface.fetchJustLaunched();
-    notifyListeners();
-    return justLaunched ?? [];
-  }
 
 
 

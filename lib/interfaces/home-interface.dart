@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:clickoncustomer/models/product-model.dart';
 
+import '../models/banner.dart';
 import '../models/category.dart';
 import '../models/top-picks.dart';
 import '../utils/api/api_methods.dart';
@@ -17,7 +20,7 @@ class HomeInterface {
 
       return ProductModel.convertToList(response);
     } catch (error) {
-      print("fetching home error: $error");
+      log("fetching home error: $error");
       return null;
     }
   }
@@ -32,10 +35,12 @@ class HomeInterface {
 
       return Categories.convertToList(response);
     } catch (error) {
-      print("fetching  home categories error: $error");
+      log("fetching  home categories error: $error");
       return [];
     }
   }
+
+
 
   static Future<List<TopPickModel>?> fetchTopPicks() async {
     try {
@@ -48,7 +53,7 @@ class HomeInterface {
 
       return TopPickModel.convertToList(response);
     } catch (error) {
-      print("fetching top picks error: $error");
+      log("fetching top picks error: $error");
       return [];
     }
   }

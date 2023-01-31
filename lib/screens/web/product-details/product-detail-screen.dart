@@ -118,7 +118,7 @@ class _ProductDetailComponentState extends State<ProductDetailComponent> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          ProductDetailTitle(productId: widget.product.product?.id,name: widget.product.product?.name),
+          ProductDetailTitle(productId: widget.product.product?.id,name: widget.product.product?.name,product: widget.product.product),
           const SizedBox(
             height: 80,
           ),

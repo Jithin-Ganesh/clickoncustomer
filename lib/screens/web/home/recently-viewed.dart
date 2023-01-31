@@ -16,7 +16,7 @@ class RecentlyViewedProducts extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Consumer<CategoryProvider>(builder: (context, value, child) => Container(
+        Consumer<CategoryProvider>(builder: (context, value, child) => SizedBox(
               // child:  CarouselSlider(
               //   options: CarouselOptions(height: 290, initialPage: 1,viewportFraction: 0.15,aspectRatio: 1),
               //   items: recently.map((i) {
@@ -32,7 +32,7 @@ class RecentlyViewedProducts extends StatelessWidget {
                 itemBuilder: (context, index) =>
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 30.0),
-                      child: RecentProductCard(image: value.recentProducts?[index].thumbnail ?? ''),
+                      child: RecentProductCard(image: value.recentProducts?[index].product?.thumbnail ?? ''),
                     ),
                 itemCount: value.recentProducts?.length,
                 scrollDirection: Axis.horizontal,
@@ -49,8 +49,7 @@ class RecentlyViewedProducts extends StatelessWidget {
               child: Container(
                 height: 37,
                 width: 37,
-                child: Icon(Icons.keyboard_arrow_right_outlined),
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     shape: BoxShape.circle,
                     color:  canvasColor
                   // boxShadow: [
@@ -62,6 +61,7 @@ class RecentlyViewedProducts extends StatelessWidget {
                   //   ),
                   // ],
                 ),
+                child: const Icon(Icons.keyboard_arrow_right_outlined),
               ),
             )),
         Positioned(
@@ -73,8 +73,8 @@ class RecentlyViewedProducts extends StatelessWidget {
               },
               child: Container(
                 height: 37,
-                width: 37, child: Icon(Icons.keyboard_arrow_left_outlined),
-                decoration: BoxDecoration(
+                width: 37,
+                decoration: const BoxDecoration(
                     shape: BoxShape.circle,
                     color: canvasColor
                   // boxShadow: [
@@ -85,7 +85,7 @@ class RecentlyViewedProducts extends StatelessWidget {
                   //     offset: Offset(0, 3), // changes position of shadow
                   //   ),
                   // ],
-                ),
+                ), child: const Icon(Icons.keyboard_arrow_left_outlined),
               ),
             )),
       ],

@@ -185,7 +185,7 @@ class CartBody extends StatelessWidget {
                         .fetchRecentProducts(),
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
-                        return Container(
+                        return SizedBox(
                           height: MediaQuery.of(context).size.height * 0.80,
                           width: MediaQuery.of(context).size.width,
                           child: const Center(

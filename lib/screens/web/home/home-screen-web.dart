@@ -1,4 +1,5 @@
 import 'package:clickoncustomer/components/topPickItem.dart';
+import 'package:clickoncustomer/models/banner.dart';
 import 'package:clickoncustomer/models/product-model.dart';
 import 'package:clickoncustomer/screens/web/home/top_picks.dart';
 import 'package:clickoncustomer/providers/category-provider.dart';
@@ -6,6 +7,7 @@ import 'package:clickoncustomer/screens/web/home/products-for-you.dart';
 import 'package:clickoncustomer/screens/web/home/recently-viewed.dart';
 import 'package:clickoncustomer/screens/web/home/tab-bar.dart';
 import 'package:clickoncustomer/screens/web/home/web-carousel-slider.dart';
+import 'package:clickoncustomer/screens/web/shimmer-component/banner-shimmer.dart';
 import 'package:clickoncustomer/utils/constants/color.dart';
 import 'package:clickoncustomer/utils/constants/decoration.dart';
 import 'package:clickoncustomer/utils/constants/fontstyles.dart';
@@ -114,7 +116,26 @@ class _WebHomeScreenState extends State<WebHomeScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const HomeBannerCarousel(),
+                FutureBuilder(
+                  future: Provider.of<CategoryProvider>(context, listen: false)
+                      .fetchHomeBanners(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const ShimmerLoading(
+                        isLoading: true,
+                        child: BannerShimmer(),
+                      );
+                    } else {
+                      if (snapshot.hasData) {
+                        final banners = snapshot.data as List<BannerModel>?;
+                        return HomeBannerCarousel();
+                      }
+                    }
+                    return Text(
+                      snapshot.error.toString(),
+                    );
+                  },
+                ),
                 const SizedBox(
                   height: 44,
                 ),

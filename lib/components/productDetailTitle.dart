@@ -1,5 +1,6 @@
 import 'package:clickoncustomer/components/web/discount-box.dart';
 import 'package:clickoncustomer/components/web/rating-box.dart';
+import 'package:clickoncustomer/models/product-model.dart';
 import 'package:clickoncustomer/utils/constants/color.dart';
 
 import 'package:clickoncustomer/utils/constants/strings.dart';
@@ -20,9 +21,10 @@ class ProductDetailTitle extends StatelessWidget {
   ProductDetailTitle({
     Key? key,
     required this.productId,
-    this.name,
+    this.name, this.product,
   }) : super(key: key);
   final int? productId;
+  final ProductModel? product;
   final String? name;
   final List<String> items = ['Qty 1', 'Qty 2', 'Qty 3', 'Qty 4'];
   String? selectedValue;
@@ -76,7 +78,7 @@ class ProductDetailTitle extends StatelessWidget {
                       const SizedBox(
                         width: 7,
                       ),
-                      const DiscountBox(),
+                       DiscountBox(discount: product?.offer.toString() ?? ''),
                       const SizedBox(
                         width: 13,
                       ),
@@ -86,7 +88,7 @@ class ProductDetailTitle extends StatelessWidget {
                             regular.copyWith(color: Colors.white, fontSize: 22),
                       ),
                       Text(
-                        textAmount,
+                        product?.sellingPrice ?? '',
                         style:
                             regular.copyWith(fontSize: 28, color: Colors.white),
                       ),
@@ -103,7 +105,7 @@ class ProductDetailTitle extends StatelessWidget {
                         width: 8,
                       ),
                       Text(
-                        textActualAmount,
+                        product?.price.toString() ?? '',
                         style: regular.copyWith(
                             fontSize: 16,
                             color: defaultTextColor,
@@ -130,7 +132,7 @@ class ProductDetailTitle extends StatelessWidget {
                     onPressed: () {},
                     child: DropdownButtonHideUnderline(
                       child: DropdownButton2(
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.keyboard_arrow_down_outlined,
                             color: Colors.white,
                           ),
@@ -206,7 +208,7 @@ class ProductDetailTitle extends StatelessWidget {
                           );
                     } else {
                       Navigator.pushNamed(context, LoginScreen.routeName,
-                          arguments: LoginScreen(isLoggedIn: true));
+                          arguments: const LoginScreen(isLoggedIn: true));
                     }
                   },
                   style: OutlinedButton.styleFrom(

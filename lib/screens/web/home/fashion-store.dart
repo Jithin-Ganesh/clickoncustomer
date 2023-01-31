@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 
 import '../../../components/web/home-product-box.dart';
+import '../../../providers/category-provider.dart';
 import '../../../providers/home_provider.dart';
 
 class FashionStore extends StatelessWidget {
@@ -12,7 +13,7 @@ class FashionStore extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<HomeProvider>(builder: (context, value, child) =>  Container(
+    return Consumer<CategoryProvider>(builder: (context, value, child) =>  Container(
         height: 327,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -23,15 +24,15 @@ class FashionStore extends StatelessWidget {
                 child: ListView.builder(
                   itemBuilder: (context, index) => Padding(
                     padding: const EdgeInsets.all(10.0),
-                    child: ProductCard(product: value.products?[index]),
+                    child: ProductCard(product: value.latestProducts?[index]),
                   ),
-                  itemCount:  value.products?.length,
+                  itemCount:  value.latestProducts?.length,
                   scrollDirection: Axis.horizontal,
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 50.0),
+            const Padding(
+              padding: EdgeInsets.only(left: 50.0),
               child: HomeProductBox(
                   width: 610,
                   height: 325,

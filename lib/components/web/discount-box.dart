@@ -6,7 +6,8 @@ import '../../utils/constants/fontstyles.dart';
 
 
 class DiscountBox extends StatelessWidget {
-  const DiscountBox({Key? key}) : super(key: key);
+  final String discount;
+  const DiscountBox({Key? key, required this.discount}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class DiscountBox extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            '10%',
+            '$discount%',
             style: semiBold.copyWith(color: primaryColor, fontSize: 14),
           ),
         ],

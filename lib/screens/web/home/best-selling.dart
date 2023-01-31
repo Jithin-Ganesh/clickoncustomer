@@ -6,13 +6,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 
 
+import '../../../providers/category-provider.dart';
 import '../../../providers/home_provider.dart';
 
 class BestSelling extends StatelessWidget {
   BestSelling({Key? key, }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Consumer<HomeProvider>(builder: (context, value, child) => Container(
+    return Consumer<CategoryProvider>(builder: (context, value, child) => Container(
         height: 327,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -26,8 +27,8 @@ class BestSelling extends StatelessWidget {
                   height: 327,
                   child:  ListView.builder(itemBuilder: (context, index) => Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 15),
-                    child: ProductCard(product: value.products?[index]),
-                  ),itemCount: value.products?.length,scrollDirection: Axis.horizontal,),
+                    child: ProductCard(product: value.latestProducts?[index]),
+                  ),itemCount: value.latestProducts?.length,scrollDirection: Axis.horizontal,),
                 ),
               )
           ],
