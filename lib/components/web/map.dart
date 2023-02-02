@@ -21,6 +21,7 @@ Widget getMap() {
       ..style.height = "100%"
       ..style.border = 'none';
 
+
     final map = GMap(elem, mapOptions);
 
     Marker(MarkerOptions()
