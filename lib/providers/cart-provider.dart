@@ -1,8 +1,11 @@
+import 'dart:developer';
+
 import 'package:clickoncustomer/models/product-model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 
 import '../interfaces/cart-interface.dart';
+import '../interfaces/user-interface.dart';
 import '../models/cart.dart';
 import '../models/checkout-model.dart';
 import '../models/payment-result.dart';
@@ -18,6 +21,36 @@ class CartProvider extends ChangeNotifier {
   GetWishList? wishListModel;
   ProductModel? productModel;
 
+
+  // add to wishlist
+  Future<bool> addToWishList({required int? productId}) async {
+    final status = await UserInterface.addToWishList(productId: productId);
+    //fetchWishList();
+    notifyListeners();
+    return status;
+  }
+
+  // delete from wishlist
+  Future<void> deleteWishList({required int? productId}) async {
+    await UserInterface.deleteFromWishList(productId: productId);
+    getWishlist();
+    notifyListeners();
+  }
+
+
+  bool isWishListed(int? productId) {
+    if (wishList.isNotEmpty) {
+      final index = wishList.indexWhere((element) => element.productModel?.id == productId);
+      log("true");
+      return index > -1;
+    } else {
+      log("false");
+      return false;
+    }
+  }
+
+
+
   void setQuantity({required int qty}) {
     quantity = qty;
     notifyListeners();
@@ -30,8 +63,8 @@ class CartProvider extends ChangeNotifier {
     return cart;
   }
 
-  Future<List<GetWishList>> moveFromWishList() async {
-    wishList = await CartInterface.moveFromWishList();
+  Future<List<GetWishList>> getWishlist() async {
+    wishList = await CartInterface.getWishList();
     notifyListeners();
     return wishList;
   }

@@ -77,9 +77,9 @@ class _ProductCardState extends State<ProductCard> {
                           setState(() {
                             value.isWishListed(widget.product?.id)
                                 ? value.deleteWishList(
-                                    productId: widget.product?.id)
+                                productId: widget.product?.id)
                                 : value.addToWishList(
-                                    productId: widget.product?.id);
+                                productId: widget.product?.id);
                           });
                         },
                         icon: value.isWishListed(widget.product?.id)

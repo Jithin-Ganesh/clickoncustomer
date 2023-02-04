@@ -13,6 +13,7 @@ import 'package:clickoncustomer/screens/web/product-details/product-detail-scree
 import 'package:clickoncustomer/screens/web/profile/profile-screen.dart';
 import 'package:clickoncustomer/screens/web/review-order/review-order-screen.dart';
 import 'package:clickoncustomer/screens/web/template-landing/template-landing.dart';
+import 'package:clickoncustomer/screens/web/wishlist/wishlist-screen.dart';
 import 'package:clickoncustomer/screens/web/your-account/your-account-web.dart';
 import 'package:flutter/material.dart';
 
@@ -45,6 +46,7 @@ class AppRoutes {
             isLoggedIn: false,
           ),
       ProfileWebScreen.routeName: (context) => const ProfileWebScreen(),
+      WishListScreen.routeName: (context) => const WishListScreen(),
       RateYourExperienceScreen.routeName: (context) =>
           const RateYourExperienceScreen(),
       SignUp.routeName: (context) => const SignUp(),

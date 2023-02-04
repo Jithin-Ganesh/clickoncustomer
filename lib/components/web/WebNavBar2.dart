@@ -7,6 +7,7 @@ import 'package:clickoncustomer/providers/location.dart';
 import 'package:clickoncustomer/providers/user-provider.dart';
 import 'package:clickoncustomer/screens/web/cart/cart-screen.dart';
 import 'package:clickoncustomer/screens/web/home/home-screen-web.dart';
+import 'package:clickoncustomer/screens/web/wishlist/wishlist-screen.dart';
 import 'package:clickoncustomer/screens/web/your-account/your-account-web.dart';
 import 'package:clickoncustomer/utils/img-provider.dart';
 import 'package:flutter/cupertino.dart';
@@ -17,6 +18,7 @@ import 'package:provider/provider.dart';
 import 'package:yandex_geocoder/yandex_geocoder.dart';
 
 import '../../screens/login_screen.dart';
+import '../../screens/web/template-landing/template-landing.dart';
 import '../../utils/constants/color.dart';
 import '../../utils/constants/fontStyles/kanit.dart';
 import '../../utils/constants/map-key.dart';
@@ -139,7 +141,7 @@ class _WebNavBar2State extends State<WebNavBar2> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               InkWell(
-                onTap: (){
+                onTap: () {
                   buildAwesomeDialog(context);
                 },
                 child: Row(
@@ -172,7 +174,8 @@ class _WebNavBar2State extends State<WebNavBar2> {
                             Text(
                               'Deliver to',
                               style: thin.copyWith(
-                                  color: productAvailabilityColor, fontSize: 14),
+                                  color: productAvailabilityColor,
+                                  fontSize: 14),
                             ),
                             Image.asset(
                               'assets/images/icon-arrow-down-outlined.png',
@@ -231,7 +234,8 @@ class _WebNavBar2State extends State<WebNavBar2> {
                         children: [
                           Text(
                             'Hello,',
-                            style: thin.copyWith(color: productAvailabilityColor),
+                            style:
+                                thin.copyWith(color: productAvailabilityColor),
                           ),
                           Row(
                             children: [
@@ -275,8 +279,13 @@ class _WebNavBar2State extends State<WebNavBar2> {
                   children: [
                     InkWell(
                       onTap: () {
-                        Navigator.of(context)
-                            .pushNamed(TemplateLanding.routeName);
+                        if (PrefUtils().getToken() != null) {
+                          Navigator.pushNamed(
+                              context, WishListScreen.routeName);
+                        } else {
+                          Navigator.pushNamed(context, LoginScreen.routeName,
+                              arguments: const LoginScreen(isLoggedIn: true));
+                        }
                       },
                       child: Image.asset(
                         'assets/images/icon-heart-oulined.png',
@@ -328,67 +337,11 @@ class _WebNavBar2State extends State<WebNavBar2> {
                       style: medium,
                     ),
                   ],
-                builder: (context, value, child) => InkWell(
-                  onTap: (){
-                    if (PrefUtils().getToken() != null) {
-                      Navigator.pushNamed(
-                          context, CartScreenWeb.routeName);
-                    } else {
-                      Navigator.pushNamed(context, LoginScreen.routeName,
-                          arguments: const LoginScreen(isLoggedIn: true));
-                    }
-                  },
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        'assets/images/icon-heart-oulined.png',
-                        height: 20,
-                        width: 22,
-                      ),
-                      const SizedBox(
-                        width: 25,
-                      ),
-                      IconButton(
-                          onPressed: () {
-
-                          },
-                          icon: Stack(
-                            children: [
-                              const ImgProvider(
-                                url: 'assets/images/icon-cart.png',
-                                height: 65,
-                                width: 68,
-                                boxFit: BoxFit.contain,
-                              ),
-                              Visibility(
-                                visible: value.cart?.cartProducts?.isNotEmpty ?? false,
-                                child: Positioned(
-                                  top: 0,
-                                  right: 0,
-                                  child: CircleAvatar(
-                                    radius: 7,
-                                    backgroundColor: primaryColor,
-                                    child: Text(
-                                      '${value.cart?.cartProducts?.length}',
-                                      style: medium.copyWith(color: Colors.white),
-                                    ),
-                                  ),
-                                ),
-                              )
-                            ],
-                          )),
-                      Text(
-                        'Cart',
-                        style: medium,
-                      ),
-                    ],
-                  ),
                 ),
               ),
             ],
           ),
-        )
+        ),
       ],
       bottom: PreferredSize(
         preferredSize: const Size.fromHeight(50),

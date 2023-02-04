@@ -21,7 +21,7 @@ class MoveFromWishList extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 40.0),
       child: FutureBuilder(
-          future: context.read<CartProvider>().moveFromWishList(),
+          future: context.read<CartProvider>().getWishlist(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Container(
