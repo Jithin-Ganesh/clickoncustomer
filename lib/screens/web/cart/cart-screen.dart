@@ -13,7 +13,7 @@ import '../../../components/web/custom-titlebar-with-viewall.dart';
 import '../../../models/cart.dart';
 import '../../../providers/cart-provider.dart';
 import '../../../utils/constants/color.dart';
-import '../../../utils/constants/fontstyles.dart';
+import '../../../utils/constants/fontStyles/kanit.dart';
 import '../../../utils/img-provider.dart';
 import '../home/products-for-you.dart';
 import '../home/recently-viewed.dart';

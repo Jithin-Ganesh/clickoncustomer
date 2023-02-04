@@ -8,7 +8,7 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 
 import '../../../components/elevated-buton.dart';
 import '../../../utils/constants/color.dart';
-import '../../../utils/constants/fontstyles.dart';
+import '../../../utils/constants/fontStyles/kanit.dart';
 import '../../../utils/constants/themes.dart';
 
 class RatingsAndReviews extends StatelessWidget {

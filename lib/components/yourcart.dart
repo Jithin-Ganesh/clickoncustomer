@@ -3,7 +3,7 @@ import 'package:clickoncustomer/providers/cart-provider.dart';
 import 'package:clickoncustomer/screens/web/cart/cart-screen.dart';
 import 'package:clickoncustomer/utils/constants/color.dart';
 import 'package:clickoncustomer/utils/constants/decoration.dart';
-import 'package:clickoncustomer/utils/constants/fontstyles.dart';
+import 'package:clickoncustomer/utils/constants/fontStyles/kanit.dart';
 import 'package:clickoncustomer/utils/constants/strings.dart';
 import 'package:clickoncustomer/utils/img-provider.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';

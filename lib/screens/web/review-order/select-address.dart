@@ -2,7 +2,7 @@ import 'package:clickoncustomer/components/elevated-buton.dart';
 import 'package:clickoncustomer/providers/user-provider.dart';
 import 'package:clickoncustomer/screens/web/review-order/add-address.dart';
 import 'package:clickoncustomer/screens/web/review-order/address-list.dart';
-import 'package:clickoncustomer/utils/constants/fontstyles.dart';
+import 'package:clickoncustomer/utils/constants/fontStyles/kanit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

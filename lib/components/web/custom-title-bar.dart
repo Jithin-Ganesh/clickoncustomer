@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/constants/color.dart';
-import '../../utils/constants/fontstyles.dart';
+import '../../utils/constants/fontStyles/kanit.dart';
 
 
 class CustomTitleBar extends StatelessWidget {

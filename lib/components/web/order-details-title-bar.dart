@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 import '../../utils/constants/color.dart';
 
-import '../../utils/constants/fontstyles.dart';
+import '../../utils/constants/fontStyles/kanit.dart';
 import '../../utils/constants/strings.dart';
 
 class OrderDetailsTitleBar extends StatelessWidget {

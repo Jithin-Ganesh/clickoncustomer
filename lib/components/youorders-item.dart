@@ -15,7 +15,7 @@ import 'package:provider/provider.dart';
 
 import '../screens/web/account-order/account-order-screen.dart';
 import '../screens/web/order-details/order-details-screen.dart';
-import '../utils/constants/fontstyles.dart';
+import '../utils/constants/fontStyles/kanit.dart';
 
 class YourOrder extends StatefulWidget {
   YourOrder(

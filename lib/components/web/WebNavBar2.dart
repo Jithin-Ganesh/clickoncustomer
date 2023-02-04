@@ -18,7 +18,7 @@ import 'package:yandex_geocoder/yandex_geocoder.dart';
 
 import '../../screens/login_screen.dart';
 import '../../utils/constants/color.dart';
-import '../../utils/constants/fontstyles.dart';
+import '../../utils/constants/fontStyles/kanit.dart';
 import '../../utils/constants/map-key.dart';
 import '../../utils/pref_utils.dart';
 import 'map.dart';
@@ -270,6 +270,64 @@ class _WebNavBar2State extends State<WebNavBar2> {
                 width: 36,
               ),
               Consumer<CartProvider>(
+                builder: (context, value, child) => Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        Navigator.of(context)
+                            .pushNamed(TemplateLanding.routeName);
+                      },
+                      child: Image.asset(
+                        'assets/images/icon-heart-oulined.png',
+                        height: 20,
+                        width: 22,
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 25,
+                    ),
+                    IconButton(
+                        onPressed: () {
+                          if (PrefUtils().getToken() != null) {
+                            Navigator.pushNamed(
+                                context, CartScreenWeb.routeName);
+                          } else {
+                            Navigator.pushNamed(context, LoginScreen.routeName,
+                                arguments: const LoginScreen(isLoggedIn: true));
+                          }
+                        },
+                        icon: Stack(
+                          children: [
+                            const ImgProvider(
+                              url: 'assets/images/icon-cart.png',
+                              height: 65,
+                              width: 68,
+                              boxFit: BoxFit.contain,
+                            ),
+                            Visibility(
+                              visible:
+                                  value.cart?.cartProducts?.isNotEmpty ?? false,
+                              child: Positioned(
+                                top: 0,
+                                right: 0,
+                                child: CircleAvatar(
+                                  radius: 7,
+                                  backgroundColor: primaryColor,
+                                  child: Text(
+                                    '${value.cart?.cartProducts?.length}',
+                                    style: medium.copyWith(color: Colors.white),
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
+                        )),
+                    Text(
+                      'Cart',
+                      style: medium,
+                    ),
+                  ],
                 builder: (context, value, child) => InkWell(
                   onTap: (){
                     if (PrefUtils().getToken() != null) {
@@ -383,10 +441,10 @@ class _WebNavBar2State extends State<WebNavBar2> {
                       width: 197,
                       decoration: const BoxDecoration(
                           borderRadius:
-                              BorderRadius.all(Radius.circular(8)),
+                              const BorderRadius.all(const Radius.circular(8)),
                           color: priceDetailsSubTextColor,
                           boxShadow: [
-                            BoxShadow(
+                            const BoxShadow(
                               color: Colors.grey,
                               blurRadius: 5.0,
                             ),

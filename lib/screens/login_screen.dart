@@ -1,7 +1,7 @@
 import 'package:clickoncustomer/components/sign-up.dart';
 import 'package:clickoncustomer/screens/otp-screen.dart';
 import 'package:clickoncustomer/utils/constants/color.dart';
-import 'package:clickoncustomer/utils/constants/fontstyles.dart';
+import 'package:clickoncustomer/utils/constants/fontStyles/kanit.dart';
 import 'package:clickoncustomer/utils/constants/images.dart';
 import 'package:clickoncustomer/utils/constants/strings.dart';
 import 'package:clickoncustomer/utils/img-provider.dart';

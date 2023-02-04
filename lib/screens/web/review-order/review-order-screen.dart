@@ -17,7 +17,7 @@ import '../../../models/address.dart';
 import '../../../models/user.dart';
 import '../../../utils/constants/color.dart';
 import '../../../utils/constants/decoration.dart';
-import '../../../utils/constants/fontstyles.dart';
+import '../../../utils/constants/fontStyles/kanit.dart';
 import '../../../utils/constants/strings.dart';
 import '../../../utils/img-provider.dart';
 import '../../../utils/pref_utils.dart';

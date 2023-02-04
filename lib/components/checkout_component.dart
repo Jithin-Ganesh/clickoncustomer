@@ -1,6 +1,6 @@
 
 import 'package:clickoncustomer/utils/constants/color.dart';
-import 'package:clickoncustomer/utils/constants/fontstyles.dart';
+import 'package:clickoncustomer/utils/constants/fontStyles/kanit.dart';
 import 'package:clickoncustomer/utils/constants/strings.dart';
 import 'package:flutter/material.dart';
 

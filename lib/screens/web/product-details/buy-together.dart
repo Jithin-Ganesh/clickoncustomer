@@ -4,7 +4,7 @@ import 'package:clickoncustomer/utils/constants/strings.dart';
 
 import 'package:flutter/material.dart';
 
-import '../../../utils/constants/fontstyles.dart';
+import '../../../utils/constants/fontStyles/kanit.dart';
 
 
 class BuyTogether extends StatelessWidget {

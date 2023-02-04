@@ -4,7 +4,7 @@ import 'package:clickoncustomer/components/web/account-title-bar.dart';
 import 'package:clickoncustomer/components/web/bottom-web-bar-2.dart';
 import 'package:clickoncustomer/providers/product-provider.dart';
 import 'package:clickoncustomer/utils/constants/decoration.dart';
-import 'package:clickoncustomer/utils/constants/fontstyles.dart';
+import 'package:clickoncustomer/utils/constants/fontStyles/kanit.dart';
 import 'package:clickoncustomer/utils/constants/responsive.dart';
 import 'package:clickoncustomer/utils/constants/strings.dart';
 import 'package:clickoncustomer/utils/img-provider.dart';

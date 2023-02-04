@@ -10,7 +10,7 @@ import 'package:clickoncustomer/screens/web/home/web-carousel-slider.dart';
 import 'package:clickoncustomer/screens/web/shimmer-component/banner-shimmer.dart';
 import 'package:clickoncustomer/utils/constants/color.dart';
 import 'package:clickoncustomer/utils/constants/decoration.dart';
-import 'package:clickoncustomer/utils/constants/fontstyles.dart';
+import 'package:clickoncustomer/utils/constants/fontStyles/kanit.dart';
 import 'package:clickoncustomer/utils/constants/responsive.dart';
 import 'package:clickoncustomer/utils/img-provider.dart';
 import 'package:clickoncustomer/utils/pref_utils.dart';

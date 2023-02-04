@@ -7,7 +7,7 @@ import 'package:clickoncustomer/utils/constants/strings.dart';
 import 'package:flutter/material.dart';
 
 import '../../../utils/constants/color.dart';
-import '../../../utils/constants/fontstyles.dart';
+import '../../../utils/constants/fontStyles/kanit.dart';
 import '../../../utils/constants/images.dart';
 import '../../../utils/img-provider.dart';
 
