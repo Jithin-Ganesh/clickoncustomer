@@ -201,7 +201,9 @@ class _WebHomeScreenState extends State<WebHomeScreen> {
                 const SizedBox(
                   height: 12,
                 ),
-                const CustomTabBarView(),
+                 Visibility(
+                     visible: false,
+                     child: CustomTabBarView()),
                 const SizedBox(
                   height: 55,
                 ),

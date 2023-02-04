@@ -26,7 +26,6 @@ class JustLaunchedList extends StatelessWidget {
           ),
         ),
         scrollDirection: Axis.horizontal,
-        padding: EdgeInsets.symmetric(horizontal: 15),
         itemCount: productList?.length,
       ),
     );

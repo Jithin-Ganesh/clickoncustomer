@@ -20,7 +20,7 @@ class BestSelling extends StatelessWidget {
           children: [
             const Padding(
               padding: EdgeInsets.only(right: 50.0),
-              child: HomeProductBox(width: 610, height: 325, image: "assets/images/dummy/image-5.png"),
+              child: HomeProductBox(width: 610, height: 327, image: "assets/images/dummy/image-5.png"),
             ),
               Expanded(
                 child: SizedBox(
