@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../utils/constants/color.dart';
-import '../../../utils/constants/fontstyles.dart';
+import '../../../utils/constants/fontStyles/kanit.dart';
 
 class ProductDetails extends StatelessWidget {
   const ProductDetails({Key? key}) : super(key: key);

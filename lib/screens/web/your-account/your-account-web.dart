@@ -12,7 +12,7 @@ import '../../../components/web/bottom-web-bar-2.dart';
 import '../../../components/web/custom-alert-box.dart';
 import '../../../utils/constants/color.dart';
 
-import '../../../utils/constants/fontstyles.dart';
+import '../../../utils/constants/fontStyles/kanit.dart';
 import '../../../utils/constants/images.dart';
 import '../../../utils/constants/strings.dart';
 import '../../../utils/img-provider.dart';

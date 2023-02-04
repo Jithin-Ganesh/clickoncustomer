@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 import '../../screens/web/review-order/review-order-screen.dart';
 import '../../utils/constants/color.dart';
 
-import '../../utils/constants/fontstyles.dart';
+import '../../utils/constants/fontStyles/kanit.dart';
 
 class ZigZagSheet extends StatefulWidget {
   final bool isCoupon;

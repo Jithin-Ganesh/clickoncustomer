@@ -2,7 +2,7 @@ import 'package:clickoncustomer/models/category.dart';
 import 'package:clickoncustomer/utils/constants/color.dart';
 import 'package:clickoncustomer/utils/img-provider.dart';
 import 'package:flutter/material.dart';
-import '../../../utils/constants/fontstyles.dart';
+import '../../../utils/constants/fontStyles/kanit.dart';
 
 class HomeCategoryList extends StatelessWidget {
   final List<Categories>? categories;

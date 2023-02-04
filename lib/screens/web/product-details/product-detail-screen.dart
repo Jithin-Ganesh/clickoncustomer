@@ -19,7 +19,7 @@ import '../../../components/web/bottom-web-bar.dart';
 import '../../../components/web/custom-titlebar-with-viewall.dart';
 import '../../../models/product-detail-model.dart';
 import '../../../providers/product-provider.dart';
-import '../../../utils/constants/fontstyles.dart';
+import '../../../utils/constants/fontStyles/kanit.dart';
 import '../../../utils/img-provider.dart';
 import '../home/products-for-you.dart';
 import 'buy-together.dart';

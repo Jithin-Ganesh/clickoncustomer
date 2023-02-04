@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'color.dart';
-import 'fontstyles.dart';
+import 'fontStyles/kanit.dart';
 
 BoxDecoration containerDecoration =
     BoxDecoration(color: canvasColor, borderRadius: BorderRadius.circular(10));

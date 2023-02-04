@@ -3,7 +3,7 @@ import 'package:clickoncustomer/components/payment_item_bankdetails.dart';
 import 'package:clickoncustomer/components/payment_sub.dart';
 import 'package:clickoncustomer/providers/cart-provider.dart';
 import 'package:clickoncustomer/utils/constants/color.dart';
-import 'package:clickoncustomer/utils/constants/fontstyles.dart';
+import 'package:clickoncustomer/utils/constants/fontStyles/kanit.dart';
 import 'package:clickoncustomer/utils/constants/strings.dart';
 import 'package:clickoncustomer/utils/img-provider.dart';
 import 'package:flutter/cupertino.dart';

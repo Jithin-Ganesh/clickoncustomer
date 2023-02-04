@@ -8,7 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../utils/constants/fontstyles.dart';
+import '../../utils/constants/fontStyles/kanit.dart';
 import '../../utils/image-provider.dart';
 
 class ProductCard extends StatefulWidget {

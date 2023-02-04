@@ -12,6 +12,7 @@ import 'package:clickoncustomer/screens/web/order-payment/order-payment-web.dart
 import 'package:clickoncustomer/screens/web/product-details/product-detail-screen.dart';
 import 'package:clickoncustomer/screens/web/profile/profile-screen.dart';
 import 'package:clickoncustomer/screens/web/review-order/review-order-screen.dart';
+import 'package:clickoncustomer/screens/web/template-landing/template-landing.dart';
 import 'package:clickoncustomer/screens/web/your-account/your-account-web.dart';
 import 'package:flutter/material.dart';
 
@@ -22,23 +23,35 @@ import 'screens/otp-screen.dart';
 class AppRoutes {
   Map<String, Widget Function(BuildContext)> get(BuildContext context) {
     return {
-      ProductDetailScreenWeb.routeName: (context) => const ProductDetailScreenWeb(),
-     CartScreenWeb.routeName: (context) => const CartScreenWeb(),
-     HomeScreenWeb.routeName: (context) => const HomeScreenWeb(),
+      ProductDetailScreenWeb.routeName: (context) =>
+          const ProductDetailScreenWeb(),
+      CartScreenWeb.routeName: (context) => const CartScreenWeb(),
+      HomeScreenWeb.routeName: (context) => const HomeScreenWeb(),
       ReviewOrderScreenWeb.routeName: (context) => const ReviewOrderScreenWeb(),
-      PaymentOrderScreenWeb.routeName: (context) => const PaymentOrderScreenWeb(),
+      PaymentOrderScreenWeb.routeName: (context) =>
+          const PaymentOrderScreenWeb(),
       YourAccountWeb.routeName: (context) => const YourAccountWeb(),
-      AccountOrderScreenWeb.routeName: (context) => const AccountOrderScreenWeb(),
-      OrderDetailsScreenWeb.routeName: (context) => const OrderDetailsScreenWeb(),
-      OrderSellerFeedBackScreenWeb.routeName: (context) => const OrderSellerFeedBackScreenWeb(),
-      OrderDeliveryFeedBackScreenWeb.routeName: (context) => const OrderDeliveryFeedBackScreenWeb(),
-      OrderProductReviewScreenWeb.routeName: (context) => const OrderProductReviewScreenWeb(),
-      OtpScreen.routeName: (context) => const OtpScreen(isLoggedIn: false,),
+      AccountOrderScreenWeb.routeName: (context) =>
+          const AccountOrderScreenWeb(),
+      OrderDetailsScreenWeb.routeName: (context) =>
+          const OrderDetailsScreenWeb(),
+      OrderSellerFeedBackScreenWeb.routeName: (context) =>
+          const OrderSellerFeedBackScreenWeb(),
+      OrderDeliveryFeedBackScreenWeb.routeName: (context) =>
+          const OrderDeliveryFeedBackScreenWeb(),
+      OrderProductReviewScreenWeb.routeName: (context) =>
+          const OrderProductReviewScreenWeb(),
+      OtpScreen.routeName: (context) => const OtpScreen(
+            isLoggedIn: false,
+          ),
       ProfileWebScreen.routeName: (context) => const ProfileWebScreen(),
-      RateYourExperienceScreen.routeName:(context)=>const RateYourExperienceScreen(),
-      SignUp.routeName:(context)=>const SignUp(),
-      LoginScreen.routeName:(context)=> const LoginScreen(isLoggedIn: false,),
-
+      RateYourExperienceScreen.routeName: (context) =>
+          const RateYourExperienceScreen(),
+      SignUp.routeName: (context) => const SignUp(),
+      LoginScreen.routeName: (context) => const LoginScreen(
+            isLoggedIn: false,
+          ),
+      TemplateLanding.routeName: (context) => const TemplateLanding(),
     };
   }
 }

@@ -13,7 +13,7 @@ import 'package:provider/provider.dart';
 import '../../../components/web/WebNavBar2.dart';
 import '../../../utils/constants/color.dart';
 
-import '../../../utils/constants/fontstyles.dart';
+import '../../../utils/constants/fontStyles/kanit.dart';
 import '../../../utils/constants/strings.dart';
 import '../../../utils/constants/themes.dart';
 import '../../../utils/img-provider.dart';

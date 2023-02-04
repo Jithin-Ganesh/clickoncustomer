@@ -2,7 +2,7 @@ import 'package:clickoncustomer/utils/img-provider.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../../../utils/constants/color.dart';
-import '../../../utils/constants/fontstyles.dart';
+import '../../../utils/constants/fontStyles/kanit.dart';
 
 
 class AvailableOffers extends StatelessWidget {

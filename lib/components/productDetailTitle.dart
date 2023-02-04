@@ -13,7 +13,7 @@ import 'package:provider/provider.dart';
 import '../providers/cart-provider.dart';
 
 import '../screens/login_screen.dart';
-import '../utils/constants/fontstyles.dart';
+import '../utils/constants/fontStyles/kanit.dart';
 import '../utils/global-key.dart';
 import '../utils/pref_utils.dart';
 

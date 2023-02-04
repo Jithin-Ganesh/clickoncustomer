@@ -7,6 +7,7 @@ import 'package:clickoncustomer/providers/location.dart';
 import 'package:clickoncustomer/providers/user-provider.dart';
 import 'package:clickoncustomer/screens/web/cart/cart-screen.dart';
 import 'package:clickoncustomer/screens/web/home/home-screen-web.dart';
+import 'package:clickoncustomer/screens/web/template-landing/template-landing.dart';
 import 'package:clickoncustomer/screens/web/your-account/your-account-web.dart';
 import 'package:clickoncustomer/utils/img-provider.dart';
 import 'package:flutter/cupertino.dart';
@@ -18,7 +19,7 @@ import 'package:yandex_geocoder/yandex_geocoder.dart';
 
 import '../../screens/login_screen.dart';
 import '../../utils/constants/color.dart';
-import '../../utils/constants/fontstyles.dart';
+import '../../utils/constants/fontStyles/kanit.dart';
 import '../../utils/constants/map-key.dart';
 import '../../utils/pref_utils.dart';
 import 'map.dart';
@@ -270,10 +271,16 @@ class _WebNavBar2State extends State<WebNavBar2> {
                 builder: (context, value, child) => Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Image.asset(
-                      'assets/images/icon-heart-oulined.png',
-                      height: 20,
-                      width: 22,
+                    InkWell(
+                      onTap: () {
+                        Navigator.of(context)
+                            .pushNamed(TemplateLanding.routeName);
+                      },
+                      child: Image.asset(
+                        'assets/images/icon-heart-oulined.png',
+                        height: 20,
+                        width: 22,
+                      ),
                     ),
                     const SizedBox(
                       width: 25,
@@ -297,7 +304,8 @@ class _WebNavBar2State extends State<WebNavBar2> {
                               boxFit: BoxFit.contain,
                             ),
                             Visibility(
-                              visible: value.cart?.cartProducts?.isNotEmpty ?? false,
+                              visible:
+                                  value.cart?.cartProducts?.isNotEmpty ?? false,
                               child: Positioned(
                                 top: 0,
                                 right: 0,

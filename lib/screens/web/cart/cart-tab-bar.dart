@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 
 import '../../../models/cart.dart';
 import '../../../models/product-model.dart';
-import '../../../utils/constants/fontstyles.dart';
+import '../../../utils/constants/fontStyles/kanit.dart';
 import 'buy-it-again.dart';
 
 class MoveFromWishList extends StatelessWidget {
