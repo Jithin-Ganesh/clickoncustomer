@@ -29,7 +29,7 @@ class TabBarViewItem extends StatelessWidget {
             height: 14,
           ),
           const SizedBox(
-            width: 6,
+            width: 8,
           ),
           Text(
             text,

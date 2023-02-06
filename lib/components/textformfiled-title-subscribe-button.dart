@@ -13,8 +13,7 @@ class TitleTextFormFiledButton extends StatelessWidget {
   final String title;
   @override
   Widget build(BuildContext context) {
-    return Column(crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Text(
         title,
         style: sansRegular.copyWith(fontSize: 14, color: Colors.black),
@@ -29,19 +28,26 @@ class TitleTextFormFiledButton extends StatelessWidget {
               border: Border.all(color: templateTextContainerColor),
               borderRadius: BorderRadius.all(Radius.circular(6))),
           child: Padding(
-            padding:
-                const EdgeInsets.only(left: 20, right: 7, top: 18, bottom: 10),
+            padding: const EdgeInsets.only(
+              left: 20,
+              right: 7,
+            ),
             child: TextFormField(
               decoration: InputDecoration(
-                  suffix: SizedBox(
+                  suffixIcon: Container(
+                    decoration: BoxDecoration(
+                        color: buttonColor,
+                        borderRadius: BorderRadius.all(Radius.circular(6))),
                     width: 90,
                     height: 36,
-                    child: ButtonElevated(
-                      color: buttonColor,
-                      radius: 6,
-                      buttonTitle: "Subscribe",
-                      textStyle:
-                          sansBold.copyWith(fontSize: 14, color: Colors.white),
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                          top: 11, bottom: 11, left: 10, right: 11),
+                      child: Text(
+                        "Subscribe",
+                        style: sansBold.copyWith(
+                            fontSize: 14, color: Colors.white),
+                      ),
                     ),
                   ),
                   hintText: "name@example.com",
