@@ -26,7 +26,7 @@ class _TemplateLandingAppbarState extends State<TemplateLandingAppbar> {
           padding: EdgeInsets.only(
               left: MediaQuery.of(context).size.width * 0.062,
               right: MediaQuery.of(context).size.width * 0.0598,
-              top: 30),
+              top: 35),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

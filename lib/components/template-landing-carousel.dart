@@ -49,6 +49,7 @@ class _TemplateLandingCarouselState extends State<TemplateLandingCarousel> {
   Widget build(BuildContext context) {
     return CarouselSlider(
       options: CarouselOptions(
+          scrollPhysics: const NeverScrollableScrollPhysics(),
           autoPlay: true,
           aspectRatio: 3,
           enlargeCenterPage: true,
@@ -83,4 +84,3 @@ class _TemplateLandingCarouselState extends State<TemplateLandingCarousel> {
     );
   }
 }
-

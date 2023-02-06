@@ -279,13 +279,14 @@ class _WebNavBar2State extends State<WebNavBar2> {
                   children: [
                     InkWell(
                       onTap: () {
-                        if (PrefUtils().getToken() != null) {
-                          Navigator.pushNamed(
-                              context, WishListScreen.routeName);
-                        } else {
-                          Navigator.pushNamed(context, LoginScreen.routeName,
-                              arguments: const LoginScreen(isLoggedIn: true));
-                        }
+                        // if (PrefUtils().getToken() != null) {
+                        //   Navigator.pushNamed(
+                        //       context, WishListScreen.routeName);
+                        // } else {
+                        //   Navigator.pushNamed(context, LoginScreen.routeName,
+                        //       arguments: const LoginScreen(isLoggedIn: true));
+                        // }
+                        Navigator.pushNamed(context,TemplateLanding.routeName);
                       },
                       child: Image.asset(
                         'assets/images/icon-heart-oulined.png',
