@@ -1,4 +1,5 @@
 import 'package:clickoncustomer/components/web/rating-box.dart';
+import 'package:clickoncustomer/providers/cart-provider.dart';
 import 'package:clickoncustomer/providers/product-provider.dart';
 import 'package:clickoncustomer/screens/web/product-details/available-offers.dart';
 import 'package:clickoncustomer/screens/web/product-details/buy-together.dart';
@@ -10,14 +11,19 @@ import 'package:provider/provider.dart';
 import '../../../utils/constants/color.dart';
 import '../../../utils/constants/fontStyles/kanit.dart';
 
-class ProductDetails extends StatelessWidget {
+class ProductDetails extends StatefulWidget {
   const ProductDetails({Key? key}) : super(key: key);
 
+  @override
+  State<ProductDetails> createState() => _ProductDetailsState();
+}
+
+class _ProductDetailsState extends State<ProductDetails> {
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(right: 160.0),
-      child: Consumer<ProductProvider>(builder: (context, value, child) => Container(
+      child: Consumer<ProductProvider>(builder: (context, product, child) => Container(
           height: 620,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -29,33 +35,62 @@ class ProductDetails extends StatelessWidget {
                   SizedBox(
                     width: 300,
                     child: Text(
-                      value.productDetails?.product?.name ?? '',
+                      product.productDetails?.product?.name ?? '',
                       maxLines: 2,
                       style: medium.copyWith(fontSize: 24),
                     ),
                   ),
                   Row(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                           height: 18,
                           width: 17,
                           child: Icon(Icons.share_outlined,color: productAvailabilityColor,)),
-                      SizedBox(
+                      const SizedBox(
                         width: 21,
                       ),
-                      SizedBox(
-                          height: 18,
-                          width: 17,
-                          child: Icon(Icons.favorite_border_outlined,color: productAvailabilityColor))
+                      Consumer<CartProvider>(builder: (context, value, child) => IconButton(
+                          onPressed: () {
+                            setState(() {
+                              value.isWishListed(product.productDetails?.product?.id)
+                                  ? value.deleteWishList(
+                                  productId: product.productDetails?.product?.id)
+                                  : value.addToWishList(
+                                  productId: product.productDetails?.product?.id);
+                            });
+                          },
+                          icon: value.isWishListed(product.productDetails?.product?.id)
+                              ? Container(
+                            height: 31,
+                            width: 30,
+                            decoration:
+                            const BoxDecoration(shape: BoxShape.circle
+                                ,image: DecorationImage(
+                                    image: AssetImage(
+                                      "assets/images/love.png",
+                                    )
+                                )),
+                          )
+                              : Container(
+                            height: 31,
+                            width: 30,
+                            decoration:
+                            const BoxDecoration(shape: BoxShape.circle,image: DecorationImage(
+                                image: AssetImage(
+                                  "assets/images/icon-fav.png",
+                                )
+                            )),
+                          )),
+                      )
                     ],
                   )
                 ],
               ),
-              SizedBox(height: 8,),
+              const SizedBox(height: 8,),
               Row(
                 children: [
-                  RatingBox(),
-                  SizedBox(
+                  const RatingBox(),
+                  const SizedBox(
                     width: 9,
                   ),
                   Text(
@@ -65,7 +100,7 @@ class ProductDetails extends StatelessWidget {
                   )
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 13,
               ),
               Text(
@@ -73,7 +108,7 @@ class ProductDetails extends StatelessWidget {
                 style:
                     thin.copyWith(color: productAvailabilityColor, fontSize: 14),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 19,
               ),
               Row(
@@ -81,12 +116,12 @@ class ProductDetails extends StatelessWidget {
                   Container(
                     height: 6,
                     width: 6,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       shape: BoxShape.circle,
                       color: Colors.black,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Text(
@@ -96,7 +131,7 @@ class ProductDetails extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 22,
               ),
               Row(
@@ -104,12 +139,12 @@ class ProductDetails extends StatelessWidget {
                   Container(
                     height: 6,
                     width: 6,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       shape: BoxShape.circle,
                       color: Colors.black,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Expanded(
@@ -122,7 +157,7 @@ class ProductDetails extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 22,
               ),
               Row(
@@ -130,12 +165,12 @@ class ProductDetails extends StatelessWidget {
                   Container(
                     height: 6,
                     width: 6,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       shape: BoxShape.circle,
                       color: Colors.black,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Expanded(
@@ -147,7 +182,7 @@ class ProductDetails extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 22,
               ),
               Row(
@@ -155,12 +190,12 @@ class ProductDetails extends StatelessWidget {
                   Container(
                     height: 6,
                     width: 6,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       shape: BoxShape.circle,
                       color: Colors.black,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Text(
@@ -170,7 +205,7 @@ class ProductDetails extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 31,
               ),
               Text(
@@ -178,20 +213,20 @@ class ProductDetails extends StatelessWidget {
                 style: regular.copyWith(
                     color: productAvailabilityColor, fontSize: 20),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Container(
                 height: 41,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) => CountBox(
+                  itemBuilder: (context, index) => const CountBox(
                     count: '19',
                   ),
                   itemCount: 4,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 31,
               ),
               Text(
@@ -199,7 +234,7 @@ class ProductDetails extends StatelessWidget {
                 style: regular.copyWith(
                     color: productAvailabilityColor, fontSize: 20),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Expanded(
@@ -208,9 +243,9 @@ class ProductDetails extends StatelessWidget {
                   child: ListView(
                     shrinkWrap: true,
                     children: [
-                      AvailableOffers(),
-                      AvailableOffers(),
-                      AvailableOffers(),
+                      const AvailableOffers(),
+                      const AvailableOffers(),
+                      const AvailableOffers(),
                     ],
                   ),
                 ),

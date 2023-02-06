@@ -1,3 +1,4 @@
+import 'package:clickoncustomer/components/web/product-card.dart';
 import 'package:clickoncustomer/providers/auth.dart';
 import 'package:clickoncustomer/screens/web/account-order/account-order-screen.dart';
 import 'package:clickoncustomer/screens/web/profile/profile-screen.dart';
@@ -73,7 +74,7 @@ class _WishListScreenState extends State<WishListScreen> {
             } else {
               if (snapshot.hasData) {
                 final products = snapshot.data as List<GetWishList>;
-                return WishListBody();
+                return const WishListBody();
               }
             }
             return SizedBox(
@@ -107,13 +108,19 @@ class WishListBody extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 160.0),
-            child: Column(crossAxisAlignment: CrossAxisAlignment.start,
-              children: [ SizedBox(height: 25,),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(
+                  height: 25,
+                ),
                 const Padding(
                   padding: EdgeInsets.only(right: 38.0),
                   child: CustomTitleBar(title: 'WishList', isShop: false),
                 ),
-                SizedBox(height: 25,),
+                const SizedBox(
+                  height: 25,
+                ),
                 Consumer<CartProvider>(
                   builder: (context, value, child) => Container(
                     height: MediaQuery.of(context).size.height,
@@ -121,16 +128,16 @@ class WishListBody extends StatelessWidget {
                     child: GridView.builder(
                       physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
-                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 8,
-                          crossAxisSpacing: 14,
-                          mainAxisSpacing: 14,
-                          mainAxisExtent: 446),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 8,
+                              crossAxisSpacing: 14,
+                              mainAxisSpacing: 25,
+                              mainAxisExtent: 320),
                       itemCount: value.wishList.length,
                       itemBuilder: (context, index) {
-                        return YourItems(wishListId: value.wishList[index].id,
-                          product: value.wishList[index].productModel,
-                        );
+                        return ProductCard(
+                            product: value.wishList[index].productModel);
                       },
                     ),
                   ),
@@ -162,7 +169,7 @@ class ImageIndicators2 extends StatelessWidget {
       width: 8,
       height: 8,
       margin: const EdgeInsets.symmetric(horizontal: 10.0),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         shape: BoxShape.circle,
         color: primaryColor,
       ),

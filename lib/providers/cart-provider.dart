@@ -25,7 +25,7 @@ class CartProvider extends ChangeNotifier {
   // add to wishlist
   Future<bool> addToWishList({required int? productId}) async {
     final status = await UserInterface.addToWishList(productId: productId);
-    //fetchWishList();
+    getWishlist();
     notifyListeners();
     return status;
   }
