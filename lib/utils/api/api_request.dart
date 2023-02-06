@@ -110,10 +110,20 @@ class ApiRequest {
       bool isSuccess = responseBody["success"] ?? false;
       log('Api Request Checking Success: $isSuccess');
 
+      if(!isSuccess){
+        String message =
+            responseBody["data"]?["message"] ?? "Unknown error has occurred";
+        log('printing toast  : $message ');
+
+        //showMessage(message)
+        showSnackBar(message: message, context: navigatorKey.currentContext!,isSuccess: false);
+      }
+
       if (isSuccess) return responseBody["data"];
 
       String message =
           responseBody["data"]?["message"] ?? "Unknown error has occurred";
+      log('printing toast  : $message ');
 
       //showMessage(message)
       showSnackBar(message: message, context: navigatorKey.currentContext!,isSuccess: false);

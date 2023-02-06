@@ -11,22 +11,22 @@ class TabBarItem extends StatelessWidget {
   TabBarItem({Key? key}) : super(key: key);
   final List<Widget> images = [
    HomeProductBox(width: 275,
-       height: 325, image: 'assets/images/dummy/image-xbox.png'),
+       height: 327, image: 'assets/images/dummy/image-xbox.png'),
     HomeProductBox(width: 275,
-        height: 325, image: 'assets/images/dummy/image-2.png'),
+        height: 327, image: 'assets/images/dummy/image-2.png'),
     HomeProductBox(width:700,
-        height: 325, image: 'assets/images/dummy/image-4.png'),
+        height: 327, image: 'assets/images/dummy/image-4.png'),
     HomeProductBox(width: 275,
-        height: 325, image: 'assets/images/dummy/image-3.png'),
+        height: 327, image: 'assets/images/dummy/image-3.png'),
     HomeProductBox(width: 275,
-        height: 325, image: 'assets/images/dummy/image-6.png'),
+        height: 327, image: 'assets/images/dummy/image-6.png'),
     HomeProductBox(width:700,
-        height: 325, image: 'assets/images/dummy/image-4.png'),
+        height: 327, image: 'assets/images/dummy/image-4.png'),
   ];
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 34.0),
+      padding: const EdgeInsets.only(top: 30.0),
       child: Container(
         child: Wrap(
           spacing: 30,
@@ -44,7 +44,7 @@ class CustomTabBarView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 720,
+      height: 750,
       child: ContainedTabBarView(
         tabs: [
           Text('Tech'),

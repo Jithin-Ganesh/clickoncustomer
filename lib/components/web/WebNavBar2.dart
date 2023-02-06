@@ -7,7 +7,7 @@ import 'package:clickoncustomer/providers/location.dart';
 import 'package:clickoncustomer/providers/user-provider.dart';
 import 'package:clickoncustomer/screens/web/cart/cart-screen.dart';
 import 'package:clickoncustomer/screens/web/home/home-screen-web.dart';
-import 'package:clickoncustomer/screens/web/template-landing/template-landing.dart';
+import 'package:clickoncustomer/screens/web/wishlist/wishlist-screen.dart';
 import 'package:clickoncustomer/screens/web/your-account/your-account-web.dart';
 import 'package:clickoncustomer/utils/img-provider.dart';
 import 'package:flutter/cupertino.dart';
@@ -18,6 +18,7 @@ import 'package:provider/provider.dart';
 import 'package:yandex_geocoder/yandex_geocoder.dart';
 
 import '../../screens/login_screen.dart';
+import '../../screens/web/template-landing/template-landing.dart';
 import '../../utils/constants/color.dart';
 import '../../utils/constants/fontStyles/kanit.dart';
 import '../../utils/constants/map-key.dart';
@@ -139,54 +140,58 @@ class _WebNavBar2State extends State<WebNavBar2> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(
-                children: [
-                  Container(
-                    height: 40,
-                    width: 40,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50),
-                      color: primaryColor,
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(0),
-                      child: IconButton(
-                          onPressed: () {},
-                          icon: const Icon(
-                            Icons.add_location_alt_outlined,
-                            size: 22,
-                            color: canvasColor,
-                          )),
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            'Deliver to',
-                            style: thin.copyWith(
-                                color: productAvailabilityColor, fontSize: 14),
-                          ),
-                          Image.asset(
-                            'assets/images/icon-arrow-down-outlined.png',
-                            height: 5,
-                            width: 10,
-                          ),
-                        ],
+              InkWell(
+                onTap: () {
+                  buildAwesomeDialog(context);
+                },
+                child: Row(
+                  children: [
+                    Container(
+                      height: 40,
+                      width: 40,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: primaryColor,
                       ),
-                      Text(
-                        'Ernakulam 682024',
-                        style: medium,
-                      )
-                    ],
-                  ),
-                ],
+                      child: const Padding(
+                        padding: EdgeInsets.all(0),
+                        child: Icon(
+                          Icons.add_location_alt_outlined,
+                          size: 22,
+                          color: canvasColor,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              'Deliver to',
+                              style: thin.copyWith(
+                                  color: productAvailabilityColor,
+                                  fontSize: 14),
+                            ),
+                            Image.asset(
+                              'assets/images/icon-arrow-down-outlined.png',
+                              height: 5,
+                              width: 10,
+                            ),
+                          ],
+                        ),
+                        Text(
+                          'Ernakulam 682024',
+                          style: medium,
+                        )
+                      ],
+                    ),
+                  ],
+                ),
               ),
               const SizedBox(
                 width: 43,
@@ -200,13 +205,13 @@ class _WebNavBar2State extends State<WebNavBar2> {
               const SizedBox(
                 width: 49,
               ),
-              Row(
-                children: [
-                  InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(context, YourAccountWeb.routeName);
-                    },
-                    child: Container(
+              InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, YourAccountWeb.routeName);
+                },
+                child: Row(
+                  children: [
+                    Container(
                       height: 40,
                       width: 40,
                       decoration: BoxDecoration(
@@ -219,41 +224,42 @@ class _WebNavBar2State extends State<WebNavBar2> {
                         color: canvasColor,
                       ),
                     ),
-                  ),
-                  const SizedBox(
-                    width: 8,
-                  ),
-                  Consumer<UserProvider>(
-                    builder: (context, value, child) => Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Hello,',
-                          style: thin.copyWith(color: productAvailabilityColor),
-                        ),
-                        Row(
-                          children: [
-                            value.user != null
-                                ? Text(
-                                    value.user?.firstName ?? 'sign-in',
-                                    style: medium,
-                                  )
-                                : Text(
-                                    'sign-in',
-                                    style: medium,
-                                  ),
-                            Image.asset(
-                              'assets/images/icon-arrow-down-outlined.png',
-                              height: 5,
-                              width: 10,
-                            ),
-                          ],
-                        )
-                      ],
+                    const SizedBox(
+                      width: 8,
                     ),
-                  ),
-                ],
+                    Consumer<UserProvider>(
+                      builder: (context, value, child) => Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Hello,',
+                            style:
+                                thin.copyWith(color: productAvailabilityColor),
+                          ),
+                          Row(
+                            children: [
+                              value.user != null
+                                  ? Text(
+                                      value.user?.firstName ?? 'sign-in',
+                                      style: medium,
+                                    )
+                                  : Text(
+                                      'sign-in',
+                                      style: medium,
+                                    ),
+                              Image.asset(
+                                'assets/images/icon-arrow-down-outlined.png',
+                                height: 5,
+                                width: 10,
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
               const SizedBox(
                 width: 23,
@@ -273,8 +279,13 @@ class _WebNavBar2State extends State<WebNavBar2> {
                   children: [
                     InkWell(
                       onTap: () {
-                        Navigator.of(context)
-                            .pushNamed(TemplateLanding.routeName);
+                        if (PrefUtils().getToken() != null) {
+                          Navigator.pushNamed(
+                              context, WishListScreen.routeName);
+                        } else {
+                          Navigator.pushNamed(context, LoginScreen.routeName,
+                              arguments: const LoginScreen(isLoggedIn: true));
+                        }
                       },
                       child: Image.asset(
                         'assets/images/icon-heart-oulined.png',
@@ -330,7 +341,7 @@ class _WebNavBar2State extends State<WebNavBar2> {
               ),
             ],
           ),
-        )
+        ),
       ],
       bottom: PreferredSize(
         preferredSize: const Size.fromHeight(50),
@@ -548,7 +559,7 @@ class _LocationSearchState extends State<LocationSearch> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: MediaQuery.of(context).size.width * 0.6,
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -728,7 +739,7 @@ class _LocationSearchState extends State<LocationSearch> {
           ),
           SizedBox(
             height: 300,
-            width: 300,
+            width: MediaQuery.of(context).size.width * 0.6,
             child: getMap(),
           ),
           // ImgProvider(

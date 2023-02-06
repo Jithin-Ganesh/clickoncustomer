@@ -189,19 +189,26 @@ class _WebHomeScreenState extends State<WebHomeScreen> {
                 const SizedBox(
                   height: 45,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Best Selling Products',
-                      style: medium.copyWith(color: Colors.black, fontSize: 28),
-                    ),
-                  ],
+                Visibility(
+                  visible: false,
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Best Selling Products',
+                            style: medium.copyWith(color: Colors.black, fontSize: 28),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 12,
+                      ),
+                       CustomTabBarView(),
+                    ],
+                  ),
                 ),
-                const SizedBox(
-                  height: 12,
-                ),
-                const CustomTabBarView(),
                 const SizedBox(
                   height: 55,
                 ),

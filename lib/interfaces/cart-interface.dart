@@ -35,7 +35,7 @@ class CartInterface {
     }
   }
 
-  static Future<List<GetWishList>> moveFromWishList() async {
+  static Future<List<GetWishList>> getWishList() async {
     try {
       final response = await ApiRequest.send(
         method: ApiMethod.GET,

@@ -1,3 +1,4 @@
+import 'package:clickoncustomer/screens/web/product-details/product-detail-screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -6,44 +7,51 @@ import '../../utils/img-provider.dart';
 
 class RecentProductCard extends StatelessWidget {
   final String image;
-  const RecentProductCard({Key? key, required this.image}) : super(key: key);
+  final int id;
+  const RecentProductCard({Key? key, required this.image, required this.id}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 340,
-      width: 198,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Stack(
-            children: [
-              Container(
-                height: 225,
-                width: 172,
-                child: Center(
-                  child: ImgProvider(
-                    url: image,
-                    height: 225,
-                    width: 172,
+    return InkWell(
+      onTap: (){
+        Navigator.pushNamed(context, ProductDetailScreenWeb.routeName,arguments: ProductDetailScreenWeb(productId: id,));
+      },
+      child: Container(
+        height: 340,
+        width: 198,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Stack(
+              children: [
+                Container(
+                  height: 225,
+                  width: 172,
+                  child: Center(
+                    child: ImgProvider(
+                      url: image,
+                      height: 225,
+                      width: 172,
+                    ),
                   ),
+                  decoration: BoxDecoration(
+                      color: canvasColor,
+                      borderRadius: BorderRadius.circular(10)),
                 ),
-                decoration: BoxDecoration(
-                    color: canvasColor,
-                    borderRadius: BorderRadius.circular(10)),
-              ),
-              Positioned(
-                top: 11,
-                right: 11,
-                child: IconButton(
-                    onPressed: () {},
-                    icon: ImgProvider(
-                      url: "assets/images/icon-fav.png",radius: 12.5,
-                    )),
-              )
-            ],
-          ),
-        ],
+                Positioned(
+                  top: 11,
+                  right: 11,
+                  child: IconButton(
+                      onPressed: () {},
+                      icon: ImgProvider(
+                        url: "assets/images/icon-fav.png",
+                        radius: 12.5,
+                      )),
+                )
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

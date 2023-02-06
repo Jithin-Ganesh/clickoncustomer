@@ -29,20 +29,18 @@ class BuyItAgain extends StatelessWidget {
             } else {
               if (snapshot.hasData) {
                 final items = snapshot.data as List<ProductModel>;
-                return Container(
-                  child: GridView.builder(
-                    physics: NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 5,
-                        crossAxisSpacing: 14,
-                        mainAxisSpacing: 14,
-                        mainAxisExtent: 446),
-                    itemCount: items.length,
-                    itemBuilder: (context, index) {
-                      return YourItems(product: items[index],);
-                    },
-                  ),
+                return GridView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 5,
+                      crossAxisSpacing: 14,
+                      mainAxisSpacing: 14,
+                      mainAxisExtent: 446),
+                  itemCount: items.length,
+                  itemBuilder: (context, index) {
+                    return YourItems(product: items[index],);
+                  },
                 );
               }
             }
