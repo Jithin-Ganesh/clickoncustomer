@@ -6,12 +6,22 @@ import 'fontStyles/kanit.dart';
 BoxDecoration containerDecoration =
     BoxDecoration(color: canvasColor, borderRadius: BorderRadius.circular(10));
 
+BoxDecoration containerDecorationShadow = BoxDecoration(
+  color: canvasColor,
+  borderRadius: BorderRadius.circular(10),
+  boxShadow: [
+    BoxShadow(
+      color: Colors.grey.withOpacity(0.3),
+      spreadRadius: 3,
+      blurRadius: 5,
+      offset: Offset(0, 2), // changes position of shadow
+    ),
+  ],
+);
 
 BoxDecoration splashDecoration = const BoxDecoration(
     image: DecorationImage(
         image: AssetImage('assets/images/splash.png'), fit: BoxFit.fill));
-
-
 
 const shimmerGradient = LinearGradient(
   colors: [
@@ -67,7 +77,6 @@ BoxDecoration zigzagDecoration = BoxDecoration(
   ],
 );
 
-
 InputDecoration dropDownSearchDecoration = InputDecoration(
   hintText: '',
   hintStyle: medium,
@@ -77,21 +86,16 @@ InputDecoration dropDownSearchDecoration = InputDecoration(
   filled: true,
   fillColor: bgBoxColor,
   focusedErrorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(36),
-      borderSide: BorderSide.none),
+      borderRadius: BorderRadius.circular(36), borderSide: BorderSide.none),
   errorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(36),
-      borderSide: BorderSide.none),
+      borderRadius: BorderRadius.circular(36), borderSide: BorderSide.none),
   enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(36),
-      borderSide: BorderSide.none),
+      borderRadius: BorderRadius.circular(36), borderSide: BorderSide.none),
   focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(36),
-      borderSide: BorderSide.none),
+      borderRadius: BorderRadius.circular(36), borderSide: BorderSide.none),
 );
 
-
-InputDecoration dropDownDecoration =  InputDecoration(
+InputDecoration dropDownDecoration = InputDecoration(
     hintText: '',
     filled: true,
     fillColor: Colors.white,

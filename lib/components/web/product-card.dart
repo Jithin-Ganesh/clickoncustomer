@@ -36,7 +36,7 @@ class _ProductCardState extends State<ProductCard> {
           height: 360,
           width: 198,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Stack(

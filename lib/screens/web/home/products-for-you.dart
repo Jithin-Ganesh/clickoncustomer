@@ -12,7 +12,7 @@ class ProductsForYouList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<CategoryProvider>(
-      builder: (context, value, child) => Container(
+      builder: (context, value, child) => SizedBox(
         height: 320,
         child: ListView.builder(
           itemBuilder: (context, index) => Padding(

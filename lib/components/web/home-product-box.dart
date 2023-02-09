@@ -13,7 +13,7 @@ class HomeProductBox extends StatelessWidget {
       width: width,
       height: height,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(10),
           image: DecorationImage(
               image: AssetImage(image),fit: BoxFit.fill
           )

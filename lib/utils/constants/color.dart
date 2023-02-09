@@ -3,7 +3,7 @@
 import 'dart:ui';
 const Color primaryColor = Color(0xff009AFF);
 // const Color primaryColor = Color(0xff0000AB);sdfs
-const Color bgColor = Color(0xffE5E5E5);
+const Color bgColor = Color(0xffedeff7);
 const Color bgColor2 = Color(0xffF6F7FC);
 const Color horizontalDividerColor = Color(0xffE8E8E8);
 const Color itemContainer = Color(0xffDADADA);

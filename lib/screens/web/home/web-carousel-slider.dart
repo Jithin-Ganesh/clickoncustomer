@@ -82,7 +82,7 @@ class _HomeBannerCarouselState extends State<HomeBannerCarousel> {
                         url: item.image ?? '',
                         boxFit: BoxFit.fill,
                         height: 460,
-                        radius: 10,
+                        radius: 10,placeHolderBoxFit: BoxFit.contain,
                         width: MediaQuery.of(context).size.width,
                       ),
                     )))

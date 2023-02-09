@@ -49,7 +49,7 @@ class JustLaunchedItem extends StatelessWidget {
                     style: thin.copyWith(fontSize: 22, color: Colors.white),
                   ),
                   Text(
-                    "${product?.price.toString()}",
+                    "₹ ${product?.price.toString()}",
                     style: medium.copyWith(fontSize: 22, color: Colors.white),
                   ),
                 ],

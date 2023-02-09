@@ -68,12 +68,12 @@ class _WebNavBar2State extends State<WebNavBar2> {
               ),
             ),
              SizedBox(
-              width: MediaQuery.of(context).size.width * 0.404,
+              width: MediaQuery.of(context).size.width * 0.0416,
             ),
             Flexible(
               child: SizedBox(
                 height: 50,
-                width: MediaQuery.of(context).size.width * 0.3,
+                width: MediaQuery.of(context).size.width * 0.4,
                 child: Material(
                   elevation: 10,
                   shadowColor: shadowColor2,

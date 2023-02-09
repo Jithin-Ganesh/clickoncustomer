@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/constants/color.dart';
+import '../../utils/img-provider-2.dart';
 import '../../utils/img-provider.dart';
 
 class RecentProductCard extends StatelessWidget {
@@ -24,19 +25,12 @@ class RecentProductCard extends StatelessWidget {
           children: [
             Stack(
               children: [
-                Container(
-                  height: 225,
-                  width: 172,
-                  child: Center(
-                    child: ImgProvider(
-                      url: image,
-                      height: 225,
-                      width: 172,
-                    ),
+                Center(
+                  child: ImgProvider2(
+                    url: image,
+                    height: 225,
+                    width: 172,radius: 10,
                   ),
-                  decoration: BoxDecoration(
-                      color: canvasColor,
-                      borderRadius: BorderRadius.circular(10)),
                 ),
                 Positioned(
                   top: 11,
