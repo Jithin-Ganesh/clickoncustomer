@@ -1,12 +1,13 @@
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:clickoncustomer/models/top-picks.dart';
+
 import 'package:clickoncustomer/providers/category-provider.dart';
 import 'package:clickoncustomer/utils/constants/color.dart';
-import 'package:clickoncustomer/utils/img-provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../utils/constants/fontStyles/kanit.dart';
+import '../utils/img-provider-2.dart';
+import '../utils/img-provider.dart';
 import 'products.dart';
 
 class TopPickItem extends StatefulWidget {
@@ -37,12 +38,12 @@ class _TopPickItemState extends State<TopPickItem> {
               height: 250,
               width: MediaQuery.of(context).size.width * 0.59,
               child: ListView.builder(
-                itemExtent: 185,
+               // itemExtent: 185,
                 itemCount: value.topPicks?.length,
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
                 itemBuilder: (context, index) {
-                  return Products(
+                  return TopPickBox(
                     height: 242,
                     image: value.topPicks?[index].image ?? "",
                     title: value.topPicks?[index].name ?? "",
@@ -117,6 +118,47 @@ class _TopPickItemState extends State<TopPickItem> {
                       ),
                 ),
               )),
+        ],
+      ),
+    );
+  }
+}
+
+
+
+
+
+class TopPickBox extends StatefulWidget {
+  final double? height;
+  final String image;
+  final String title;
+  const TopPickBox({Key? key, this.height, required this.image, required this.title}) : super(key: key);
+
+  @override
+  State<TopPickBox> createState() => _TopPickBoxState();
+}
+
+class _TopPickBoxState extends State<TopPickBox> {
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 30.0),
+      child: Column(
+        children: [
+          ImgProvider2(
+            url: widget.image,
+            height: 210,radius: 10,
+            width: MediaQuery.of(context).size.width * 0.096,
+          ),
+          const SizedBox(
+            height: 9.7,
+          ),
+          Text(maxLines:2,
+            widget.title,
+            style: medium.copyWith(fontSize: 16,color: categoriesTextColor),
+          )
         ],
       ),
     );

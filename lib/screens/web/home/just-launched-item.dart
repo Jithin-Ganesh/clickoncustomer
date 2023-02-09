@@ -1,3 +1,4 @@
+import 'package:clickoncustomer/screens/web/product-details/product-detail-screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../../models/product-model.dart';
@@ -19,38 +20,43 @@ class JustLaunchedItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: width,
-      height: height,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Stack(
-        children: [
-          ImgProvider(
-            url: product?.thumbnail ?? "",
-            radius: 10, height: 306,
-            width: MediaQuery.of(context).size.width * 0.154,
-            boxFit: BoxFit.fill,
-          ),
-          Positioned(
-            bottom: 21,
-            left: 23,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  product?.name ?? "",
-                  style: thin.copyWith(fontSize: 22, color: Colors.white),
-                ),
-                Text(
-                  "${product?.price.toString()}",
-                  style: medium.copyWith(fontSize: 22, color: Colors.white),
-                ),
-              ],
+    return InkWell(
+      onTap: (){
+        Navigator.pushNamed(context, ProductDetailScreenWeb.routeName,arguments: ProductDetailScreenWeb(productId: product?.id,));
+      },
+      child: Container(
+        width: width,
+        height: height,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Stack(
+          children: [
+            ImgProvider(
+              url: product?.thumbnail ?? "",
+              radius: 10, height: 306,
+              width: MediaQuery.of(context).size.width * 0.154,
+              boxFit: BoxFit.fill,
             ),
-          )
-        ],
+            Positioned(
+              bottom: 21,
+              left: 23,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    product?.name ?? "",
+                    style: thin.copyWith(fontSize: 22, color: Colors.white),
+                  ),
+                  Text(
+                    "${product?.price.toString()}",
+                    style: medium.copyWith(fontSize: 22, color: Colors.white),
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

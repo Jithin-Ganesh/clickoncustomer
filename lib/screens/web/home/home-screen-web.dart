@@ -83,7 +83,7 @@ class _HomeScreenWebState extends State<HomeScreenWeb> {
       desktop: Scaffold(
         backgroundColor: bgColor.withOpacity(0.3),
         appBar: const PreferredSize(
-            preferredSize: Size.fromHeight(175), child: WebNavBar2()),
+            preferredSize: Size.fromHeight(190), child: WebNavBar2()),
         body: const WebHomeScreen(),
       ),
     );
