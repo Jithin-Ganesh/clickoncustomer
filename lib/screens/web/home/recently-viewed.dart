@@ -31,7 +31,7 @@ class RecentlyViewedProducts extends StatelessWidget {
               child: ListView.builder(
                 itemBuilder: (context, index) =>
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                      padding: const EdgeInsets.only(right: 30.0),
                       child: RecentProductCard(image: value.recentProducts?[index].product?.thumbnail ?? '', id: value.recentProducts?[index].productId ?? 0,),
                     ),
                 itemCount: value.recentProducts?.length,
@@ -41,7 +41,7 @@ class RecentlyViewedProducts extends StatelessWidget {
         ),
         Positioned(
             top: 88,
-            right: 0,
+            right:MediaQuery.of(context).size.width * 0.073,
             child: InkWell(
               onTap: () {
 
@@ -66,7 +66,7 @@ class RecentlyViewedProducts extends StatelessWidget {
             )),
         Positioned(
             top: 88,
-            left: 0,
+            left: MediaQuery.of(context).size.width * 0.073,
             child: InkWell(
               onTap: () {
 

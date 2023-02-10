@@ -11,7 +11,7 @@ class JustLaunchedItem extends StatelessWidget {
   final double width;
   final double height;
   final ProductModel? product;
-  const JustLaunchedItem({
+  const   JustLaunchedItem({
     Key? key,
     required this.width,
     required this.height,
@@ -48,6 +48,7 @@ class JustLaunchedItem extends StatelessWidget {
                     product?.name ?? "",
                     style: thin.copyWith(fontSize: 22, color: Colors.white),
                   ),
+                  const SizedBox(height: 4,),
                   Text(
                     "₹ ${product?.price.toString()}",
                     style: medium.copyWith(fontSize: 22, color: Colors.white),

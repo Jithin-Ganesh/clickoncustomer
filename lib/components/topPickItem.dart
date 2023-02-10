@@ -144,7 +144,7 @@ class _TopPickBoxState extends State<TopPickBox> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30.0),
+      padding: const EdgeInsets.only(right: 30.0,left: 10),
       child: Column(
         children: [
           ImgProvider2(
@@ -153,7 +153,7 @@ class _TopPickBoxState extends State<TopPickBox> {
             width: MediaQuery.of(context).size.width * 0.096,
           ),
           const SizedBox(
-            height: 9.7,
+            height: 10.7,
           ),
           Text(maxLines:2,
             widget.title,

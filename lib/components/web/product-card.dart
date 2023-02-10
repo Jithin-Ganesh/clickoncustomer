@@ -2,6 +2,7 @@ import 'package:clickoncustomer/models/product-model.dart';
 import 'package:clickoncustomer/providers/user-provider.dart';
 import 'package:clickoncustomer/screens/web/product-details/product-detail-screen.dart';
 import 'package:clickoncustomer/utils/constants/color.dart';
+import 'package:clickoncustomer/utils/img-provider-2.dart';
 
 import 'package:clickoncustomer/utils/img-provider.dart';
 import 'package:flutter/cupertino.dart';
@@ -97,16 +98,7 @@ class _ProductCardState extends State<ProductCard> {
                                           )
                                         )),
                               )
-                            : Container(
-                                height: 31,
-                                width: 30,
-                                decoration:
-                                    const BoxDecoration(shape: BoxShape.circle,image: DecorationImage(
-                                        image: AssetImage(
-                                          "assets/images/icon-fav.png",
-                                        )
-                                    )),
-                              )),
+                            : const ImgProvider2(url: "assets/images/icon-fav.png",height: 31,width: 30,radius: 50,)),
                   )
                 ],
               ),

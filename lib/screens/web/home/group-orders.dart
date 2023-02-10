@@ -20,11 +20,11 @@ class GroupOrders extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 570,
+      height: 560,
       decoration: containerDecorationShadow,
       child: Padding(
         padding:
-            const EdgeInsets.only(left: 30.0, right: 29, top: 25, bottom: 42),
+            const EdgeInsets.only(left: 30.0, right: 29, top: 25,),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -139,7 +139,7 @@ class GroupOrders extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemCount: value.latestProducts?.length,
                   itemBuilder: (context, index) => Padding(
-                    padding: const EdgeInsets.all(13.0),
+                    padding: const EdgeInsets.only(right: 30.0),
                     child: GroupOrderItem(
                       product: value.latestProducts?[index],
                     ),

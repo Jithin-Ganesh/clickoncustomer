@@ -98,6 +98,7 @@ class BottomWebBar extends StatelessWidget {
                       Flexible(
                         flex: 1,
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             const ImgProvider(
                               url: "assets/images/clickOn-logo.png",

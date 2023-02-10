@@ -44,8 +44,7 @@ class _WebNavBar2State extends State<WebNavBar2> {
       centerTitle: false,
       title: Padding(
         padding: EdgeInsets.only(
-          left: MediaQuery.of(context).size.width * 0.078,top: 10
-        ),
+            left: MediaQuery.of(context).size.width * 0.078, top: 10),
         child: Row(
           children: [
             InkWell(
@@ -67,7 +66,7 @@ class _WebNavBar2State extends State<WebNavBar2> {
                 ],
               ),
             ),
-             SizedBox(
+            SizedBox(
               width: MediaQuery.of(context).size.width * 0.0416,
             ),
             Flexible(
@@ -279,14 +278,14 @@ class _WebNavBar2State extends State<WebNavBar2> {
                   children: [
                     InkWell(
                       onTap: () {
-                        // if (PrefUtils().getToken() != null) {
-                        //   Navigator.pushNamed(
-                        //       context, WishListScreen.routeName);
-                        // } else {
-                        //   Navigator.pushNamed(context, LoginScreen.routeName,
-                        //       arguments: const LoginScreen(isLoggedIn: true));
-                        // }
-                        Navigator.pushNamed(context,TemplateLanding.routeName);
+                        if (PrefUtils().getToken() != null) {
+                          Navigator.pushNamed(
+                              context, WishListScreen.routeName);
+                        } else {
+                          Navigator.pushNamed(context, LoginScreen.routeName,
+                              arguments: const LoginScreen(isLoggedIn: true));
+                        }
+                        // Navigator.pushNamed(context,TemplateLanding.routeName);
                       },
                       child: Image.asset(
                         'assets/images/icon-heart-oulined.png',
@@ -363,14 +362,16 @@ class _WebNavBar2State extends State<WebNavBar2> {
                   SizedBox(
                     width: 280,
                     child: Row(
-                     // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           'Home',
                           style: medium.copyWith(
                               color: contactTitleColor, fontSize: 16),
                         ),
-                        SizedBox(width: MediaQuery.of(context).size.width * 0.031,),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.031,
+                        ),
                         Text(
                           'Shop',
                           style: medium.copyWith(

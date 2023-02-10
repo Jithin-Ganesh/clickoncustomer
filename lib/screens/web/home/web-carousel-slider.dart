@@ -1,10 +1,9 @@
-import 'package:carousel_indicator/carousel_indicator.dart';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:clickoncustomer/providers/category-provider.dart';
 import 'package:clickoncustomer/utils/constants/color.dart';
 
-import 'package:clickoncustomer/utils/global-key.dart';
-import 'package:clickoncustomer/utils/img-provider.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -69,7 +68,7 @@ class _HomeBannerCarouselState extends State<HomeBannerCarousel> {
                 ?.asMap()
                 .map((i, item) => MapEntry(
                     i,
-                    Container(
+                    SizedBox(
                       height: 460,
                       // decoration:  BoxDecoration(
                       //     borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -82,7 +81,7 @@ class _HomeBannerCarouselState extends State<HomeBannerCarousel> {
                         url: item.image ?? '',
                         boxFit: BoxFit.fill,
                         height: 460,
-                        radius: 10,placeHolderBoxFit: BoxFit.contain,
+                        radius: 20,placeHolderBoxFit: BoxFit.contain,
                         width: MediaQuery.of(context).size.width,
                       ),
                     )))
@@ -91,7 +90,7 @@ class _HomeBannerCarouselState extends State<HomeBannerCarousel> {
           ),
         ),
         Consumer<CategoryProvider>(builder: (context, home, child) => Padding(
-            padding: const EdgeInsets.only(bottom: 20),
+            padding: const EdgeInsets.only(bottom: 5),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: home.homeBanners!.asMap().map((i, item) => MapEntry(i, ImageIndicators(currentPage: currentPage, index: i))).values.toList(),

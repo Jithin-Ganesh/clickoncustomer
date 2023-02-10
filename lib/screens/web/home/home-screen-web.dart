@@ -138,7 +138,7 @@ class _WebHomeScreenState extends State<WebHomeScreen> {
                   },
                 ),
                 const SizedBox(
-                  height: 44,
+                  height: 49,
                 ),
                 FutureBuilder(
                     future: context.read<CategoryProvider>().fetchCategory(),
@@ -178,7 +178,7 @@ class _WebHomeScreenState extends State<WebHomeScreen> {
                       ),
                     ),
                     const SizedBox(
-                      width: 20,
+                      width: 30,
                     ),
                     const ExlusiveOffer()
                   ],
@@ -190,32 +190,43 @@ class _WebHomeScreenState extends State<WebHomeScreen> {
                 const SizedBox(
                   height: 45,
                 ),
-                Visibility(
-                  visible: false,
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Best Selling Products',
-                            style: medium.copyWith(color: Colors.black, fontSize: 28),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 12,
-                      ),
-                       CustomTabBarView(),
-                    ],
-                  ),
+
+
+
+              ],
+            ),
+          ),
+          Visibility(
+            visible: true,
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Best Selling Products',
+                      style: medium.copyWith(color: Colors.black, fontSize: 28),
+                    ),
+                  ],
                 ),
                 const SizedBox(
-                  height: 55,
+                  height: 12,
+                ),
+                const CustomTabBarView(),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(
+                left: 150.0, right: 150, top: 42, bottom: 60),
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 49,
                 ),
                 FutureBuilder(
                     future: Provider.of<CategoryProvider>(context,
-                            listen: false)
+                        listen: false)
                         .fetchProductsForYou(),
                     builder: (context, snapshot) {
                       if (snapshot.connectionState ==
@@ -246,9 +257,7 @@ class _WebHomeScreenState extends State<WebHomeScreen> {
                         snapshot.error.toString(),
                       );
                     }),
-                const SizedBox(
-                  height: 60,
-                ),
+
                 const Divider(
                   color: horizontalDividerColor,
                   height: 1,
@@ -323,30 +332,30 @@ class _WebHomeScreenState extends State<WebHomeScreen> {
                   ],
                 ),
                 const SizedBox(
-                  height: 31,
+                  height: 26,
                 ),
-                FutureBuilder(
-                    future:
-                        Provider.of<CategoryProvider>(context, listen: false)
-                            .fetchRecentProducts(),
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return const ShimmerLoading(
-                          isLoading: true,
-                          child: ProductsShimmerList(),
-                        );
-                      } else {
-                        if (snapshot.hasData) {
-                          return const RecentlyViewedProducts();
-                        }
-                      }
-                      return Text(
-                        snapshot.error.toString(),
-                      );
-                    }),
               ],
             ),
           ),
+          FutureBuilder(
+              future:
+              Provider.of<CategoryProvider>(context, listen: false)
+                  .fetchRecentProducts(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const ShimmerLoading(
+                    isLoading: true,
+                    child: ProductsShimmerList(),
+                  );
+                } else {
+                  if (snapshot.hasData) {
+                    return const RecentlyViewedProducts();
+                  }
+                }
+                return Text(
+                  snapshot.error.toString(),
+                );
+              }),
           const BottomWebBar()
         ],
       ),
