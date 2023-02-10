@@ -1,4 +1,6 @@
 
+import 'dart:developer';
+
 import 'package:clickoncustomer/providers/category-provider.dart';
 import 'package:clickoncustomer/utils/constants/color.dart';
 import 'package:flutter/cupertino.dart';
@@ -22,11 +24,15 @@ class _TopPickItemState extends State<TopPickItem> {
 
   @override
   void initState() {
-    // TODO: implement initState
-    _scrollController = ScrollController();
     super.initState();
+    _scrollController = ScrollController();
   }
 
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -38,6 +44,7 @@ class _TopPickItemState extends State<TopPickItem> {
               height: 250,
               width: MediaQuery.of(context).size.width * 0.59,
               child: ListView.builder(
+                controller: _scrollController,
                // itemExtent: 185,
                 itemCount: value.topPicks?.length,
                 scrollDirection: Axis.horizontal,
@@ -78,7 +85,14 @@ class _TopPickItemState extends State<TopPickItem> {
               top: 88,
               right: 0,
               child: InkWell(
-                onTap: () {},
+                onTap: () {
+                  log('pressed');
+                  _scrollController.animateTo(
+                    _scrollController.offset + 190,
+                    duration: Duration(milliseconds: 300),
+                    curve: Curves.easeOut,
+                  );
+                },
                 child: Container(
                   height: 37,
                   width: 37,
@@ -100,11 +114,16 @@ class _TopPickItemState extends State<TopPickItem> {
               top: 88,
               left: 0,
               child: InkWell(
-                onTap: () {},
+                onTap: () {log('pressed');
+                _scrollController.animateTo(
+                  _scrollController.offset - 190,
+                  duration: Duration(milliseconds: 300),
+                  curve: Curves.easeIn,
+                );
+                },
                 child: Container(
                   height: 37,
                   width: 37,
-                  child: const Icon(Icons.keyboard_arrow_left_outlined),
                   decoration: const BoxDecoration(
                       shape: BoxShape.circle, color: canvasColor
                       // boxShadow: [
@@ -116,6 +135,7 @@ class _TopPickItemState extends State<TopPickItem> {
                       //   ),
                       // ],
                       ),
+                  child: const Icon(Icons.keyboard_arrow_left_outlined),
                 ),
               )),
         ],
