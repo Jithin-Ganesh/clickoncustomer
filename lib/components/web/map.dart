@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:google_maps/google_maps.dart';
 import 'dart:ui' as ui;
 
-
 Widget getMap() {
   String htmlId = "7";
 
@@ -21,14 +20,20 @@ Widget getMap() {
       ..style.height = "100%"
       ..style.border = 'none';
 
-
     final map = GMap(elem, mapOptions);
 
     Marker(MarkerOptions()
       ..position = myLatlng
       ..map = map
-      ..title = 'Hello World!'
-    );
+      ..title = 'Hello World!');
+
+    Circle(CircleOptions()
+      ..center = myLatlng
+      ..radius = 40000
+      ..map = map
+      ..visible = true
+      // ..strokeColor = "0xff009AFF"
+      ..fillColor = "0xff009AFF");
 
     return elem;
   });
