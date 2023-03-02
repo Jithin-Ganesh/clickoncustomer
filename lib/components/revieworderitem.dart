@@ -1,3 +1,4 @@
+import 'package:clickoncustomer/models/cart-products.dart';
 import 'package:clickoncustomer/models/product-model.dart';
 import 'package:clickoncustomer/utils/constants/color.dart';
 import 'package:clickoncustomer/utils/constants/fontStyles/kanit.dart';
@@ -18,7 +19,7 @@ class ReviewOrderItem extends StatelessWidget {
       this.product})
       : super(key: key);
   final String title;
-  final ProductModel? product;
+  final CartProduct? product;
   final bool isOrder;
   final bool isGift;
 
@@ -127,7 +128,7 @@ class ReviewOrderItem extends StatelessWidget {
                     width: 5,
                   ),
                   Text(
-                    product?.price as String ,
+                    product?.amount.toString() ?? '',
                     style: medium.copyWith(fontSize: 17, color: primaryColor),
                   ),
                   const SizedBox(

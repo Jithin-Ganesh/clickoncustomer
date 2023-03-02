@@ -15,7 +15,14 @@ class UserProvider with ChangeNotifier {
   String? billingAddress;
   User? user;
   List<ProductModel> wishList = [];
+  bool isOnline = false;
 
+
+  setOnline({required int index}){
+    isOnline = index == 1;
+    log('set online');
+    notifyListeners();
+  }
 
   clearUserOnLogout() {
     addressList?.clear();

@@ -19,7 +19,7 @@ import '../utils/toast-message.dart';
 
 class PaymentBank extends StatefulWidget {
   const PaymentBank(
-      {Key? key, required this.isPay, required this.isCvv, this.cart})
+      {Key? key, required this.isPay, required this.isCvv, this.cart, })
       : super(key: key);
   final bool isPay;
   final bool isCvv;
@@ -57,12 +57,7 @@ class _PaymentBankState extends State<PaymentBank> {
     final order =
     Provider.of<CartProvider>(context, listen: false).getOnlineOrder();
     Navigator.pushNamedAndRemoveUntil(context, HomeScreenWeb.routeName, (route) => false);
-    // Navigator.of(context).pushNamedAndRemoveUntil(
-    //     PaymentSuccessMobile.routeName, (route) => false,
-    //     arguments: PaymentSuccessMobile(
-    //       response: response,
-    //       cartId: _args?.cartId,
-    //     ));
+
     showSnackBar(message: "Order Placed", context: context, );
     /*Fluttertoast.showToast(
         msg: "SUCCESS: " + response.paymentId!,
@@ -178,9 +173,8 @@ class _PaymentBankState extends State<PaymentBank> {
             widget.isPay
                 ?  ButtonElevated(
                     onPressed: ()async{
-                      await Provider.of<OrderProvider>(context,listen: false).addCod(products: widget.cart?.cartProducts);
+                      await Provider.of<OrderProvider>(context,listen: false).addCartProducts(products: widget.cart?.cartProducts);
                       placeOrder(
-                          payOnline: [widget.cart?.cartProducts?[0].id],
                           cartId: widget.cart?.id,
                           billing: value.selectedAddress?.id,
                           shipping: value.selectedAddress?.id);
@@ -203,7 +197,6 @@ class _PaymentBankState extends State<PaymentBank> {
 
   placeOrder(
       {
-        required List<int?> payOnline,
         required int? shipping,
         required int? billing,
         required int? cartId}) {
@@ -211,12 +204,10 @@ class _PaymentBankState extends State<PaymentBank> {
         .placeOrder(
         shipping: shipping,
         billing: billing,
-        cartId: cartId,
-        payOnline: payOnline)
+        cartId: cartId, mode: 2)
         .then((value) {
       if (value) {
         Navigator.pushNamedAndRemoveUntil(context, HomeScreenWeb.routeName, (route) => false);
-
       }
     });
   }

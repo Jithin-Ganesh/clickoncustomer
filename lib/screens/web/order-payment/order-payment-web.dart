@@ -11,6 +11,7 @@ import '../../../components/web/WebNavBar2.dart';
 import '../../../components/web/zig-zag-sheet.dart';
 import '../../../models/address.dart';
 import '../../../models/user.dart';
+import '../../../providers/cart-provider.dart';
 import '../../../providers/user-provider.dart';
 import '../../../utils/constants/color.dart';
 
@@ -94,17 +95,19 @@ class _PaymentOrderScreenWebState extends State<PaymentOrderScreenWeb> {
                           height: 14,
                         ),
                         DeliveryAddress(context),
-                        // const SizedBox(
-                        //   height: 14,
-                        // ),
-                        // Consumer<UserProvider>(builder: (context, value, child) => Checkout(
-                        //     title: 'Review Order',
-                        //     text: value.selectedAddress?.getFullAddress() ?? '',
-                        //     isAccount: false,
-                        //     isSubmit: true,
-                        //     isProcessing: false,
-                        //   ),
-                        // ),
+                        const SizedBox(
+                          height: 14,
+                        ),
+                        Consumer<CartProvider>(builder: (context, value, child) => Checkout(
+                            title: 'Review Order',
+                            text: '${value.cart?.cartProducts?.length.toString()} Items',
+                            isAccount: false,
+                            isSubmit: true,buttonTitle: 'Edit Items',
+                            isProcessing: false,onPressed: (){
+                              Navigator.pop(context);
+                        },
+                          ),
+                        ),
                         const SizedBox(
                           height: 14,
                         ),

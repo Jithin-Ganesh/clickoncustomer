@@ -92,18 +92,24 @@ class _ReviewOrderScreenWebState extends State<ReviewOrderScreenWeb> {
                             height: 14,
                           ),
                           DeliveryAddress(context),
-                          // const SizedBox(
-                          //   height: 14,
-                          // ),
-                          // const StepperReview(),
                           const SizedBox(
                             height: 14,
                           ),
-                          value.selectedAddress == null ? PaymentTile() :  PaymentItem(
-                              imageIcon: 'assets/images/icon-book-mark.png',
-                              title: 'Demo',
-                              isCvv: true,
-                              isPay: true)
+                          value.selectedAddress == null ? const PaymentTile(text: 'Review',number: '3',) : const StepperReview(),
+                          const SizedBox(
+                            height: 14,
+                          ),
+                          Visibility(
+                              visible: value.isOnline,
+                              child: PaymentTile()),
+                          // Visibility(
+                          //   visible: value.isOnline,
+                          //   child: const PaymentItem(
+                          //       imageIcon: 'assets/images/icon-book-mark.png',
+                          //       title: 'Demo',
+                          //       isCvv: true,
+                          //       isPay: true),
+                          // )
                         ],
                       ),
                     ),
@@ -198,8 +204,8 @@ class _ReviewOrderScreenWebState extends State<ReviewOrderScreenWeb> {
                                         showDialog(
                                             context: context,
                                             builder: (BuildContext context) {
-                                              return Padding(
-                                                padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                                              return const Padding(
+                                                padding: EdgeInsets.symmetric(horizontal: 30.0),
                                                 child: AddressListAlertBox( ),
                                               );
                                             });
@@ -219,8 +225,10 @@ class _ReviewOrderScreenWebState extends State<ReviewOrderScreenWeb> {
 }
 
 class PaymentTile extends StatelessWidget {
+  final String? text;
+  final String? number;
   const PaymentTile({
-    Key? key,
+    Key? key, this.text, this.number,
   }) : super(key: key);
 
   @override
@@ -238,13 +246,13 @@ class PaymentTile extends StatelessWidget {
         ],
       ),
       width: MediaQuery.of(context).size.width * 0.622,
-      child: const Padding(
-        padding: EdgeInsets.symmetric(vertical: 25.0, horizontal: 15),
-        child: const PaymentTitle(
-            title: 'Payment',
+      child:  Padding(
+        padding: const EdgeInsets.symmetric(vertical: 25.0, horizontal: 15),
+        child:  PaymentTitle(
+            title: text ?? 'Payment',
             isProcessing: false,
             isSubmit: false,
-            slNumber: '3'),
+            slNumber: number ?? '4'),
       ),
     );
   }

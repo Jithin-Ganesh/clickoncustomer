@@ -15,10 +15,10 @@ import '../utils/toast-message.dart';
 class OrderInterface {
   //  placeOrder
   static Future<bool> placeOrder(
-      {required List<int?> cod,
-      required List<int?> payOnline,
+      {required List<int?> cartProducts,
       required int? shipping,
       required int? billing,
+      required int? mode,
       required int? cartId}) async {
     try {
       final response = await ApiRequest.send(
@@ -26,8 +26,8 @@ class OrderInterface {
           body: {
             "billingAddress": billing,
             "shippingAddress": shipping,
-            "pay_online_products": [0],
-            "cod_products": cod
+            'payment_mode': mode,
+            "cart_products": cartProducts
           },
           route: "cart/$cartId/checkout",
           queries: {});
@@ -36,6 +36,25 @@ class OrderInterface {
       throw ApiException(err.toString());
     }
   }
+
+  // static Future<bool> payementDetails(
+  //     {required int? businessId,required int paymentMode}) async {
+  //   try {
+  //     final response = await ApiRequest.send(
+  //         method: ApiMethod.POST,
+  //         body: {
+  //           "email": "string",
+  //           "is_international_shipping_allowed": true,
+  //           "payment_modes": paymentMode
+  //         },
+  //         route: "cart/$cartId/checkout",
+  //         queries: {});
+  //     return response['success'] ?? false;
+  //   } catch (err) {
+  //     throw ApiException(err.toString());
+  //   }
+  // }
+
 
   static Future<bool> orderCancel({
     required int? orderId,
