@@ -121,14 +121,7 @@ class ReviewOrderItem extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    textRupees,
-                    style: regular.copyWith(fontSize: 18, color: primaryColor),
-                  ),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  Text(
-                    product?.amount.toString() ?? '',
+                    product?.sellingPrice ?? '',
                     style: medium.copyWith(fontSize: 17, color: primaryColor),
                   ),
                   const SizedBox(
@@ -147,7 +140,7 @@ class ReviewOrderItem extends StatelessWidget {
                     width: 5,
                   ),
                   Text(
-                    product?.offer.toString() ?? '',
+                    product?.amount.toString() ?? '',
                     style: medium.copyWith(
                         decoration: TextDecoration.lineThrough,
                         decorationColor: offerPriceColor,
@@ -168,20 +161,20 @@ class ReviewOrderItem extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.only(left: 0.69),
                       child: Text(
-                        discount,
+                        product?.offer ?? '',
                         textAlign: TextAlign.center,
                         style: regular.copyWith(
                             fontSize: 12, color: defaultTextColor),
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    textYourCartOffer,
-                    style: medium.copyWith(fontSize: 12, color: mainTitleColor),
-                  )
+                  // const SizedBox(
+                  //   width: 10,
+                  // ),
+                  // Text(
+                  //   textYourCartOffer,
+                  //   style: medium.copyWith(fontSize: 12, color: mainTitleColor),
+                  // )
                 ],
               ),
               const SizedBox(
@@ -236,68 +229,68 @@ class ReviewOrderItem extends StatelessWidget {
                   const SizedBox(
                     width: 5,
                   ),
-                  isGift
-                      ? Container(
-                          width: 170,
-                          height: 30,
-                          decoration: const BoxDecoration(
-                            color: addGiftButtonColor,
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(5)),
-                          ),
-                          child: Row(
-                            children: [
-                              const SizedBox(
-                                width: 23,
-                              ),
-                              const ImgProvider(
-                                url: "assets/images/img_24.png",
-                                width: 12,
-                                height: 12,
-                              ),
-                              const SizedBox(
-                                width: 18,
-                              ),
-                              Text(
-                                textAlign: TextAlign.center,
-                                textAddGiftOptions,
-                                style: regular.copyWith(
-                                    fontSize: 12, color: Colors.white),
-                              ),
-                            ],
-                          ))
-                      : Container(
-                          width: 170,
-                          height: 30,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(
-                                color: addGiftBorderColor, width: 1.5),
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(5)),
-                          ),
-                          child: Row(
-                            children: [
-                              const SizedBox(
-                                width: 23,
-                              ),
-                              const ImgProvider(
-                                url: "assets/images/img_24.png",
-                                width: 12,
-                                height: 12,
-                                color: addGiftButtonColor,
-                              ),
-                              const SizedBox(
-                                width: 18,
-                              ),
-                              Text(
-                                textAlign: TextAlign.center,
-                                textAddGiftOptions,
-                                style: regular.copyWith(
-                                    fontSize: 12, color: mainTitleColor),
-                              ),
-                            ],
-                          ))
+                  // isGift
+                  //     ? Container(
+                  //         width: 170,
+                  //         height: 30,
+                  //         decoration: const BoxDecoration(
+                  //           color: addGiftButtonColor,
+                  //           borderRadius:
+                  //               const BorderRadius.all(Radius.circular(5)),
+                  //         ),
+                  //         child: Row(
+                  //           children: [
+                  //             const SizedBox(
+                  //               width: 23,
+                  //             ),
+                  //             const ImgProvider(
+                  //               url: "assets/images/img_24.png",
+                  //               width: 12,
+                  //               height: 12,
+                  //             ),
+                  //             const SizedBox(
+                  //               width: 18,
+                  //             ),
+                  //             Text(
+                  //               textAlign: TextAlign.center,
+                  //               textAddGiftOptions,
+                  //               style: regular.copyWith(
+                  //                   fontSize: 12, color: Colors.white),
+                  //             ),
+                  //           ],
+                  //         ))
+                  //     : Container(
+                  //         width: 170,
+                  //         height: 30,
+                  //         decoration: BoxDecoration(
+                  //           color: Colors.white,
+                  //           border: Border.all(
+                  //               color: addGiftBorderColor, width: 1.5),
+                  //           borderRadius:
+                  //               const BorderRadius.all(Radius.circular(5)),
+                  //         ),
+                  //         child: Row(
+                  //           children: [
+                  //             const SizedBox(
+                  //               width: 23,
+                  //             ),
+                  //             const ImgProvider(
+                  //               url: "assets/images/img_24.png",
+                  //               width: 12,
+                  //               height: 12,
+                  //               color: addGiftButtonColor,
+                  //             ),
+                  //             const SizedBox(
+                  //               width: 18,
+                  //             ),
+                  //             Text(
+                  //               textAlign: TextAlign.center,
+                  //               textAddGiftOptions,
+                  //               style: regular.copyWith(
+                  //                   fontSize: 12, color: mainTitleColor),
+                  //             ),
+                  //           ],
+                  //         ))
                 ],
               )
             ],

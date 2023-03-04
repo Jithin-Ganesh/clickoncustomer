@@ -100,7 +100,7 @@ class _PaymentOrderScreenWebState extends State<PaymentOrderScreenWeb> {
                         ),
                         Consumer<CartProvider>(builder: (context, value, child) => Checkout(
                             title: 'Review Order',
-                            text: '${value.cart?.cartProducts?.length.toString()} Items',
+                            text: '${value.onlineProductList.length.toString()} Items',
                             isAccount: false,
                             isSubmit: true,buttonTitle: 'Edit Items',
                             isProcessing: false,onPressed: (){
@@ -168,7 +168,7 @@ class _PaymentOrderScreenWebState extends State<PaymentOrderScreenWeb> {
                   const SizedBox(
                     height: 17,
                   ),
-                  Container(
+                  SizedBox(
                     height: 55,
                     width: 655,
                     child: Row(
@@ -214,8 +214,8 @@ class _PaymentOrderScreenWebState extends State<PaymentOrderScreenWeb> {
                         showDialog(
                             context: context,
                             builder: (BuildContext context) {
-                              return Padding(
-                                padding: const EdgeInsets.symmetric(
+                              return const Padding(
+                                padding: EdgeInsets.symmetric(
                                     horizontal: 30.0),
                                 child: AddAddressWeb(
                                   isEdit: false,

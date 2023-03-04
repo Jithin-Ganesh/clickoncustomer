@@ -1,3 +1,10 @@
+import 'banner.dart';
+
+
+enum PaymentMode {
+  COD,
+  PAYONLINE
+}
 
 class CartProduct {
   int? id;
@@ -7,7 +14,7 @@ class CartProduct {
   int? quantity;
   String? description;
   int? amount;
-  double? offer;
+  String? offer;
   String? productCode;
   String? hSN;
   int? cGST;
@@ -15,9 +22,16 @@ class CartProduct {
   int? deliveryCharge;
   int? businessId;
   int? sGST;
+  Null? invontery;
   int? cartId;
   String? createdAt;
   String? updatedAt;
+  Business? business;
+  String? sellingPrice;
+
+  //Internal purpose
+  PaymentMode? paymentMode;
+
 
   CartProduct(
       {this.id,
@@ -35,9 +49,12 @@ class CartProduct {
         this.deliveryCharge,
         this.businessId,
         this.sGST,
+        this.invontery,
         this.cartId,
         this.createdAt,
-        this.updatedAt});
+        this.updatedAt,
+        this.business,
+        this.sellingPrice});
 
   CartProduct.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -55,9 +72,19 @@ class CartProduct {
     deliveryCharge = json['deliveryCharge'];
     businessId = json['businessId'];
     sGST = json['SGST'];
+    invontery = json['invontery'];
     cartId = json['cartId'];
     createdAt = json['createdAt'];
     updatedAt = json['updatedAt'];
+    business = json['business'] != null
+        ? new Business.fromJson(json['business'])
+        : null;
+    sellingPrice = json['selling_price'];
+  }
+
+
+  void setPaymentMode(PaymentMode mode) {
+    paymentMode = mode;
   }
 
   static List<CartProduct> convertToList(List<dynamic> list) {
@@ -68,4 +95,3 @@ class CartProduct {
     return data;
   }
 }
-

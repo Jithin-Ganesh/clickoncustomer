@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:clickoncustomer/models/checkout-model.dart';
 import 'package:clickoncustomer/models/order_review_model.dart';
 import 'package:clickoncustomer/utils/global-key.dart';
 import 'package:flutter/cupertino.dart';
@@ -14,11 +15,10 @@ import '../utils/toast-message.dart';
 
 class OrderInterface {
   //  placeOrder
-  static Future<bool> placeOrder(
+  static Future<CheckOutModel> checkOutOnline(
       {required List<int?> cartProducts,
       required int? shipping,
       required int? billing,
-      required int? mode,
       required int? cartId}) async {
     try {
       final response = await ApiRequest.send(
@@ -26,12 +26,35 @@ class OrderInterface {
           body: {
             "billingAddress": billing,
             "shippingAddress": shipping,
-            'payment_mode': mode,
+            'payment_mode': 2,
             "cart_products": cartProducts
           },
           route: "cart/$cartId/checkout",
           queries: {});
-      return response['success'] ?? false;
+        return CheckOutModel.fromJson(response);
+    } catch (err) {
+      throw ApiException(err.toString());
+    }
+  }
+
+  static Future<bool> checkOutCod(
+      {required List<int?> cartProducts,
+        required int? shipping,
+        required int? billing,
+        required int? cartId}) async {
+    try {
+      final response = await ApiRequest.send(
+          method: ApiMethod.POST,
+          body: {
+            "billingAddress": billing,
+            "shippingAddress": shipping,
+            'payment_mode': 1,
+            "cart_products": cartProducts
+          },
+          route: "cart/$cartId/checkout",
+          queries: {});
+        return response['success'] ?? false;
+
     } catch (err) {
       throw ApiException(err.toString());
     }
@@ -87,7 +110,7 @@ class OrderInterface {
             : "order",
         queries: {},
       );
-      return OrderReviewModel.convertToList(response);
+      return OrderReviewModel.convertToList(response['order']);
     } catch (error) {
       log("order error: $error");
       return [];

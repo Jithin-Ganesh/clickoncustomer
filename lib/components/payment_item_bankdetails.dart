@@ -4,6 +4,7 @@ import 'package:clickoncustomer/components/elevated-buton.dart';
 import 'package:clickoncustomer/providers/cart-provider.dart';
 import 'package:clickoncustomer/providers/user-provider.dart';
 import 'package:clickoncustomer/screens/web/home/home-screen-web.dart';
+import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
@@ -39,45 +40,12 @@ class _PaymentBankState extends State<PaymentBank> {
   void initState() {
     super.initState();
     _razorpay = Razorpay();
-    _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
-    _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
-    _razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
   }
 
   @override
   void dispose() {
     super.dispose();
     _razorpay.clear();
-  }
-
-
-  void _handlePaymentSuccess(PaymentSuccessResponse response) {
-    print('Success Response: $response');
-    AutofillHints.organizationName;
-    final order =
-    Provider.of<CartProvider>(context, listen: false).getOnlineOrder();
-    Navigator.pushNamedAndRemoveUntil(context, HomeScreenWeb.routeName, (route) => false);
-
-    showSnackBar(message: "Order Placed", context: context, );
-    /*Fluttertoast.showToast(
-        msg: "SUCCESS: " + response.paymentId!,
-        toastLength: Toast.LENGTH_SHORT); */
-  }
-
-  void _handlePaymentError(PaymentFailureResponse response) {
-    log('Error Response: $response');
-    Navigator.pushNamedAndRemoveUntil(context, HomeScreenWeb.routeName, (route) => false);
-    showSnackBar(message: "Order Not Placed", context: context, );
-    /* Fluttertoast.showToast(
-        msg: "ERROR: " + response.code.toString() + " - " + response.message!,
-        toastLength: Toast.LENGTH_SHORT); */
-  }
-
-  void _handleExternalWallet(ExternalWalletResponse response) {
-    log('External SDK Response: $response');
-    /* Fluttertoast.showToast(
-        msg: "EXTERNAL_WALLET: " + response.walletName!,
-        toastLength: Toast.LENGTH_SHORT); */
   }
 
 
@@ -173,11 +141,13 @@ class _PaymentBankState extends State<PaymentBank> {
             widget.isPay
                 ?  ButtonElevated(
                     onPressed: ()async{
-                      await Provider.of<OrderProvider>(context,listen: false).addCartProducts(products: widget.cart?.cartProducts);
-                      placeOrder(
-                          cartId: widget.cart?.id,
-                          billing: value.selectedAddress?.id,
-                          shipping: value.selectedAddress?.id);
+                      Provider.of<PaymentProvider>(
+                          context,
+                          listen: false)
+                          .startPaymentForWeb(billing: value.selectedAddress?.id,
+                        shipping: value.selectedAddress?.id,
+                        context: context,
+                      );
                     },
                     buttonTitle: textPayNow,
                     isButtonEnable: true,
@@ -194,59 +164,4 @@ class _PaymentBankState extends State<PaymentBank> {
     );
   }
 
-
-  placeOrder(
-      {
-        required int? shipping,
-        required int? billing,
-        required int? cartId}) {
-    Provider.of<OrderProvider>(context, listen: false)
-        .placeOrder(
-        shipping: shipping,
-        billing: billing,
-        cartId: cartId, mode: 2)
-        .then((value) {
-      if (value) {
-        Navigator.pushNamedAndRemoveUntil(context, HomeScreenWeb.routeName, (route) => false);
-      }
-    });
-  }
-
-
-  // placeOrder(
-  //     {
-  //     required List<int?> payOnline,
-  //     required int? shipping,
-  //     required int? billing,
-  //     required int? cartId}) {
-  //
-  //
-  //   log('pressed');
-  //
-  //     log('web checkout....................');
-  //     Provider.of<PaymentProvider>(context, listen: false)
-  //         .startPaymentForWeb(routeType: 'cart',
-  //         context: context,
-  //         id: cartId, shipping: shipping, billing: billing,  payOnline: payOnline);
-  //
-  //
-  //   _razorpay.on(
-  //       Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
-  //   _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
-  //   _razorpay.on(
-  //       Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
-  //
-  //   // Provider.of<OrderProvider>(context, listen: false)
-  //   //     .placeOrder(
-  //   //         shipping: shipping,
-  //   //         billing: billing,
-  //   //         cartId: cartId,
-  //   //         payOnline: payOnline)
-  //   //     .then((value) {
-  //   //   if (value) {
-  //   //    Navigator.pushNamedAndRemoveUntil(context, HomeScreenWeb.routeName, (route) => false);
-  //   //
-  //   //   }
-  //   // });
-  // }
 }

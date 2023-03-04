@@ -1,25 +1,50 @@
 import 'dart:developer';
 
+import 'package:clickoncustomer/components/revieworderitem.dart';
+import 'package:clickoncustomer/models/cart-products.dart';
 import 'package:clickoncustomer/models/product-model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 
 import '../interfaces/cart-interface.dart';
+import '../interfaces/order-interface.dart';
 import '../interfaces/user-interface.dart';
 import '../models/cart.dart';
 import '../models/checkout-model.dart';
 import '../models/payment-result.dart';
+import '../models/review-order.dart';
 
 class CartProvider extends ChangeNotifier {
   Cart? cart;
   int quantity = 1;
-  CheckoutModel? onlineOrder;
+  CheckOutModel? onlineOrder;
   PaymentResult? paymentResultItem;
+  ReviewOrder? reviewOrderItem;
   List<GetWishList> wishList = [];
   List<ProductModel> buy = [];
   List<GetWishList> saveList = [];
   GetWishList? wishListModel;
   ProductModel? productModel;
+
+
+
+
+
+
+
+  List<CartProduct?> get codProductList {
+    return cart != null ? cart!.cartProducts?.where((element) => element.paymentMode == PaymentMode.COD).toList() ?? [] : [];
+  }
+
+  List<CartProduct?> get onlineProductList {
+    return cart != null ? cart!.cartProducts?.where((element) => element.paymentMode == PaymentMode.PAYONLINE).toList() ?? [] : [];
+  }
+
+
+
+
+
+
 
   // add to wishlist
   Future<bool> addToWishList({required int? productId}) async {
@@ -36,10 +61,10 @@ class CartProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-
   bool isWishListed(int? productId) {
     if (wishList.isNotEmpty) {
-      final index = wishList.indexWhere((element) => element.productModel?.id == productId);
+      final index = wishList
+          .indexWhere((element) => element.productModel?.id == productId);
       log("true");
       return index > -1;
     } else {
@@ -48,7 +73,33 @@ class CartProvider extends ChangeNotifier {
     }
   }
 
+  Future<CheckOutModel> checkOutOnline({
+    required int? shipping,
+    required int? billing,
+  }) async {
+    final response = await OrderInterface.checkOutOnline(
+        cartId: cart?.id,
+        billing: billing,
+        cartProducts: onlineProductList.map((e) => e?.id).toList(),
+        shipping: shipping, );
+    //cart = null;
+    notifyListeners();
+    return response;
+  }
 
+  Future<bool> checkOutCod({
+    required int? shipping,
+    required int? billing,
+  }) async {
+    final response = await OrderInterface.checkOutCod(
+        cartId: cart?.id,
+        billing: billing,
+        cartProducts:  codProductList.map((e) => e?.id).toList(),
+        shipping: shipping, );
+    //cart = null;
+    notifyListeners();
+    return response;
+  }
 
   void setQuantity({required int qty}) {
     quantity = qty;
@@ -98,58 +149,29 @@ class CartProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<CheckoutModel?> checkOutOrder(
-      {required int payment,
-        required String routeType,
-        required List<int?> payOnline,
-        required int? shipping,
-        required int? billing,
-        required int? id}) async {
-    Map<String, dynamic> _map = {
-      "billingAddress": billing,
-      "wallet_debit": 0,
-      "shippingAddress": shipping,
-      "pay_online_products": payOnline ,
-      "cod_products": [
-        0
-      ]
-    };
-    onlineOrder = await CartInterface.checkOutOrder(
-      id: id,
-      routeType: routeType, body: _map,
-    );
-    notifyListeners();
-    // if (shippingAddress != null && billingAddress != null) {
-    //   onlineOrder = await CartInterface.checkOutOrder(
-    //     id: id,
-    //     routeType: routeType, body: _map,
-    //   );
-    //   notifyListeners();
-    // } else {
-    //   showMessage(
-    //     isSuccess: false,
-    //     message: 'Please select all the fields.',
-    //   );
-    // }
-
-    return onlineOrder;
-  }
 
 
   Future<PaymentResult?> paymentResult({
     required PaymentSuccessResponse? payment,
-    required int? id,
-    required String routeType,
   }) async {
     paymentResultItem = await CartInterface.paymentResult(
-        payment: payment, id: id, routeType: routeType);
+        payment: payment, id: cart?.id,);
     notifyListeners();
     return paymentResultItem;
   }
 
-
-  CheckoutModel? getOnlineOrder() {
-    return onlineOrder;
+  Future<ReviewOrder?> reviewOrder(
+      {required int? cartId, required int? shippingId}) async {
+    reviewOrderItem = await CartInterface.reviewOrder(
+        id: cartId,
+        onlineProducts: onlineProductList.map((e) => e?.id).toList(),
+        shippingId: shippingId,
+        codProducts: codProductList.map((e) => e?.id).toList());
+    notifyListeners();
+    return reviewOrderItem;
   }
 
+  CheckOutModel? getOnlineOrder() {
+    return onlineOrder;
+  }
 }

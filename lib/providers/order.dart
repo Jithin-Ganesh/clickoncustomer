@@ -19,20 +19,7 @@ class OrderProvider extends ChangeNotifier {
   }
 
 
-  Future<bool> placeOrder({
-    required int? shipping,
-    required int? billing, required int? mode,
-    required int? cartId,
-  }) async {
-    final response = await OrderInterface.placeOrder(
-        cartId: cartId,
-        billing: billing,
-        cartProducts: cartProducts,
-        shipping: shipping, mode: mode);
-    cartProducts.clear();
-    notifyListeners();
-    return response;
-  }
+
 
   Future<bool> orderCancel({
     required String? cancellationReason,

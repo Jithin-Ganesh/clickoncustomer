@@ -2,6 +2,7 @@ import 'dart:math';
 
 
 
+import 'package:clickoncustomer/models/review-order.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 
 import '../models/cart.dart';
@@ -131,7 +132,7 @@ class CartInterface {
   }
 
   //checkout
-  static Future<CheckoutModel?> checkOutOrder(
+  static Future<CheckOutModel?> checkOutOrder(
       {required String routeType, required int? id, required Map<String, dynamic> body}) async {
     try {
       final response = await ApiRequest.send(
@@ -140,7 +141,7 @@ class CartInterface {
           body: body,
           queries: {});
 
-      return CheckoutModel.fromJson(response);
+      return CheckOutModel.fromJson(response['data']);
     } catch (err) {
       throw ApiException(err.toString());
     }
@@ -151,7 +152,6 @@ class CartInterface {
   static Future<PaymentResult?> paymentResult({
     required PaymentSuccessResponse? payment,
     required int? id,
-    required String routeType,
   }) async {
     try {
       final response = await ApiRequest.send(
@@ -161,7 +161,7 @@ class CartInterface {
             "razorPayOrderId": payment?.orderId,
             "signature": payment?.signature,
           },
-          route: "$routeType/$id/payment-result",
+          route: "cart/$id/payment-result",
           queries: {});
       if (response != null) {
         return PaymentResult.fromJson(response);
@@ -173,4 +173,33 @@ class CartInterface {
       // throw ApiException(err.toString());
     }
   }
+
+  static Future<ReviewOrder?> reviewOrder({
+    required int? id,
+    required int? shippingId,
+    required List<int?> codProducts,
+    required List<int?> onlineProducts,
+  }) async {
+    try {
+      final response = await ApiRequest.send(
+          method: ApiMethod.POST,
+          body: {
+            "cod": codProducts,
+            "pay_online": onlineProducts,
+            "shippingAddress": shippingId
+          },
+          route: "cart/$id/review-order",
+          queries: {});
+      if (response != null) {
+        return ReviewOrder.fromJson(response);
+      } else {
+        return null;
+      }
+    } catch (err) {
+      return null;
+      // throw ApiException(err.toString());
+    }
+  }
+
+
 }

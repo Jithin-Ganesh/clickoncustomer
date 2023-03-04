@@ -1,5 +1,6 @@
 import 'package:clickoncustomer/components/elevated-buton.dart';
 import 'package:clickoncustomer/models/address.dart';
+import 'package:clickoncustomer/providers/cart-provider.dart';
 import 'package:clickoncustomer/providers/user-provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -61,49 +62,51 @@ class AddressCard extends StatelessWidget {
         height: 110,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                address?.getFullAddress() ?? '',
-                style:
-                    bold.copyWith(fontSize: 15, color: priceOffersSubtextColor),
-              ),
-              value.isAddressSelected(address?.id)
-                  ? ButtonElevated(
-                      onPressed: () {
-                        value.removeAddress();
-                      },
-                      isButtonEnable: true,
-                      buttonTitle: 'Deliver here',
-                color: Colors.greenAccent,
-                foregroundColor: Colors.greenAccent,
-                      width: MediaQuery.of(context).size.width * 0.072,
-                      height: 45,
-                    )
-                  : SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.072,
-                      height: 45,
-                      child: OutlinedButton(
-                          style: ButtonStyle(
-                            shadowColor:
-                                MaterialStateProperty.all<Color>(shadowColor2),
-                            shape: MaterialStateProperty.all(
-                                RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10.0))),
-                          ),
-                          onPressed: () {
-                            value.selectAddress(address);
-                            Navigator.pop(context);
-                          },
-                          child: Text(
-                            'Deliver Here',
-                            style: bold.copyWith(
-                                fontSize: 14,
-                                color: productDetailsScreenTextColor),
-                          )),
-                    ),
-            ],
+          child: Consumer<CartProvider>(builder: (context, cart, child) => Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  address?.getFullAddress() ?? '',
+                  style:
+                      bold.copyWith(fontSize: 15, color: priceOffersSubtextColor),
+                ),
+                value.isAddressSelected(address?.id)
+                    ? ButtonElevated(
+                        onPressed: () {
+                          value.removeAddress();
+                        },
+                        isButtonEnable: true,
+                        buttonTitle: 'Deliver here',
+                  color: Colors.greenAccent,
+                  foregroundColor: Colors.greenAccent,
+                        width: MediaQuery.of(context).size.width * 0.072,
+                        height: 45,
+                      )
+                    : SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.072,
+                        height: 45,
+                        child: OutlinedButton(
+                            style: ButtonStyle(
+                              shadowColor:
+                                  MaterialStateProperty.all<Color>(shadowColor2),
+                              shape: MaterialStateProperty.all(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10.0))),
+                            ),
+                            onPressed: () {
+                              value.selectAddress(address);
+                              Provider.of<CartProvider>(context,listen: false).reviewOrder(cartId: cart.cart?.id, shippingId: address?.id);
+                              Navigator.pop(context);
+                            },
+                            child: Text(
+                              'Deliver Here',
+                              style: bold.copyWith(
+                                  fontSize: 14,
+                                  color: productDetailsScreenTextColor),
+                            )),
+                      ),
+              ],
+            ),
           ),
         ),
       ),

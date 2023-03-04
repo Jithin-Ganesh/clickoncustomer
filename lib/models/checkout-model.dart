@@ -1,30 +1,23 @@
-class CheckoutModel {
+class CheckOutModel {
+  int? totalAmount;
   String? orderId;
   String? key;
   int? amount;
-  String? currency;
 
-  CheckoutModel({
-    this.orderId,
-    this.key,
-    this.amount,
-    this.currency,
-  });
+  CheckOutModel({this.totalAmount, this.orderId, this.key, this.amount});
 
-  CheckoutModel.fromJson(Map<String, dynamic> json) {
+  CheckOutModel.fromJson(Map<String, dynamic> json) {
+    totalAmount = json['totalAmount'];
     orderId = json['orderId'];
     key = json['key'];
     amount = json['amount'];
-    currency = json['currency'];
   }
 
-  static List<CheckoutModel> convertToList(List<dynamic> list) {
-    if (list == null) return [];
-
-    List<CheckoutModel> data = [];
-    list.forEach((element) {
-      data.add(CheckoutModel.fromJson(element));
-    });
+  static List<CheckOutModel> convertToList(List<dynamic> list) {
+    List<CheckOutModel> data = [];
+    for (var element in list) {
+      data.add(CheckOutModel.fromJson(element));
+    }
     return data;
   }
 }
