@@ -22,7 +22,8 @@ class OtpScreen extends StatefulWidget {
   static const routeName = "/otp";
   const OtpScreen({
     Key? key,
-    this.phoneNumber, required this.isLoggedIn,
+    this.phoneNumber,
+    required this.isLoggedIn,
   }) : super(key: key);
   final String? phoneNumber;
   final bool isLoggedIn;
@@ -39,6 +40,7 @@ class _OtpScreenState extends State<OtpScreen> {
     final args = ModalRoute.of(context)!.settings.arguments as OtpScreen;
     return args;
   }
+
   int count = 0;
   otpVerification() {
     //Provider.of<AuthProvider>(context, listen: false).enableLoading();
@@ -48,12 +50,11 @@ class _OtpScreenState extends State<OtpScreen> {
         .then((value) async {
       // Provider.of<AuthProvider>(context, listen: false).disableLoading();
       if (PrefUtils().getToken() != null) {
-        showSnackBar( message: "Otp Verified", context: context);
+        showSnackBar(message: "Otp Verified", context: context);
         _args().isLoggedIn
             ? Navigator.of(context).popUntil((_) => count++ >= 2)
-            :
-        Navigator.pushNamedAndRemoveUntil(
-            context, HomeScreenWeb.routeName, (route) => false);
+            : Navigator.pushNamedAndRemoveUntil(
+                context, HomeScreenWeb.routeName, (route) => false);
       }
     });
   }
@@ -68,6 +69,7 @@ class _OtpScreenState extends State<OtpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
+        physics: NeverScrollableScrollPhysics(),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,

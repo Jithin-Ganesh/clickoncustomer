@@ -53,7 +53,8 @@ class _LoginScreenState extends State<LoginScreen> {
         showSnackBar(message: 'OTP : ${value.code}', context: context);
         Navigator.of(context).pushNamed(OtpScreen.routeName,
             arguments: OtpScreen(
-              phoneNumber: phoneController.text, isLoggedIn: _args().isLoggedIn,
+              phoneNumber: phoneController.text,
+              isLoggedIn: _args().isLoggedIn,
             ));
       }
     });
@@ -63,6 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
+        physics: NeverScrollableScrollPhysics(),
         child: Center(
           child: Form(
             key: _formKey,
@@ -179,8 +181,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                 border: const OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10.0)),
-                                  borderSide:
-                                      BorderSide(color: textFormFieldBorderColor),
+                                  borderSide: BorderSide(
+                                      color: textFormFieldBorderColor),
                                 ),
                                 prefixIcon: Padding(
                                   padding: const EdgeInsets.only(
@@ -209,7 +211,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           SizedBox(
                             height: 15,
                           ),
-                          Column(crossAxisAlignment: CrossAxisAlignment.start,
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
                                 width: 350,
@@ -217,16 +220,16 @@ class _LoginScreenState extends State<LoginScreen> {
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10)),
                                 child: ElevatedButton(
-                                  style:ButtonStyle(
-                                    shape: MaterialStateProperty.all(
-                                        RoundedRectangleBorder(
-                                            borderRadius:
-                                            BorderRadius.circular(10.0))),
-                                  ),
+                                    style: ButtonStyle(
+                                      shape: MaterialStateProperty.all(
+                                          RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(10.0))),
+                                    ),
                                     onPressed: () {
-                                    if(_formKey.currentState!.validate()){
-                                      authenticate();
-                                    }
+                                      if (_formKey.currentState!.validate()) {
+                                        authenticate();
+                                      }
                                     },
                                     child: Text(
                                       textContinue,
@@ -293,7 +296,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 157,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 320,right: 320),
+                  padding: const EdgeInsets.only(left: 320, right: 320),
                   child: Divider(
                     height: 2,
                     color: dividerBorderColor,
@@ -331,7 +334,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       style: thin.copyWith(fontSize: 14, color: Colors.black),
                     )
                   ],
-                )
+                ),
+
               ],
             ),
           ),
