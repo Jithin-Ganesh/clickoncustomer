@@ -45,7 +45,7 @@ class PaymentItem extends StatelessWidget {
                 title: 'Payment',
                 isProcessing: true,
                 isSubmit: false,
-                slNumber: '3',
+                slNumber: '4',
               ),
             ),
             Padding(
@@ -232,22 +232,24 @@ class PaymentItem extends StatelessWidget {
                                         border: Border.all(
                                             color: paymentBorderColor)),
                                     width: MediaQuery.of(context).size.width * 0.349,
-                                    height: 199,
                                     child: Padding(
                                       padding: const EdgeInsets.only(
                                           left: 33, right: 36,top: 20),
                                       child: Column(
-                                        children:  [
-                                          PaymentBank(isPay: true, isCvv: true,cart: value.cart),
-                                          SizedBox(
+                                        children: [
+                                          PaymentBank(isPay: true, isCvv: true,cart: value.cart,),
+                                          const SizedBox(
                                             height: 17,
                                           ),
-                                          Divider(
-                                            height: 1,
-                                            color: paymentDividerColor2,
-                                          ),
-                                          SizedBox(height: 18),
-                                          PaymentBank(isPay: false, isCvv: false),
+                                          // const Divider(
+                                          //   height: 1,
+                                          //   color: paymentDividerColor2,
+                                          // ),
+                                          // const SizedBox(height: 18),
+                                          //  PaymentBank(isPay: true, isCvv: false, mode: 2,cart: value.cart,),
+                                          // const SizedBox(
+                                          //   height: 17,
+                                          // ),
                                         ],
                                       ),
                                     )),
