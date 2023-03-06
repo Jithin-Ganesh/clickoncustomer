@@ -145,7 +145,7 @@ class CartProvider extends ChangeNotifier {
     int? cartId,
   }) async {
     await CartInterface.deleteCart(cartId: cartId);
-    fetchCart();
+    //fetchCart();
     notifyListeners();
   }
 

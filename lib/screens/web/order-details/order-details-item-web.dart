@@ -2,6 +2,7 @@ import 'package:clickoncustomer/components/rate-your-experience-screen1.dart';
 import 'package:clickoncustomer/models/order_review_model.dart';
 import 'package:clickoncustomer/screens/web/order-feedback/order-seller-feedback-screen-web.dart';
 import 'package:clickoncustomer/utils/constants/decoration.dart';
+import 'package:clickoncustomer/utils/constants/screen-utils.dart';
 
 import 'package:clickoncustomer/utils/constants/strings.dart';
 import 'package:flutter/material.dart';
@@ -59,9 +60,10 @@ class _OrderDetailsItemWebState extends State<OrderDetailsItemWeb> {
                               Text(
                                 widget.order?.status?.value ?? '',
                                 style: medium.copyWith(
-                                    fontSize: 18,  color: widget.order?.status == 1
-                                    ? Colors.orangeAccent
-                                    : checkedItemsColor),
+                                    fontSize: 18,
+                                    color: widget.order?.status == 1
+                                        ? Colors.orangeAccent
+                                        : checkedItemsColor),
                               ),
                             ],
                           ),
@@ -178,73 +180,90 @@ class _OrderDetailsItemWebState extends State<OrderDetailsItemWeb> {
                     )
                   ],
                 ),
-                Row(
-                  children: [
-                    Column(children: [
-                      Container(
-                        width: 215,
-                        height: 38,
-                        decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(5))),
-                        child: OutlinedButton(
-                          onPressed: () {
-                            Navigator.pushNamed(context,
-                                OrderSellerFeedBackScreenWeb.routeName);
-                          },
-                          child: Text(
-                            textAlign: TextAlign.center,
-                            "Leave seller feedback",
-                            style: medium.copyWith(
-                                fontSize: 14,
-                                color: productDetailsScreenTextColor),
+                Expanded(
+                  child: Row(
+                    children: [
+                      Column(children: [
+                        Container(
+                          width: calcWidth(context, 215),
+                          height: 38,
+                          decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(5))),
+                          child: OutlinedButton(
+                            onPressed: () {
+                              Navigator.pushNamed(context,
+                                  OrderSellerFeedBackScreenWeb.routeName);
+                            },
+                            child:  Flexible(
+                              child: FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: Text(
+                                  textAlign: TextAlign.center,
+                                  "Seller feedback",
+                                  style: medium.copyWith(
+                                      fontSize: 14,
+                                      color: productDetailsScreenTextColor),
+                                ),
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      Container(
-                        width: 215,
-                        height: 38,
-                        decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(5))),
-                        child: OutlinedButton(
-                          onPressed: () {},
-                          child: Text(
-                            textAlign: TextAlign.center,
-                            "Leave delivery feedback",
-                            style: medium.copyWith(
-                                fontSize: 14,
-                                color: productDetailsScreenTextColor),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        Container(
+                          width: calcWidth(context, 215),
+                          height: 38,
+                          decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(5))),
+                          child: OutlinedButton(
+                            onPressed: () {},
+                            child: Flexible(
+                              child: FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: Text(
+                                  textAlign: TextAlign.center,
+                                  "Delivery feedback",
+                                  style: medium.copyWith(
+                                      fontSize: 14,
+                                      color: productDetailsScreenTextColor),
+                                ),
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      Container(
-                        width: 215,
-                        height: 38,
-                        decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(5))),
-                        child: OutlinedButton(
-                          onPressed: () {
-                            Navigator.of(context).pushNamed(
-                                RateYourExperienceScreen.routeName,
-                                arguments: RateYourExperienceScreen(
-                                    productId: widget.productId));
-                          },
-                          child: Text(
-                            textAlign: TextAlign.center,
-                            "Write a product review",
-                            style: medium.copyWith(
-                                fontSize: 14,
-                                color: productDetailsScreenTextColor),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        Container(
+                          width: calcWidth(context, 215),
+                          height: 38,
+                          decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(5))),
+                          child: OutlinedButton(
+                            onPressed: () {
+                              Navigator.of(context).pushNamed(
+                                  RateYourExperienceScreen.routeName,
+                                  arguments: RateYourExperienceScreen(
+                                      productId: widget.productId));
+                            },
+                            child: Flexible(
+                              child: FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: Text(
+                                  textAlign: TextAlign.center,
+                                  "Rroduct review",
+                                  style: medium.copyWith(
+                                      fontSize: 14,
+                                      color: productDetailsScreenTextColor),
+                                ),
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                    ])
-                  ],
+                      ])
+                    ],
+                  ),
                 )
               ]),
               const SizedBox(
