@@ -9,31 +9,17 @@ import '../models/order-history-model.dart';
 class OrderProvider extends ChangeNotifier {
   List<OrderReviewModel> orderList = [];
   OrderReviewModel? order;
-  List<int?> cod = [];
+  List<int?> cartProducts = [];
 
-  addCod({required List<CartProduct>? products}) {
+  addCartProducts({required List<CartProduct>? products}) {
     products?.forEach((element) {
-      cod.add(element.id);
+      cartProducts.add(element.id);
     });
     notifyListeners();
   }
 
-  Future<bool> placeOrder({
-    required List<int?> payOnline,
-    required int? shipping,
-    required int? billing,
-    required int? cartId,
-  }) async {
-    final response = await OrderInterface.placeOrder(
-        payOnline: payOnline,
-        cartId: cartId,
-        billing: billing,
-        cod: cod,
-        shipping: shipping);
-    cod.clear();
-    notifyListeners();
-    return response;
-  }
+
+
 
   Future<bool> orderCancel({
     required String? cancellationReason,

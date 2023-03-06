@@ -7,10 +7,12 @@ import 'package:clickoncustomer/utils/constants/decoration.dart';
 import 'package:clickoncustomer/utils/img-provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:provider/provider.dart';
 
 import '../../../providers/home_provider.dart';
 import '../../../utils/constants/fontStyles/kanit.dart';
+import '../../../utils/img-provider-2.dart';
 
 class GroupOrders extends StatelessWidget {
   const GroupOrders({Key? key}) : super(key: key);
@@ -18,11 +20,11 @@ class GroupOrders extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 570,
-      decoration: containerDecoration,
+      height: 560,
+      decoration: containerDecorationShadow,
       child: Padding(
         padding:
-            const EdgeInsets.only(left: 30.0, right: 29, top: 25, bottom: 42),
+            const EdgeInsets.only(left: 30.0, right: 29, top: 25,),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -137,7 +139,7 @@ class GroupOrders extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemCount: value.latestProducts?.length,
                   itemBuilder: (context, index) => Padding(
-                    padding: const EdgeInsets.all(13.0),
+                    padding: const EdgeInsets.only(right: 30.0),
                     child: GroupOrderItem(
                       product: value.latestProducts?[index],
                     ),
@@ -167,16 +169,15 @@ class GroupOrderItem extends StatelessWidget {
             children: [
               Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(12),
                   border: Border.all(color: primaryColor, width: 3),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ImgProvider(
-                    url: product?.thumbnail ?? '',
-                    height: 254,
-                    width: 225,
-                  ),
+                child: ImgProvider2(
+                  url: product?.thumbnail ?? '',
+                  height: 254,
+                  width: 225,
+                  radius: 10,
+                  boxFit: BoxFit.fill,
                 ),
               ),
               Positioned(
@@ -253,6 +254,19 @@ class GroupOrderItem extends StatelessWidget {
           ),
           const SizedBox(
             height: 9,
+          ),
+          LinearPercentIndicator(
+            width: MediaQuery.of(context).size.width * 0.114,
+            animation: true,
+            lineHeight: 10,
+            animationDuration: 2500,
+            percent: 0.45,
+            linearStrokeCap: LinearStrokeCap.roundAll,
+            barRadius: Radius.circular(10),
+            progressColor: ratingColor,
+          ),
+          const SizedBox(
+            height: 8,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

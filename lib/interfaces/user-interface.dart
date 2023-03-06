@@ -158,7 +158,7 @@ class UserInterface {
       final response = await ApiRequest.send(
           method: ApiMethod.DELETE,
           body: {},
-          route: "wishlist/$productId",
+          route: "wishlist/product/$productId",
           queries: {});
       return response["success"];
     } catch (err) {

@@ -16,7 +16,7 @@ class HomeCategoryList extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 100.0),
         child: SizedBox(
             height: 120,
-            child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+            child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               Flexible(
                 child: SizedBox(
                     height: 100,

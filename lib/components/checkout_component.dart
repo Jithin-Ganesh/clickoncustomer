@@ -12,10 +12,11 @@ class Checkout extends StatelessWidget {
     required this.isAccount,
     this.isSubmit = true,
     this.isProcessing = false,
-    this.slNumber, this.onPressed, this.email,
+    this.slNumber, this.onPressed, this.email, this.buttonTitle,
   }) : super(key: key);
 
   final String title;
+  final String? buttonTitle;
   final String text;
   final String? email;
   final bool isAccount;
@@ -109,7 +110,7 @@ class Checkout extends StatelessWidget {
                   ),
                   onPressed: onPressed,
                   child: Text(
-                    textChange,
+                    buttonTitle ?? textChange,
                     style: medium.copyWith(
                         fontSize: 14, color: productDetailsScreenTextColor),
                   )),

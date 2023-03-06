@@ -29,7 +29,7 @@ class _TopPicksState extends State<TopPicks> {
       mainAxisSize: MainAxisSize.max,
       children: [
         SizedBox(
-          height: 12,
+          height: 20,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.start,

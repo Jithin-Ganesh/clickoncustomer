@@ -2,12 +2,14 @@ import 'package:clickoncustomer/models/product-model.dart';
 import 'package:clickoncustomer/providers/user-provider.dart';
 import 'package:clickoncustomer/screens/web/product-details/product-detail-screen.dart';
 import 'package:clickoncustomer/utils/constants/color.dart';
+import 'package:clickoncustomer/utils/img-provider-2.dart';
 
 import 'package:clickoncustomer/utils/img-provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../providers/cart-provider.dart';
 import '../../utils/constants/fontStyles/kanit.dart';
 import '../../utils/image-provider.dart';
 
@@ -30,20 +32,22 @@ class _ProductCardState extends State<ProductCard> {
               productId: widget.product?.id,
             ));
       },
-      child: Consumer<UserProvider>(
+      child: Consumer<CartProvider>(
         builder: (context, value, child) => Container(
           height: 360,
           width: 198,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Stack(
                 children: [
                   Center(
-                    child: ImgProvider(radius: 10,
+                    child: ImgProvider(
+                      radius: 10,
                       url: widget.product?.thumbnail ?? '',
-                      boxFit: BoxFit.fill,  height: 257,
+                      boxFit: BoxFit.fill,
+                      height: 257,
                     ),
                   ),
                   Positioned(
@@ -77,26 +81,28 @@ class _ProductCardState extends State<ProductCard> {
                           setState(() {
                             value.isWishListed(widget.product?.id)
                                 ? value.deleteWishList(
-                                productId: widget.product?.id)
+                                    productId: widget.product?.id)
                                 : value.addToWishList(
-                                productId: widget.product?.id);
+                                    productId: widget.product?.id);
                           });
                         },
                         icon: value.isWishListed(widget.product?.id)
-                            ? ImgProvider(
-                                height: 28,
-                                width: 28,
-                                url: "assets/images/love.png",
+                            ? Container(
+                                height: 31,
+                                width: 30,
+                                decoration:
+                                    const BoxDecoration(shape: BoxShape.circle
+                                    ,image: DecorationImage(
+                                          image: AssetImage(
+                                           "assets/images/love.png",
+                                          )
+                                        )),
                               )
-                            : ImgProvider(
-                                height: 28,
-                                width: 28,
-                                url: "assets/images/icon-fav.png",
-                              )),
+                            : const ImgProvider2(url: "assets/images/icon-fav.png",height: 31,width: 30,radius: 50,)),
                   )
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 12,
               ),
               Expanded(
@@ -114,7 +120,7 @@ class _ProductCardState extends State<ProductCard> {
                     '${widget.product?.sellingPrice}',
                     style: regular.copyWith(fontSize: 17, color: primaryColor),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 8,
                   ),
                   Text(

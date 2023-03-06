@@ -7,7 +7,7 @@ class CircleListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 100.0),
+      padding: const EdgeInsets.symmetric(horizontal: 161.0),
       child: SizedBox(
         height: 70,
         child: ListView.builder(

@@ -8,10 +8,28 @@ import 'package:provider/provider.dart';
 
 import '../../../utils/constants/color.dart';
 
-class RecentlyViewedProducts extends StatelessWidget {
+class RecentlyViewedProducts extends StatefulWidget {
   const RecentlyViewedProducts({Key? key})
       : super(key: key);
 
+  @override
+  State<RecentlyViewedProducts> createState() => _RecentlyViewedProductsState();
+}
+
+class _RecentlyViewedProductsState extends State<RecentlyViewedProducts> {
+  late ScrollController _scrollController;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = ScrollController();
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -29,9 +47,10 @@ class RecentlyViewedProducts extends StatelessWidget {
               // ),
               height: 290,
               child: ListView.builder(
+                controller: _scrollController,
                 itemBuilder: (context, index) =>
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                      padding: const EdgeInsets.only(right: 30.0),
                       child: RecentProductCard(image: value.recentProducts?[index].product?.thumbnail ?? '', id: value.recentProducts?[index].productId ?? 0,),
                     ),
                 itemCount: value.recentProducts?.length,
@@ -41,10 +60,14 @@ class RecentlyViewedProducts extends StatelessWidget {
         ),
         Positioned(
             top: 88,
-            right: 0,
+            right:MediaQuery.of(context).size.width * 0.073,
             child: InkWell(
               onTap: () {
-
+                _scrollController.animateTo(
+                  _scrollController.offset + 190,
+                  duration: Duration(milliseconds: 300),
+                  curve: Curves.easeOut,
+                );
               },
               child: Container(
                 height: 37,
@@ -66,10 +89,14 @@ class RecentlyViewedProducts extends StatelessWidget {
             )),
         Positioned(
             top: 88,
-            left: 0,
+            left: MediaQuery.of(context).size.width * 0.073,
             child: InkWell(
               onTap: () {
-
+                _scrollController.animateTo(
+                  _scrollController.offset - 190,
+                  duration: Duration(milliseconds: 300),
+                  curve: Curves.easeIn,
+                );
               },
               child: Container(
                 height: 37,

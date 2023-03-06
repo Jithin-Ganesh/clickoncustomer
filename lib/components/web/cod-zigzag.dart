@@ -1,24 +1,25 @@
-import 'package:clickoncustomer/providers/cart-provider.dart';
-import 'package:clickoncustomer/utils/constants/decoration.dart';
+import 'package:clickoncustomer/components/web/zig-zag-sheet.dart';
 import 'package:dotted_line/dotted_line.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../providers/cart-provider.dart';
 import '../../screens/web/review-order/review-order-screen.dart';
 import '../../utils/constants/color.dart';
-
+import '../../utils/constants/decoration.dart';
 import '../../utils/constants/fontStyles/kanit.dart';
 
-class ZigZagSheet extends StatefulWidget {
+class CodZigZagSheet extends StatefulWidget {
   final bool isCoupon;
 
-  const ZigZagSheet({Key? key, required this.isCoupon}) : super(key: key);
+  const CodZigZagSheet({Key? key, required this.isCoupon}) : super(key: key);
 
   @override
-  State<ZigZagSheet> createState() => _ZigZagSheetState();
+  State<CodZigZagSheet> createState() => _ZigZagSheetState();
 }
 
-class _ZigZagSheetState extends State<ZigZagSheet> {
+class _ZigZagSheetState extends State<CodZigZagSheet> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -30,19 +31,19 @@ class _ZigZagSheetState extends State<ZigZagSheet> {
           decoration: zigzagDecoration,
           child: Padding(
             padding:
-                const EdgeInsets.only(left: 27, right: 29, top: 28, bottom: 51),
+            const EdgeInsets.only(left: 27, right: 29, top: 28, bottom: 51),
             child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               SizedBox(
                 height: 40,
                 width: MediaQuery.of(context).size.width * 0.161,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(
-                        context, ReviewOrderScreenWeb.routeName);
+                    // Navigator.pushNamed(
+                    //     context, ReviewOrderScreenWeb.routeName);
                   },
                   child: Text(
-                    'Proceed to Buy',
+                    'CheckOut',
                     style: medium.copyWith(color: canvasColor, fontSize: 16),
                   ),
                 ),
@@ -66,17 +67,17 @@ class _ZigZagSheetState extends State<ZigZagSheet> {
                 height: 22,
               ),
               PriceItem(
-                  title: 'Price (3 items)',
+                  title: 'Price (${value.codProductList.length} items)',
                   value: value.cart?.itemTotal.toString() ?? ''),
               const SizedBox(
                 height: 5,
               ),
-              // const PriceItem(title: 'Shipping', value: 'Free'),
-              // const SizedBox(
-              //   height: 5,
-              // ),
+              PriceItem(title: 'Shipping', value: value.reviewOrderItem?.cod?[0].shippingCharge ?? ''),
+              const SizedBox(
+                height: 5,
+              ),
               PriceItem(
-                  title: 'Discount', value: value.cart?.offer.toString() ?? ''),
+                  title: 'Discount', value: value.reviewOrderItem?.cod?[0].offer ?? ''),
               const SizedBox(
                 height: 52,
               ),
@@ -168,7 +169,7 @@ class _ZigZagSheetState extends State<ZigZagSheet> {
                   ),
                   const Spacer(),
                   Text(
-                    value.cart?.netTotal.toString() ?? '',
+                    value.reviewOrderItem?.cod?[0].netTotal ?? '',
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: regular.copyWith(
@@ -181,33 +182,6 @@ class _ZigZagSheetState extends State<ZigZagSheet> {
           ),
         ),
       ),
-    );
-  }
-}
-
-class PriceItem extends StatelessWidget {
-  final String title;
-  final String value;
-
-  const PriceItem({Key? key, required this.title, required this.value})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Text(
-          title,
-          style: thin.copyWith(color: priceDetailsSubTextColor, fontSize: 14),
-          textAlign: TextAlign.left,
-        ),
-        const Spacer(),
-        Text(
-          value,
-          style: regular.copyWith(color: mainTitleColor, fontSize: 14),
-          textAlign: TextAlign.left,
-        ),
-      ],
     );
   }
 }

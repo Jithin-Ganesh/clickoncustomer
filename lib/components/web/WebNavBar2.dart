@@ -44,8 +44,7 @@ class _WebNavBar2State extends State<WebNavBar2> {
       centerTitle: false,
       title: Padding(
         padding: EdgeInsets.only(
-          left: MediaQuery.of(context).size.width * 0.078,
-        ),
+            left: MediaQuery.of(context).size.width * 0.078, top: 10),
         child: Row(
           children: [
             InkWell(
@@ -67,15 +66,15 @@ class _WebNavBar2State extends State<WebNavBar2> {
                 ],
               ),
             ),
-            const SizedBox(
-              width: 10,
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.0416,
             ),
             Flexible(
               child: SizedBox(
                 height: 50,
-                width: MediaQuery.of(context).size.width * 0.404,
+                width: MediaQuery.of(context).size.width * 0.4,
                 child: Material(
-                  elevation: 3.0,
+                  elevation: 10,
                   shadowColor: shadowColor2,
                   borderRadius: BorderRadius.circular(10),
                   child: TextFormField(
@@ -279,14 +278,14 @@ class _WebNavBar2State extends State<WebNavBar2> {
                   children: [
                     InkWell(
                       onTap: () {
-                        // if (PrefUtils().getToken() != null) {
-                        //   Navigator.pushNamed(
-                        //       context, WishListScreen.routeName);
-                        // } else {
-                        //   Navigator.pushNamed(context, LoginScreen.routeName,
-                        //       arguments: const LoginScreen(isLoggedIn: true));
-                        // }
-                        Navigator.pushNamed(context,TemplateLanding.routeName);
+                        if (PrefUtils().getToken() != null) {
+                          Navigator.pushNamed(
+                              context, WishListScreen.routeName);
+                        } else {
+                          Navigator.pushNamed(context, LoginScreen.routeName,
+                              arguments: const LoginScreen(isLoggedIn: true));
+                        }
+                        // Navigator.pushNamed(context,TemplateLanding.routeName);
                       },
                       child: Image.asset(
                         'assets/images/icon-heart-oulined.png',
@@ -363,66 +362,69 @@ class _WebNavBar2State extends State<WebNavBar2> {
                   SizedBox(
                     width: 280,
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           'Home',
                           style: medium.copyWith(
                               color: contactTitleColor, fontSize: 16),
                         ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.031,
+                        ),
                         Text(
                           'Shop',
                           style: medium.copyWith(
                               color: subTextGeneralColor, fontSize: 16),
                         ),
-                        Text(
-                          'Offers',
-                          style: medium.copyWith(
-                              color: subTextGeneralColor, fontSize: 16),
-                        ),
-                        Text(
-                          'Support',
-                          style: medium.copyWith(
-                              color: subTextGeneralColor, fontSize: 16),
-                        ),
+                        // Text(
+                        //   'Offers',
+                        //   style: medium.copyWith(
+                        //       color: subTextGeneralColor, fontSize: 16),
+                        // ),
+                        // Text(
+                        //   'Support',
+                        //   style: medium.copyWith(
+                        //       color: subTextGeneralColor, fontSize: 16),
+                        // ),
                       ],
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 8.0),
-                    child: Container(
-                      height: 38,
-                      width: 197,
-                      decoration: const BoxDecoration(
-                          borderRadius:
-                              const BorderRadius.all(const Radius.circular(8)),
-                          color: priceDetailsSubTextColor,
-                          boxShadow: [
-                            const BoxShadow(
-                              color: Colors.grey,
-                              blurRadius: 5.0,
-                            ),
-                          ]),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            'assets/images/icon-tag.png',
-                            height: 19,
-                            width: 19,
-                          ),
-                          const SizedBox(
-                            width: 5,
-                          ),
-                          Text(
-                            'Post an add',
-                            style: medium.copyWith(
-                                color: canvasColor, fontSize: 16),
-                          ),
-                        ],
-                      ),
-                    ),
-                  )
+                  // Padding(
+                  //   padding: const EdgeInsets.only(bottom: 8.0),
+                  //   child: Container(
+                  //     height: 38,
+                  //     width: 197,
+                  //     decoration: const BoxDecoration(
+                  //         borderRadius:
+                  //             const BorderRadius.all(const Radius.circular(8)),
+                  //         color: priceDetailsSubTextColor,
+                  //         boxShadow: [
+                  //           const BoxShadow(
+                  //             color: Colors.grey,
+                  //             blurRadius: 5.0,
+                  //           ),
+                  //         ]),
+                  //     child: Row(
+                  //       mainAxisAlignment: MainAxisAlignment.center,
+                  //       children: [
+                  //         Image.asset(
+                  //           'assets/images/icon-tag.png',
+                  //           height: 19,
+                  //           width: 19,
+                  //         ),
+                  //         const SizedBox(
+                  //           width: 5,
+                  //         ),
+                  //         Text(
+                  //           'Post an add',
+                  //           style: medium.copyWith(
+                  //               color: canvasColor, fontSize: 16),
+                  //         ),
+                  //       ],
+                  //     ),
+                  //   ),
+                  // )
                 ],
               ),
               const SizedBox(

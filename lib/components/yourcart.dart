@@ -29,10 +29,7 @@ class YourCart extends StatefulWidget {
 }
 
 class _YourCartState extends State<YourCart> {
-  final List<String> items = [
-    'COD',
-    'Pay Online'
-  ];
+  final List<String> items = ['COD', 'Pay Online'];
   String? selectedValue;
   @override
   Widget build(BuildContext context) {
@@ -48,7 +45,7 @@ class _YourCartState extends State<YourCart> {
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
             Row(
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 24,
                 ),
                 ImgProvider(
@@ -56,7 +53,7 @@ class _YourCartState extends State<YourCart> {
                   width: MediaQuery.of(context).size.width * 0.0572,
                   height: 110,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 32,
                 ),
                 Column(
@@ -68,7 +65,7 @@ class _YourCartState extends State<YourCart> {
                       style: medium.copyWith(
                           color: inStockTitleColor, fontSize: 12),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 6,
                     ),
                     Text(
@@ -78,16 +75,12 @@ class _YourCartState extends State<YourCart> {
                       style: regular.copyWith(
                           fontSize: 14, color: productSubTextColor),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 6,
                     ),
                     Row(children: [
-                      Text(textRupees),
-                      const SizedBox(
-                        width: 8.85,
-                      ),
                       Text(
-                        widget.product?.amount.toString() ?? '',
+                        widget.product?.sellingPrice ?? '',
                         style: medium.copyWith(
                             color: priceOffersSubtextColor, fontSize: 16),
                       ),
@@ -104,23 +97,23 @@ class _YourCartState extends State<YourCart> {
                                 bottomRight: Radius.circular(8))),
                         child: Center(
                           child: Text(
-                            discount,
+                            '${widget.product?.offer}',
                             textAlign: TextAlign.center,
                             style: regular.copyWith(
                                 fontSize: 12, color: defaultTextColor),
                           ),
                         ),
                       ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        '1 Offer Applied',
-                        style: medium.copyWith(
-                            fontSize: 12, color: priceOffersSubtextColor),
-                      )
+                      // const SizedBox(
+                      //   width: 10,
+                      // ),
+                      // Text(
+                      //   '1 Offer Applied',
+                      //   style: medium.copyWith(
+                      //       fontSize: 12, color: priceOffersSubtextColor),
+                      // )
                     ]),
-                    SizedBox(
+                    const SizedBox(
                       height: 7.72,
                     ),
                     Row(
@@ -163,7 +156,7 @@ class _YourCartState extends State<YourCart> {
                         //     ),
                         //   ),
                         // ),
-                        SizedBox(
+                        const SizedBox(
                           width: 16,
                         ),
                         Text(
@@ -171,7 +164,7 @@ class _YourCartState extends State<YourCart> {
                           style: regular.copyWith(
                               color: yourCartSubTextColor, fontSize: 12),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 13,
                         ),
                         Text(
@@ -181,7 +174,7 @@ class _YourCartState extends State<YourCart> {
                             color: yourCartSubTextColor,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 12,
                         ),
                         TextButton(
@@ -236,7 +229,7 @@ class _YourCartState extends State<YourCart> {
                           style: regular.copyWith(
                               fontSize: 12, color: productSubTextColor),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
                         Text(
@@ -246,7 +239,7 @@ class _YourCartState extends State<YourCart> {
                         )
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 8.5,
                     ),
                     Row(
@@ -256,7 +249,7 @@ class _YourCartState extends State<YourCart> {
                           style: regular.copyWith(
                               fontSize: 12, color: productSubTextColor),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 7,
                         ),
                         Container(
@@ -271,10 +264,10 @@ class _YourCartState extends State<YourCart> {
 
                                 hint: Row(
                                   children: [
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 15,
                                     ),
-                                    Text(textYourCartCOD,
+                                    Text('Select Payment Option',
                                         style: regular.copyWith(
                                             fontSize: 14,
                                             color: reviewSubTitleColor)),
@@ -293,7 +286,20 @@ class _YourCartState extends State<YourCart> {
                                     .toList(),
                                 value: selectedValue,
                                 onChanged: (value) {
-                                  selectedValue = value as String;
+                                  setState(() {
+                                    selectedValue = value as String;
+                                  });
+                                  selectedValue == 'COD'
+                                      ? widget.product?.setPaymentMode(PaymentMode.COD)
+                                      : widget.product?.setPaymentMode(PaymentMode.PAYONLINE);
+                                      // ? Provider.of<CartProvider>(context,
+                                      //         listen: false)
+                                      //     .addCodProducts(
+                                      //         product: widget.product)
+                                      // : Provider.of<CartProvider>(context,
+                                      //         listen: false)
+                                      //     .addOnlineProducts(
+                                      //         product: widget.product);
                                 }),
                           ),
                         ),

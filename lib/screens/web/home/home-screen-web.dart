@@ -27,6 +27,7 @@ import '../../../models/category.dart';
 import '../../../providers/cart-provider.dart';
 import '../../../providers/home_provider.dart';
 import '../../../providers/user-provider.dart';
+import '../../../utils/img-provider-2.dart';
 import '../shimmer-component/circle-list-item.dart';
 import '../shimmer-component/products-box-shimmer-list.dart';
 import '../shimmer-component/shimmer-loading.dart';
@@ -81,9 +82,9 @@ class _HomeScreenWebState extends State<HomeScreenWeb> {
         ),
       ),
       desktop: Scaffold(
-        backgroundColor: bgColor.withOpacity(0.3),
+        backgroundColor: bgColor,
         appBar: const PreferredSize(
-            preferredSize: Size.fromHeight(175), child: WebNavBar2()),
+            preferredSize: Size.fromHeight(190), child: WebNavBar2()),
         body: const WebHomeScreen(),
       ),
     );
@@ -137,7 +138,7 @@ class _WebHomeScreenState extends State<WebHomeScreen> {
                   },
                 ),
                 const SizedBox(
-                  height: 44,
+                  height: 49,
                 ),
                 FutureBuilder(
                     future: context.read<CategoryProvider>().fetchCategory(),
@@ -168,7 +169,7 @@ class _WebHomeScreenState extends State<WebHomeScreen> {
                   children: [
                     Flexible(
                       child: Container(
-                        decoration: containerDecoration,
+                        decoration: containerDecorationShadow,
                         // constraints: BoxConstraints(
                         //   minWidth: MediaQuery.of(context).size.width * 0.20,
                         //   maxWidth: MediaQuery.of(context).size.width * 0.50,
@@ -177,7 +178,7 @@ class _WebHomeScreenState extends State<WebHomeScreen> {
                       ),
                     ),
                     const SizedBox(
-                      width: 20,
+                      width: 30,
                     ),
                     const ExlusiveOffer()
                   ],
@@ -189,32 +190,43 @@ class _WebHomeScreenState extends State<WebHomeScreen> {
                 const SizedBox(
                   height: 45,
                 ),
-                Visibility(
-                  visible: false,
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Best Selling Products',
-                            style: medium.copyWith(color: Colors.black, fontSize: 28),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 12,
-                      ),
-                       CustomTabBarView(),
-                    ],
-                  ),
+
+
+
+              ],
+            ),
+          ),
+          Visibility(
+            visible: true,
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Best Selling Products',
+                      style: medium.copyWith(color: Colors.black, fontSize: 28),
+                    ),
+                  ],
                 ),
                 const SizedBox(
-                  height: 55,
+                  height: 12,
+                ),
+                const CustomTabBarView(),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(
+                left: 150.0, right: 150, top: 42, bottom: 60),
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 49,
                 ),
                 FutureBuilder(
                     future: Provider.of<CategoryProvider>(context,
-                            listen: false)
+                        listen: false)
                         .fetchProductsForYou(),
                     builder: (context, snapshot) {
                       if (snapshot.connectionState ==
@@ -245,9 +257,7 @@ class _WebHomeScreenState extends State<WebHomeScreen> {
                         snapshot.error.toString(),
                       );
                     }),
-                const SizedBox(
-                  height: 60,
-                ),
+
                 const Divider(
                   color: horizontalDividerColor,
                   height: 1,
@@ -322,30 +332,30 @@ class _WebHomeScreenState extends State<WebHomeScreen> {
                   ],
                 ),
                 const SizedBox(
-                  height: 31,
+                  height: 26,
                 ),
-                FutureBuilder(
-                    future:
-                        Provider.of<CategoryProvider>(context, listen: false)
-                            .fetchRecentProducts(),
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return const ShimmerLoading(
-                          isLoading: true,
-                          child: ProductsShimmerList(),
-                        );
-                      } else {
-                        if (snapshot.hasData) {
-                          return const RecentlyViewedProducts();
-                        }
-                      }
-                      return Text(
-                        snapshot.error.toString(),
-                      );
-                    }),
               ],
             ),
           ),
+          FutureBuilder(
+              future:
+              Provider.of<CategoryProvider>(context, listen: false)
+                  .fetchRecentProducts(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const ShimmerLoading(
+                    isLoading: true,
+                    child: ProductsShimmerList(),
+                  );
+                } else {
+                  if (snapshot.hasData) {
+                    return const RecentlyViewedProducts();
+                  }
+                }
+                return Text(
+                  snapshot.error.toString(),
+                );
+              }),
           const BottomWebBar()
         ],
       ),
@@ -372,14 +382,21 @@ class ExlusiveOffer extends StatelessWidget {
             width: MediaQuery.of(context).size.width * 0.259,
             decoration: BoxDecoration(
               color: groupOrdersAmountTextColor,
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(10),boxShadow: [
+              BoxShadow(
+                color: groupOrdersAmountTextColor.withOpacity(0.3),
+                spreadRadius: 3,
+                blurRadius: 5,
+                offset: Offset(0, 2), // changes position of shadow
+              ),
+            ],
               // image: const DecorationImage(
               //     image: AssetImage(
               //         "assets/images/dummy/image-exclusive.png"))
             ),
-            child: ImgProvider(
+            child: ImgProvider2(
               url: "assets/images/dummy/image-exclusive.png",
-              height: 230,
+              height: 230,radius: 10,
               width: MediaQuery.of(context).size.width * 0.239,
               boxFit: BoxFit.fill,
             ),
@@ -387,7 +404,14 @@ class ExlusiveOffer extends StatelessWidget {
           Container(
             height: 135,
             width: MediaQuery.of(context).size.width * 0.239,
-            decoration: BoxDecoration(
+            decoration: BoxDecoration(boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.3),
+                spreadRadius: 3,
+                blurRadius: 5,
+                offset: Offset(0, 2), // changes position of shadow
+              ),
+            ],
                 color: canvasColor, borderRadius: BorderRadius.circular(10)),
             child: Padding(
               padding: const EdgeInsets.only(left: 26, right: 42),

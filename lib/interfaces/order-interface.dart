@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:clickoncustomer/models/checkout-model.dart';
 import 'package:clickoncustomer/models/order_review_model.dart';
 import 'package:clickoncustomer/utils/global-key.dart';
 import 'package:flutter/cupertino.dart';
@@ -14,9 +15,8 @@ import '../utils/toast-message.dart';
 
 class OrderInterface {
   //  placeOrder
-  static Future<bool> placeOrder(
-      {required List<int?> cod,
-      required List<int?> payOnline,
+  static Future<CheckOutModel> checkOutOnline(
+      {required List<int?> cartProducts,
       required int? shipping,
       required int? billing,
       required int? cartId}) async {
@@ -26,16 +26,58 @@ class OrderInterface {
           body: {
             "billingAddress": billing,
             "shippingAddress": shipping,
-            "pay_online_products": [0],
-            "cod_products": cod
+            'payment_mode': 2,
+            "cart_products": cartProducts
           },
           route: "cart/$cartId/checkout",
           queries: {});
-      return response['success'] ?? false;
+        return CheckOutModel.fromJson(response);
     } catch (err) {
       throw ApiException(err.toString());
     }
   }
+
+  static Future<bool> checkOutCod(
+      {required List<int?> cartProducts,
+        required int? shipping,
+        required int? billing,
+        required int? cartId}) async {
+    try {
+      final response = await ApiRequest.send(
+          method: ApiMethod.POST,
+          body: {
+            "billingAddress": billing,
+            "shippingAddress": shipping,
+            'payment_mode': 1,
+            "cart_products": cartProducts
+          },
+          route: "cart/$cartId/checkout",
+          queries: {});
+        return response['success'] ?? false;
+
+    } catch (err) {
+      throw ApiException(err.toString());
+    }
+  }
+
+  // static Future<bool> payementDetails(
+  //     {required int? businessId,required int paymentMode}) async {
+  //   try {
+  //     final response = await ApiRequest.send(
+  //         method: ApiMethod.POST,
+  //         body: {
+  //           "email": "string",
+  //           "is_international_shipping_allowed": true,
+  //           "payment_modes": paymentMode
+  //         },
+  //         route: "cart/$cartId/checkout",
+  //         queries: {});
+  //     return response['success'] ?? false;
+  //   } catch (err) {
+  //     throw ApiException(err.toString());
+  //   }
+  // }
+
 
   static Future<bool> orderCancel({
     required int? orderId,
@@ -68,7 +110,7 @@ class OrderInterface {
             : "order",
         queries: {},
       );
-      return OrderReviewModel.convertToList(response);
+      return OrderReviewModel.convertToList(response['order']);
     } catch (error) {
       log("order error: $error");
       return [];
