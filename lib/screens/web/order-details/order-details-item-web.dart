@@ -188,23 +188,19 @@ class _OrderDetailsItemWebState extends State<OrderDetailsItemWeb> {
                           width: calcWidth(context, 215),
                           height: 38,
                           decoration: const BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(5))),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(5))),
                           child: OutlinedButton(
                             onPressed: () {
                               Navigator.pushNamed(context,
                                   OrderSellerFeedBackScreenWeb.routeName);
                             },
-                            child:  Flexible(
-                              child: FittedBox(
-                                fit: BoxFit.scaleDown,
-                                child: Text(
-                                  textAlign: TextAlign.center,
-                                  "Seller feedback",
-                                  style: medium.copyWith(
-                                      fontSize: 14,
-                                      color: productDetailsScreenTextColor),
-                                ),
-                              ),
+                            child: Text(
+                              textAlign: TextAlign.center,
+                              "Seller feedback",
+                              style: medium.copyWith(
+                                  fontSize: 14,
+                                  color: productDetailsScreenTextColor),
                             ),
                           ),
                         ),
@@ -215,7 +211,8 @@ class _OrderDetailsItemWebState extends State<OrderDetailsItemWeb> {
                           width: calcWidth(context, 215),
                           height: 38,
                           decoration: const BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(5))),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(5))),
                           child: OutlinedButton(
                             onPressed: () {},
                             child: Flexible(
@@ -239,7 +236,8 @@ class _OrderDetailsItemWebState extends State<OrderDetailsItemWeb> {
                           width: calcWidth(context, 215),
                           height: 38,
                           decoration: const BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(5))),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(5))),
                           child: OutlinedButton(
                             onPressed: () {
                               Navigator.of(context).pushNamed(
