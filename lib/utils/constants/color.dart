@@ -131,3 +131,4 @@ const Color templateRandomTextColor=Color(0xffA4A4A4);
 const Color templateTextContainerColor=Color(0xffDCD9D9);
 const Color templateMultiCartContainerColor=Color(0xffF8F5EF);
 const Color templateMultiCartRedContainerColor=Color(0xffFF4B6A);
+const Color orderDivColor =Color(0xffEEF1F5);
